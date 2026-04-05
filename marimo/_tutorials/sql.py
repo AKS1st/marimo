@@ -20,9 +20,9 @@ app = marimo.App(width="medium")
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    # Hello, SQL!
+    # 你好，SQL！
 
-    _Let's dive into the world of SQL where we don't just address tables, we also join them!_
+    _让我们进入 SQL 的世界，在这里我们不仅能处理表，还能把它们连接起来！_
     """)
     return
 
@@ -30,9 +30,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    With marimo, you can mix-and-match both **Python and SQL**. To create a
-    SQL cell, you first need to install some additional dependencies,
-    including [duckdb](https://duckdb.org/). Obtain these dependencies with
+    在 marimo 中，你可以自由组合 **Python 和 SQL**。要创建一个
+    SQL 单元格，首先需要安装一些额外依赖，
+    包括 [duckdb](https://duckdb.org/)。可以通过下面的命令安装：
 
     ```bash
     pip install 'marimo[sql]'
@@ -75,9 +75,9 @@ def _(has_duckdb_installed, mo):
         mo.output.replace(
             mo.md(
                 """
-                /// Tip | "Installed"
+                /// 提示 | "已安装"
 
-                    If you see this, DuckDB is already installed.
+                    如果你看到这条消息，说明 DuckDB 已经安装好了。
                 ///
                 """
             )
@@ -86,8 +86,8 @@ def _(has_duckdb_installed, mo):
         mo.output.replace(
             mo.md(
                 """
-                /// Warning | "Not Installed"
-                    If you see this, DuckDB is not installed.
+                /// 警告 | "未安装"
+                    如果你看到这条消息，说明 DuckDB 还没有安装。
                 ///
                 """
             )
@@ -98,32 +98,28 @@ def _(has_duckdb_installed, mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## Creating SQL cells
+    ## 创建 SQL 单元格
 
-    Once the required dependencies are installed, you can create SQL cells
-    in one of the following ways:
+    安装所需依赖后，你可以通过以下方式之一创建 SQL 单元格：
 
-    - right click the **Add Cell** ::lucide:circle-plus:: buttons on the left of
-    a cell;
-    -  click the **Convert to SQL** ::lucide:database:: button in the cell menu ::lucide:ellipsis::
-    -  click the **Add SQL Cell** at the bottom of the page;
+    - 右键点击单元格左侧的 **添加单元格** ::lucide:circle-plus:: 按钮；
+    - 点击单元格菜单中的 **转换为 SQL** ::lucide:database:: 按钮 ::lucide:ellipsis::
+    - 点击页面底部的 **添加 SQL 单元格**；
 
-    ## Python representation
-    marimo is still just Python, even when using SQL. Here is an example of
-    how marimo embeds SQL in Python in its file format:
+    ## Python 表示形式
+    即使用 SQL，marimo 本质上仍然是 Python。下面示例展示了
+    marimo 如何在文件格式中把 SQL 嵌入 Python：
 
     ```python
     output_df = mo.sql(f"SELECT * FROM my_table LIMIT {max_rows.value}")
     ```
 
-    Notice that we have an **`output_df`** variable in the cell. This is a
-    resulting Polars DataFrame (if you have `polars` installed) or a Pandas
-    DataFrame (if you don't). One of them must be installed in order to
-    interact with the SQL result.
+    注意，这个单元格里有一个 **`output_df`** 变量。它会是一个
+    Polars DataFrame（如果你安装了 `polars`）或者一个 Pandas
+    DataFrame（如果没有）。要与 SQL 结果交互，二者至少需要安装一个。
 
-    The SQL statement itself is a formatted string (f-string), which
-    means it can contain any valid Python code, such as the values of UI
-    elements. This means your SQL statement and results can be reactive! 🚀
+    SQL 语句本身是一个格式化字符串（f-string），这意味着它可以包含任意合法的 Python 代码，
+    比如 UI 元素的值。也就是说，你的 SQL 语句和结果都可以是响应式的！🚀
     """)
     return
 
@@ -131,7 +127,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Querying dataframes with SQL
+    ## 用 SQL 查询 dataframe
     """)
     return
 
@@ -139,10 +135,10 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    /// Tip | "Variables panel"
+    /// 提示 | "变量面板"
 
-        Open the variables panel in the left toolbar to see all dataframes
-        and in-memory tables that your notebook has access to.
+        打开左侧工具栏中的变量面板，可以查看 notebook 可访问的所有 dataframe
+        和内存表。
     ///
     """)
     return
@@ -151,7 +147,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Let's take a look at a SQL cell. The next cell generates a dataframe called `df`.
+    让我们看一个 SQL 单元格。下一个单元格会生成一个名为 `df` 的 dataframe。
     """)
     return
 
@@ -202,7 +198,7 @@ def _(has_polars_installed):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Next, we create a SQL query, referencing the Python dataframe `df` directly.
+    接下来，我们创建一个 SQL 查询，直接引用 Python dataframe `df`。
     """)
     return
 
@@ -211,11 +207,13 @@ def _(mo):
 def _(df, mo):
     _df = mo.sql(
         f"""
-        -- This SQL cell is special since we can reference existing dataframes in the global scope as a table in the SQL query. For example, we can reference the `df` dataframe in the global scope, which was defined in another cell using Python.
+        -- 这个 SQL 单元格很特别，因为我们可以在 SQL 查询里把全局作用域中已有的 dataframe 当作表来引用。
+        -- 例如，这里引用的是在另一个 Python 单元格中定义的 `df` dataframe。
 
         SELECT * FROM df;
 
-        -- By default, the output variable starts with an underscore (`_df`), making it private to this cell. To access the query result in another cell, change the name of the output variable.
+        -- 默认情况下，输出变量以下划线开头（`_df`），这使它只属于当前单元格。
+        -- 若想在其他单元格中访问查询结果，请修改输出变量名。
         """
     )
     return
@@ -224,7 +222,7 @@ def _(df, mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## From Python to SQL and back
+    ## 从 Python 到 SQL 再返回
     """)
     return
 
@@ -232,7 +230,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    You can create SQL statements that depend on Python values, such as UI elements:
+    你可以创建依赖 Python 值的 SQL 语句，比如依赖 UI 元素：
     """)
     return
 
@@ -240,7 +238,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo, string):
     token_prefix = mo.ui.dropdown(
-        list(string.ascii_lowercase), label="token prefix", value="a"
+        list(string.ascii_lowercase), label="词元前缀", value="a"
     )
     token_prefix
     return (token_prefix,)
@@ -250,12 +248,12 @@ def _(mo, string):
 def _(df, mo, token_prefix):
     result = mo.sql(
         f"""
-        -- Change the dropdown to see the SQL query filter itself!
+        -- 改变下拉框，看看 SQL 查询是如何自我过滤的！
         --
-        -- Here we use a duckdb function called `starts_with`:
+        -- 这里我们使用 duckdb 的 `starts_with` 函数：
         SELECT * FROM df WHERE starts_with(token, '{token_prefix.value}')
 
-        -- Notice that we named the output variable `result`
+        -- 注意我们把输出变量命名为 `result`
         """
     )
     return (result,)
@@ -264,8 +262,8 @@ def _(df, mo, token_prefix):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Since we named the output variable above **`result`**,
-    we can use it back in Python.
+    因为上面我们把输出变量命名为 **`result`**，
+    所以可以在 Python 中继续使用它。
     """)
     return
 
@@ -276,7 +274,7 @@ def _(mo):
 
     mo.md(
         f"""
-        Let's chart the result with a library of your choice:
+        让我们用你选择的库来绘制结果：
 
         {charting_library}
         """
@@ -288,10 +286,10 @@ def _(mo):
 def _(charting_library, mo, render_chart, token_prefix):
     _header = mo.md(
         f"""
-        We can re-use the dropdown from above: {token_prefix}
+        我们可以复用上面的下拉框：{token_prefix}
 
-        Now we have a histogram visualizing the token count distribution of tokens starting
-        with {token_prefix.value}, powered by your SQL query and UI element.
+        现在我们有了一个直方图，用来展示以 {token_prefix.value} 开头的词元计数分布，
+        这由你的 SQL 查询和 UI 元素共同驱动。
         """
     )
 
@@ -322,7 +320,7 @@ def _(mo, result, token_prefix):
         import matplotlib.pyplot as plt
 
         plt.hist(result["count"], label=token_prefix.value)
-        plt.xlabel("token count")
+        plt.xlabel("词元计数")
         plt.legend()
         plt.tight_layout()
         return plt.gcf()
@@ -350,7 +348,7 @@ def _(mo, result, token_prefix):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## CSVs, Parquet, Postgres, and more ...
+    ## CSV、Parquet、Postgres 等更多数据源 ...
     """)
     return
 
@@ -358,7 +356,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    We're not limited to querying dataframes. We can also query an **HTTP URL, S3 path, or a file path to a local csv or parquet file**.
+    我们不局限于查询 dataframe。也可以查询 **HTTP URL、S3 路径，或者本地 csv / parquet 文件路径**。
 
     ```sql
     -- or
@@ -369,9 +367,10 @@ def _(mo):
     SELECT * FROM read_parquet('path/to/example.parquet');
     ```
 
-    With a bit of boilerplate, you can even read and write to **Postgres**, and join Postgres tables with dataframes in the same query. For a full list of supported data sources, check out the [duckdb extensions](https://duckdb.org/docs/extensions/overview) and our [example notebook on duckdb connections](https://github.com/marimo-team/marimo/blob/main/examples/sql/duckdb_connections.**py**).
+    只要加一点样板代码，你甚至可以读写 **Postgres**，并在同一个查询里把 Postgres 表和 dataframe 连接起来。
+    完整支持的数据源列表请查看 [duckdb 扩展](https://duckdb.org/docs/extensions/overview) 以及我们的 [duckdb 连接示例 notebook](https://github.com/marimo-team/marimo/blob/main/examples/sql/duckdb_connections.**py**)。
 
-    For this example, we will query an HTTP endpoint for a CSV.
+    这个示例中，我们会查询一个返回 CSV 的 HTTP 端点。
     """)
     return
 
@@ -380,11 +379,11 @@ def _(mo):
 def _(mo):
     cars = mo.sql(
         f"""
-        -- Download a CSV and create an in-memory table; this is optional.
+        -- 下载一个 CSV 并创建内存表；这是可选的。
         CREATE OR replace TABLE cars as
         FROM 'https://datasets.marimo.app/cars.csv';
 
-        -- Query the table
+        -- 查询该表
         SELECT * from cars;
         """
     )
@@ -421,13 +420,13 @@ def _(cars, cylinders_dropdown, mo, origin_dropdown):
 def _(filtered_cars, mo):
     mo.hstack(
         [
-            mo.stat(label="Total cars", value=str(len(filtered_cars))),
+            mo.stat(label="汽车总数", value=str(len(filtered_cars))),
             mo.stat(
-                label="Average MPG Highway",
+                label="高速公路平均 MPG",
                 value=f"{filtered_cars['MPG_Highway'].mean() or 0:.1f}",
             ),
             mo.stat(
-                label="Average MPG City",
+                label="城市平均 MPG",
                 value=f"{filtered_cars['MPG_City'].mean() or 0:.1f}",
             ),
         ]

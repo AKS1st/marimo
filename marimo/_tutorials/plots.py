@@ -17,7 +17,7 @@ app = marimo.App()
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    # Plotting
+    # 绘图
     """)
     return
 
@@ -31,11 +31,10 @@ def _(check_dependencies):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    marimo supports several popular plotting libraries, including matplotlib,
-    plotly, seaborn, and altair.
+    marimo 支持多种流行的绘图库，包括 matplotlib、
+    plotly、seaborn 和 altair。
 
-    This tutorial gives examples using matplotlib; other libraries are
-    used similarly.
+    这个教程使用 matplotlib 举例；其他库的用法也类似。
     """)
     return
 
@@ -51,11 +50,10 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    To show a plot, include it in the last expression of a cell (just
-    like any other output).
+    要显示图表，只需把它放到单元格的最后一个表达式里（和其他输出一样）。
 
     ```python3
-    # create the plot in the last line of the cell
+    # 在单元格最后一行创建图表
     import matplotlib.pyplot as plt
     plt.plot([1, 2])
     ```
@@ -73,10 +71,10 @@ def _(plt):
 def _(mo):
     mo.md("""
     ```python3
-    # create a plot
+    # 创建图表
     plt.plot([1, 2])
-    # ... do some work ...
-    # make plt.gca() the last line of the cell
+    # ... 做些别的事情 ...
+    # 让 plt.gca() 成为单元格最后一行
     plt.gca()
     ```
     """)
@@ -101,8 +99,8 @@ def _(mo, plt_show_explainer):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    **A new figure every cell.** Every cell starts with an empty figure for
-    the imperative `pyplot` API.
+    **每个单元格都是新图形。** 对于命令式的 `pyplot` API，
+    每个单元格开始时都会有一个空图形。
     """)
     return
 
@@ -130,8 +128,7 @@ def _(plt, x):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    To build a figure over multiple cells, use the object-oriented API and
-    create your own axis:
+    要跨多个单元格构建图形，可以使用面向对象的 API 并创建自己的坐标轴：
     """)
     return
 
@@ -155,20 +152,20 @@ def _(axis, x):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Draw plots interactively
+    ### 交互式绘图
 
-    Draw plots interactively by parametrizing them with UI elements.
+    通过 UI 元素为图表参数化，就能交互式绘图。
     """)
     return
 
 
 @app.cell
 def _(mo):
-    exponent = mo.ui.slider(1, 5, value=1, step=1, label='exponent')
+    exponent = mo.ui.slider(1, 5, value=1, step=1, label='指数')
 
     mo.md(
         f"""
-        **Visualizing powers.**
+        **幂函数可视化。**
 
         {exponent}
         """
@@ -206,12 +203,11 @@ def _(exponent, mo, plot_power):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Reactive selections with `mo.ui.matplotlib`
+    ### 使用 `mo.ui.matplotlib` 的响应式选择
 
-    Wrap a matplotlib `Axes` in `mo.ui.matplotlib` to let users select
-    data with box selections (click-drag) or lasso selections
-    (shift-drag). Use `fig.value.get_mask(x, y)` to get a boolean mask
-    of the selected points.
+    把 matplotlib 的 `Axes` 包装进 `mo.ui.matplotlib`，就能让用户通过框选（点击拖拽）
+    或套索选择（按住 Shift 拖拽）来选择数据。使用 `fig.value.get_mask(x, y)`
+    可以获取所选点的布尔掩码。
     """)
     return
 
@@ -235,7 +231,7 @@ def _(XY, scatter_fig):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Other libraries
+    ## 其他库
     """)
     return
 
@@ -243,17 +239,16 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    marimo also supports these other plotting libraries:
+    marimo 也支持这些其他绘图库：
 
     - Plotly
     - Seaborn
     - Altair
 
-    Just output their figure objects as the last expression of a cell,
-    or embed them in markdown with `mo.as_html`.
+    只需把它们的图形对象作为单元格的最后一个表达式输出，
+    或者用 `mo.as_html` 嵌入到 markdown 中即可。
 
-    If you would like another library to be integrated into marimo, please
-    get in touch.
+    如果你希望 marimo 集成其他库，欢迎联系我们。
     """)
     return
 
@@ -262,21 +257,20 @@ def _(mo):
 def _(missing_packages, mo):
     module_not_found_explainer = mo.md(
         """
-        ## Oops!
+        ## 糟糕！
 
-        It looks like you're missing a package that this tutorial
-        requires.
+        看起来你缺少这个教程所需的一个包。
 
-        Use the package manager panel on the left to install **numpy** and **matplotlib**,
-        then restart the tutorial.
+        使用左侧的软件包管理面板安装 **numpy** 和 **matplotlib**，
+        然后重启教程。
 
-        Or, if you use `uv`, open the tutorial with
+        或者，如果你使用 `uv`，可以这样打开教程：
 
         ```
         uvx marimo tutorial plots
         ```
 
-        at the command line.
+        在命令行中。
         """
     ).callout(kind='warn')
 
@@ -290,10 +284,9 @@ def _(missing_packages, mo):
 @app.cell(hide_code=True)
 def _():
     plt_show_explainer = {
-        "Using `plt.show()`": """
-        You can use `plt.show()` or `figure.show()` to display
-        plots in the console area of a cell. Keep in mind that console
-        outputs are not shown in the app view.
+        "使用 `plt.show()`": """
+        你可以使用 `plt.show()` 或 `figure.show()` 在单元格的控制台区域中显示图表。
+        请注意，控制台输出不会显示在应用视图中。
         """
     }
     return (plt_show_explainer,)

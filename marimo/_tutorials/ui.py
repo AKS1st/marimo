@@ -9,11 +9,10 @@ app = marimo.App()
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    # UI Elements
+    # UI 元素
 
-    One of marimo's most powerful features is its first-class
-    support for interactive user interface (UI) elements: interacting
-    with a UI element will automatically run cells that reference it.
+    marimo 最强大的特性之一，是对交互式用户界面（UI）元素的一等支持：
+    与 UI 元素交互会自动运行引用它的单元格。
     """)
     return
 
@@ -33,9 +32,9 @@ def _(mo):
 
     mo.md(
         f"""
-        The `marimo.ui` module has a library of pre-built elements.
+        `marimo.ui` 模块提供了一系列预构建的元素。
 
-        For example, here's a `slider`: {slider}
+        例如，这里是一个 `slider`：{slider}
         """
     )
     return (slider,)
@@ -43,22 +42,20 @@ def _(mo):
 
 @app.cell
 def _(mo, slider):
-    mo.md(f"and here's its value: **{slider.value}**.")
+    mo.md(f"它的值是：**{slider.value}**。")
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### How interactions run cells
+    ### 交互如何触发单元格运行
 
-    Whenever you interact with a UI element, its value is sent back to
-    Python. When this happens, all cells that reference the global variable
-    bound to the UI element, but don't define it, will run.
+    每当你与 UI 元素交互时，它的值都会被发送回 Python。发生这种情况时，
+    所有引用该 UI 元素所绑定的全局变量、但不定义它的单元格都会运行。
 
-    This simple rule lets you use UI elements to
-    drive the execution of your program, letting you build
-    interactive notebooks and tools for yourselves and others.
+    这个简单规则让你可以用 UI 元素驱动程序执行，
+    从而构建交互式 notebook 和工具，供自己和他人使用。
     """)
     return
 
@@ -67,24 +64,21 @@ def _(mo):
 def _(mo, slider):
     mo.accordion(
         {
-            "Tip: assign UI elements to global variables": (
+            "提示：把 UI 元素赋给全局变量": (
                 """
-                Interacting with a displayed UI element will only
-                trigger reactive execution if the UI element is assigned
-                to a global variable.
+                只有当 UI 元素被赋给全局变量时，与显示出来的 UI 元素交互才会触发响应式执行。
                 """
             ),
-            "Tip: accessing an element's value": (
+            "提示：访问元素的值": (
                 """
-                Every UI element has a value attribute that you can access in
-                Python.
+                每个 UI 元素都有一个 `value` 属性，你可以在 Python 中访问它。
                 """
             ),
-            "Tip: embed UI elements in markdown": mo.md(
+            "提示：在 markdown 中嵌入 UI 元素": mo.md(
                 f"""
-                You can embed UI elements in markdown using f-strings.
+                你可以使用 f-string 将 UI 元素嵌入 markdown。
 
-                For example, we can render the slider here: {slider}
+                例如，我们可以在这里渲染滑块：{slider}
                 """
             ),
         }
@@ -95,7 +89,7 @@ def _(mo, slider):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Simple elements
+    ### 简单元素
     """)
     return
 
@@ -103,7 +97,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    marimo has a [large library of simple UI elements](https://docs.marimo.io/api/inputs/index.html). Here are a just few examples:
+    marimo 提供了一个[庞大的简单 UI 元素库](https://docs.marimo.io/api/inputs/index.html)。下面只是几个示例：
     """)
     return
 
@@ -112,8 +106,8 @@ def _(mo):
 def _(mo):
     mo.md(
         """
-        See our [examples folder](https://github.com/marimo-team/marimo/tree/main/examples/ui) on GitHub for bite-sized notebooks showcasing all our UI elements. For
-        a more detailed reference, see our [API docs](https://docs.marimo.io/api/inputs/).
+        请查看 GitHub 上的 [examples 目录](https://github.com/marimo-team/marimo/tree/main/examples/ui)，
+        里面有展示所有 UI 元素的短小 notebook。更详细的参考请看我们的 [API 文档](https://docs.marimo.io/api/inputs/)。
         """
     ).callout()
     return
@@ -134,7 +128,7 @@ def _(number):
 
 @app.cell
 def _(mo):
-    checkbox = mo.ui.checkbox(label="checkbox")
+    checkbox = mo.ui.checkbox(label="复选框")
     checkbox
     return (checkbox,)
 
@@ -147,7 +141,7 @@ def _(checkbox):
 
 @app.cell
 def _(mo):
-    text = mo.ui.text(placeholder="type some text ...")
+    text = mo.ui.text(placeholder="输入一些文本 ...")
     text
     return (text,)
 
@@ -160,7 +154,7 @@ def _(text):
 
 @app.cell
 def _(mo):
-    text_area = mo.ui.text_area(placeholder="type some text ...")
+    text_area = mo.ui.text_area(placeholder="输入一些文本 ...")
     text_area
     return (text_area,)
 
@@ -186,14 +180,14 @@ def _(dropdown):
 
 @app.cell
 def _(mo):
-    run_button = mo.ui.run_button(label="click me")
+    run_button = mo.ui.run_button(label="点我")
     run_button
     return (run_button,)
 
 
 @app.cell
 def _(run_button):
-    "Run button was clicked!" if run_button.value else "Click the run button!"
+    "运行按钮已点击！" if run_button.value else "点击运行按钮！"
     return
 
 
@@ -212,7 +206,7 @@ def _(file_upload):
 
 @app.cell
 def _(basic_ui_elements, mo):
-    mo.md(f"To see more examples, use this dropdown: {basic_ui_elements}")
+    mo.md(f"要查看更多示例，请使用这个下拉框：{basic_ui_elements}")
     return
 
 
@@ -238,7 +232,7 @@ def _(basic_ui_elements, documentation):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    `mo.ui.matrix` lets you edit 2D numeric data interactively.
+    `mo.ui.matrix` 可以让你交互式编辑二维数值数据。
     """)
     return
 
@@ -266,14 +260,12 @@ def _(matrix):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Composite elements
+    ### 复合元素
 
-        Composite elements are advanced elements that
-        let you build UI elements out of other UI elements.
+        复合元素是高级元素，它们允许你用其他 UI 元素来构建 UI 元素。
 
-        Use these powerful elements to logically group together related elements,
-        create a dynamic set of UI elements, or reduce the number of global
-        variables in your program.
+        你可以使用这些强大的元素来逻辑分组相关元素、
+        创建动态的 UI 元素集合，或者减少程序中的全局变量数量。
     """)
     return
 
@@ -281,9 +273,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    This first example shows how to create an array of UI elements using `mo.ui.array`.
-    When you interact with an element in the array, all cells that reference the
-    array are reactively run. If you instead used a regular Python list, cells referring to the list would _not_ be run.
+    第一个示例展示了如何使用 `mo.ui.array` 创建一个 UI 元素数组。
+    当你与数组中的某个元素交互时，所有引用该数组的单元格都会响应式运行。
+    如果你使用普通的 Python 列表，引用该列表的单元格则_不会_被运行。
     """)
     return
 
@@ -306,7 +298,7 @@ def _(array):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    marimo also comes with `mo.ui.dictionary`, which is analogous to `mo.ui.array`
+    marimo 还提供了 `mo.ui.dictionary`，它类似于 `mo.ui.array`。
     """)
     return
 
@@ -333,7 +325,7 @@ def _(dictionary):
 @app.cell(hide_code=True)
 def _(composite_elements, mo):
     mo.md(
-        f"To see additional composite elements, use this dropdown: {composite_elements}"
+        f"要查看其他复合元素，请使用这个下拉框：{composite_elements}"
     )
     return
 
@@ -360,12 +352,11 @@ def _(composite_elements, documentation):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ### Building custom elements
+    ### 构建自定义元素
 
-    marimo supports third-party UI elements through anywidget — this lets you build
-    your own interactive UI elements, or use widgets built by others in the
-    community. To learn more, [see our
-    docs](https://docs.marimo.io/guides/integrating_with_marimo/custom_ui_plugins.html).
+    marimo 通过 anywidget 支持第三方 UI 元素，这让你可以构建自己
+    的交互式 UI 元素，或者使用社区中别人构建的组件。想了解更多，
+    [请看文档](https://docs.marimo.io/guides/integrating_with_marimo/custom_ui_plugins.html)。
     """)
     return
 
@@ -373,10 +364,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Appendix
-    The remaining cells are helper data structures and functions.
-    You can look at their code if you're curious how certain parts of this
-    tutorial were implemented.
+    ## 附录
+    剩下的单元格是一些辅助数据结构和函数。
+    如果你好奇这个教程的某些部分是如何实现的，可以看看它们的代码。
     """)
     return
 
@@ -438,29 +428,29 @@ def _(mo):
         elif value == mo.ui.batch:
             return mo.md(
                 """
-                - Name: {name}
-                - Date: {date}
+                - 姓名：{name}
+                - 日期：{date}
                 """
             ).batch(name=mo.ui.text(), date=mo.ui.date())
         elif value == mo.ui.button:
             return mo.ui.button(
-                value=0, label="click me", on_click=lambda value: value + 1
+                value=0, label="点我", on_click=lambda value: value + 1
             )
         elif value == mo.ui.checkbox:
-            return mo.ui.checkbox(label="check me")
+            return mo.ui.checkbox(label="勾选我")
         elif value == mo.ui.date:
             return mo.ui.date()
         elif value == mo.ui.dictionary:
             return mo.ui.dictionary(
                 {
                     "slider": mo.ui.slider(1, 10),
-                    "text": mo.ui.text("type something!"),
+                    "text": mo.ui.text("输入点什么！"),
                     "array": mo.ui.array(
                         [
                             mo.ui.button(value=0, on_click=lambda v: v + 1)
                             for _ in range(3)
                         ],
-                        label="buttons",
+                        label="按钮",
                     ),
                 }
             )
@@ -494,11 +484,11 @@ def _(mo):
         elif value == mo.ui.tabs:
             return mo.ui.tabs(
                 {
-                    "Employee #1": {
+                    "员工 #1": {
                         "first_name": "Michael",
                         "last_name": "Scott",
                     },
-                    "Employee #2": {
+                    "员工 #2": {
                         "first_name": "Dwight",
                         "last_name": "Schrute",
                     },
@@ -510,7 +500,7 @@ def _(mo):
                     {"first_name": "Michael", "last_name": "Scott"},
                     {"first_name": "Dwight", "last_name": "Schrute"},
                 ],
-                label="Employees",
+                label="员工",
             )
         elif value == mo.ui.text:
             return mo.ui.text()
@@ -541,7 +531,7 @@ def _(mo):
             )
             return mo.md(
                 f"""
-                The element's current value is {mo.as_html(element.value)}
+                该元素当前的值是 {mo.as_html(element.value)}
                 """
             )
 
@@ -554,7 +544,7 @@ def _(mo):
         if element is not None:
             return mo.accordion(
                 {
-                    f"Documentation on `mo.ui.{element.__name__}`": mo.doc(
+                    f"`mo.ui.{element.__name__}` 的文档": mo.doc(
                         element
                     )
                 }

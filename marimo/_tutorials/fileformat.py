@@ -20,17 +20,17 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    # File Format
+    # 文件格式
 
-    marimo apps are stored as pure Python files.
+    marimo 应用会保存为纯 Python 文件。
 
-    These files are:
+    这些文件：
 
-    - 🤖 legible for both humans and machines
-    - ✏️ formattable using your tool of choice
-    - ➕ easily versioned with git, producing small diffs
-    - 🐍 usable as Python  scripts, with UI  elements taking their default values
-    - 🧩 modular, exposing functions and classes that can be imported from the notebook
+    - 🤖 人和机器都容易阅读
+    - ✏️ 可以用你喜欢的工具格式化
+    - ➕ 很容易用 git 管理，diff 很小
+    - 🐍 可以作为 Python 脚本运行，UI 元素会使用默认值
+    - 🧩 具有模块化特性，能暴露可从 notebook 导入的函数和类
     """)
     return
 
@@ -38,28 +38,28 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Example
+    ## 示例
 
-    Consider a marimo notebook with the following four cells.
+    设想一个包含下面四个单元格的 marimo notebook。
 
-    First cell:
+    第一个单元格：
     ```python3
     print(text.value)
     ```
 
-    Second cell:
+    第二个单元格：
     ```python3
     def say_hello(name="World"):
         return f"Hello, {name}!"
     ```
 
-    Third cell:
+    第三个单元格：
     ```python3
     text = mo.ui.text(value=say_hello())
     text
     ```
 
-    Fourth cell:
+    第四个单元格：
     ```python3
     import marimo as mo
     ```
@@ -70,8 +70,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    For the above example, marimo would generate the following file
-    contents:
+    对于上面的示例，marimo 会生成下面的文件内容：
 
     ```python3
     import marimo
@@ -103,12 +102,11 @@ def _(mo):
         app.run()
     ```
 
-    As you can see, this is _pure Python_. This is part of the reason why
-    marimo's generated files are **git-friendly**: small changes made using
-    the marimo editor result in small changes to the file that marimo
-    generates.
+    如你所见，这就是_纯 Python_。这也是 marimo 生成文件 **适合 git 管理** 的原因之一：
+    在 marimo 编辑器里做的微小改动，只会让生成的文件产生很小的 diff。
 
-    Moreover, the cell defining a single pure function `say_hello` was saved "top-level" in the notebook file, making it possible for you to import it into other Python files or notebooks.
+    此外，那个只定义了一个纯函数 `say_hello` 的单元格被保存在 notebook 文件的“顶层”，
+    这使你可以把它导入到其他 Python 文件或 notebook 中。
     """)
     return
 
@@ -116,14 +114,12 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Properties
+    ## 特性
 
-    marimo's file format was designed to be easy to read and easy
-    to work with, while also serving the needs of the marimo library. You can
-    even edit the generated file's cells directly, using your favorite text
-    editor, and format the file with your favorite code formatter.
+    marimo 的文件格式被设计为易读、易用，同时也满足 marimo 库本身的需求。
+    你甚至可以直接用自己喜欢的文本编辑器编辑生成文件中的单元格，并用喜欢的代码格式化工具格式化它。
 
-    We explain some properties of marimo's file format below.
+    下面我们会说明 marimo 文件格式的一些特性。
     """)
     return
 
@@ -132,17 +128,12 @@ def _(mo):
 def _(mo):
     mo.accordion(
         {
-            "Cells are functions": """
-        In the `dataflow` tutorial, we saw that cells are like functions mapping
-        their refs (the global  variables they uses but don't define) to their
-        defs (the global variables they define). The generated code makes this
-        analogy explicit.
+            "单元格就是函数": """
+        在 `dataflow` 教程中，我们看到单元格就像函数，把它们的 refs（它们读取但不定义的全局变量）映射到 defs（它们定义的全局变量）。生成后的代码把这种类比明确地表现出来。
 
-        In the generated code, there is a function for each cell. The arguments
-        of  the function are the cell's refs , and its returned variables are
-        its defs that are referenced by other cells.
+        在生成代码里，每个单元格都有一个对应的函数。函数的参数是单元格的 refs，返回的变量是会被其他单元格引用的 defs。
 
-        For example, the code
+        例如，下面的代码
 
         ```python3
         @app.cell
@@ -152,10 +143,9 @@ def _(mo):
             return text,
         ```
 
-        says that the cell takes as input a variable called `mo`, and it creates
-        a global variable called `text` (that is read by another cell).
+            表示这个单元格以名为 `mo` 的变量作为输入，并创建了一个名为 `text` 的全局变量（会被其他单元格读取）。
 
-        In contrast, the code
+        相比之下，下面的代码
 
         ```python3
         @app.cell
@@ -164,29 +154,19 @@ def _(mo):
             return mo,
         ```
 
-        says that the cell doesn't depend on any other cells (its argument list
-        is  empty), though it does create the variable `mo` which the previous
-        cell requires as input.
+            表示这个单元格不依赖任何其他单元格（它的参数列表为空），不过它确实创建了变量 `mo`，而前一个单元格把它作为输入。
+            """,
+            "单元格按展示顺序保存": """
+        单元格会按照它们在 marimo 编辑器中的排列顺序保存。所以如果你想用自己喜欢的文本编辑器重新排列单元格，只需要调整它们在文件中的定义顺序即可。
         """,
-            "Cells are stored in presentation order": """
-        Cells are stored in the order that they are arranged in the marimo
-        editor. So if you want to rearrange
-        your cells using your favorite text editor, just rearrange the
-        order that they're defined in the file.
+            "文本格式会被保留": """
+        marimo 保证，你在 marimo 编辑器中如何格式化源代码，生成代码里就会如何保存。比如空白、换行等等都会被完整保留。
+        这意味着你可以在文本编辑器中手动或借助像 Black 这样的自动格式化工具调整格式，并确信这些更改会被保留下来。
         """,
-            "Text formatting is preserved": """
-        marimo guarantees that however your source code was
-        formatted in the marimo editor is exactly how it will be stored in
-        the generated code. For example, whitespace, line breaks, and so on are
-        all preserved exactly. This means that you can touch up formatting in
-        your text editor, either manually or using automated formatters like
-        Black, and be confident that your changes will be preserved.
-        """,
-            "Cell functions can have names": """
-        If you want to, you can replace the default names for cell functions
-        with meaningful ones.
+            "单元格函数可以有名字": """
+        如果你愿意，可以把单元格函数的默认名字替换成有意义的名字。
 
-        For example, change
+        例如，把
 
         ```python3
         @app.cell
@@ -204,34 +184,25 @@ def _(mo):
             return
         ```
 
-        This can make the generated code more readable.
+        这样可以让生成的代码更易读。
         """,
-            "No magical tokens": """
-        marimo's generated code is pure Python; no magical syntax.
+            "没有魔法标记": """
+        marimo 生成的代码就是纯 Python，没有魔法语法。
         """,
-            "Cell signatures automatically maintained": """
-        If when editing a cell, you forget to include all a cell's refs in its
-        argument list, or all its defs in its returns, marimo will fix them he next
-        time you try to open it in the marimo editor. So don't worry that you'll
-        botch a cell's signature when editing it.
+            "单元格签名会自动维护": """
+        如果你在编辑单元格时忘了把某个单元格的所有 refs 放进参数列表，或者忘了把所有 defs 放进返回值，
+        marimo 会在你下次尝试在 marimo 编辑器中打开它时帮你修复。所以不用担心自己会把单元格签名弄坏。
         """,
-            "The `app` object": """
-        At the top of the generated code, a variable named `app` is created.
-        This object collects the cells into a dataflow graph, using the `cell`
-        decorator.
+            "`app` 对象": """
+        在生成代码的顶部，会创建一个名为 `app` 的变量。这个对象使用 `cell` 装饰器把各个单元格收集成数据流图。
         """,
-            "Runnable as a script": """
-        You can run marimo apps as scripts at the command line,
-        using Python. This will execute the cells in a
-        topologically sorted order, just as they would run if you opened the app
-        with `marimo edit`.
+            "可作为脚本运行": """
+        你可以在命令行用 Python 把 marimo 应用当作脚本运行。这会按拓扑排序的顺序执行单元格，就像你用 `marimo edit` 打开应用时那样。
 
-        For example: running our example as a script would print `Hello
-        World!` to the console.
+        例如：把我们的示例作为脚本运行，会在控制台打印 `Hello World!`。
         """,
-            """Usable as a module""": """
-        Import top-level functions and classes from the notebook into other
-        Python files.
+            "可作为模块使用": """
+        可以把 notebook 顶层的函数和类导入到其他 Python 文件中。
         """,
         }
     )
@@ -241,11 +212,10 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## Importing functions and classes from notebooks
+    ## 从 notebook 导入函数和类
 
-    The details of marimo's file format are important if you want to import
-    functions and classes defined in your notebook into other Python modules. If you
-    don't intend to do so, you can skip this section.
+    如果你想把 notebook 中定义的函数和类导入到其他 Python 模块中，那么了解 marimo 文件格式的细节很重要。
+    如果你不打算这么做，可以跳过这一节。
     """)
     return
 
@@ -253,19 +223,17 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ### Declaring imports used by functions and classes
+    ### 声明函数和类所使用的导入
 
-    marimo can serialize functions and classes into the top-level of a file, so you can import them with regular Python syntax:
+    marimo 可以把函数和类序列化到文件顶层，所以你可以用普通的 Python 语法导入它们：
 
     ```python
     from my_notebook import my_function
     ```
 
-    In particular, if a cell defines just a single function or class, and if that function or class is pure
-    save for references to variables defined in a special **setup cell**, it will be serialized top-level.
+    特别是，如果某个单元格只定义了一个函数或类，并且该函数或类除了引用一个特殊的 **setup cell** 中定义的变量外都是纯净的，那么它就会被序列化到顶层。
 
-    **Setup cell.** Notebooks can optionally include a setup cell that imports modules,
-    written in the file as:
+    **setup cell。** Notebook 可以可选地包含一个用于导入模块的 setup cell，在文件中写作：
 
     <!-- note this setup cell is hardcoded in the playground example -->
     ```python
@@ -274,9 +242,8 @@ def _(mo):
         import dataclasses
     ```
 
-    Modules imported in a setup cell can be used in "top-level" functions or
-    classes. You can add the setup cell from the general menu of the editor under:
-    ::lucide:diamond-plus:: Add setup cell.
+    在 setup cell 中导入的模块可以被“顶层”的函数或类使用。你可以在编辑器的总菜单中添加 setup cell：
+    ::lucide:diamond-plus:: 添加 setup cell。
     """)
     return
 
@@ -284,9 +251,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ### Functions and classes
+    ### 函数和类
 
-    Notebook files expose functions and classes that depend only on variables defined in the setup cell (or on other such functions or classes). For example, the following cell:
+    Notebook 文件会暴露只依赖于 setup cell 中定义的变量（或其他此类函数/类）的函数和类。例如，下面这个单元格：
     """)
     return
 
@@ -294,9 +261,9 @@ def _(mo):
 @app.function
 def roll_die():
     """
-    A reusable function.
+    一个可复用的函数。
 
-    Notice the indicator in the bottom right of the cell.
+    注意单元格右下角的标识。
     """
     return random.randint(1, 7)
 
@@ -304,21 +271,21 @@ def roll_die():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ... is saved in the notebook file as
+    ……会被保存为 notebook 文件中的如下内容：
 
     ```python
     @app.function
     def roll_die():
         '''
-        A reusable function.
+        一个可复用的函数。
 
-        Notice the indicator in the bottom right of the cell.
+        注意单元格右下角的标识。
         '''
         return random.randint(1, 7)
     ```
 
 
-    Making it importable as
+    因此可以这样导入：
 
     ```python
     from my_notebook import roll_die
@@ -330,7 +297,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    Standalone classes are also exposed:
+    独立的类也会被暴露：
     """)
     return
 
@@ -347,7 +314,7 @@ class SimulationExample:
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    This class is saved in the file as
+    这个类会被保存在文件中，形式如下：
 
     ```python
     @app.class_definition
@@ -365,15 +332,13 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    /// attention | Heads up
+    /// attention | 提醒
     ///
 
-    Not all standalone functions will be exposed in the module. If your
-    function depends on variables that are defined in other cells, then it won't
-    be exposed top-level.
+    并不是所有独立函数都会在模块中暴露。如果你的函数依赖于其他单元格中定义的变量，那么它就不会以顶层形式暴露。
 
 
-    For example, this function will not be exposed:
+    例如，下面这个函数不会被暴露：
     """)
     return
 
@@ -388,10 +353,9 @@ def _():
 def wrapped_function_example(variable):
     def not_a_top_level_function():
         """
-        This function depends on a variable declared in another cell.
+        这个函数依赖于另一个单元格中声明的变量。
 
-        As a result this function isn't exposed in the file — and the tooltip in the
-        bottom-right corner indicates this.
+        因此，这个函数不会在文件中暴露出来——右下角的提示也会说明这一点。
         """
         return variable
 
@@ -403,18 +367,17 @@ def _(mo):
     mo.md(r"""
     ## FAQ
 
-    ### I want to edit notebooks in a different editor, what do I need to know?
+    ### 我想在别的编辑器里编辑 notebook，需要知道什么？
 
-    See the docs on [using your own editor](https://docs.marimo.io/guides/editor_features/watching/).
+    请查看[使用自己的编辑器](https://docs.marimo.io/guides/editor_features/watching/)文档。
 
-    ### I want to import functions from a marimo notebook, what do I need to know?
+    ### 我想从 marimo notebook 导入函数，需要知道什么？
 
-    See the docs on [reusable functions and
-    classes](https://links.marimo.app/reusable-functions).
+    请查看[可复用函数和类](https://links.marimo.app/reusable-functions)文档。
 
-    ### I want to run pytest on marimo notebooks, what do I need to know?
+    ### 我想在 marimo notebook 上运行 pytest，需要知道什么？
 
-    See the docs on [testing](https://docs.marimo.io/guides/testing/).
+    请查看[测试](https://docs.marimo.io/guides/testing/)文档。
     """)
     return
 
@@ -422,9 +385,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## This notebook's source code
+    ## 这个 notebook 的源代码
 
-    The source code of this notebook is shown below:
+    下面显示的是这个 notebook 的源代码：
     """)
     return
 

@@ -10,7 +10,7 @@ app = marimo.App()
 def _():
     import marimo as mo
 
-    mo.md("# Welcome to marimo! 🌊🍃")
+    mo.md("# 欢迎使用 marimo！🌊🍃")
     return (mo,)
 
 
@@ -23,11 +23,10 @@ def _(mo):
 @app.cell
 def _(mo, slider):
     mo.md(f"""
-    marimo is a **reactive** Python notebook.
+    marimo 是一个**响应式** Python notebook。
 
-    This means that unlike traditional notebooks, marimo notebooks **run
-    automatically** when you modify them or
-    interact with UI elements, like this slider: {slider}.
+    这意味着，与传统 notebook 不同，marimo notebook 在你修改它们或
+    与 UI 元素交互时会**自动运行**，比如这个滑块：{slider}。
 
     {"##" + "🍃" * slider.value}
     """)
@@ -38,15 +37,14 @@ def _(mo, slider):
 def _(mo):
     mo.accordion(
         {
-            "Tip: disabling automatic execution": mo.md(
+            "提示：关闭自动执行": mo.md(
                 rf"""
-            marimo lets you disable automatic execution: in the notebook
-            footer, change "On Cell Change" to "lazy".
+            marimo 允许你关闭自动执行：在 notebook
+            底部，把 "On Cell Change" 改成 "lazy"。
 
-            When the runtime is lazy, after running a cell, marimo marks its
-            descendants as stale instead of automatically running them. The
-            lazy runtime puts you in control over when cells are run, while
-            still giving guarantees about the notebook state.
+            在 lazy 运行时，运行一个单元格后，marimo 会把其后代标记为过期，
+            而不是自动运行它们。lazy 运行时既让你掌控单元格何时执行，
+            又能保证 notebook 状态的正确性。
             """
             )
         }
@@ -58,8 +56,8 @@ def _(mo):
 def _(mo):
     mo.md(
         """
-        Tip: This is a tutorial notebook. You can create your own notebooks
-        by entering `marimo edit` at the command line.
+        提示：这是一个教程 notebook。你可以在命令行输入 `marimo edit`
+        来创建你自己的 notebook。
         """
     ).callout()
     return
@@ -68,18 +66,15 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## 1. Reactive execution
+    ## 1. 响应式执行
 
-    A marimo notebook is made up of small blocks of Python code called
-    cells.
+    marimo notebook 由称为单元格的 Python 代码小块组成。
 
-    marimo reads your cells and models the dependencies among them: whenever
-    a cell that defines a global variable  is run, marimo
-    **automatically runs** all cells that reference that variable.
+    marimo 会读取你的单元格并建模它们之间的依赖关系：只要某个定义了全局变量的
+    单元格被运行，marimo 就会**自动运行**所有引用该变量的单元格。
 
-    Reactivity keeps your program state and outputs in sync with your code,
-    making for a dynamic programming environment that prevents bugs before they
-    happen.
+    响应性让程序状态和输出与你的代码保持同步，
+    构建出一个能在问题发生前就阻止 bug 的动态编程环境。
     """)
     return
 
@@ -89,22 +84,20 @@ def _(changed, mo):
     (
         mo.md(
             f"""
-            **✨ Nice!** The value of `changed` is now {changed}.
+            **✨ 很好！** `changed` 的值现在是 {changed}。
 
-            When you updated the value of the variable `changed`, marimo
-            **reacted** by running this cell automatically, because this cell
-            references the global variable `changed`.
+            当你更新变量 `changed` 的值时，marimo
+            **响应** 了这一变化并自动运行了这个单元格，因为它引用了全局变量 `changed`。
 
-            Reactivity ensures that your notebook state is always
-            consistent, which is crucial for doing good science; it's also what
-            enables marimo notebooks to double as tools and  apps.
+            响应性确保你的 notebook 状态始终一致，这对科学工作尤为重要；
+            这也是 marimo notebook 能同时充当工具和应用的原因。
             """
         )
         if changed
         else mo.md(
             """
-            **🌊 See it in action.** In the next cell, change the value of the
-            variable  `changed` to `True`, then click the run button.
+            **🌊 看看它怎么工作。** 在下一个单元格中，把变量 `changed`
+            的值改成 `True`，然后点击运行按钮。
             """
         )
     )
@@ -121,13 +114,10 @@ def _():
 def _(mo):
     mo.accordion(
         {
-            "Tip: execution order": (
+            "提示：执行顺序": (
                 """
-                The order of cells on the page has no bearing on
-                the order in which cells are executed: marimo knows that a cell
-                reading a variable must run after the cell that  defines it. This
-                frees you to organize your code in the way that makes the most
-                sense for you.
+                页面上单元格的排列顺序并不影响它们的执行顺序：marimo 知道读取变量的单元格
+                必须在定义该变量的单元格之后运行。这让你可以按最适合自己的方式组织代码。
                 """
             )
         }
@@ -138,9 +128,8 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    **Global names must be unique.** To enable reactivity, marimo imposes a
-    constraint on how names appear in cells: no two cells may define the same
-    variable.
+    **全局名称必须唯一。** 为了实现响应性，marimo 对单元格中的名称有一个约束：
+    不能有两个单元格定义同一个变量。
     """)
     return
 
@@ -149,10 +138,9 @@ def _(mo):
 def _(mo):
     mo.accordion(
         {
-            "Tip: encapsulation": (
+            "提示：封装": (
                 """
-                By encapsulating logic in functions, classes, or Python modules,
-                you can minimize the number of global variables in your notebook.
+                通过把逻辑封装到函数、类或 Python 模块中，你可以尽量减少 notebook 中的全局变量数量。
                 """
             )
         }
@@ -164,10 +152,9 @@ def _(mo):
 def _(mo):
     mo.accordion(
         {
-            "Tip: private variables": (
+            "提示：私有变量": (
                 """
-                Variables prefixed with an underscore are "private" to a cell, so
-                they can be defined by multiple cells.
+                以下划线开头的变量对单元格来说是“私有”的，因此可以由多个单元格定义。
                 """
             )
         }
@@ -178,15 +165,12 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## 2. UI elements
+    ## 2. UI 元素
 
-    Cells can output interactive UI elements. Interacting with a UI
-    element **automatically triggers notebook execution**: when
-    you interact with a UI element, its value is sent back to Python, and
-    every cell that references that element is re-run.
+    单元格可以输出交互式 UI 元素。与 UI 元素交互会**自动触发 notebook 执行**：
+    当你与 UI 元素交互时，它的值会被传回 Python，所有引用该元素的单元格都会重新运行。
 
-    marimo provides a library of UI elements to choose from under
-    `marimo.ui`.
+    marimo 在 `marimo.ui` 下提供了一个可选的 UI 元素库。
     """)
     return
 
@@ -194,7 +178,7 @@ def _(mo):
 @app.cell
 def _(mo):
     mo.md("""
-    **🌊 Some UI elements.** Try interacting with the below elements.
+    **🌊 一些 UI 元素。** 试着和下面的元素交互。
     """)
     return
 
@@ -207,7 +191,7 @@ def _(mo):
 
 @app.cell
 def _(icon, mo):
-    repetitions = mo.ui.slider(1, 16, label=f"number of {icon.value}: ")
+    repetitions = mo.ui.slider(1, 16, label=f"{icon.value} 的数量：")
     return (repetitions,)
 
 
@@ -226,20 +210,18 @@ def _(icon, mo, repetitions):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## 3. marimo is just Python
+    ## 3. marimo 就是 Python
 
-    marimo cells parse Python (and only Python), and marimo notebooks are
-    stored as pure Python files — outputs are _not_ included. There's no
-    magical syntax.
+    marimo 单元格只解析 Python（而且只解析 Python），marimo notebook 以纯 Python 文件形式保存——
+    不包含输出。这里没有什么魔法语法。
 
-    The Python files generated by marimo are:
+    marimo 生成的 Python 文件：
 
-    - easily versioned with git, yielding minimal diffs
-    - legible for both humans and machines
-    - formattable using your tool of choice,
-    - usable as Python  scripts, with UI  elements taking their default
-    values, and
-    - importable by other modules (more on that in the future).
+    - 可以轻松用 git 管理，diff 很小
+    - 人和机器都容易阅读
+    - 可以用你选择的工具格式化
+    - 可以作为 Python 脚本使用，UI 元素会采用默认值
+    - 可以被其他模块导入（以后会进一步讲）
     """)
     return
 
@@ -247,14 +229,13 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## 4. Running notebooks as apps
+    ## 4. 将 notebook 作为应用运行
 
-    marimo notebooks can double as apps. Click the app window icon in the
-    bottom-right to see this notebook in "app view."
+    marimo notebook 也可以作为应用使用。点击右下角的应用窗口图标，
+    就能在“应用视图”中查看这个 notebook。
 
-    Serve a notebook as an app with `marimo run` at the command-line.
-    Of course, you can use marimo just to level-up your
-    notebooking, without ever making apps.
+    你可以在命令行使用 `marimo run` 将 notebook 作为应用提供服务。
+    当然，你也完全可以只把 marimo 当作更强大的 notebook 工具，而不去做应用。
     """)
     return
 
@@ -262,55 +243,53 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## 5. The `marimo` command-line tool
+    ## 5. `marimo` 命令行工具
 
-    **Creating and editing notebooks.** Use
+    **创建和编辑 notebook。** 使用
 
     ```
     marimo edit
     ```
 
-    in a terminal to start the marimo notebook server. From here
-    you can create a new notebook or edit existing ones.
+    在终端中启动 marimo notebook 服务。从这里
+    你可以创建新 notebook 或编辑现有 notebook。
 
 
-    **Running as apps.** Use
+    **作为应用运行。** 使用
 
     ```
     marimo run notebook.py
     ```
 
-    to start a webserver that serves your notebook as an app in read-only mode,
-    with code cells hidden.
+    启动一个 Web 服务，以只读模式把 notebook 作为应用提供，
+    并隐藏代码单元格。
 
-    **Convert a Jupyter notebook.** Convert a Jupyter notebook to a marimo
-    notebook using `marimo convert`:
+    **转换 Jupyter notebook。** 使用 `marimo convert` 将 Jupyter notebook 转换成 marimo notebook：
 
     ```
     marimo convert your_notebook.ipynb > your_app.py
     ```
 
-    **Tutorials.** marimo comes packaged with tutorials:
+    **教程。** marimo 随包提供了一些教程：
 
-    - `dataflow`: more on marimo's automatic execution
-    - `ui`: how to use UI elements
-    - `markdown`: how to write markdown, with interpolated values and
-       LaTeX
-    - `plots`: how plotting works in marimo
-    - `sql`: how to use SQL
-    - `layout`: layout elements in marimo
-    - `fileformat`: how marimo's file format works
-    - `markdown-format`: for using `.md` files in marimo
-    - `for-jupyter-users`: if you are coming from Jupyter
+    - `dataflow`：更多关于 marimo 自动执行的内容
+    - `ui`：如何使用 UI 元素
+    - `markdown`：如何编写 markdown，以及插值值和 LaTeX
+    - `plots`：marimo 中的绘图是如何工作的
+    - `sql`：如何使用 SQL
+    - `layout`：marimo 中的布局元素
+    - `fileformat`：marimo 文件格式是如何工作的
+    - `markdown-format`：如何在 marimo 中使用 `.md` 文件
+    - `for-jupyter-users`：如果你来自 Jupyter
 
-    Start a tutorial with `marimo tutorial`; for example,
+    使用 `marimo tutorial` 启动教程；例如：
 
     ```
     marimo tutorial dataflow
     ```
 
-    In addition to tutorials, we have examples in our
-    [our GitHub repo](https://www.github.com/marimo-team/marimo/tree/main/examples).
+    除了教程之外，我们还在
+    [GitHub 仓库](https://www.github.com/marimo-team/marimo/tree/main/examples) 中提供了示例。
     """)
     return
 
@@ -318,9 +297,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## 6. The marimo editor
+    ## 6. marimo 编辑器
 
-    Here are some tips to help you get started with the marimo editor.
+    下面这些提示可以帮助你上手 marimo 编辑器。
     """)
     return
 
@@ -334,7 +313,7 @@ def _(mo, tips):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Finally, a fun fact
+    ## 最后，来个有趣的小知识
     """)
     return
 
@@ -342,10 +321,8 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    The name "marimo" is a reference to a type of algae that, under
-    the right conditions, clumps together to form a small sphere
-    called a "marimo moss ball". Made of just strands of algae, these
-    beloved assemblages are greater than the sum of their parts.
+    “marimo” 这个名字指的是一种藻类。在合适的条件下，它们会聚集成一个小球，
+    这种球被称为“marimo moss ball”。这些由藻丝构成的可爱集合体，整体大于部分之和。
     """)
     return
 
@@ -353,109 +330,89 @@ def _(mo):
 @app.cell(hide_code=True)
 def _():
     tips = {
-        "Saving": (
+        "保存": (
             """
-            **Saving**
+            **保存**
 
-            - _Name_ your app using the box at the top of the screen, or
-              with `Ctrl/Cmd+s`. You can also create a named app at the
-              command line, e.g., `marimo edit app_name.py`.
+            - 使用屏幕顶部的输入框，或按 `Ctrl/Cmd+s`，为你的应用命名。
+              你也可以在命令行创建一个命名应用，例如 `marimo edit app_name.py`。
 
-            - _Save_ by clicking the save icon on the bottom right, or by
-              inputting `Ctrl/Cmd+s`. By default marimo is configured
-              to autosave.
+            - 点击右下角的保存图标，或按 `Ctrl/Cmd+s` 来保存。
+              默认情况下，marimo 配置为自动保存。
             """
         ),
-        "Running": (
+        "运行": (
             """
-            1. _Run a cell_ by clicking the play ( ▷ ) button on the top
-            right of a cell, or by inputting `Ctrl/Cmd+Enter`.
+            1. 点击单元格右上角的播放（ ▷ ）按钮，或按 `Ctrl/Cmd+Enter` 来_运行单元格_。
 
-            2. _Run a stale cell_  by clicking the yellow run button on the
-            right of the cell, or by inputting `Ctrl/Cmd+Enter`. A cell is
-            stale when its code has been modified but not run.
+            2. 点击单元格右侧的黄色运行按钮，或按 `Ctrl/Cmd+Enter` 来_运行过期单元格_。
+               当代码被修改但还没运行时，单元格就会变成过期状态。
 
-            3. _Run all stale cells_ by clicking the play ( ▷ ) button on
-            the bottom right of the screen, or input `Ctrl/Cmd+Shift+r`.
+            3. 点击屏幕右下角的播放（ ▷ ）按钮，或按 `Ctrl/Cmd+Shift+r` 来_运行所有过期单元格_。
             """
         ),
-        "Console Output": (
+        "控制台输出": (
             """
-            Console output (e.g., `print()` statements) is shown below a
-            cell.
+            控制台输出（例如 `print()` 语句）会显示在单元格下方。
             """
         ),
-        "Creating, Moving, and Deleting Cells": (
+        "创建、移动和删除单元格": (
             """
-            1. _Create_ a new cell above or below a given one by clicking
-                the plus button to the left of the cell, which appears on
-                mouse hover.
+            1. 将鼠标悬停在单元格上方后，点击左侧出现的加号按钮，即可在该单元格上方或下方_创建_新单元格。
 
-            2. _Move_ a cell up or down by dragging on the handle to the
-                right of the cell, which appears on mouse hover.
+            2. 将鼠标悬停在单元格上方后，拖动单元格右侧的把手，可将单元格_上移_或_下移_。
 
-            3. _Delete_ a cell by clicking the trash bin icon. Bring it
-                back by clicking the undo button on the bottom right of the
-                screen, or with `Ctrl/Cmd+Shift+z`.
+            3. 点击垃圾桶图标可_删除_单元格。
+               你可以点击屏幕右下角的撤销按钮，或按 `Ctrl/Cmd+Shift+z` 恢复它。
             """
         ),
-        "Disabling Automatic Execution": (
+        "关闭自动执行": (
             """
-            Via the notebook settings (gear icon) or footer panel, you
-            can disable automatic execution. This is helpful when
-            working with expensive notebooks or notebooks that have
-            side-effects like database transactions.
+            你可以通过 notebook 设置（齿轮图标）或底部面板关闭自动执行。
+            在处理计算开销较大或包含数据库事务等副作用的 notebook 时，这很有用。
             """
         ),
-        "Disabling Cells": (
+        "禁用单元格": (
             """
-            You can disable a cell via the cell context menu.
-            marimo will never run a disabled cell or any cells that depend on it.
-            This can help prevent accidental execution of expensive computations
-            when editing a notebook.
+            你可以通过单元格上下文菜单禁用单元格。
+            marimo 永远不会运行被禁用的单元格，或者任何依赖它的单元格。
+            这有助于在编辑 notebook 时避免意外执行昂贵计算。
             """
         ),
-        "Code Folding": (
+        "代码折叠": (
             """
-            You can collapse or fold the code in a cell by clicking the arrow
-            icons in the line number column to the left, or by using keyboard
-            shortcuts.
+            你可以点击左侧行号列中的箭头图标，或者使用键盘快捷键，来折叠单元格中的代码。
 
-            Use the command palette (`Ctrl/Cmd+k`) or a keyboard shortcut to
-            quickly fold or unfold all cells.
+            使用命令面板（`Ctrl/Cmd+k`）或键盘快捷键，可以快速折叠或展开所有单元格。
             """
         ),
-        "Code Formatting": (
+        "代码格式化": (
             """
-            If you have [ruff](https://github.com/astral-sh/ruff) installed,
-            you can format a cell with the keyboard shortcut `Ctrl/Cmd+b`.
-            """
-        ),
-        "Command Palette": (
-            """
-            Use `Ctrl/Cmd+k` to open the command palette.
+            如果你安装了 [ruff](https://github.com/astral-sh/ruff)，
+            可以使用快捷键 `Ctrl/Cmd+b` 格式化单元格。
             """
         ),
-        "Keyboard Shortcuts": (
+        "命令面板": (
             """
-            Open the notebook menu (top-right) or input `Ctrl/Cmd+Shift+h` to
-            view a list of all keyboard shortcuts.
+            使用 `Ctrl/Cmd+k` 打开命令面板。
             """
         ),
-        "Configuration": (
+        "键盘快捷键": (
             """
-           Configure the editor by clicking the gears icon near the top-right
-           of the screen.
+            打开 notebook 菜单（右上角）或按 `Ctrl/Cmd+Shift+h`，即可查看所有键盘快捷键列表。
+            """
+        ),
+        "配置": (
+            """
+           点击屏幕右上角附近的齿轮图标即可配置编辑器。
            """
         ),
-        "Exit & Shutdown": (
+        "退出与关闭": (
             """
-           You can leave Marimo & shut down the server by clicking the
-           circled X at the top right of the screen and responding
-           to the prompt.
+           你可以点击屏幕右上角的圈 X 并按提示操作，退出 marimo 并关闭服务。
 
-           :floppy_disk: _Be sure to save your work first!_
-           """
+           :floppy_disk: _请先确保保存你的工作！_
+            """
         ),
     }
     return (tips,)

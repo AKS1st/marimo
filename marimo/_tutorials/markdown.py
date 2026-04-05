@@ -18,21 +18,19 @@ app = marimo.App()
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    # Hello, Markdown!
+    # 你好，Markdown！
 
-    Use marimo's "`md`" function to write markdown. This function compiles Markdown into HTML that marimo can display.
+    使用 marimo 的 "`md`" 函数来编写 markdown。这个函数会把 Markdown 编译成 marimo 可以显示的 HTML。
 
-    For example, here's the code that rendered the above title and
-    paragraph:
+    例如，下面是渲染上面标题和段落的代码：
 
     ```python3
     mo.md(
         '''
-        # Hello, Markdown!
+        # 你好，Markdown！
 
-        Use marimo's "`md`" function to embed rich text into your marimo
-        apps. This function compiles your Markdown into HTML that marimo
-        can display.
+        使用 marimo 的 "`md`" 函数把富文本嵌入到 marimo 应用中。
+        这个函数会把你的 Markdown 编译成 marimo 可以显示的 HTML。
         '''
     )
     ```
@@ -43,19 +41,14 @@ def _(mo):
 @app.cell
 def _(mo):
     mo.md(r"""
-    **Tip: toggling between the Markdown and Python editor**
+    **提示：在 Markdown 和 Python 编辑器之间切换**
 
-    Although markdown is written with `mo.md`, marimo provides a markdown editor
-    that hides this boilerplate from you, for cells that only contain `mo.md(...)`.
+    虽然 markdown 是用 `mo.md` 写的，但对于只包含 `mo.md(...)` 的单元格，marimo 提供了 markdown 编辑器来隐藏这些样板代码。
 
-    Toggle between the Markdown and Python
-    editors by clicking the blue icon in the top-right of the editor,
-    entering `Ctrl/Cmd+Shift+M`, or using the "cell actions menu". You can
-    also **hide** the markdown editor through the cell actions menu.
+    你可以通过点击编辑器右上角的蓝色图标、按 `Ctrl/Cmd+Shift+M`，或使用“单元格操作菜单”在 Markdown 和 Python 编辑器之间切换。
+    你也可以通过单元格操作菜单**隐藏** markdown 编辑器。
 
-    **Tip:** To interpolate Python values into markdown strings, you'll need to use
-    a Python f-string; do this by checking the `f` box in the bottom-right corner of the
-    markdown editor, or with `mo.md(f"...")` in the Python view.
+    **提示：** 要把 Python 值插入 markdown 字符串，你需要使用 Python 的 f-string；可以在 markdown 编辑器右下角勾选 `f`，或者在 Python 视图里使用 `mo.md(f"...")`。
     """)
     return
 
@@ -64,7 +57,7 @@ def _(mo):
 def _(mo):
     mo.md(r"""
     ## LaTeX
-    You can embed LaTeX in Markdown.
+    你可以在 Markdown 中嵌入 LaTeX。
 
     For example,
 
@@ -72,7 +65,7 @@ def _(mo):
     mo.md(r'$f : \mathbf{R} \to \mathbf{R}$')
     ```
 
-    renders $f : \mathbf{R} \to \mathbf{R}$, while
+    会渲染为 $f : \mathbf{R} \to \mathbf{R}$，而
 
     ```python3
     mo.md(
@@ -84,7 +77,7 @@ def _(mo):
     )
     ```
 
-    renders the display math
+    会渲染为展示数学公式
 
     \[
     f: \mathbf{R} \to \mathbf{R}.
@@ -97,9 +90,8 @@ def _(mo):
 def _(mo):
     mo.accordion(
         {
-            "Tip: `r''` strings": mo.md(
-                "Use `r''` strings to remove the need to escape backslashes"
-                " when writing LaTeX."
+            "提示：`r''` 字符串": mo.md(
+                "在编写 LaTeX 时，使用 `r''` 字符串可以避免转义反斜杠。"
             )
         }
     )
@@ -112,9 +104,8 @@ def _(mo):
         {
             "Note: KaTeX": mo.md(
                 """
-                marimo actually uses KaTeX, a math typesetting library for the
-                web which supports a subset of LaTeX. For a list of
-                (un)supported commands, visit
+                marimo 实际上使用 KaTeX，这是一款用于网页的数学排版库，支持 LaTeX 的一个子集。
+                支持与不支持的命令列表请见
                 https://katex.org/docs/support_table
                 """
             )
@@ -126,13 +117,12 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Interpolating Python values
+    ## 插值 Python 值
 
-    You can interpolate Python values into markdown using
-    `f-strings` and marimo's ` as_html` function. This lets you create
-    markdown whose contents depend on data that changes at runtime.
+    你可以使用 `f-string` 和 marimo 的 `as_html` 函数把 Python 值插入 markdown。
+    这让你能够创建内容依赖于运行时变化数据的 markdown。
 
-    Here are some examples.
+    下面是一些示例。
     """)
     return
 
@@ -147,15 +137,15 @@ def _(mo, np, plt):
 
     mo.md(
         f"""
-        ### Plots
-        A matplotlib figure:
+        ### 图表
+        一个 matplotlib 图形：
 
         ```python3
         _x = np.linspace(start=0, stop=2*np.pi)
         sine_plot = plt.plot(_x, np.sin(_x))
         mo.md(f"{{mo.as_html(sine_plot)}}")
         ```
-        yields
+        会得到
 
         {mo.as_html(_sine_plot())}
         """
@@ -169,16 +159,16 @@ def _(mo):
 
     mo.md(
         f"""
-        ### UI elements
+        ### UI 元素
 
-        A `marimo.ui` object:
+        一个 `marimo.ui` 对象：
 
         ```python3
         leaves = mo.ui.slider(1, 16, label="🍃: ")
         mo.md(f"{{leaves}}")
         ```
 
-        yields
+        会得到
 
         {leaves}
         """
@@ -188,7 +178,7 @@ def _(mo):
 
 @app.cell
 def _(leaves, mo):
-    mo.md(f"""Your leaves: {"🍃" * leaves.value}""")
+    mo.md(f"""你的叶子：{"🍃" * leaves.value}""")
     return
 
 
@@ -196,9 +186,8 @@ def _(leaves, mo):
 def _(mo):
     mo.accordion(
         {
-            "Tip: UI elements can format themselves": """
-            marimo objects know how to format themselves, so you can omit the
-            call to `as_html`.
+            "提示：UI 元素会自行排版": """
+            marimo 对象知道如何自行排版，所以你可以省略 `as_html` 调用。
             """
         }
     )
@@ -218,10 +207,10 @@ def _(mo, np):
 
     mo.md(
         f"""
-        ### Other objects
+        ### 其他对象
 
-        Use `mo.as_html` to convert objects to HTML. This function
-        generates rich HTML for many Python types, including:
+        使用 `mo.as_html` 可以把对象转换为 HTML。这个函数
+        可以为许多 Python 类型生成丰富的 HTML，包括：
 
         - lists, dicts, and tuples,
         - `pandas` and `polars` dataframes and series,
@@ -229,7 +218,7 @@ def _(mo, np):
         - `plotly` figures, and
         - `altair` figures.
 
-        For example, here's a Polars dataframe:
+        例如，这里是一个 Polars dataframe：
 
         {mo.as_html(make_dataframe())}
         """
@@ -241,10 +230,9 @@ def _(mo, np):
 def _(mo):
     mo.accordion(
         {
-            "Tip: outputs are automatically converted to HTML": """
-            `mo.as_html` is only needed when interpolating objects into
-            markdown; the last expression of a cell (its output) is
-            converted to HTML automatically.
+            "提示：输出会自动转换为 HTML": """
+            `mo.as_html` 只在把对象插入 markdown 时才需要；
+            单元格的最后一个表达式（它的输出）会自动转换为 HTML。
             """
         }
     )
@@ -254,24 +242,23 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Putting it all together
+    ## 综合示例
 
-    Here's a more interesting example that puts together
-    everything we've learned: rendering markdown with LaTeX that depends on
-    the values of Python objects.
+    下面是一个更有意思的例子，把我们学到的内容都组合起来：
+    渲染依赖 Python 对象值的 Markdown 和 LaTeX。
     """)
     return
 
 
 @app.cell
 def _(math, mo):
-    amplitude = mo.ui.slider(1, 2, step=0.1, label="amplitude: ")
+    amplitude = mo.ui.slider(1, 2, step=0.1, label="振幅：")
     period = mo.ui.slider(
         math.pi / 4,
         4 * math.pi,
         value=2 * math.pi,
         step=math.pi / 8,
-        label="period: ",
+        label="周期：",
     )
     return amplitude, period
 
@@ -292,7 +279,7 @@ def _(mo, np, plt):
 def _(amplitude, mo, period):
     mo.md(
         f"""
-    **A sin curve.**
+        **正弦曲线。**
 
     - {amplitude}
     - {period}
@@ -305,13 +292,13 @@ def _(amplitude, mo, period):
 def _(amplitude, mo, period, plotsin):
     mo.md(
         rf"""
-    You're viewing the graph of
+    你正在查看下面这个图：
 
     \[
     f(x) = {amplitude.value}\sin((2\pi/{period.value:0.2f})x),
     \]
 
-    with $x$ ranging from $0$ to $2\pi$.
+    其中 $x$ 的范围是从 $0$ 到 $2\pi$。
     {mo.as_html(plotsin(amplitude.value, period.value))}
     """
     )

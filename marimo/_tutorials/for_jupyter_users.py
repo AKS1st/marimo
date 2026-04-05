@@ -3,16 +3,16 @@
 import marimo
 
 __generated_with = "0.19.7"
-app = marimo.App(app_title="marimo for Jupyter users")
+app = marimo.App(app_title="给 Jupyter 用户的 marimo 指南")
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    # marimo for Jupyter users
+    # 给 Jupyter 用户的 marimo 指南
 
-    This notebook explains important differences between Jupyter and marimo. If you're
-    familiar with Jupyter and are trying out marimo for the first time, read on!
+    这个 notebook 解释了 Jupyter 和 marimo 之间的重要区别。如果你熟悉 Jupyter，
+    现在第一次尝试 marimo，请继续看下去！
     """)
     return
 
@@ -20,11 +20,11 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## Reactive execution
+    ## 响应式执行
 
-    The biggest difference between marimo and Jupyter is *reactive execution*.
+    marimo 和 Jupyter 最大的区别就是 *响应式执行*。
 
-    Try updating the value of x in the next cell, then run it.
+    试着修改下一个单元格中 x 的值，然后运行它。
     """)
     return
 
@@ -44,14 +44,13 @@ def _(x):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    marimo 'reacts' to the change in `x` and automatically recalculates `y`!
+    marimo 会对 `x` 的变化“做出响应”，并自动重新计算 `y`！
 
-    **Explanation.** marimo reads the code in your cells and understands the
-    dependences between them, based on the variables that each cell declares and
-    references. When you execute one cell, marimo automatically executes all other
-    cells that depend on it, not unlike a spreadsheet.
+    **解释。** marimo 会读取单元格中的代码，并根据每个单元格声明和引用的变量，
+    理解它们之间的依赖关系。当你执行一个单元格时，marimo 会自动执行所有依赖它的其他单元格，
+    有点像电子表格。
 
-    In contrast, Jupyter requires you to manually run each cell.
+    相比之下，Jupyter 需要你手动运行每个单元格。
     """)
     return
 
@@ -59,17 +58,16 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ### Why?
+    ### 为什么？
 
-    Reactive execution frees you from the tedious task of manually re-running cells.
+    响应式执行让你不必反复手动重跑单元格。
 
-    It also ensures that your code and outputs remain in sync:
+    它还确保代码和输出始终同步：
 
-    - You don't have to worry about whether you forgot to re-run a cell.
-    - When you delete a cell, its variables are automatically removed from
-    program memory. Affected cells are automatically invalidated.
+    - 你不用担心是不是忘了重跑某个单元格。
+    - 当你删除一个单元格时，它的变量会自动从程序内存中移除，受影响的单元格也会自动失效。
 
-    This makes marimo notebooks as reproducible as regular Python scripts.
+    这让 marimo notebook 具有和普通 Python 脚本一样的可复现性。
     """)
     return
 
@@ -77,10 +75,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Interactive elements built-in
+    ## 内置交互元素
 
-    marimo comes with a [large library of UI elements](https://docs.marimo.io/guides/interactivity.html) that are automatically
-    synchronized with Python.
+    marimo 自带一个[庞大的 UI 元素库](https://docs.marimo.io/guides/interactivity.html)，它们会自动与 Python 同步。
     """)
     return
 
@@ -108,14 +105,11 @@ def _(slider):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(rf"""
-    **Explanation.** marimo is both a notebook and a library. Import `marimo as
-    mo` and use `mo.ui` to get access to powerful UI elements.
+    **解释。** marimo 既是 notebook 也是一个库。导入 `marimo as mo`，然后使用 `mo.ui` 就能访问强大的 UI 元素。
 
-    UI elements assigned to variables are automatically plugged into marimo's
-    reactive execution model: interactions automatically trigger execution of
-    cells that refer to them.
+    赋给变量的 UI 元素会自动接入 marimo 的响应式执行模型：交互会自动触发引用它们的单元格执行。
 
-    In contrast, Jupyter's lack of reactivity makes IPyWidgets difficult to use.
+    相比之下，Jupyter 缺乏响应性，这让 IPyWidgets 更难使用。
     """)
     return
 
@@ -123,17 +117,16 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## Shareable as apps
+    ## 可作为应用分享
 
-    marimo notebooks can be shared as read-only web apps: just serve it with
+    marimo notebook 可以作为只读 Web 应用分享：只需用下面命令运行它
 
     ```marimo run your_notebook.py```
 
-    at the command-line.
+    在命令行中。
 
-    Not every marimo notebook needs to be shared as an app, but marimo makes it
-    seamless to do so if you want to. In this way, marimo works as a replacement
-    for both Jupyter and Streamlit.
+    不是每个 marimo notebook 都必须作为应用分享，但如果你愿意，marimo 让这件事变得很自然。
+    从这个意义上说，marimo 可以同时替代 Jupyter 和 Streamlit。
     """)
     return
 
@@ -141,9 +134,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## Cell order
+    ## 单元格顺序
 
-    In marimo, cells can be arranged in any order — marimo figures out the one true way to execute them based on variable declarations and references (in a ["topologically sorted"](https://en.wikipedia.org/wiki/Topological_sorting#:~:text=In%20computer%20science%2C%20a%20topological,before%20v%20in%20the%20ordering.) order)
+    在 marimo 中，单元格可以按任意顺序排列——marimo 会根据变量声明和引用，找出唯一正确的执行顺序（按 ["拓扑排序"](https://en.wikipedia.org/wiki/Topological_sorting#:~:text=In%20computer%20science%2C%20a%20topological,before%20v%20in%20the%20ordering.) 进行）。
     """)
     return
 
@@ -163,9 +156,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    This lets you arrange your cells in the way that makes the most sense to you. For example, put helper functions and imports at the bottom of a notebook, like an appendix.
+    这样你就可以按最适合自己的方式排列单元格。比如，你可以把辅助函数和导入放到 notebook 底部，像附录一样。
 
-    In contrast, Jupyter notebooks implicitly assume a top-to-bottom execution order.
+    相比之下，Jupyter notebook 默认假定是自上而下的执行顺序。
     """)
     return
 
@@ -173,9 +166,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## Re-assigning variables
+    ## 变量重新赋值
 
-    marimo disallows variable re-assignment. Here is something commonly done in Jupyter notebooks that cannot be done in marimo:
+    marimo 不允许变量重新赋值。下面是 Jupyter notebook 中很常见、但在 marimo 中做不到的事情：
     """)
     return
 
@@ -201,13 +194,13 @@ def _(df):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    **Explanation.** `results` depends on `df`, but which value of `df` should it use? Reactivity makes it impossible to answer this question in a sensible way, so marimo disallows variable reassignment.
+    **解释。** `results` 依赖于 `df`，但它应该使用哪个 `df` 值呢？响应性让这个问题无法得到合理答案，所以 marimo 不允许变量重新赋值。
 
-    If you run into this error, here are your options:
+    如果你遇到这个错误，可以选择：
 
-    1. combine definitions into one cell
-    2. prefix variables with an underscore (`_df`) to make them local to the cell
-    3. wrap your code in functions, or give your variables more descriptive names
+    1. 把定义合并到一个单元格里
+    2. 给变量加前缀下划线（`_df`），使其对单元格局部化
+    3. 把代码封装进函数，或者给变量起更具描述性的名字
     """)
     return
 
@@ -217,14 +210,12 @@ def _(mo):
     mo.md(rf"""
     ## Markdown
 
-    marimo notebooks are stored as pure Python, but you can still write Markdown:
-    `import marimo as mo` and use `mo.md`.
+    marimo notebook 以纯 Python 形式保存，但你仍然可以写 Markdown：
+    导入 `marimo as mo` 并使用 `mo.md` 即可。
 
-    /// details | What about markdown & SQL "cells"?
+    /// details | 那 markdown 和 SQL “单元格” 呢？
 
-    You may notice marimo UI has markdown and SQL cells in the editor. These are
-    conveniences that use `mo.md` and `mo.sql` under the hood, with nicer
-    ergonomics for authoring.
+    你可能会注意到 marimo UI 编辑器里有 markdown 和 SQL 单元格。这些只是更方便的写作入口，底层仍然使用 `mo.md` 和 `mo.sql`，但作者体验更好。
     ///
     """)
     return
@@ -234,7 +225,7 @@ def _(mo):
 def _(mo, slider):
     mo.md(
         f"""
-        The value of {slider} is {slider.value}.
+        {slider} 的值是 {slider.value}。
         """
     )
     return
@@ -243,12 +234,9 @@ def _(mo, slider):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    **Explanation.** By lifting Markdown into Python, marimo lets you construct
-    dynamic Markdown parameterized by arbitrary Python elements. marimo knows
-    how to render its own elements, and you can use `mo.as_html` to render other
-    objects, like plots.
+    **解释。** 通过把 Markdown 提升到 Python 中，marimo 让你可以构造由任意 Python 元素参数化的动态 Markdown。marimo 知道如何渲染自己的元素，你也可以使用 `mo.as_html` 渲染其他对象，比如图表。
 
-    _Tip: toggle a markdown view via `Cmd/Ctrl-Shift-M` in an empty cell._
+    _提示：在空单元格中按 `Cmd/Ctrl-Shift-M` 可以切换到 markdown 视图。_
     """)
     return
 
@@ -256,19 +244,19 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## Notebook files
+    ## Notebook 文件
 
-    Jupyter saves notebooks as JSON files, with outputs serialized in them. This is helpful as a record of your plots and other results, but makes notebooks difficult to version and reuse.
+    Jupyter 会把 notebook 保存为 JSON 文件，并将输出序列化其中。这有助于记录图表和其他结果，但会让 notebook 难以版本管理和复用。
 
-    ### marimo notebooks are Python scripts
-    marimo notebooks are stored as pure Python scripts. This lets you version them with git, execute them with the command line, and re-use logic from one notebook in another.
+    ### marimo notebook 是 Python 脚本
+    marimo notebook 以纯 Python 脚本形式保存。这让你可以用 git 管理它们、通过命令行执行它们，并在不同 notebook 之间复用逻辑。
 
-    ### marimo notebooks do not store outputs
-    marimo does _not_ save your outputs in the file; if you want them saved, make sure to save them to disk with Python, or export to HTML via the notebook menu.
+    ### marimo notebook 不保存输出
+    marimo _不会_把输出保存在文件中；如果你想保存输出，请确保用 Python 把它们写到磁盘，或者通过 notebook 菜单导出为 HTML。
 
-    ### marimo notebooks are versionable with git
+    ### marimo notebook 可以用 git 版本管理
 
-    marimo is designed so that small changes in your code yield small git diffs!
+    marimo 的设计目标之一，就是让代码中的小改动只产生很小的 git diff！
     """)
     return
 
@@ -276,18 +264,17 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## Parting thoughts
+    ## 结束语
 
-    marimo is a **reinvention** of the Python notebook as a reproducible, interactive, and shareable Python program, instead of an error-prone scratchpad.
+    marimo 是对 Python notebook 的一次**重新发明**：它把 notebook 变成了可复现、可交互、可分享的 Python 程序，而不再是容易出错的草稿本。
 
-    We believe that the tools we use shape the way we think — better tools, for better minds. With marimo, we hope to provide the Python community with a better programming environment to do research and communicate it; to experiment with code and share it; to learn computational science and teach it.
+    我们相信，所用的工具会塑造我们的思维方式——更好的工具，带来更好的思维。借助 marimo，我们希望为 Python 社区提供一个更好的编程环境，用于研究与交流、用于代码实验与分享、用于学习与教授计算科学。
 
-    The marimo editor and library have many features not discussed here.
-    Check out [our docs](https://docs.marimo.io/) to learn more!
+    marimo 编辑器和库还有许多这里没有提到的功能。
+    请查看[文档](https://docs.marimo.io/)了解更多！
 
-    _This guide was adapted from [Pluto for Jupyter
-    users](https://featured.plutojl.org/basic/pluto%20for%20jupyter%20users).
-    We ❤️ Pluto.jl!_
+    _本指南改编自 [Pluto for Jupyter users](https://featured.plutojl.org/basic/pluto%20for%20jupyter%20users)。
+    我们 ❤️ Pluto.jl！_
     """)
     return
 

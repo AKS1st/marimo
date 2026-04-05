@@ -9,10 +9,10 @@ app = marimo.App()
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    # Layout
+    # 布局
 
-    `marimo` provides functions to help you lay out your output, such as
-    in rows and columns, accordions, tabs, and callouts.
+    `marimo` 提供了一些函数来帮助你组织输出，例如行和列、
+    折叠面板、标签页和提示框。
     """)
     return
 
@@ -20,9 +20,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Rows and columns
+    ## 行与列
 
-    Arrange objects into rows and columns with `mo.hstack` and `mo.vstack`.
+    使用 `mo.hstack` 和 `mo.vstack` 把对象排列成行和列。
     """)
     return
 
@@ -30,7 +30,7 @@ def _(mo):
 @app.cell
 def _(mo):
     mo.hstack(
-        [mo.ui.text(label="hello"), mo.ui.slider(1, 10, label="slider")],
+        [mo.ui.text(label="你好"), mo.ui.slider(1, 10, label="滑块")],
         justify="start",
     )
     return
@@ -38,7 +38,7 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    mo.vstack([mo.ui.text(label="world"), mo.ui.number(1, 10, label="number")])
+    mo.vstack([mo.ui.text(label="世界"), mo.ui.number(1, 10, label="数字")])
     return
 
 
@@ -47,22 +47,21 @@ def _(mo):
     grid = mo.vstack(
         [
             mo.hstack(
-                [mo.ui.text(label="hello"), mo.ui.slider(1, 10, label="slider")],
+                [mo.ui.text(label="你好"), mo.ui.slider(1, 10, label="滑块")],
             ),
             mo.hstack(
-                [mo.ui.text(label="world"), mo.ui.number(1, 10, label="number")],
+                [mo.ui.text(label="世界"), mo.ui.number(1, 10, label="数字")],
             ),
         ],
     ).center()
 
     mo.md(
         f"""
-        Combine `mo.hstack` with `mo.vstack` to make grids:
+        结合 `mo.hstack` 和 `mo.vstack` 可以创建网格：
 
         {grid}
 
-        You can pass anything to `mo.hstack` to `mo.vstack` (including
-        plots!).
+        你可以把任何对象传给 `mo.hstack` 或 `mo.vstack`（包括图表！）。
         """
     )
     return
@@ -71,9 +70,8 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    **Customization.**
-    The presentation of stacked elements can be customized with some arguments
-    that are best understood by example.
+    **自定义。**
+    堆叠元素的呈现可以通过一些参数自定义，最好通过示例来理解。
     """)
     return
 
@@ -83,13 +81,13 @@ def _(mo):
     justify = mo.ui.dropdown(
         ["start", "center", "end", "space-between", "space-around"],
         value="space-between",
-        label="justify",
+        label="对齐方式",
     )
     align = mo.ui.dropdown(
-        ["start", "center", "end", "stretch"], value="center", label="align"
+        ["start", "center", "end", "stretch"], value="center", label="对齐"
     )
-    gap = mo.ui.number(start=0, step=0.25, stop=2, value=0.5, label="gap")
-    wrap = mo.ui.checkbox(label="wrap")
+    gap = mo.ui.number(start=0, step=0.25, stop=2, value=0.5, label="间距")
+    wrap = mo.ui.checkbox(label="换行")
 
     mo.hstack([justify, align, gap, wrap], justify="center")
     return align, gap, justify, wrap
@@ -97,7 +95,7 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    size = mo.ui.slider(label="box size", start=60, stop=500)
+    size = mo.ui.slider(label="方块大小", start=60, stop=500)
     mo.hstack([size], justify="center")
     return (size,)
 
@@ -141,8 +139,8 @@ def _(mo, size):
 def _(mo):
     mo.accordion(
         {
-            "Documentation: `mo.hstack`": mo.doc(mo.hstack),
-            "Documentation: `mo.vstack`": mo.doc(mo.vstack),
+            "`mo.hstack` 文档": mo.doc(mo.hstack),
+            "`mo.vstack` 文档": mo.doc(mo.vstack),
         }
     )
     return
@@ -151,10 +149,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    **Justifying `Html`.** While you can center or right-justify any object
-    using `mo.hstack`, `Html` objects (returned by most marimo
-    functions, and subclassed by most marimo classes) have a shortcut using
-    via their `center`, `right`, and `left` methods.
+    **对 `Html` 对象进行对齐。** 虽然你可以使用 `mo.hstack` 将任何对象居中或右对齐，
+    但 `Html` 对象（大多数 marimo 函数返回的对象，以及大多数 marimo 类的子类）
+    还可以直接使用 `center`、`right` 和 `left` 方法。
     """)
     return
 
@@ -162,20 +159,20 @@ def _(mo):
 @app.cell
 def _(mo):
     mo.md("""
-    This markdown is left-justified.
+    这段 markdown 左对齐。
     """)
     return
 
 
 @app.cell
 def _(mo):
-    mo.md("This markdown is centered.").center()
+    mo.md("这段 markdown 居中。").center()
     return
 
 
 @app.cell
 def _(mo):
-    mo.md("This markdown is right-justified.").right()
+    mo.md("这段 markdown 右对齐。").right()
     return
 
 
@@ -183,9 +180,9 @@ def _(mo):
 def _(mo):
     mo.accordion(
         {
-            "Documentation: `Html.center`": mo.doc(mo.Html.center),
-            "Documentation: `Html.right`": mo.doc(mo.Html.right),
-            "Documentation: `Html.left`": mo.doc(mo.Html.left),
+            "`Html.center` 文档": mo.doc(mo.Html.center),
+            "`Html.right` 文档": mo.doc(mo.Html.right),
+            "`Html.left` 文档": mo.doc(mo.Html.left),
         }
     )
     return
@@ -194,9 +191,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Accordion
+    ## 折叠面板
 
-    Create expandable shelves of content using `mo.accordion`:
+    使用 `mo.accordion` 创建可展开的内容面板：
     """)
     return
 
@@ -204,7 +201,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    An accordion can contain multiple items:
+    折叠面板可以包含多个条目：
     """)
     return
 
@@ -213,11 +210,10 @@ def _(mo):
 def _(mo):
     mo.accordion(
         {
-            "Multiple items": "By default, only one item can be open at a time",
-            "Allow multiple items to be open": (
+            "多个条目": "默认情况下，同一时间只能展开一个条目",
+            "允许同时展开多个条目": (
                 """
-                Use the keyword argument `multiple=True` to allow multiple items
-                to be open at the same time
+                使用关键字参数 `multiple=True` 可以允许多个条目同时展开。
                 """
             ),
         }
@@ -228,9 +224,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Tabs
+    ## 标签页
 
-    Use `mo.ui.tabs` to display multiple objects in a single tabbed output:
+    使用 `mo.ui.tabs` 在单个标签页输出中显示多个对象：
     """)
     return
 
@@ -255,8 +251,8 @@ def _(mo):
 
     mo.ui.tabs(
         {
-            "🧙‍♀ User": _settings,
-            "🏢 Organization": _organization,
+            "🧙‍♀ 用户": _settings,
+            "🏢 组织": _organization,
         }
     )
     return
@@ -264,7 +260,7 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.accordion({"Documentation: `mo.ui.tabs`": mo.doc(mo.ui.tabs)})
+    mo.accordion({"`mo.ui.tabs` 文档": mo.doc(mo.ui.tabs)})
     return
 
 
@@ -278,10 +274,9 @@ def _(mo):
 
     mo.md(
         f"""
-        ## Tree
+        ## 树
 
-        Display a nested structure of lists, dictionaries, and tuples with
-        `mo.tree`:
+        使用 `mo.tree` 显示列表、字典和元组的嵌套结构：
 
         {mo.tree(_t)}
         """
@@ -291,17 +286,16 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.accordion({"Documentation: `mo.tree`": mo.doc(mo.tree)})
+    mo.accordion({"`mo.tree` 文档": mo.doc(mo.tree)})
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Callout
+    ## 提示框
 
-    Turn any markdown or HTML into an emphasized callout with the `callout`
-    method:
+    使用 `callout` 方法把任意 markdown 或 HTML 转成强调提示框：
     """)
     return
 
@@ -318,10 +312,10 @@ def _(mo):
 def _(callout_kind, mo):
     mo.md(
         f"""
-        **This is a callout!**
+        **这是一个提示框！**
 
-        You can turn any HTML or markdown into an emphasized callout.
-        You can choose from a variety of different callout kind. This one is:
+        你可以把任意 HTML 或 markdown 转成强调提示框。
+        你可以选择不同类型的提示框。当前这个是：
         {callout_kind}
         """
     ).callout(kind=callout_kind.value)
@@ -330,7 +324,7 @@ def _(callout_kind, mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.accordion({"Documentation: `mo.callout`": mo.doc(mo.callout)})
+    mo.accordion({"`mo.callout` 文档": mo.doc(mo.callout)})
     return
 
 

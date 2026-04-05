@@ -17,14 +17,11 @@ app = marimo.App()
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    # How marimo notebooks run
+    # marimo notebook 如何运行
 
-    Reactive execution is based on a single rule: when a cell is run, all other
-    cells that reference any of the global variables it defines run
-    automatically.
+    响应式执行只基于一条规则：当某个单元格运行时，所有引用了它定义的任意全局变量的其他单元格都会自动运行。
 
-    To provide reactive execution, marimo creates a dataflow graph out of your
-    cells.
+    为了实现响应式执行，marimo 会把你的单元格构造成一个数据流图。
     """)
     return
 
@@ -32,15 +29,13 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    **Tip: disabling automatic execution.**
+    **提示：关闭自动执行。**
 
-    marimo lets you disable automatic execution: in the notebook
-    footer, change "On Cell Change" to "lazy".
+    marimo 允许你关闭自动执行：在 notebook
+    底部，把 "On Cell Change" 改成 "lazy"。
 
-    When the runtime is lazy, after running a cell, marimo marks its
-    descendants as stale instead of automatically running them. The lazy
-    runtime puts you in control over when cells are run, while still giving
-    guarantees about the notebook state.
+    在 lazy 运行时，运行一个单元格后，marimo 会把其后代标记为过期，而不是自动运行它们。
+    lazy 运行时让你掌控单元格何时执行，同时仍然保证 notebook 状态正确。
     """)
     return
 
@@ -48,20 +43,16 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## References and definitions
+    ## 引用与定义
 
-    A marimo notebook is a directed acyclic graph in which nodes represent
-    cells and edges represent data dependencies. marimo creates this graph by
-    analyzing each cell (without running it) to determine its
+    marimo notebook 是一个有向无环图，其中节点表示单元格，边表示数据依赖。marimo 会通过分析每个单元格（不执行它）来确定：
 
-    - references ("refs*), the global variables it reads but doesn't define;
-    - definitions ("defs"), the global variables it defines.
+    - 引用（`refs`），即它读取但不定义的全局变量；
+    - 定义（`defs`），即它定义的全局变量。
 
-    There is an edge from one cell to another if the latter cell references any
-    global variables defined by the former cell.
+    如果后一个单元格引用了前一个单元格定义的任意全局变量，那么前后两个单元格之间就有一条边。
 
-    The rule for reactive execution can be restated in terms of the graph: when
-    a cell is run, its descendants are run automatically.
+    响应式执行规则也可以用图来描述：当一个单元格运行时，它的后代会自动运行。
     """)
     return
 
@@ -69,10 +60,10 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Example
+    ### 示例
 
-    The next four cells plot a sine wave with a given period and amplitude.
-    Each cell is labeled with its refs and defs.
+    接下来的四个单元格会绘制一个给定周期和振幅的正弦波。
+    每个单元格都标注了它的 refs 和 defs。
     """)
     return
 
@@ -81,11 +72,11 @@ def _(mo):
 def _(mo):
     mo.accordion(
         {
-            "Tip: inspecting refs and defs": f"""
-            Use `mo.refs()` and `mo.defs()` to inspect the refs and defs of any
-            given cell. This can help with debugging complex notebooks.
+            "提示：检查 refs 和 defs": f"""
+            使用 `mo.refs()` 和 `mo.defs()` 可以查看任意给定单元格的 refs 和 defs。
+            这有助于调试复杂 notebook。
 
-            For example, here are the refs and defs of this cell:
+            例如，这是当前这个单元格的 refs 和 defs：
 
             {mo.as_html({"refs": mo.refs(), "defs": mo.defs()})}
             """
@@ -96,14 +87,12 @@ def _(mo):
 
 @app.cell
 def _(amplitude, mo, period, plot_wave):
-    mo.md(
-        f"""
+    mo.md(f"""
         {mo.as_html(plot_wave(amplitude, period))}
 
         - `refs: {mo.refs()}`
         - `defs: {mo.defs()}`
-        """
-    )
+        """)
     return
 
 
@@ -160,9 +149,9 @@ def _(mo, np, plt):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    🌊 **Try it!** In the above cells, try changing the value `period` or
-    `amplitude`, then click the run button ( ▷ ) to register your changes.
-    See what happens to the sine wave.
+    🌊 **试试看！** 在上面的单元格中，试着修改 `period` 或 `amplitude` 的值，
+    然后点击运行按钮（ ▷ ）来应用更改。
+    看看正弦波会发生什么变化。
     """)
     return
 
@@ -170,8 +159,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    Here is the dataflow graph for the cells that make the sine wave plot, plus
-    the cells that import libraries. Each cell is labeled with its defs.
+    下面是生成正弦波图的单元格，以及导入库的单元格构成的数据流图。每个单元格都标注了它的 defs。
 
     ```
                        +------+               +-----------+
@@ -190,7 +178,7 @@ def _(mo):
                          +----+
     ```
 
-    The last cell, which doesn't define anything, produces the plot.
+    最后一个不定义任何内容的单元格会生成图表。
     """)
     return
 
@@ -198,11 +186,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Dataflow programming
+    ## 数据流编程
 
-    marimo's runtime rule has some important consequences that may seem
-    surprising if you are not used to dataflow programming. We list these
-    below.
+    marimo 的运行时规则会带来一些重要后果；如果你不习惯数据流编程，这些后果可能会让你感到意外。下面列出这些特性。
     """)
     return
 
@@ -210,12 +196,10 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Execution order is not cell order
+    ### 执行顺序不等于单元格顺序
 
-    The order in which cells are executed is determined entirely by the
-    dataflow graph. This makes marimo notebooks more reproducible than
-    traditional notebooks. It also lets you place boilerplate, like
-    imports or long markdown strings, at the bottom of the editor.
+    单元格的执行顺序完全由数据流图决定。这让 marimo notebook 比传统 notebook 更具可复现性。
+    它也让你可以把样板代码，比如导入或很长的 markdown 字符串，放到编辑器底部。
     """)
     return
 
@@ -223,14 +207,11 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Global variable names must be unique
+    ### 全局变量名必须唯一
 
-    Every global variable can be defined by only one cell. Without this
-    constraint, there would be no way for marimo to know which order to
-    execute cells in.
+    每个全局变量只能由一个单元格定义。没有这个约束，marimo 就无法知道单元格应该以什么顺序执行。
 
-    If you violate this constraint, marimo provides a helpful
-    error message, like below:
+    如果你违反了这个约束，marimo 会给出一条有帮助的错误信息，如下所示：
     """)
     return
 
@@ -252,8 +233,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    **🌊 Try it!** In the previous cell, change the name `planet` to `home`,
-    then run the cell.
+    **🌊 试试看！** 在前一个单元格中，把 `planet` 改名为 `home`，然后运行该单元格。
     """)
     return
 
@@ -261,12 +241,10 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    Because defs must be unique, global variables cannot be modified with
-    operators like `+=` or `-=` in cells other than the one that created
-    them; these operators count as redefinitions of a name.
+    因为 defs 必须唯一，所以全局变量不能在创建它们的单元格之外，使用 `+=` 或 `-=` 这样的操作符进行修改；
+    这些操作符会被视为对名称的重新定义。
 
-    **🌊 Try it!** Get rid of the following errors by merging the next two
-    cells into a single cell.
+    **🌊 试试看！** 把下面两个单元格合并成一个，消除接下来的错误。
     """)
     return
 
@@ -286,14 +264,12 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Underscore-prefixed variables are local to cells
+    ### 以下划线开头的变量对单元格是局部的
 
-    Global variables prefixed with an underscore are "private" to the cells
-    that define them. This means that multiple cells can define the same
-    underscore-prefixed name, and one cell's private variables won't be
-    made available to other cells.
+    以下划线开头的全局变量对定义它们的单元格来说是“私有”的。
+    这意味着多个单元格可以定义同名的以下划线开头变量，而且某个单元格的私有变量不会暴露给其他单元格。
 
-    **Example**.
+    **示例**。
     """)
     return
 
@@ -322,25 +298,23 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Deleting a cell deletes its variables
+    ### 删除单元格会删除它的变量
 
-    Deleting a cell deletes its global variables and
-    then runs all cells that reference them. This prevents severe bugs that
-    can arise when state has been deleted from the editor but not from the
-    program memory.
+    删除单元格会删除它的全局变量，然后运行所有引用这些变量的单元格。
+    这样可以防止一种严重 bug：编辑器里删掉了状态，但程序内存里还保留着它。
     """)
     return
 
 
 @app.cell
 def _(mo):
-    to_be_deleted = "variable still exists"
+    to_be_deleted = "变量仍然存在"
 
     mo.md(
         """
-        🌊 **Try it!**
+        🌊 **试试看！**
 
-        Delete this cell by clicking the trash bin icon.
+        点击垃圾桶图标删除这个单元格。
         """
     )
     return (to_be_deleted,)
@@ -355,9 +329,9 @@ def _(to_be_deleted):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### Cycles are not allowed
+    ### 不允许循环
 
-    Cycles among cells are not allowed. For example:
+    单元格之间不允许出现循环。例如：
     """)
     return
 
@@ -377,13 +351,12 @@ def _(one):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### marimo doesn't track attributes
+    ### marimo 不跟踪属性
 
-    marimo only tracks global variables. Writing object attributes does not
-    trigger reactive execution.
+    marimo 只跟踪全局变量。写对象属性不会触发响应式执行。
 
-    **🌊 Example**. Change the value of `state.number` in the next cell, then
-    run the cell. Notice how the subsequent cell isn't updated.
+    **🌊 示例。** 在下一个单元格中修改 `state.number` 的值，然后运行该单元格。
+    注意，后续单元格不会更新。
     """)
     return
 
@@ -414,10 +387,9 @@ def _():
 def _(mo):
     mo.accordion(
         {
-            "Why not track attributes?": """
-            marimo can't reliably trace attributes
-            to cells that define them. For example, attributes are routinely
-            created or modified by library code.
+            "为什么不跟踪属性？": """
+            marimo 无法可靠地把属性追踪到定义它们的单元格。
+            例如，属性常常会被库代码创建或修改。
             """
         }
     )
@@ -427,11 +399,10 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ### marimo doesn't track mutations
+    ### marimo 不跟踪变异
 
-    In Python, it's impossible to know whether code will
-    mutate an object without running it. So: mutations (such as
-    appending to a list) will not trigger reactive execution.
+    在 Python 中，不运行代码就无法知道它是否会修改对象。
+    因此，变异操作（例如向列表追加元素）不会触发响应式执行。
     """)
     return
 
@@ -440,11 +411,10 @@ def _(mo):
 def _(mo):
     mo.accordion(
         {
-            "Tip (advanced): mutable state": (
+            "提示（高级）：可变状态": (
                 """
-            You can use the fact that marimo does not track attributes or
-            mutations to implement mutable state in marimo. An example of
-            this is shown in the `ui` tutorial.
+            你可以利用 marimo 不跟踪属性或变异这一事实，在 marimo 中实现可变状态。
+            `ui` 教程中展示了一个示例。
             """
             )
         }
@@ -455,17 +425,14 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## Best practices
+    ## 最佳实践
 
-    The constraints marimo puts on your notebooks are all natural consequences
-    of the fact that marimo programs are directed acyclic graphs. As long as
-    you keep this fact in mind, you'll quickly adapt to the marimo way of
-    writing notebooks.
+    marimo 对 notebook 的约束，都是其程序是有向无环图这一事实的自然结果。
+    只要记住这一点，你很快就能适应 marimo 的 notebook 编写方式。
 
-    Ultimately, these constraints will enable you to create powerful notebooks
-    and apps, and they'll encourage you to write clean, reproducible code.
+    最终，这些约束会帮助你创建强大的 notebook 和应用，同时鼓励你编写干净、可复现的代码。
 
-    Follow these tips to stay on the marimo way:
+    遵循以下建议，保持 marimo 的写法：
     """)
     return
 
@@ -479,9 +446,9 @@ def _(mo, tips):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    ## What's next?
+    ## 接下来做什么？
 
-    Check out the tutorial on interactivity for a tour of UI elements:
+    查看交互性教程，了解 UI 元素：
 
     ```
     marimo tutorial ui
@@ -501,81 +468,73 @@ def _():
 @app.cell(hide_code=True)
 def _():
     tips = {
-        "Use global variables sparingly": (
+        "谨慎使用全局变量": (
             """
-            Keep the number of global variables in your program small to avoid
-            name collisions across cells. Keep the number of global variables
-            defined by any one cell small to make sure that the units of
-            reactive execution are small.
+            尽量减少程序中的全局变量数量，以避免单元格之间的名称冲突。
+            同时也要让单个单元格定义的全局变量数量保持较少，这样响应式执行的基本单位就会更小。
             """
         ),
-        "Use descriptive names": (
+        "使用描述性名称": (
             """
-            Use descriptive variable names, especially for global variables.
-            This will help you minimize name clashes, and will also result in
-            better code.
-            """
-        ),
-        "Use functions": (
-            """
-            Encapsulate logic into functions to avoid polluting the global
-            namespace with temporary or intermediate variables.
+            使用有描述性的变量名，尤其是全局变量。
+            这有助于减少命名冲突，也会让代码更好。
             """
         ),
-        "Minimize mutations": (
+        "使用函数": (
             """
-            We saw earlier that marimo cannot track object mutations. So try
-            to only mutate an object in the cell that creates it, or create
-            new objects instead of mutating existing ones.
+            把逻辑封装到函数中，避免用临时变量或中间变量污染全局命名空间。
+            """
+        ),
+        "尽量减少变异": (
+            """
+            我们前面看到，marimo 无法跟踪对象变异。所以尽量只在创建对象的单元格中修改它，
+            或者创建新对象，而不是修改已有对象。
 
-            For example, don't do this:
+            例如，不要这样做：
 
             ```python3
-            # a cell
+            # 一个单元格
             numbers = [1, 2, 3]
             ```
 
             ```python3
-            # another cell
+            # 另一个单元格
             numbers.append(4)
             ```
 
-            Instead, prefer
+            更推荐：
 
             ```python3
-            # a cell
+            # 一个单元格
             numbers = [1, 2, 3]
             numbers.append(4)
             ```
 
-            or
+            或者：
 
             ```python3
-            # a cell
+            # 一个单元格
             numbers = [1, 2, 3]
             ```
 
             ```python3
-            # another cell
+            # 另一个单元格
             more_numbers = numbers + [4]
             ```
             """
         ),
-        "Write idempotent cells": (
+        "编写幂等单元格": (
             """
-            Write cells whose outputs and behavior are the same when given
-            the same inputs (refs); such cells are called _idempotent_. This will
-            help you avoid bugs, and let you cache expensive intermediate
-            computations (see the next tip).
+            编写在给定相同输入（refs）时，输出和行为都相同的单元格；这样的单元格称为_幂等_。
+            这会帮助你避免 bug，并让你缓存昂贵的中间计算（见下一条建议）。
             """
         ),
-        "Cache intermediate computations with `@mo.cache`": (
+        "使用 `@mo.cache` 缓存中间计算": (
             """
-            Use `mo.cache` to cache the return value of expensive functions.
-            You can do this if you abstract complex logic into idempotent
-            functions, following earlier tips.
+            使用 `mo.cache` 缓存昂贵函数的返回值。
+            如果你按照前面的建议把复杂逻辑抽象成幂等函数，就可以这样做。
 
-            For example:
+            例如：
 
             ```python3
             import marimo as mo
@@ -585,15 +544,11 @@ def _():
               ...
             ```
 
-            Whenever `compute_predictions` is called with a value of
-            `problem_parameters` it has not seen, it will compute the predictions
-            and store them in a cache. The next time it is called with the same
-            parameters, instead of recomputing the predictions, it will just
-            fetch the previously computed ones from the cache.
+            每当 `compute_predictions` 用一个它没见过的 `problem_parameters` 值调用时，
+            它会计算预测并将结果存入缓存。下次用相同参数调用时，它不会重新计算，而是直接从缓存中取出之前的结果。
 
-            If you are familiar with `functools.cache`, `mo.cache` is
-            similar but more robust, with the cache persisting even
-            if the cell defining the function is re-run.
+            如果你熟悉 `functools.cache`，那么 `mo.cache` 类似，但更稳健，
+            即使定义该函数的单元格被重新运行，缓存也会保留。
             """
         ),
     }
