@@ -223,7 +223,7 @@ export function useMultiCellActionButtons(cellIds: CellId[]) {
     [
       {
         icon: <PlayIcon size={13} strokeWidth={1.5} />,
-        label: "Run cells",
+        label: "运行单元格",
         handle: (cellIds) => runCells(cellIds),
         hotkey: "cell.run",
       },
@@ -231,13 +231,13 @@ export function useMultiCellActionButtons(cellIds: CellId[]) {
     [
       {
         icon: <ChevronUpIcon size={13} strokeWidth={1.5} />,
-        label: "Move up",
+        label: "上移",
         handle: (cellIds) => moveSelectedCells(cellIds, "up"),
         hotkey: "cell.moveUp",
       },
       {
         icon: <ChevronDownIcon size={13} strokeWidth={1.5} />,
-        label: "Move down",
+        label: "下移",
         handle: (cellIds) => moveSelectedCells(cellIds, "down"),
         hotkey: "cell.moveDown",
       },
@@ -245,7 +245,7 @@ export function useMultiCellActionButtons(cellIds: CellId[]) {
     [
       {
         icon: <Trash2Icon size={13} strokeWidth={1.5} />,
-        label: "Delete cells",
+        label: "删除单元格",
         variant: "danger",
         hidden: !canDelete,
         handle: deleteSelectedCells,
@@ -257,27 +257,27 @@ export function useMultiCellActionButtons(cellIds: CellId[]) {
     [
       {
         icon: <Code2Icon size={13} strokeWidth={1.5} />,
-        label: "Format cells",
+        label: "格式化单元格",
         handle: formatSelectedCells,
         hotkey: "cell.format",
       },
       {
         icon: <XCircleIcon size={13} strokeWidth={1.5} />,
-        label: "Clear outputs",
+        label: "清空输出",
         handle: clearSelectedCellsOutput,
       },
     ],
     [
       {
         icon: <EyeOffIcon size={13} strokeWidth={1.5} />,
-        label: "Hide code",
+        label: "隐藏代码",
         handle: (cellIds) =>
           toggleSelectedCellsProperty(cellIds, "hide_code", true),
         hotkey: "cell.hideCode",
       },
       {
         icon: <EyeIcon size={13} strokeWidth={1.5} />,
-        label: "Show code",
+        label: "显示代码",
         handle: (cellIds) =>
           toggleSelectedCellsProperty(cellIds, "hide_code", false),
         hotkey: "cell.hideCode",
@@ -286,25 +286,25 @@ export function useMultiCellActionButtons(cellIds: CellId[]) {
     [
       {
         icon: <ChevronUpIcon size={13} strokeWidth={1.5} />,
-        label: "Move up",
+        label: "上移",
         handle: (cellIds) => moveSelectedCells(cellIds, "up"),
         hotkey: "cell.moveUp",
       },
       {
         icon: <ChevronDownIcon size={13} strokeWidth={1.5} />,
-        label: "Move down",
+        label: "下移",
         handle: (cellIds) => moveSelectedCells(cellIds, "down"),
         hotkey: "cell.moveDown",
       },
       {
         icon: <ChevronsUpIcon size={13} strokeWidth={1.5} />,
-        label: "Send to top",
+        label: "移到顶部",
         handle: sendSelectedCellsToTop,
         hotkey: "cell.sendToTop",
       },
       {
         icon: <ChevronsDownIcon size={13} strokeWidth={1.5} />,
-        label: "Send to bottom",
+        label: "移到底部",
         handle: sendSelectedCellsToBottom,
         hotkey: "cell.sendToBottom",
       },
@@ -312,13 +312,13 @@ export function useMultiCellActionButtons(cellIds: CellId[]) {
     [
       {
         icon: <ZapOffIcon size={13} strokeWidth={1.5} />,
-        label: "Disable cells",
+        label: "禁用单元格",
         handle: (cellIds) =>
           toggleSelectedCellsProperty(cellIds, "disabled", true),
       },
       {
         icon: <ZapIcon size={13} strokeWidth={1.5} />,
-        label: "Enable cells",
+        label: "启用单元格",
         handle: (cellIds) =>
           toggleSelectedCellsProperty(cellIds, "disabled", false),
       },
@@ -397,7 +397,7 @@ const MultiCellPendingDeleteBar: React.FC<{ cellIds: CellId[] }> = ({
                     onClick={() => pendingDeleteService.clear()}
                     className="text-(--amber-11) hover:bg-(--amber-4) hover:text-(--amber-11)"
                   >
-                    Cancel
+                    取消
                   </Button>
                   <Button
                     size="xs"
@@ -409,7 +409,7 @@ const MultiCellPendingDeleteBar: React.FC<{ cellIds: CellId[] }> = ({
                     }}
                     className="bg-(--amber-11) hover:bg-(--amber-12) text-white border-(--amber-11)"
                   >
-                    Delete
+                    删除
                   </Button>
                 </div>
               </FocusScope>
@@ -472,7 +472,7 @@ const MultiCellActionToolbarInternal = ({ cellIds }: { cellIds: CellId[] }) => {
                   onClick={() => action.handle(cellIds)}
                   className="h-8 px-2 gap-1 shrink-0 flex items-center"
                   title={action.label}
-                  disabled={isPendingDelete && action.label !== "Delete cells"}
+                  disabled={isPendingDelete && action.label !== "删除单元格"}
                 >
                   {action.icon}
                   <span className="text-xs">{action.label}</span>

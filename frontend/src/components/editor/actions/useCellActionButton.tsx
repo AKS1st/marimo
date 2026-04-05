@@ -149,7 +149,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
     [
       {
         icon: <PlayIcon size={13} strokeWidth={1.5} />,
-        label: "Run cell",
+        label: "运行单元格",
         hotkey: "cell.run",
         hidden:
           status === "running" ||
@@ -161,7 +161,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
       },
       {
         icon: <SparklesIcon size={13} strokeWidth={1.5} />,
-        label: "Refactor with AI",
+        label: "用 AI 重构",
         hidden: !aiEnabled,
         handle: () => {
           setAiCompletionCell((current) =>
@@ -172,13 +172,13 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
       },
       {
         icon: <ScissorsIcon size={13} strokeWidth={1.5} />,
-        label: "Split",
+        label: "拆分",
         hotkey: "cell.splitCell",
         handle: () => splitCell({ cellId }),
       },
       {
         icon: <Code2Icon size={13} strokeWidth={1.5} />,
-        label: "Format",
+        label: "格式化",
         hotkey: "cell.format",
         handle: () => {
           const editorView = getEditorView();
@@ -194,7 +194,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
         ) : (
           <EyeOffIcon size={13} strokeWidth={1.5} />
         ),
-        label: config.hide_code ? "Show code" : "Hide code",
+        label: config.hide_code ? "显示代码" : "隐藏代码",
         handle: toggleHideCode,
         hotkey: "cell.hideCode",
       },
@@ -204,7 +204,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
         ) : (
           <ZapIcon size={13} strokeWidth={1.5} />
         ),
-        label: config.disabled ? "Enable execution" : "Disable execution",
+        label: config.disabled ? "启用执行" : "禁用执行",
         handle: toggleDisabled,
         hidden: isSetupCell,
       },
@@ -214,7 +214,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
     [
       {
         icon: <MarkdownIcon />,
-        label: "Convert to Markdown",
+        label: "转换为 Markdown",
         hotkey: "cell.viewAsMarkdown",
         handle: async () => {
           const editorView = getEditorView();
@@ -244,7 +244,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
       getCurrentLanguageAdapter(getEditorView()) === "sql"
         ? {
             icon: <PythonIcon />,
-            label: "View as Python",
+            label: "以 Python 查看",
             hotkey: "cell.viewAsSQL",
             handle: () => {
               const editorView = getEditorView();
@@ -257,7 +257,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
           }
         : {
             icon: <DatabaseIcon size={13} strokeWidth={1.5} />,
-            label: "Convert to SQL",
+            label: "转换为 SQL",
             hotkey: "cell.viewAsSQL",
             handle: () => {
               const editorView = getEditorView();
@@ -286,7 +286,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
             <ChevronUpIcon size={8} strokeWidth={2} />
           </MultiIcon>
         ),
-        label: "Create cell above",
+        label: "在上方创建单元格",
         hotkey: "cell.createAbove",
         handle: () => createCell({ cellId, before: true }),
         hidden: isSetupCell,
@@ -299,42 +299,42 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
             <ChevronDownIcon size={8} strokeWidth={2} />
           </MultiIcon>
         ),
-        label: "Create cell below",
+        label: "在下方创建单元格",
         hotkey: "cell.createBelow",
         handle: () => createCell({ cellId, before: false }),
         redundant: true,
       },
       {
         icon: <ChevronUpIcon size={13} strokeWidth={1.5} />,
-        label: "Move cell up",
+        label: "上移单元格",
         hotkey: "cell.moveUp",
         handle: () => moveCell({ cellId, before: true }),
         hidden: isSetupCell,
       },
       {
         icon: <ChevronDownIcon size={13} strokeWidth={1.5} />,
-        label: "Move cell down",
+        label: "下移单元格",
         hotkey: "cell.moveDown",
         handle: () => moveCell({ cellId, before: false }),
         hidden: isSetupCell,
       },
       {
         icon: <ChevronLeftIcon size={13} strokeWidth={1.5} />,
-        label: "Move cell left",
+        label: "左移单元格",
         hotkey: "cell.moveLeft",
         handle: () => moveCell({ cellId, direction: "left" }),
         hidden: appWidth !== "columns" || isSetupCell,
       },
       {
         icon: <ChevronRightIcon size={13} strokeWidth={1.5} />,
-        label: "Move cell right",
+        label: "右移单元格",
         hotkey: "cell.moveRight",
         handle: () => moveCell({ cellId, direction: "right" }),
         hidden: appWidth !== "columns" || isSetupCell,
       },
       {
         icon: <ChevronsUpIcon size={13} strokeWidth={1.5} />,
-        label: "Send to top",
+        label: "移到顶部",
         hotkey: "cell.sendToTop",
         // When using the cell menu, likely the user doesn't want to scroll
         // and instead just wants to get the cell out of the way
@@ -343,7 +343,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
       },
       {
         icon: <ChevronsDownIcon size={13} strokeWidth={1.5} />,
-        label: "Send to bottom",
+        label: "移到底部",
         hotkey: "cell.sendToBottom",
         // When using the cell menu, likely the user doesn't want to scroll
         // and instead just wants to get the cell out of the way
@@ -352,7 +352,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
       },
       {
         icon: <Columns2Icon size={13} strokeWidth={1.5} />,
-        label: "Break into new column",
+        label: "拆分到新列",
         hotkey: "cell.addColumnBreakpoint",
         handle: () => addColumnBreakpoint({ cellId }),
         hidden: appWidth !== "columns" || isSetupCell,
@@ -363,13 +363,13 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
     [
       {
         icon: <ImageIcon size={13} strokeWidth={1.5} />,
-        label: "Export output as PNG",
+        label: "将输出导出为 PNG",
         hidden: !hasOutput,
         handle: () => downloadCellOutputAsImage(cellId, "result"),
       },
       {
         icon: <XCircleIcon size={13} strokeWidth={1.5} />,
-        label: "Clear output",
+        label: "清空输出",
         hidden: !(hasOutput || hasConsoleOutput),
         handle: () => {
           clearCellOutput({ cellId });
@@ -381,7 +381,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
     [
       {
         icon: <TextCursorInputIcon size={13} strokeWidth={1.5} />,
-        label: "Name",
+        label: "名称",
         disableClick: true,
         handle: (evt) => {
           evt?.stopPropagation();
@@ -391,12 +391,12 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
           openModal(
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Rename cell</DialogTitle>
+                <DialogTitle>重命名单元格</DialogTitle>
               </DialogHeader>
               <div className="flex items-center justify-between">
-                <Label htmlFor="cell-name">Cell name</Label>
+                <Label htmlFor="cell-name">单元格名称</Label>
                 <NameCellInput
-                  placeholder={"cell name"}
+                  placeholder={"单元格名称"}
                   value={name}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
@@ -415,7 +415,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
         },
         rightElement: (
           <NameCellInput
-            placeholder={"cell name"}
+            placeholder={"单元格名称"}
             value={name}
             onChange={(newName) => updateCellName({ cellId, name: newName })}
             onEnterKey={() => closePopover?.()}
@@ -425,14 +425,14 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
       },
       {
         icon: <LinkIcon size={13} strokeWidth={1.5} />,
-        label: "Copy link to cell",
+        label: "复制单元格链接",
         disabled: !canLinkToCell(name),
         tooltip: canLinkToCell(name)
           ? undefined
-          : "Only named cells can be linked to",
+          : "只有已命名的单元格才能生成链接",
         handle: async () => {
           await copyToClipboard(createCellLink(name));
-          toast({ description: "Link copied to clipboard" });
+          toast({ description: "链接已复制到剪贴板" });
         },
       },
     ],
@@ -440,7 +440,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
     // Delete
     [
       {
-        label: "Delete",
+        label: "删除",
         hidden: !canDelete,
         variant: "danger",
         icon: <Trash2Icon size={13} strokeWidth={1.5} />,

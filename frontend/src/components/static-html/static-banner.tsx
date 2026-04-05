@@ -140,11 +140,11 @@ const StaticBannerDialog = ({ code }: { code: string }) => {
             size="sm"
             onClick={async () => {
               await copyToClipboard(code);
-              toast({ title: "Copied to clipboard" });
+              toast({ title: "已复制到剪贴板" });
             }}
           >
-            <CopyIcon className="w-3 h-3 mr-2" />
-            Copy code
+              <CopyIcon className="w-3 h-3 mr-2" />
+            复制代码
           </Button>
           <Button
             data-testid="download-static-notebook-dialog-button"
@@ -155,7 +155,7 @@ const StaticBannerDialog = ({ code }: { code: string }) => {
             }}
           >
             <DownloadIcon className="w-3 h-3 mr-2" />
-            Download
+            下载
           </Button>
         </div>
       </DialogContent>

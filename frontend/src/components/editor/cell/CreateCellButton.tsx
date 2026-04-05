@@ -46,8 +46,8 @@ export const CreateCellButton = ({
     <div className="flex flex-col gap-4">
       <div>{baseTooltipContent}</div>
       <div className="text-xs text-muted-foreground font-medium pt-1 -mt-2 border-t border-border">
-        {<MinimalHotkeys shortcut={shortcut} className="inline" />}{" "}
-        <span>for other cell types</span>
+        {<MinimalHotkeys shortcut={shortcut} className="inline" />} {" "}
+        <span>用于其他单元格类型</span>
       </div>
     </div>
   );
@@ -162,19 +162,19 @@ export const CreateCellButton = ({
       <DropdownMenuContent side="bottom" sideOffset={-30}>
         <DropdownMenuItem onClick={handleFirstItemClick}>
           {renderIcon(<PythonIcon />)}
-          Python cell
+          Python 单元格
         </DropdownMenuItem>
         <DropdownMenuItem onClick={addMarkdownCell}>
           {renderIcon(<MarkdownIcon />)}
-          Markdown cell
+          Markdown 单元格
         </DropdownMenuItem>
         <DropdownMenuItem onClick={addSQLCell}>
           {renderIcon(<DatabaseIcon size={13} strokeWidth={1.5} />)}
-          SQL cell
+          SQL 单元格
         </DropdownMenuItem>
         <DropdownMenuItem onClick={addSetupCell}>
           {renderIcon(<DiamondPlusIcon size={13} strokeWidth={1.5} />)}
-          Setup cell
+          设置单元格
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

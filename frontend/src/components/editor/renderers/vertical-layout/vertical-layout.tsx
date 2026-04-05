@@ -156,9 +156,9 @@ const VerticalLayoutRenderer: React.FC<VerticalLayoutProps> = ({
       return (
         <div className="flex-1 flex flex-col items-center justify-center py-8">
           <Alert variant="info">
-            <AlertTitle>Empty Notebook</AlertTitle>
+            <AlertTitle>空白 Notebook</AlertTitle>
             <AlertDescription>
-              This notebook has no code or outputs.
+              这个 notebook 没有代码或输出。
             </AlertDescription>
           </Alert>
         </div>
@@ -235,7 +235,7 @@ const ActionButtons: React.FC<{
         key="show-code"
       >
         <Code2Icon className="mr-2" size={14} strokeWidth={1.5} />
-        <span className="flex-1">Show code</span>
+        <span className="flex-1">显示代码</span>
         {showCode && <Check className="h-4 w-4" />}
       </DropdownMenuItem>,
       <DropdownMenuSeparator key="show-code-separator" />,

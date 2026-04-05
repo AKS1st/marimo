@@ -112,12 +112,12 @@ export const CellContextMenu = <TData,>({
     <ContextMenuContent>
       <ContextMenuItem onClick={handleCopyCell}>
         <CopyIcon className="mo-dropdown-icon h-3 w-3" />
-        Copy cell
+        复制单元格
       </ContextMenuItem>
       {multipleSelectedCells && (
         <ContextMenuItem onClick={copySelectedCells}>
           <SquareStack className="mo-dropdown-icon h-3 w-3" />
-          Copy selected cells
+          复制所选单元格
         </ContextMenuItem>
       )}
       {canFilter && (
@@ -125,11 +125,11 @@ export const CellContextMenu = <TData,>({
           <ContextMenuSeparator />
           <ContextMenuItem onClick={() => handleFilterCell("in")}>
             <FilterIcon className="mo-dropdown-icon h-3 w-3" />
-            Filter by this value
+            按此值筛选
           </ContextMenuItem>
           <ContextMenuItem onClick={() => handleFilterCell("not_in")}>
             <FilterIcon className="mo-dropdown-icon h-3 w-3" />
-            Remove rows with this value
+            移除含此值的行
           </ContextMenuItem>
         </>
       )}

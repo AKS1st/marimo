@@ -67,7 +67,7 @@ export const ReadonlyCode = memo(
       >
         {showHideCode && hideCode && (
           <HideCodeButton
-            tooltip="Show code"
+            tooltip="显示代码"
             onClick={() => setHideCode(false)}
           />
         )}
@@ -97,11 +97,11 @@ ReadonlyCode.displayName = "ReadonlyCode";
 const CopyButton = (props: { text: string }) => {
   const copy = Events.stopPropagation(async () => {
     await copyToClipboard(props.text);
-    toast({ title: "Copied to clipboard" });
+    toast({ title: "已复制到剪贴板" });
   });
 
   return (
-    <Tooltip content="Copy code" usePortal={false}>
+    <Tooltip content="复制代码" usePortal={false}>
       <Button onClick={copy} size="xs" className="py-0" variant="secondary">
         <CopyIcon size={14} strokeWidth={1.5} />
       </Button>
@@ -111,7 +111,7 @@ const CopyButton = (props: { text: string }) => {
 
 const EyeCloseButton = (props: { onClick: () => void }) => {
   return (
-    <Tooltip content="Hide code" usePortal={false}>
+    <Tooltip content="隐藏代码" usePortal={false}>
       <Button
         onClick={props.onClick}
         size="xs"

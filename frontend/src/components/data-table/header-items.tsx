@@ -48,12 +48,12 @@ export function renderFormatOptions<TData, TValue>(
     <DropdownMenuSub>
       <DropdownMenuSubTrigger>
         <FormatIcon className="mo-dropdown-icon" />
-        Format
+        格式化
       </DropdownMenuSubTrigger>
       <DropdownMenuPortal>
         <DropdownMenuSubContent>
           <div className="text-xs text-muted-foreground px-2 py-1">
-            Locale: {locale}
+            区域设置：{locale}
           </div>
           {Boolean(currentFormat) && (
             <>
@@ -62,7 +62,7 @@ export function renderFormatOptions<TData, TValue>(
                 variant={"danger"}
                 onClick={() => column.setColumnFormatting(undefined)}
               >
-                Clear
+                清除
               </DropdownMenuItem>
               <DropdownMenuSeparator />
             </>
@@ -98,7 +98,7 @@ export function renderColumnWrapping<TData, TValue>(
     return (
       <DropdownMenuItem onClick={() => column.toggleColumnWrapping("nowrap")}>
         <AlignJustifyIcon className="mo-dropdown-icon" />
-        No wrap text
+        不换行
       </DropdownMenuItem>
     );
   }
@@ -106,7 +106,7 @@ export function renderColumnWrapping<TData, TValue>(
   return (
     <DropdownMenuItem onClick={() => column.toggleColumnWrapping("wrap")}>
       <WrapTextIcon className="mo-dropdown-icon" />
-      Wrap text
+      自动换行
     </DropdownMenuItem>
   );
 }
@@ -124,7 +124,7 @@ export function renderColumnPinning<TData, TValue>(
     return (
       <DropdownMenuItem onClick={() => column.pin(false)}>
         <PinOffIcon className="mo-dropdown-icon" />
-        Unfreeze
+        取消冻结
       </DropdownMenuItem>
     );
   }
@@ -133,11 +133,11 @@ export function renderColumnPinning<TData, TValue>(
     <>
       <DropdownMenuItem onClick={() => column.pin("left")}>
         <PinLeftIcon className="mo-dropdown-icon" />
-        Freeze left
+        冻结到左侧
       </DropdownMenuItem>
       <DropdownMenuItem onClick={() => column.pin("right")}>
         <PinRightIcon className="mo-dropdown-icon" />
-        Freeze right
+        冻结到右侧
       </DropdownMenuItem>
     </>
   );
@@ -155,7 +155,7 @@ export function renderCopyColumn<TData, TValue>(column: Column<TData, TValue>) {
   return (
     <DropdownMenuItem onClick={async () => await copyToClipboard(column.id)}>
       <CopyIcon className="mo-dropdown-icon" />
-      Copy column name
+      复制列名
     </DropdownMenuItem>
   );
 }
@@ -193,7 +193,7 @@ export function renderSorts<TData, TValue>(
       return (
         <DropdownMenuItem onClick={() => column.clearSorting()}>
           <ChevronsUpDown className="mo-dropdown-icon" />
-          Clear sort
+          清除排序
         </DropdownMenuItem>
       );
     }
@@ -202,7 +202,7 @@ export function renderSorts<TData, TValue>(
     return (
       <DropdownMenuItem onClick={() => table?.resetSorting()}>
         <ChevronsUpDown className="mo-dropdown-icon" />
-        Clear all sorts
+        清除所有排序
       </DropdownMenuItem>
     );
   };
@@ -225,7 +225,7 @@ export function renderSorts<TData, TValue>(
         className={sortDirection === "asc" ? "bg-accent" : ""}
       >
         <AscIcon className="mo-dropdown-icon" />
-        Asc
+        升序
         {sortDirection === "asc" && renderSortIndex()}
       </DropdownMenuItem>
       <DropdownMenuItem
@@ -233,7 +233,7 @@ export function renderSorts<TData, TValue>(
         className={sortDirection === "desc" ? "bg-accent" : ""}
       >
         <DescIcon className="mo-dropdown-icon" />
-        Desc
+        降序
         {sortDirection === "desc" && renderSortIndex()}
       </DropdownMenuItem>
       {renderClearSort()}
@@ -289,7 +289,7 @@ export const ClearFilterMenuItem = <TData, TValue>({
 }) => (
   <DropdownMenuItem onClick={() => column.setFilterValue(undefined)}>
     <FilterX className="mo-dropdown-icon" />
-    Clear filter
+    清除筛选
   </DropdownMenuItem>
 );
 
@@ -318,7 +318,7 @@ export function renderFilterByValues<TData, TValue>(
     <DropdownMenuSub>
       <DropdownMenuItem onClick={() => setIsFilterValueOpen(true)}>
         <ListFilterIcon className="mo-dropdown-icon" />
-        Filter by values
+        按值筛选
       </DropdownMenuItem>
     </DropdownMenuSub>
   );
@@ -335,17 +335,17 @@ export const FilterButtons = ({
 }) => {
   return (
     <div className="flex gap-2 px-2 justify-between">
-      <Button variant="link" size="sm" onClick={onApply}>
-        Apply
+        <Button variant="link" size="sm" onClick={onApply}>
+        应用
       </Button>
-      <Button
+        <Button
         variant="linkDestructive"
         size="sm"
         className=""
         onClick={onClear}
         disabled={clearButtonDisabled}
       >
-        Clear
+        清除
       </Button>
     </div>
   );

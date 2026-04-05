@@ -196,7 +196,7 @@ export function useNotebookActions() {
     if (serverSidePdfEnabled) {
       await downloadServerSidePDF({
         preset: "document",
-        title: "Downloading Document PDF...",
+        title: "正在下载文档 PDF...",
       });
       return;
     }
@@ -225,18 +225,18 @@ export function useNotebookActions() {
       );
     };
 
-    await withLoadingToast("Downloading IPYNB...", runDownload);
+    await withLoadingToast("正在下载 IPYNB...", runDownload);
   };
 
   const actions: ActionButton[] = [
     {
       icon: <DownloadIcon size={14} strokeWidth={1.5} />,
-      label: "Download",
+      label: "下载",
       handle: NOOP_HANDLER,
       dropdown: [
         {
           icon: <FolderDownIcon size={14} strokeWidth={1.5} />,
-          label: "Download as HTML",
+          label: "下载为 HTML",
           handle: async () => {
             if (!filename) {
               toastNotebookMustBeNamed();
@@ -247,7 +247,7 @@ export function useNotebookActions() {
         },
         {
           icon: <FolderDownIcon size={14} strokeWidth={1.5} />,
-          label: "Download as HTML (exclude code)",
+          label: "下载为 HTML（不含代码）",
           handle: async () => {
             if (!filename) {
               toastNotebookMustBeNamed();
@@ -260,7 +260,7 @@ export function useNotebookActions() {
           icon: (
             <MarkdownIcon strokeWidth={1.5} style={{ width: 14, height: 14 }} />
           ),
-          label: "Download as Markdown",
+          label: "下载为 Markdown",
           handle: async () => {
             const md = await exportAsMarkdown({ download: false });
             downloadBlob(
@@ -271,12 +271,12 @@ export function useNotebookActions() {
         },
         {
           icon: <NotebookIcon size={14} strokeWidth={1.5} />,
-          label: "Download as ipynb",
+          label: "下载为 ipynb",
           handle: handleDownloadAsIPYNB,
         },
         {
           icon: <CodeIcon size={14} strokeWidth={1.5} />,
-          label: "Download Python code",
+          label: "下载 Python 代码",
           handle: async () => {
             const code = await readCode();
             downloadBlob(
@@ -288,14 +288,14 @@ export function useNotebookActions() {
         {
           divider: true,
           icon: <ImageIcon size={14} strokeWidth={1.5} />,
-          label: "Download as PNG",
+          label: "下载为 PNG",
           disabled: viewState.mode !== "present",
           tooltip:
             viewState.mode === "present" ? undefined : (
-              <span>
-                Only available in app view. <br />
-                Toggle with: {renderShortcut("global.hideCode", false)}
-              </span>
+                  <span>
+                    仅在应用视图中可用。<br />
+                    可通过以下快捷键切换：{renderShortcut("global.hideCode", false)}
+                  </span>
             ),
           handle: async () => {
             const app = document.getElementById("App");
@@ -314,23 +314,23 @@ export function useNotebookActions() {
           ? {
               divider: true,
               icon: <FileIcon size={14} strokeWidth={1.5} />,
-              label: "Download as PDF",
+              label: "下载为 PDF",
               handle: NOOP_HANDLER,
               dropdown: [
                 {
                   icon: <FileIcon size={14} strokeWidth={1.5} />,
-                  label: "Document Layout",
+                  label: "文档布局",
                   handle: handleDocumentPDF,
                 },
                 {
                   icon: <FileIcon size={14} strokeWidth={1.5} />,
-                  label: "Slides Layout",
+                  label: "幻灯片布局",
                   rightElement: renderRecommendedElement(true),
                   hidden: !serverSidePdfEnabled,
                   handle: async () => {
                     await downloadServerSidePDF({
                       preset: "slides",
-                      title: "Downloading Slides PDF...",
+                      title: "正在下载幻灯片 PDF...",
                     });
                   },
                 },
@@ -339,7 +339,7 @@ export function useNotebookActions() {
           : {
               divider: true,
               icon: <FileIcon size={14} strokeWidth={1.5} />,
-              label: "Download as PDF",
+              label: "下载为 PDF",
               handle: handleDocumentPDF,
             },
       ],
@@ -347,7 +347,7 @@ export function useNotebookActions() {
 
     {
       icon: <SparklesIcon size={14} strokeWidth={1.5} />,
-      label: "Pair with an agent",
+      label: "与智能体协作",
       handle: async () => {
         openModal(<PairWithAgentModal onClose={closeModal} />);
       },
@@ -355,13 +355,13 @@ export function useNotebookActions() {
 
     {
       icon: <Share2Icon size={14} strokeWidth={1.5} />,
-      label: "Share",
+      label: "分享",
       handle: NOOP_HANDLER,
       hidden: !sharingHtmlEnabled && !sharingWasmEnabled,
       dropdown: [
         {
           icon: <GlobeIcon size={14} strokeWidth={1.5} />,
-          label: "Publish HTML to web",
+          label: "发布 HTML 到网页",
           hidden: !sharingHtmlEnabled,
           handle: async () => {
             openModal(<ShareStaticNotebookModal onClose={closeModal} />);
@@ -369,15 +369,15 @@ export function useNotebookActions() {
         },
         {
           icon: <LinkIcon size={14} strokeWidth={1.5} />,
-          label: "Create WebAssembly link",
+          label: "创建 WebAssembly 链接",
           hidden: !sharingWasmEnabled,
           handle: async () => {
             const code = await readCode();
             const url = createShareableLink({ code: code.contents });
             await copyToClipboard(url);
             toast({
-              title: "Copied",
-              description: "Link copied to clipboard.",
+              title: "已复制",
+              description: "链接已复制到剪贴板。",
             });
           },
         },
@@ -386,7 +386,7 @@ export function useNotebookActions() {
 
     {
       icon: <PanelLeftIcon size={14} strokeWidth={1.5} />,
-      label: "Helper panel",
+      label: "辅助面板",
       redundant: true,
       handle: NOOP_HANDLER,
       dropdown: PANELS.flatMap(
@@ -407,7 +407,7 @@ export function useNotebookActions() {
 
     {
       icon: <PresentationIcon size={14} strokeWidth={1.5} />,
-      label: "Present as",
+      label: "展示为",
       handle: NOOP_HANDLER,
       dropdown: [
         {
@@ -417,7 +417,7 @@ export function useNotebookActions() {
             ) : (
               <LayoutTemplateIcon size={14} strokeWidth={1.5} />
             ),
-          label: "Toggle app view",
+          label: "切换应用视图",
           hotkey: "global.hideCode",
           handle: () => {
             togglePresenting();
@@ -447,26 +447,26 @@ export function useNotebookActions() {
     },
     {
       icon: <Files size={14} strokeWidth={1.5} />,
-      label: "Duplicate notebook",
+      label: "复制 notebook",
       hidden: !filename || isWasm(),
       handle: copyNotebook,
     },
     {
       icon: <ClipboardCopyIcon size={14} strokeWidth={1.5} />,
-      label: "Copy code to clipboard",
+      label: "复制代码到剪贴板",
       hidden: !filename,
       handle: async () => {
         const code = await readCode();
         await copyToClipboard(code.contents);
         toast({
-          title: "Copied",
-          description: "Code copied to clipboard.",
+          title: "已复制",
+          description: "代码已复制到剪贴板。",
         });
       },
     },
     {
       icon: <ZapIcon size={14} strokeWidth={1.5} />,
-      label: "Enable all cells",
+      label: "启用所有单元格",
       hidden: !hasDisabledCells || kioskMode,
       handle: async () => {
         const notebook = getNotebook();
@@ -486,21 +486,21 @@ export function useNotebookActions() {
     {
       divider: true,
       icon: <DiamondPlusIcon size={14} strokeWidth={1.5} />,
-      label: "Add setup cell",
+      label: "添加设置单元格",
       handle: () => {
         addSetupCellIfDoesntExist({});
       },
     },
     {
       icon: <DatabaseIcon size={14} strokeWidth={1.5} />,
-      label: "Add database connection",
+      label: "添加数据库连接",
       handle: () => {
         openModal(<AddConnectionDialogContent onClose={closeModal} />);
       },
     },
     {
       icon: <HardDrive size={14} strokeWidth={1.5} />,
-      label: "Add remote storage",
+      label: "添加远程存储",
       handle: () => {
         openModal(
           <AddConnectionDialogContent
@@ -512,7 +512,7 @@ export function useNotebookActions() {
     },
     {
       icon: <Undo2Icon size={14} strokeWidth={1.5} />,
-      label: "Undo cell deletion",
+      label: "撤销单元格删除",
       hidden: !canUndoDeletes || kioskMode,
       handle: () => {
         undoDeleteCell();
@@ -520,14 +520,14 @@ export function useNotebookActions() {
     },
     {
       icon: <PowerSquareIcon size={14} strokeWidth={1.5} />,
-      label: "Restart kernel",
+      label: "重启内核",
       variant: "danger",
       handle: restartKernel,
       additionalKeywords: ["reset", "reload", "restart"],
     },
     {
       icon: <FastForwardIcon size={14} strokeWidth={1.5} />,
-      label: "Re-run all cells",
+      label: "重新运行所有单元格",
       redundant: true,
       hotkey: "global.runAll",
       handle: async () => {
@@ -536,7 +536,7 @@ export function useNotebookActions() {
     },
     {
       icon: <XCircleIcon size={14} strokeWidth={1.5} />,
-      label: "Clear all outputs",
+      label: "清空所有输出",
       redundant: true,
       handle: () => {
         clearAllCellOutputs();
@@ -544,20 +544,20 @@ export function useNotebookActions() {
     },
     {
       icon: <EyeOffIcon size={14} strokeWidth={1.5} />,
-      label: "Hide all markdown code",
+      label: "隐藏所有 markdown 代码",
       handle: hideAllMarkdownCode,
       redundant: true, // hidden by default
     },
     {
       icon: <ChevronRightCircleIcon size={14} strokeWidth={1.5} />,
-      label: "Collapse all sections",
+      label: "折叠所有章节",
       hotkey: "global.collapseAllSections",
       handle: collapseAllCells,
       redundant: true,
     },
     {
       icon: <ChevronDownCircleIcon size={14} strokeWidth={1.5} />,
-      label: "Expand all sections",
+      label: "展开所有章节",
       hotkey: "global.expandAllSections",
       handle: expandAllCells,
       redundant: true,
@@ -565,32 +565,32 @@ export function useNotebookActions() {
     {
       divider: true,
       icon: <CommandIcon size={14} strokeWidth={1.5} />,
-      label: "Command palette",
+      label: "命令面板",
       hotkey: "global.commandPalette",
       handle: () => setCommandPaletteOpen((open) => !open),
     },
 
     {
       icon: <KeyboardIcon size={14} strokeWidth={1.5} />,
-      label: "Keyboard shortcuts",
+      label: "键盘快捷键",
       hotkey: "global.showHelp",
       handle: () => setKeyboardShortcutsOpen((open) => !open),
     },
     {
       icon: <SettingsIcon size={14} strokeWidth={1.5} />,
-      label: "User settings",
+      label: "用户设置",
       handle: () => setSettingsDialogOpen((open) => !open),
       redundant: true,
       additionalKeywords: ["preferences", "options", "configuration"],
     },
     {
       icon: <ExternalLinkIcon size={14} strokeWidth={1.5} />,
-      label: "Resources",
+      label: "资源",
       handle: NOOP_HANDLER,
       dropdown: [
         {
           icon: <BookMarkedIcon size={14} strokeWidth={1.5} />,
-          label: "Documentation",
+          label: "文档",
           handle: () => {
             window.open(Constants.docsPage, "_blank");
           },
@@ -604,7 +604,7 @@ export function useNotebookActions() {
         },
         {
           icon: <MessagesSquareIcon size={14} strokeWidth={1.5} />,
-          label: "Discord Community",
+          label: "Discord 社区",
           handle: () => {
             window.open(Constants.discordLink, "_blank");
           },
@@ -618,7 +618,7 @@ export function useNotebookActions() {
         },
         {
           icon: <FileTextIcon size={14} strokeWidth={1.5} />,
-          label: "Changelog",
+          label: "更新日志",
           handle: () => {
             window.open(Constants.releasesPage, "_blank");
           },
@@ -629,7 +629,7 @@ export function useNotebookActions() {
     {
       divider: true,
       icon: <Home size={14} strokeWidth={1.5} />,
-      label: "Return home",
+      label: "返回主页",
       // If file is in the url, then we ran `marimo edit`
       // without a specific file
       hidden: !location.search.includes("file"),
@@ -641,7 +641,7 @@ export function useNotebookActions() {
 
     {
       icon: <FilePlus2Icon size={14} strokeWidth={1.5} />,
-      label: "New notebook",
+      label: "新建 notebook",
       // If file is in the url, then we ran `marimo edit`
       // without a specific file
       hidden: !location.search.includes("file"),
