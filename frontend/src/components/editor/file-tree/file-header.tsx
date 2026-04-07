@@ -25,7 +25,7 @@ export const FilePreviewHeader: React.FC<FilePreviewHeaderProps> = ({
   return (
     <div className="flex items-center shrink-0 border-b px-1 gap-1">
       {onBack && (
-        <Tooltip content="Back to file list">
+        <Tooltip content="返回文件列表">
           <Button variant="text" size="xs" onClick={onBack}>
             <ArrowLeftIcon className="h-4 w-4" />
           </Button>
@@ -41,7 +41,7 @@ export const FilePreviewHeader: React.FC<FilePreviewHeaderProps> = ({
       )}
       <div className="flex items-center gap-0.5 shrink-0">
         {onRefresh && (
-          <Tooltip content="Refresh">
+            <Tooltip content="刷新">
             <Button variant="text" size="xs" onClick={onRefresh}>
               <RefreshCwIcon className="h-3.5 w-3.5" />
             </Button>
@@ -49,7 +49,7 @@ export const FilePreviewHeader: React.FC<FilePreviewHeaderProps> = ({
         )}
         {actions}
         {onDownload && (
-          <Tooltip content="Download">
+            <Tooltip content="下载">
             <Button variant="text" size="xs" onClick={onDownload}>
               <DownloadIcon className="h-3.5 w-3.5" />
             </Button>

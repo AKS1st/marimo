@@ -151,15 +151,15 @@ const CachePanel = () => {
         {/* Storage Section */}
         {diskTotal > 0 && (
           <div className="space-y-3 pt-2 border-t">
-            <h3 className="text-sm font-semibold text-foreground">Storage</h3>
+            <h3 className="text-sm font-semibold text-foreground">存储</h3>
             <div className="grid grid-cols-1 gap-3">
               <StatCard
-                label="Disk usage"
+                label="磁盘占用"
                 value={formatBytes(diskTotal, locale)}
                 description={
                   diskToFree > 0
-                    ? `${formatBytes(diskToFree, locale)} can be freed`
-                    : "Cache storage on disk"
+                    ? `可释放 ${formatBytes(diskToFree, locale)}`
+                    : "磁盘上的缓存存储"
                 }
               />
             </div>
@@ -171,9 +171,9 @@ const CachePanel = () => {
         {/* Actions Section */}
         <div className="pt-2 border-t">
           <ConfirmationButton
-            title="Purge cache?"
-            description="This will permanently delete all cached data. This action cannot be undone."
-            confirmText="Purge"
+            title="清空缓存？"
+            description="这会永久删除所有缓存数据。此操作无法撤销。"
+            confirmText="清空"
             destructive={true}
             onConfirm={handlePurge}
           >

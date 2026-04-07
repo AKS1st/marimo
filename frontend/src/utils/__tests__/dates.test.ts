@@ -171,6 +171,19 @@ describe("dates", () => {
       expect(result).toMatch(/Jan 1, 2020 at/);
     });
 
+    it("formats dates in Chinese", () => {
+      const zhLocale = "zh-CN";
+      const today = new Date();
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      const oldDate = new Date("2020-01-01T12:00:00Z");
+
+      expect(timeAgo(today.toISOString(), zhLocale)).toMatch(/^今天 /);
+      expect(timeAgo(yesterday.toISOString(), zhLocale)).toMatch(/^昨天 /);
+      expect(timeAgo(oldDate.toISOString(), zhLocale)).toMatch(/2020/);
+      expect(timeAgo(oldDate.toISOString(), zhLocale)).not.toMatch(/ at /);
+    });
+
     it("handles errors gracefully", () => {
       expect(timeAgo("invalid-date", locale)).toBe(
         "Invalid Date at Invalid Date",

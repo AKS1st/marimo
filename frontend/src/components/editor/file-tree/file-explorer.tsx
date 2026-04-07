@@ -455,16 +455,16 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
     evt.stopPropagation();
     evt.preventDefault();
     openConfirm({
-      title: "Delete file",
-      description: `Are you sure you want to delete ${node.data.name}?`,
+      title: "删除文件",
+      description: `你确定要删除 ${node.data.name} 吗？`,
       confirmAction: (
         <AlertDialogDestructiveAction
           onClick={async () => {
             await node.tree.delete(node.id);
           }}
-          aria-label="Confirm"
+          aria-label="确认删除"
         >
-          Delete
+          删除
         </AlertDialogDestructiveAction>
       ),
     });
@@ -474,7 +474,7 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
     // If not expanded, then expand
     node.open();
     openPrompt({
-      title: "Folder name",
+      title: "文件夹名称",
       onConfirm: async (name) => {
         tree?.createFolder(name, node.id);
       },
@@ -484,7 +484,7 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
   const handleCreateFile = useEvent(async () => {
     node.open();
     openPrompt({
-      title: "File name",
+      title: "文件名",
       onConfirm: async (name) => {
         tree?.createFile(name, node.id);
       },
@@ -669,14 +669,14 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
               }}
             >
               <DownloadIcon className={ic} />
-              Download
+              下载
             </DropdownMenuItem>
             <DropdownMenuSeparator />
           </>
         )}
         <DropdownMenuItem onSelect={handleDeleteFile} variant="danger">
           <Trash2Icon className={ic} />
-          Delete
+          删除
         </DropdownMenuItem>
       </DropdownMenuContent>
     );

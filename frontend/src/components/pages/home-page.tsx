@@ -115,7 +115,7 @@ const HomePage: React.FC = () => {
           <OpenTutorialDropDown />
           <ConfigButton showAppConfig={false} />
           <ShutdownButton
-            description={`This will shutdown the notebook server and terminate all running notebooks (${running.size}). You'll lose all data that's in memory.`}
+            description={`这会关闭 notebook 服务器并终止所有正在运行的 notebook（${running.size} 个）。你会丢失所有内存中的数据。`}
           />
         </div>
         <div className="flex flex-col gap-6 max-w-6xl container pt-5 pb-20 z-10">
@@ -123,11 +123,11 @@ const HomePage: React.FC = () => {
           <CreateNewNotebook />
           <ResourceLinks />
           <NotebookList
-            header={<Header Icon={PlayCircleIcon}>Running notebooks</Header>}
+            header={<Header Icon={PlayCircleIcon}>运行中的 notebook</Header>}
             files={[...running.values()]}
           />
           <NotebookList
-            header={<Header Icon={ClockIcon}>Recent notebooks</Header>}
+            header={<Header Icon={ClockIcon}>最近的 notebook</Header>}
             files={recents.files}
           />
           <ErrorBoundary>
@@ -171,8 +171,7 @@ const WorkspaceNotebooks: React.FC = () => {
       <div className="flex flex-col gap-2">
         {workspace.hasMore && (
           <Banner kind="warn" className="rounded p-4">
-            Showing first {workspace.fileCount} files. Your workspace has more
-            files.
+            仅显示前 {workspace.fileCount} 个文件。你的工作区还有更多文件。
           </Banner>
         )}
         <Header
@@ -184,7 +183,7 @@ const WorkspaceNotebooks: React.FC = () => {
                 value={searchText}
                 icon={<SearchIcon size={13} />}
                 onChange={(e) => setSearchText(e.target.value)}
-                placeholder="Search"
+                placeholder="搜索"
                 className="mb-0 border-border"
               />
               <CollapseAllButton />
@@ -196,17 +195,17 @@ const WorkspaceNotebooks: React.FC = () => {
                   setIncludeMarkdown(Boolean(checked))
                 }
               />
-              <Label htmlFor="include-markdown">Include markdown</Label>
+              <Label htmlFor="include-markdown">显示 markdown</Label>
             </div>
           }
         >
-          Workspace
+          工作区
           <Button
             variant="text"
             size="icon"
             className="w-4 h-4 ml-1 p-0 opacity-70 hover:opacity-100"
             onClick={() => refetch()}
-            aria-label="Refresh workspace"
+            aria-label="刷新工作区"
           >
             <RefreshCcwIcon className="w-4 h-4" />
           </Button>
@@ -232,7 +231,7 @@ const CollapseAllButton: React.FC = () => {
       }}
     >
       <ChevronsDownUpIcon className="w-4 h-4 mr-1" />
-      Collapse all
+      全部折叠
     </Button>
   );
 };
@@ -256,7 +255,7 @@ const NotebookFileTree: React.FC<{
     return (
       <div className="flex flex-col px-5 py-10 items-center justify-center">
         <p className="text-center text-muted-foreground">
-          No files in this workspace
+          此工作区中没有文件
         </p>
       </div>
     );
@@ -463,7 +462,7 @@ const SessionShutdownButton: React.FC<{ filePath: string }> = ({
     return null;
   }
   return (
-    <Tooltip content="Shutdown">
+        <Tooltip content="关闭">
       <Button
         size={"icon"}
         variant="outline"
@@ -472,9 +471,9 @@ const SessionShutdownButton: React.FC<{ filePath: string }> = ({
           e.stopPropagation();
           e.preventDefault();
           openConfirm({
-            title: "Shutdown",
+            title: "关闭",
             description:
-              "This will terminate the Python kernel. You'll lose all data that's in memory.",
+              "这会终止 Python 内核。你会丢失所有内存中的数据。",
             variant: "destructive",
             confirmAction: (
               <AlertDialogDestructiveAction
@@ -490,12 +489,12 @@ const SessionShutdownButton: React.FC<{ filePath: string }> = ({
                   });
                   closeModal();
                   toast({
-                    description: "Notebook has been shutdown.",
+                    description: "Notebook 已关闭。",
                   });
                 }}
-                aria-label="Confirm Shutdown"
+                aria-label="确认关闭"
               >
-                Shutdown
+                关闭
               </AlertDialogDestructiveAction>
             ),
           });
@@ -519,7 +518,7 @@ const CreateNewNotebook: React.FC = () => {
       target="_blank"
       rel="noreferrer"
     >
-      <h2 className="text-lg font-semibold">Create a new notebook</h2>
+      <h2 className="text-lg font-semibold">创建一个新 notebook</h2>
       <div className="group-hover:opacity-100 opacity-0 absolute right-5 top-0 bottom-0 rounded-lg flex items-center justify-center transition-all duration-300">
         <ExternalLinkIcon size={24} />
       </div>

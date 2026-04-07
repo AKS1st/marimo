@@ -37,35 +37,35 @@ const TUTORIALS: Record<
   TutorialId,
   [string, React.FC<React.SVGProps<SVGSVGElement>>, string]
 > = {
-  intro: ["Introduction", BookOpenIcon, "Get started with marimo basics"],
+  intro: ["介绍", BookOpenIcon, "快速上手 marimo 基础用法"],
   dataflow: [
-    "Dataflow",
+    "数据流",
     ActivityIcon,
-    "Learn how cells interact with each other",
+    "了解单元格如何相互作用",
   ],
-  ui: ["UI Elements", LayoutIcon, "Create interactive UI components"],
+  ui: ["UI 元素", LayoutIcon, "创建交互式 UI 组件"],
   markdown: [
     "Markdown",
     FileTextIcon,
-    "Format text with parameterized markdown",
+    "使用参数化 markdown 格式化文本",
   ],
-  plots: ["Plots", BarChart2Icon, "Create interactive visualizations"],
-  sql: ["SQL", DatabaseIcon, "Query databases directly in marimo"],
-  layout: ["Layout", GridIcon, "Customize the layout of your cells' output"],
+  plots: ["图表", BarChart2Icon, "创建交互式可视化"],
+  sql: ["SQL", DatabaseIcon, "在 marimo 中直接查询数据库"],
+  layout: ["布局", GridIcon, "自定义单元格输出的布局"],
   fileformat: [
-    "File format",
+    "文件格式",
     FileIcon,
-    "Understand marimo's pure-Python file format",
+    "了解 marimo 的纯 Python 文件格式",
   ],
   "for-jupyter-users": [
-    "For Jupyter users",
+    "给 Jupyter 用户",
     OrbitIcon,
-    "Transiting from Jupyter to marimo",
+    "从 Jupyter 迁移到 marimo",
   ],
   "markdown-format": [
-    "Markdown format",
+    "Markdown 格式",
     MarkdownIcon,
-    "Using marimo to edit markdown files",
+    "使用 marimo 编辑 markdown 文件",
   ],
 };
 
@@ -76,7 +76,7 @@ export const OpenTutorialDropDown: React.FC = () => {
       <DropdownMenuTrigger asChild={true}>
         <Button data-testid="open-tutorial-button" size="xs" variant="outline">
           <GraduationCapIcon className="w-4 h-4 mr-2" />
-          Tutorials
+          教程
           <CaretDownIcon className="w-3 h-3 ml-1" />
         </Button>
       </DropdownMenuTrigger>
@@ -115,32 +115,32 @@ export const OpenTutorialDropDown: React.FC = () => {
 
 const RESOURCES = [
   {
-    title: "Documentation",
-    description: "Official marimo documentation and API reference",
+    title: "文档",
+    description: "marimo 官方文档和 API 参考",
     icon: BookMarkedIcon,
     url: Constants.docsPage,
   },
   {
     title: "GitHub",
-    description: "View source code, report issues, or contribute",
+    description: "查看源码、报告问题或参与贡献",
     icon: GithubIcon,
     url: Constants.githubPage,
   },
   {
-    title: "Community",
-    description: "Join the marimo Discord community",
+    title: "社区",
+    description: "加入 marimo 的 Discord 社区",
     icon: MessagesSquareIcon,
     url: Constants.discordLink,
   },
   {
     title: "YouTube",
-    description: "Watch tutorials and demos",
+    description: "观看教程和演示",
     icon: YoutubeIcon,
     url: Constants.youtube,
   },
   {
-    title: "Changelog",
-    description: "See what's new in marimo",
+    title: "更新日志",
+    description: "查看 marimo 的最新变化",
     icon: FileTextIcon,
     url: Constants.releasesPage,
   },
@@ -149,7 +149,7 @@ const RESOURCES = [
 export const ResourceLinks: React.FC = () => {
   return (
     <div className="flex flex-col gap-2">
-      <Header Icon={LinkIcon}>Resources</Header>
+      <Header Icon={LinkIcon}>资源</Header>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {RESOURCES.map((resource) => (
           <a

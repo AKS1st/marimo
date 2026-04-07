@@ -63,7 +63,7 @@ export const Controls = ({
   let undoControl: JSX.Element | null = null;
   if (!closed && undoAvailable) {
     undoControl = (
-      <Tooltip content="Undo cell deletion">
+        <Tooltip content="撤销单元格删除">
         <Button
           data-testid="undo-delete-cell"
           size="medium"
@@ -94,7 +94,7 @@ export const Controls = ({
           />
           <ConfigButton disabled={disabled} tooltip={connectionTooltip} />
           <ShutdownButton
-            description="This will terminate the Python kernel. You'll lose all data that's in memory."
+            description="这会终止 Python 内核。你会丢失所有内存中的数据。"
             disabled={disabled}
             tooltip={connectionTooltip}
           />
@@ -168,7 +168,7 @@ const RunControlButton = ({
   }
 
   return (
-    <Tooltip content="Nothing to run">
+      <Tooltip content="暂无可运行内容">
       <Button
         data-testid="run-button"
         className={"inactive-button"}

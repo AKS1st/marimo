@@ -250,7 +250,7 @@ const ActionButtons: React.FC<{
         key="download-html"
       >
         <FolderDownIcon className="mr-2" size={14} strokeWidth={1.5} />
-        Download as HTML
+        下载为 HTML
       </DropdownMenuItem>,
     );
 
@@ -263,7 +263,7 @@ const ActionButtons: React.FC<{
           key="download-python"
         >
           <CodeIcon className="mr-2" size={14} strokeWidth={1.5} />
-          Download as .py
+          下载为 .py
         </DropdownMenuItem>,
       );
     }
@@ -276,7 +276,7 @@ const ActionButtons: React.FC<{
         key="download-png"
       >
         <ImageIcon className="mr-2" size={14} strokeWidth={1.5} />
-        Download as PNG
+        下载为 PNG
       </DropdownMenuItem>,
     );
   }

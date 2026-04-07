@@ -68,7 +68,7 @@ const COLUMNS = [
     enableSorting: true,
     sortingFn: "alphanumeric",
     header: ({ column }) => (
-      <DataTableColumnHeader header={"Name"} column={column} />
+      <DataTableColumnHeader header={"名称"} column={column} />
     ),
     cell: ({ getValue }) => {
       const [name, declaredBy] = getValue();
@@ -84,8 +84,8 @@ const COLUMNS = [
       <DataTableColumnHeader
         header={
           <div className="flex flex-col gap-1">
-            <span>Type</span>
-            <span>Value</span>
+            <span>类型</span>
+            <span>值</span>
           </div>
         }
         column={column}
@@ -125,8 +125,8 @@ const COLUMNS = [
       <DataTableColumnHeader
         header={
           <div className="flex flex-col gap-1">
-            <span>Declared By</span>
-            <span>Used By</span>
+            <span>声明于</span>
+            <span>使用于</span>
           </div>
         }
         column={column}
@@ -146,7 +146,7 @@ const COLUMNS = [
       return (
         <div className="flex flex-col gap-1 py-1">
           <div className="flex flex-row overflow-auto gap-2 items-center">
-            <span title="Declared by">
+            <span title="声明于">
               <SquareEqualIcon className="w-3.5 h-3.5 text-muted-foreground" />
             </span>
 
@@ -176,7 +176,7 @@ const COLUMNS = [
             )}
           </div>
           <div className="flex flex-row overflow-auto gap-2 items-baseline">
-            <span title="Used by">
+            <span title="使用于">
               <WorkflowIcon className="w-3.5 h-3.5 text-muted-foreground" />
             </span>
 
@@ -294,7 +294,7 @@ export const VariableTable: React.FC<Props> = memo(
       <>
         <SearchInput
           className="w-full"
-          placeholder="Search"
+          placeholder="搜索"
           value={globalFilter}
           onChange={(e) => setGlobalFilter(e.target.value)}
         />

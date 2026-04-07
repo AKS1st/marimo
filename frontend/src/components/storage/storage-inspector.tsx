@@ -180,7 +180,7 @@ const StorageEntryChildren: React.FC<{
         style={indentStyle(depth)}
       >
         <LoaderCircle className="h-3 w-3 animate-spin" />
-        Loading...
+        加载中...
       </div>
     );
   }
@@ -188,7 +188,7 @@ const StorageEntryChildren: React.FC<{
   if (error) {
     return (
       <div className="py-1 text-xs text-destructive" style={indentStyle(depth)}>
-        Failed to load: {error.message}
+        加载失败：{error.message}
       </div>
     );
   }
@@ -199,7 +199,7 @@ const StorageEntryChildren: React.FC<{
         className="py-1 text-xs text-muted-foreground italic"
         style={indentStyle(depth)}
       >
-        Empty
+        空
       </div>
     );
   }
@@ -285,7 +285,7 @@ const StorageEntryRow: React.FC<{
       });
       if (result.error) {
         toast({
-          title: "Download failed",
+          title: "下载失败",
           description: result.error,
           variant: "danger",
         });
@@ -295,9 +295,9 @@ const StorageEntryRow: React.FC<{
         downloadByURL(result.url, result.filename ?? "download");
       }
     } catch (error) {
-      Logger.error("Failed to download storage entry", error);
+      Logger.error("下载存储条目失败", error);
       toast({
-        title: "Download failed",
+        title: "下载失败",
         description: String(error),
         variant: "danger",
       });
@@ -342,7 +342,7 @@ const StorageEntryRow: React.FC<{
           )}
           {entry.lastModified != null && (
             <Tooltip
-              content={`Last modified: ${new Date(entry.lastModified * 1000).toLocaleString()}`}
+              content={`最后修改：${new Date(entry.lastModified * 1000).toLocaleString()}`}
             >
               <span className="text-[10px] text-muted-foreground pr-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 {formatDate(entry.lastModified, locale)}
@@ -368,22 +368,22 @@ const StorageEntryRow: React.FC<{
                   }
                 >
                   <ViewIcon className={MENU_ITEM_ICON_CLASS} />
-                  View
+                  查看
                 </DropdownMenuItem>
               )}
               <DropdownMenuItem
                 onSelect={async () => {
                   await copyToClipboard(entry.path);
-                  toast({ title: "Copied to clipboard" });
+                  toast({ title: "已复制到剪贴板" });
                 }}
               >
                 <CopyIcon className={MENU_ITEM_ICON_CLASS} />
-                Copy path
+                复制路径
               </DropdownMenuItem>
               {!isDir && (
                 <DropdownMenuItem onSelect={() => handleDownload()}>
                   <DownloadIcon className={MENU_ITEM_ICON_CLASS} />
-                  Download
+                  下载
                 </DropdownMenuItem>
               )}
               <DropdownMenuSeparator />
@@ -482,7 +482,7 @@ const StorageNamespaceSection: React.FC<{
         )}
         <RefreshIconButton
           onClick={handleRefresh}
-          tooltip="Refresh storage connection"
+          tooltip="刷新存储连接"
           className="p-0"
           iconClassName="h-3 w-3"
         />
@@ -498,7 +498,7 @@ const StorageNamespaceSection: React.FC<{
               style={indentStyle(1)}
             >
               <LoaderCircle className="h-3 w-3 animate-spin" />
-              Loading...
+              加载中...
             </div>
           )}
           {error && entries.length === 0 && (
@@ -514,7 +514,7 @@ const StorageNamespaceSection: React.FC<{
               className="py-1 text-xs text-muted-foreground italic"
               style={indentStyle(1)}
             >
-              No entries
+              没有条目
             </div>
           )}
           {searchValue && filtered.length === 0 && entries.length > 0 && (
@@ -522,7 +522,7 @@ const StorageNamespaceSection: React.FC<{
               className="py-1 text-xs text-muted-foreground italic"
               style={indentStyle(1)}
             >
-              No matches
+              没有匹配项
             </div>
           )}
           {filtered.map((entry) => (
@@ -555,17 +555,17 @@ export const StorageInspector: React.FC = () => {
   if (namespaces.length === 0) {
     return (
       <PanelEmptyState
-        title="No storage connected"
+        title="尚未连接存储"
         description={
           <span>
-            Create an obstore or fsspec connection in your notebook. See the{" "}
+            在你的 notebook 中创建 obstore 或 fsspec 连接。查看{" "}
             <a
               className="text-link"
               href="https://docs.marimo.io/guides/working_with_data/remote_storage/#quick-start"
               target="_blank"
               rel="noopener noreferrer"
             >
-              docs
+              文档
             </a>
             .
           </span>
@@ -573,7 +573,7 @@ export const StorageInspector: React.FC = () => {
         action={
           <AddConnectionDialog defaultTab="storage">
             <Button variant="outline" size="sm">
-              Add remote storage
+               添加远程存储
               <PlusIcon className="h-4 w-4 ml-2" />
             </Button>
           </AddConnectionDialog>
@@ -605,7 +605,7 @@ export const StorageInspector: React.FC = () => {
       >
         <div className="flex items-center w-full border-b">
           <CommandInput
-            placeholder="Search entries..."
+            placeholder="搜索条目..."
             className="h-6 m-1"
             value={searchValue}
             onValueChange={setSearchValue}
@@ -622,7 +622,7 @@ export const StorageInspector: React.FC = () => {
             </Button>
           )}
           <Tooltip
-            content="Filters loaded entries only. Expand directories to include their contents in the search."
+            content="仅过滤已加载的条目。展开目录后可将其内容也包含进搜索。"
             delayDuration={200}
           >
             <HelpCircleIcon className="h-3.5 w-3.5 shrink-0 cursor-help text-muted-foreground hover:text-foreground mr-2" />

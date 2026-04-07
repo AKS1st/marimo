@@ -15,9 +15,9 @@ export function useRestartKernel() {
 
   return () => {
     openConfirm({
-      title: "Restart Kernel",
+       title: "重启内核",
       description:
-        "This will restart the Python kernel. You'll lose all data that's in memory. You will also lose any unsaved changes, so make sure to save your work before restarting.",
+        "这会重启 Python 内核。你会丢失所有内存中的数据，也会丢失未保存的更改，所以请在重启前先保存你的工作。",
       variant: "destructive",
       confirmAction: (
         <AlertDialogDestructiveAction
@@ -26,9 +26,9 @@ export function useRestartKernel() {
             await sendRestart();
             reloadSafe();
           }}
-          aria-label="Confirm Restart"
+           aria-label="确认重启"
         >
-          Restart
+          重启
         </AlertDialogDestructiveAction>
       ),
     });

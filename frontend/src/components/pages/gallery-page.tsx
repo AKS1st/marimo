@@ -120,8 +120,7 @@ const GalleryPage: React.FC = () => {
           <div className="flex flex-col gap-2">
             {workspace.hasMore && (
               <Banner kind="warn" className="rounded p-4">
-                Showing first {workspace.fileCount} files. Your workspace has
-                more files.
+                仅显示前 {workspace.fileCount} 个文件。你的工作区还有更多文件。
               </Banner>
             )}
             {formattedFiles.length > SEARCH_THRESHOLD && (
@@ -130,14 +129,14 @@ const GalleryPage: React.FC = () => {
                 value={searchQuery}
                 icon={<SearchIcon className="h-4 w-4" />}
                 onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="Search"
+                placeholder="搜索"
                 rootClassName="mb-3"
                 className="mb-0 border-border"
               />
             )}
             {filteredFiles.length === 0 ? (
               <Banner kind="warn" className="rounded p-4">
-                No marimo apps found.
+                未找到 marimo 应用。
               </Banner>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

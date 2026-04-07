@@ -106,27 +106,25 @@ export function timeAgo(
     const today = new Date();
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
-
-    if (date.toDateString() === today.toDateString()) {
-      return `Today at ${date.toLocaleTimeString(locale, {
-        hour: "numeric",
-        minute: "numeric",
-      })}`;
-    }
-    if (date.toDateString() === yesterday.toDateString()) {
-      return `Yesterday at ${date.toLocaleTimeString(locale, {
-        hour: "numeric",
-        minute: "numeric",
-      })}`;
-    }
-    return `${date.toLocaleDateString(locale, {
+    const isChinese = locale.toLowerCase().startsWith("zh");
+    const time = date.toLocaleTimeString(locale, {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: false,
+    });
+    const dateText = date.toLocaleDateString(locale, {
       year: "numeric",
       month: "short",
       day: "numeric",
-    })} at ${date.toLocaleTimeString(locale, {
-      hour: "numeric",
-      minute: "numeric",
-    })}`;
+    });
+
+    if (date.toDateString() === today.toDateString()) {
+      return isChinese ? `今天 ${time}` : `Today at ${time}`;
+    }
+    if (date.toDateString() === yesterday.toDateString()) {
+      return isChinese ? `昨天 ${time}` : `Yesterday at ${time}`;
+    }
+    return isChinese ? `${dateText} ${time}` : `${dateText} at ${time}`;
   } catch (error) {
     Logger.warn("Failed to parse date", error);
   }

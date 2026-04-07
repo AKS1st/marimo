@@ -77,7 +77,7 @@ export const StorageFileViewer: React.FC<Props> = ({
       throw new Error(result.error);
     }
     if (!result.url) {
-      throw new Error("No URL returned");
+      throw new Error("未返回 URL");
     }
 
     if (isMedia) {
@@ -86,7 +86,7 @@ export const StorageFileViewer: React.FC<Props> = ({
 
     const resp = await fetch(result.url);
     if (!resp.ok) {
-      throw new Error(`Failed to fetch preview: ${resp.statusText}`);
+      throw new Error(`获取预览失败：${resp.statusText}`);
     }
     const content = await resp.text();
     return { type: "text", content };
@@ -100,7 +100,7 @@ export const StorageFileViewer: React.FC<Props> = ({
       });
       if (result.error) {
         toast({
-          title: "Download failed",
+          title: "下载失败",
           description: result.error,
           variant: "danger",
         });
@@ -110,9 +110,9 @@ export const StorageFileViewer: React.FC<Props> = ({
         downloadByURL(result.url, result.filename ?? name);
       }
     } catch (error_) {
-      Logger.error("Failed to download storage entry", error_);
+      Logger.error("下载存储条目失败", error_);
       toast({
-        title: "Download failed",
+        title: "下载失败",
         description: String(error_),
         variant: "danger",
       });
@@ -161,25 +161,25 @@ export const StorageFileViewer: React.FC<Props> = ({
   }) => {
     return (
       <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 p-4 text-xs">
-        <span className="text-muted-foreground font-medium">Path</span>
+        <span className="text-muted-foreground font-medium">路径</span>
         <div className="truncate flex items-center gap-1.5">
           <span className="font-mono text-[11px]">{entry.path}</span>
           <CopyClipboardIcon value={entry.path} className="h-3 w-3" />
         </div>
 
         {includeMime && (
-          <span className="text-muted-foreground font-medium">Type</span>
+          <span className="text-muted-foreground font-medium">类型</span>
         )}
         {includeMime && <span>{mime}</span>}
         {entry.size > 0 && (
           <>
-            <span className="text-muted-foreground font-medium">Size</span>
+            <span className="text-muted-foreground font-medium">大小</span>
             <span>{formatBytes(entry.size, locale)}</span>
           </>
         )}
         {entry.lastModified != null && (
           <>
-            <span className="text-muted-foreground font-medium">Modified</span>
+            <span className="text-muted-foreground font-medium">修改时间</span>
             <span>{new Date(entry.lastModified * 1000).toLocaleString()}</span>
           </>
         )}
@@ -193,7 +193,7 @@ export const StorageFileViewer: React.FC<Props> = ({
         {header}
         {renderMetadata({ includeMime: true })}
         <div className="px-4 pb-4 text-xs text-muted-foreground italic">
-          File is too large to preview ({formatBytes(entry.size, locale)}).
+          文件太大，无法预览（{formatBytes(entry.size, locale)}）。
         </div>
       </div>
     );
@@ -206,7 +206,7 @@ export const StorageFileViewer: React.FC<Props> = ({
         {renderMetadata({})}
         <div className="flex-1 flex items-center justify-center gap-2 text-xs text-muted-foreground min-h-24">
           <LoaderCircle className="h-4 w-4 animate-spin" />
-          Loading preview...
+          预览加载中...
         </div>
       </div>
     );
@@ -218,12 +218,12 @@ export const StorageFileViewer: React.FC<Props> = ({
         {header}
         {renderMetadata({ includeMime: true })}
         <div className="px-4 pb-4 text-xs text-destructive">
-          Failed to load preview: {error.message}
+          预览加载失败：{error.message}
         </div>
         <div className="px-4 pb-4">
           <Button variant="secondary" size="xs" onClick={refetch}>
             <RefreshCwIcon className="h-3 w-3 mr-1" />
-            Retry
+            重试
           </Button>
         </div>
       </div>
@@ -252,7 +252,7 @@ export const StorageFileViewer: React.FC<Props> = ({
       {renderMetadata({ includeMime: true })}
       <div className="p-4 flex items-center gap-2 text-xs text-muted-foreground">
         <FileIcon className="h-4 w-4" />
-        Preview not available for this file type.
+        该文件类型不支持预览。
       </div>
     </div>
   );

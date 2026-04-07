@@ -17,7 +17,7 @@ interface Props {
 export const ShutdownButton: React.FC<Props> = ({
   description,
   disabled = false,
-  tooltip = "Shutdown",
+  tooltip = "关闭",
 }) => {
   const { openConfirm, closeModal } = useImperativeModal();
   const { sendShutdown } = useRequestClient();
@@ -36,7 +36,7 @@ export const ShutdownButton: React.FC<Props> = ({
   return (
     <Tooltip content={tooltip}>
       <Button
-        aria-label="Shutdown"
+        aria-label="关闭"
         data-testid="shutdown-button"
         shape="circle"
         size="small"
@@ -46,7 +46,7 @@ export const ShutdownButton: React.FC<Props> = ({
         onClick={(e) => {
           e.stopPropagation();
           openConfirm({
-            title: "Shutdown",
+            title: "关闭",
             description: description,
             variant: "destructive",
             confirmAction: (
@@ -55,9 +55,9 @@ export const ShutdownButton: React.FC<Props> = ({
                   handleShutdown();
                   closeModal();
                 }}
-                aria-label="Confirm Shutdown"
+                aria-label="确认关闭"
               >
-                Shutdown
+                关闭
               </AlertDialogDestructiveAction>
             ),
           });

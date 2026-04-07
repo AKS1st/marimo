@@ -73,51 +73,49 @@ const RecoveryModal = (props: {
         }}
       >
         <DialogTitle className="text-accent-foreground mb-6">
-          Download unsaved changes?
+          下载未保存的更改？
         </DialogTitle>
         <DialogDescription
           className="markdown break-words"
           style={{ wordBreak: "break-word" }}
         >
           <div className="prose dark:prose-invert">
-            <p>This app has unsaved changes. To recover:</p>
+            <p>此应用有未保存的更改。恢复方法如下：</p>
 
             <ol>
               <li style={{ paddingBottom: "10px" }}>
-                Click the "Download" button. This will download a file
-                called&nbsp;
+                点击“下载”按钮。这会下载一个名为&nbsp;
                 <code>{props.proposedName}.json</code>. This file contains your
-                code.
+                的文件，其中包含你的代码。
               </li>
 
               <li style={{ paddingBottom: "10px" }}>
-                In your terminal, type
+                在终端中输入
                 <code style={{ display: "block", padding: "10px" }}>
                   marimo recover {props.proposedName}.json {">"}{" "}
                   {props.proposedName}.py
                 </code>
-                to overwrite <code>{props.proposedName}.py</code> with the
-                recovered changes.
+                ，即可用恢复的更改覆盖 <code>{props.proposedName}.py</code>。
               </li>
             </ol>
           </div>
         </DialogDescription>
         <DialogFooter>
           <Button
-            aria-label="Cancel"
+            aria-label="取消"
             variant="secondary"
             data-testid="cancel-recovery-button"
             onClick={props.closeModal}
           >
-            Cancel
+            取消
           </Button>
           <Button
             data-testid="download-recovery-button"
-            aria-label="Download"
+            aria-label="下载"
             variant="default"
             type="submit"
           >
-            Download
+            下载
           </Button>
         </DialogFooter>
       </form>
