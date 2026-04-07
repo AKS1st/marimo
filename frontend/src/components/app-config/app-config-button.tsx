@@ -30,13 +30,13 @@ interface Props {
 export const ConfigButton: React.FC<Props> = ({
   showAppConfig = true,
   disabled = false,
-  tooltip = "Settings",
+  tooltip = "设置",
 }) => {
   const [settingDialog, setSettingDialog] = useAtom(settingDialogAtom);
 
   const button = (
     <EditorButton
-      aria-label="Config"
+      aria-label="设置"
       data-testid="app-config-button"
       shape="circle"
       size="small"
@@ -53,7 +53,7 @@ export const ConfigButton: React.FC<Props> = ({
   const userSettingsDialog = (
     <DialogContent className="w-[90vw] h-[90vh] overflow-hidden sm:max-w-5xl top-[5vh] p-0">
       <VisuallyHidden>
-        <DialogTitle>User settings</DialogTitle>
+        <DialogTitle>用户设置</DialogTitle>
       </VisuallyHidden>
       <UserConfigForm />
     </DialogContent>
@@ -88,7 +88,7 @@ export const ConfigButton: React.FC<Props> = ({
             className="px-0"
           >
             <SettingsIcon strokeWidth={1.8} className="w-4 h-4 mr-2" />
-            User settings
+            用户设置
           </Button>
         </PopoverContent>
       </Popover>

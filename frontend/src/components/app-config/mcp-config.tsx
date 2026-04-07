@@ -35,13 +35,13 @@ interface PresetConfig {
 const PRESET_CONFIGS: PresetConfig[] = [
   {
     id: "marimo",
-    title: "marimo (docs)",
-    description: "Access marimo documentation",
+    title: "marimo（文档）",
+    description: "访问 marimo 文档",
   },
   {
     id: "context7",
     title: "Context7",
-    description: "Connect to Context7 MCP server",
+    description: "连接到 Context7 MCP 服务器",
   },
 ];
 
@@ -58,7 +58,7 @@ export const MCPConfig: React.FC<MCPConfigProps> = ({ form, onSubmit }) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <SettingSubtitle>MCP Servers</SettingSubtitle>
+        <SettingSubtitle>MCP 服务器</SettingSubtitle>
         <div className="flex items-center gap-2">
           {status && <McpStatusText status={status.status} />}
           <Button
@@ -90,20 +90,18 @@ export const MCPConfig: React.FC<MCPConfigProps> = ({ form, onSubmit }) => {
         </div>
       )}
       <p className="text-sm text-muted-foreground">
-        Enable Model Context Protocol (MCP) servers to provide additional
-        capabilities and data sources for AI features.
+        启用模型上下文协议（MCP）服务器，为 AI 功能提供额外能力和数据源。
       </p>
       <p className="text-sm text-muted-foreground">
-        This feature requires the <Kbd className="inline">marimo[mcp]</Kbd>{" "}
-        package. See{" "}
+        此功能需要 <Kbd className="inline">marimo[mcp]</Kbd> 包。查看{" "}
         <Button
           variant="link"
           onClick={() => handleClick("optionalDeps")}
           size="xs"
         >
-          Optional Features
+          可选功能
         </Button>{" "}
-        for more details.
+        了解更多。
       </p>
 
       <FormField

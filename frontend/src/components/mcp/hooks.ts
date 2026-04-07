@@ -29,14 +29,14 @@ export function useMCPRefresh() {
     try {
       await API.post<object, MCPRefreshResponse>("/ai/mcp/refresh", {});
       toast({
-        title: "MCP refreshed",
-        description: "MCP server configuration has been refreshed successfully",
+        title: "MCP 已刷新",
+        description: "MCP 服务器配置已成功刷新",
       });
     } catch (error) {
       toast({
-        title: "Refresh failed",
+        title: "刷新失败",
         description:
-          error instanceof Error ? error.message : "Failed to refresh MCP",
+          error instanceof Error ? error.message : "刷新 MCP 失败",
         variant: "danger",
       });
     } finally {

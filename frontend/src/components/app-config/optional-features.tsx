@@ -49,49 +49,49 @@ const OPTIONAL_DEPENDENCIES: OptionalFeature[] = [
     id: "sql",
     packagesRequired: [{ name: "duckdb" }, { name: "sqlglot" }],
     additionalPackageInstalls: [{ name: "polars[pyarrow]" }],
-    description: "SQL cells",
+    description: "SQL 单元格",
   },
   {
     id: "charts",
     packagesRequired: [{ name: "altair" }],
     additionalPackageInstalls: [],
-    description: "Charts in datasource viewer",
+    description: "数据源查看器中的图表",
   },
   {
     id: "fast-charts",
     packagesRequired: [{ name: "vegafusion" }, { name: "vl-convert-python" }],
     additionalPackageInstalls: [],
-    description: "Fast server-side charts",
+    description: "快速的服务端图表",
   },
   {
     id: "formatting",
     packagesRequired: [isWasm() ? { name: "black" } : { name: "ruff" }],
     additionalPackageInstalls: [],
-    description: "Formatting",
+    description: "代码格式化",
   },
   {
     id: "ai",
     packagesRequired: [{ name: "openai" }],
     additionalPackageInstalls: [],
-    description: "AI features",
+    description: "AI 功能",
   },
   {
     id: "mcp",
     packagesRequired: [{ name: "mcp", minVersion: "1" }],
     additionalPackageInstalls: [{ name: "pydantic", minVersion: "2" }],
-    description: "Connect to MCP servers",
+    description: "连接 MCP 服务器",
   },
   {
     id: "ipy-export",
     packagesRequired: [{ name: "nbformat" }],
     additionalPackageInstalls: [],
-    description: "Export as IPYNB",
+    description: "导出为 IPYNB",
   },
   {
     id: "testing",
     packagesRequired: [{ name: "pytest" }],
     additionalPackageInstalls: [],
-    description: "Autorun unit tests",
+    description: "自动运行单元测试",
   },
 ];
 
@@ -101,7 +101,7 @@ if (!isWasm()) {
     id: "lsp",
     packagesRequired: [{ name: "python-lsp-server" }, { name: "websockets" }],
     additionalPackageInstalls: [{ name: "python-lsp-ruff" }],
-    description: "Language Server Protocol*",
+    description: "语言服务器协议*",
   });
 }
 
@@ -129,20 +129,18 @@ export const OptionalFeatures: React.FC = () => {
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden gap-2">
-      <SettingSubtitle>Optional Features</SettingSubtitle>
+      <SettingSubtitle>可选功能</SettingSubtitle>
       <p className="text-sm text-muted-foreground">
-        marimo is lightweight, with few dependencies, to maximize compatibility
-        with your own environments.
+        marimo 很轻量，依赖较少，以便尽可能兼容你的环境。
         <br />
-        To unlock additional features in the marimo editor, you can install
-        these optional dependencies:
+        如需解锁 marimo 编辑器的更多功能，可以安装以下可选依赖：
       </p>
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Dependency</TableHead>
-            <TableHead>Feature</TableHead>
-            <TableHead>Status</TableHead>
+            <TableHead>依赖</TableHead>
+            <TableHead>功能</TableHead>
+            <TableHead>状态</TableHead>
             <TableHead />
           </TableRow>
         </TableHeader>
@@ -165,7 +163,7 @@ export const OptionalFeatures: React.FC = () => {
                   {isInstalled ? (
                     <div className="flex items-center">
                       <CheckCircleIcon className="h-4 w-4 text-(--grass-10) mr-2" />
-                      <span>Installed</span>
+                      <span>已安装</span>
                     </div>
                   ) : (
                     <div className="flex items-center">
@@ -187,7 +185,7 @@ export const OptionalFeatures: React.FC = () => {
         </TableBody>
       </Table>
 
-      <p className="text-muted-foreground mt-2">*Requires server restart</p>
+      <p className="text-muted-foreground mt-2">*需要重启服务器</p>
     </div>
   );
 };
@@ -215,20 +213,20 @@ const InstallButton: React.FC<{
       if (response.success) {
         onSuccess();
         toast({
-          title: "Package installed",
+          title: "包已安装",
           description: (
             <span>
-              The packages{" "}
+              包{" "}
               <Kbd className="inline">
                 {packageSpecs.map((pkg) => pkg.name).join(", ")}
               </Kbd>{" "}
-              have been added to your environment.
+              已添加到你的环境中。
             </span>
           ),
         });
       } else {
         toast({
-          title: "Failed to install package",
+          title: "安装包失败",
           description: response.error,
           variant: "danger",
         });
@@ -251,7 +249,7 @@ const InstallButton: React.FC<{
       ) : (
         <BoxIcon className="mr-2 h-3 w-3" />
       )}
-      Install with {packageManager}
+      使用 {packageManager} 安装
     </Button>
   );
 };

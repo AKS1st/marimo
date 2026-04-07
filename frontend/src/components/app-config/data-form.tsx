@@ -82,7 +82,7 @@ export const DataForm = ({
         render={({ field }) => (
           <div className="flex flex-col space-y-1">
             <FormItem className={formItemClasses}>
-              <FormLabel>Dataframe viewer</FormLabel>
+              <FormLabel>数据表查看器</FormLabel>
               <FormControl>
                 <NativeSelect
                   data-testid="display-dataframes-select"
@@ -103,8 +103,8 @@ export const DataForm = ({
             </FormItem>
 
             <FormDescription>
-              Whether to use marimo's rich dataframe viewer or a plain HTML
-              table. This requires restarting your notebook to take effect.
+              选择使用 marimo 的富数据表查看器，还是普通的 HTML 表格。
+              这需要重启 notebook 才会生效。
             </FormDescription>
           </div>
         )}
@@ -115,7 +115,7 @@ export const DataForm = ({
         render={({ field }) => (
           <div className="flex flex-col space-y-1">
             <FormItem className={formItemClasses}>
-              <FormLabel>Default table page size</FormLabel>
+              <FormLabel>默认表格分页大小</FormLabel>
               <FormControl>
                 <NumberField
                   aria-label="Default table page size"
@@ -140,8 +140,7 @@ export const DataForm = ({
               />
             </FormItem>
             <FormDescription>
-              The default number of rows displayed in dataframes and SQL
-              results.
+              数据表和 SQL 结果中默认显示的行数。
             </FormDescription>
           </div>
         )}
@@ -152,7 +151,7 @@ export const DataForm = ({
         render={({ field }) => (
           <div className="flex flex-col space-y-1">
             <FormItem className={formItemClasses}>
-              <FormLabel>Default table max columns</FormLabel>
+              <FormLabel>默认表格最大列数</FormLabel>
               <FormControl>
                 <NumberField
                   aria-label="Default table max columns"
@@ -177,8 +176,7 @@ export const DataForm = ({
               />
             </FormItem>
             <FormDescription>
-              The default maximum number of columns displayed in dataframes and
-              SQL results.
+              数据表和 SQL 结果中默认显示的最大列数。
             </FormDescription>
           </div>
         )}
@@ -187,30 +185,29 @@ export const DataForm = ({
       <SettingGroup title="SQL">
         <div className="flex flex-col gap-1">
           <div className="text-sm text-foreground">
-            Database Schema Discovery
+            数据库模式发现
           </div>
           <div className="text-sm text-muted-foreground mb-2">
-            Whether database schemas, tables, and columns are automatically
-            discovered.
+            是否自动发现数据库的模式、表和列。
             <br />
             <span className="font-semibold">
-              Can be expensive for large databases.
+              对大型数据库来说开销可能很高。
             </span>{" "}
-            Use 'auto' to determine introspection based on the{" "}
+            使用“auto”可让 marimo 根据{" "}
             <a
               className="text-link hover:underline"
               rel="noopener noreferrer"
               target="_blank"
               href="https://docs.marimo.io/guides/working_with_data/sql/?h=database#database-schema-and-table-auto-discovery"
             >
-              database
+              数据库
             </a>
-            .
+            来决定是否进行 introspection。
           </div>
 
-          {renderDiscoveryForm("datasources.auto_discover_schemas", "Schemas")}
-          {renderDiscoveryForm("datasources.auto_discover_tables", "Tables")}
-          {renderDiscoveryForm("datasources.auto_discover_columns", "Columns")}
+          {renderDiscoveryForm("datasources.auto_discover_schemas", "模式")}
+          {renderDiscoveryForm("datasources.auto_discover_tables", "表")}
+          {renderDiscoveryForm("datasources.auto_discover_columns", "列")}
         </div>
 
         <FormField
@@ -219,7 +216,7 @@ export const DataForm = ({
           render={({ field }) => (
             <div className="flex flex-col space-y-1">
               <FormItem className={formItemClasses}>
-                <FormLabel>SQL Linter</FormLabel>
+                <FormLabel>SQL 代码检查</FormLabel>
                 <FormControl>
                   <Checkbox
                     data-testid="sql-linter-checkbox"
@@ -234,7 +231,7 @@ export const DataForm = ({
                 />
               </FormItem>
               <FormDescription>
-                Better linting and autocompletions for SQL cells.
+                为 SQL 单元格提供更好的代码检查和自动补全。
               </FormDescription>
             </div>
           )}
@@ -246,7 +243,7 @@ export const DataForm = ({
           render={({ field }) => (
             <div className="flex flex-col space-y-1">
               <FormItem className={formItemClasses}>
-                <FormLabel>Default SQL output</FormLabel>
+                <FormLabel>默认 SQL 输出</FormLabel>
                 <FormControl>
                   <NativeSelect
                     data-testid="user-config-sql-output-select"
@@ -270,8 +267,8 @@ export const DataForm = ({
               </FormItem>
 
               <FormDescription>
-                The default SQL output type for new notebooks; overridden by
-                "sql_output" in the application config.
+                新 notebook 的默认 SQL 输出类型；会被应用配置中的 "sql_output"
+                覆盖。
               </FormDescription>
             </div>
           )}

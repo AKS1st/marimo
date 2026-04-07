@@ -205,8 +205,8 @@ export const BaseUrl: React.FC<BaseUrlProps> = ({
       name={name}
       render={({ field }) => (
         <div className="flex flex-col space-y-1">
-          <FormItem className={formItemClasses}>
-            <FormLabel>Base URL</FormLabel>
+            <FormItem className={formItemClasses}>
+            <FormLabel>基础 URL</FormLabel>
             <FormControl>
               <Input
                 data-testid={testId}
@@ -279,8 +279,8 @@ export const ModelSelector: React.FC<ModelSelectorProps> = ({
                   <>
                     <DropdownMenuSeparator />
                     <p className="px-2 py-1.5 text-sm text-muted-secondary flex items-center gap-1">
-                      Enter a custom model
-                      <Tooltip content="Models should include the provider prefix, e.g. 'openai/gpt-4o'">
+                      输入自定义模型
+                      <Tooltip content="模型应包含提供方前缀，例如 'openai/gpt-4o'">
                         <InfoIcon className="h-3 w-3" />
                       </Tooltip>
                     </p>
@@ -345,7 +345,7 @@ export const ProviderSelect: React.FC<ProviderSelectProps> = ({
       render={({ field }) => (
         <div className="flex flex-col space-y-1">
           <FormItem className={formItemClasses}>
-            <FormLabel>Provider</FormLabel>
+            <FormLabel>提供方</FormLabel>
             <FormControl>
               <NativeSelect
                 data-testid={testId}
@@ -399,13 +399,13 @@ const renderCopilotProvider = ({
   if (copilot === "codeium") {
     return (
       <>
-        <p className="text-sm text-muted-secondary">
-          To get a Windsurf API key, follow{" "}
-          <ExternalLink href="https://docs.marimo.io/guides/editor_features/ai_completion.html#windsurf-copilot">
-            these instructions
-          </ExternalLink>
-          .
-        </p>
+          <p className="text-sm text-muted-secondary">
+            要获取 Windsurf API 密钥，请查看{" "}
+            <ExternalLink href="https://docs.marimo.io/guides/editor_features/ai_completion.html#windsurf-copilot">
+              这些说明
+            </ExternalLink>
+            。
+          </p>
         <ApiKey
           form={form}
           config={config}
@@ -424,12 +424,12 @@ const renderCopilotProvider = ({
   if (copilot === "custom") {
     return (
       <ModelSelector
-        label="Autocomplete Model"
+        label="自动补全模型"
         form={form}
         config={config}
         name="ai.models.autocomplete_model"
         placeholder="ollama/qwen2.5-coder:1.5b"
-        description="Model to use for code completion when using a custom provider."
+        description="使用自定义提供方时用于代码补全的模型。"
         onSubmit={onSubmit}
         forRole="autocomplete"
       />
@@ -506,7 +506,7 @@ const ModelInfoCard = ({ model }: { model: AiModel }) => {
     <div className="flex flex-col flex-1 gap-0.5">
       <div className="flex items-center gap-2">
         <h3 className="font-medium text-sm">{model.name}</h3>
-        <Tooltip content="Custom model">
+          <Tooltip content="自定义模型">
           {model.custom && <BotIcon className="h-4 w-4" />}
         </Tooltip>
         {model.thinking && (
@@ -517,7 +517,7 @@ const ModelInfoCard = ({ model }: { model: AiModel }) => {
             )}
           >
             <BrainIcon className="h-3 w-3" />
-            <span className="text-xs font-medium">Reasoning</span>
+            <span className="text-xs font-medium">推理</span>
           </div>
         )}
       </div>
@@ -537,10 +537,9 @@ export const AiCodeCompletionConfig: React.FC<AiConfigProps> = ({
 }) => {
   return (
     <SettingGroup>
-      <SettingSubtitle>Code Completion</SettingSubtitle>
+      <SettingSubtitle>代码补全</SettingSubtitle>
       <p className="text-sm text-muted-secondary">
-        Choose GitHub Copilot, Codeium, or a custom provider (such as Ollama) to
-        enable AI-powered code completion.
+        选择 GitHub Copilot、Codeium，或自定义提供方（例如 Ollama），即可启用 AI 驱动的代码补全。
       </p>
 
       <ProviderSelect
@@ -579,7 +578,7 @@ const AccordionFormItem = ({
           {title}
           {isConfigured && (
             <span className="ml-2 px-1 rounded bg-muted text-xs font-medium border">
-              Configured
+              已配置
             </span>
           )}
         </AiProviderTitle>
@@ -662,7 +661,7 @@ export const CustomProvidersConfig: React.FC<AiConfigProps> = ({
         const providerForm = (
           <div className="flex flex-col gap-3 p-4 border border-border rounded-md bg-muted/20">
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor={providerNameInputId}>Provider Name</Label>
+              <Label htmlFor={providerNameInputId}>提供方名称</Label>
               <Input
                 id={providerNameInputId}
                 placeholder="e.g., together, groq, mistral"
@@ -671,17 +670,17 @@ export const CustomProvidersConfig: React.FC<AiConfigProps> = ({
               />
               {isDuplicate && (
                 <p className="text-xs text-destructive">
-                  A provider with this name already exists.
+                  已存在同名提供方。
                 </p>
               )}
               {hasInvalidChars && (
                 <p className="text-xs text-destructive">
-                  Provider names cannot contain '.' characters.
+                  提供方名称不能包含 "." 字符。
                 </p>
               )}
               {newProviderName && !hasInvalidChars && (
                 <p className="text-xs text-muted-secondary">
-                  Use models with prefix:{" "}
+                  使用带前缀的模型：{" "}
                   <Kbd className="inline text-xs">{normalizedName}/</Kbd>
                 </p>
               )}
@@ -689,7 +688,7 @@ export const CustomProvidersConfig: React.FC<AiConfigProps> = ({
 
             <div className="flex flex-col gap-1.5">
               <Label htmlFor={baseUrlInputId}>
-                Base URL <span className="text-destructive">*</span>
+                基础 URL <span className="text-destructive">*</span>
               </Label>
               <Input
                 id={baseUrlInputId}
@@ -700,7 +699,7 @@ export const CustomProvidersConfig: React.FC<AiConfigProps> = ({
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor={apiKeyInputId}>API Key (optional)</Label>
+              <Label htmlFor={apiKeyInputId}>API 密钥（可选）</Label>
               <Input
                 id={apiKeyInputId}
                 placeholder="sk-..."
@@ -716,10 +715,10 @@ export const CustomProvidersConfig: React.FC<AiConfigProps> = ({
                 disabled={!hasValidValues}
                 size="xs"
               >
-                Add Provider
+                添加提供方
               </Button>
               <Button variant="outline" onClick={resetForm} size="xs">
-                Cancel
+                取消
               </Button>
             </div>
           </div>
@@ -813,10 +812,9 @@ export const CustomProvidersConfig: React.FC<AiConfigProps> = ({
 
         return (
           <SettingGroup>
-            <SettingSubtitle>Custom Providers</SettingSubtitle>
+            <SettingSubtitle>自定义提供方</SettingSubtitle>
             <p className="text-sm text-muted-secondary">
-              Add your own OpenAI-compatible provider. Once added, you can
-              configure models in the AI Models tab.
+              添加你自己的 OpenAI 兼容提供方。添加后，可以在 AI 模型选项卡中配置模型。
             </p>
 
             {customProviderEntries.length > 0 && (
@@ -838,7 +836,7 @@ export const CustomProvidersConfig: React.FC<AiConfigProps> = ({
                 className="self-start"
                 isFormOpen={isAddingProvider}
                 setIsFormOpen={setIsAddingProvider}
-                label="Add Provider"
+                label="添加提供方"
               />
             )}
           </SettingGroup>
@@ -862,12 +860,11 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
   return (
     <SettingGroup>
       <p className="text-sm text-muted-secondary">
-        Add your API keys below or to <Kbd className="inline">marimo.toml</Kbd>{" "}
-        to set up a provider for the Code Completion and Assistant features; see{" "}
+        在下方或 <Kbd className="inline">marimo.toml</Kbd> 中添加 API 密钥，以设置代码补全和助手功能的提供方；更多信息请查看{" "}
         <ExternalLink href="https://docs.marimo.io/guides/editor_features/ai_completion/#connecting-to-an-llm">
-          docs
-        </ExternalLink>{" "}
-        for more info.
+          文档
+        </ExternalLink>
+        。
       </p>
       <Accordion type="multiple">
         <AccordionFormItem
@@ -884,11 +881,11 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             testId="ai-openai-api-key-input"
             description={
               <>
-                Your OpenAI API key from{" "}
+                你的 OpenAI API 密钥来自{" "}
                 <ExternalLink href="https://platform.openai.com/account/api-keys">
                   platform.openai.com
                 </ExternalLink>
-                .
+                。
               </>
             }
           />
@@ -915,11 +912,11 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             testId="ai-anthropic-api-key-input"
             description={
               <>
-                Your Anthropic API key from{" "}
+                你的 Anthropic API 密钥来自{" "}
                 <ExternalLink href="https://console.anthropic.com/settings/keys">
                   console.anthropic.com
                 </ExternalLink>
-                .
+                。
               </>
             }
           />
@@ -938,11 +935,11 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             testId="ai-google-api-key-input"
             description={
               <>
-                Your Google AI API key from{" "}
+                你的 Google AI API 密钥来自{" "}
                 <ExternalLink href="https://aistudio.google.com/app/apikey">
                   aistudio.google.com
                 </ExternalLink>
-                .
+                。
               </>
             }
           />
@@ -968,13 +965,12 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
           isConfigured={hasValue("ai.github.api_key")}
         >
           <Alert variant="warning" className="py-1.5 px-3 text-xs">
-            <AlertDescription>
-              Free tier models have low token limits which can cause errors with
-              larger prompts.{" "}
-              <ExternalLink href="https://docs.github.com/en/github-models/prototyping-with-ai-models#rate-limits">
-                Learn more
-              </ExternalLink>
-            </AlertDescription>
+              <AlertDescription>
+                免费层模型的 token 限制较低，在较大的提示词下可能会出错。{" "}
+                <ExternalLink href="https://docs.github.com/en/github-models/prototyping-with-ai-models#rate-limits">
+                  了解更多
+                </ExternalLink>
+              </AlertDescription>
           </Alert>
           <ApiKey
             form={form}
@@ -982,12 +978,12 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             name="ai.github.api_key"
             placeholder="gho_..."
             testId="ai-github-api-key-input"
-            description={
-              <>
-                Your GitHub API token from{" "}
-                <Kbd className="inline">gh auth token</Kbd>.
-              </>
-            }
+                description={
+                  <>
+                    你的 GitHub API 令牌来自{" "}
+                    <Kbd className="inline">gh auth token</Kbd>。
+                  </>
+                }
           />
           <BaseUrl
             form={form}
@@ -1009,15 +1005,15 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             name="ai.openrouter.api_key"
             placeholder="or-..."
             testId="ai-openrouter-api-key-input"
-            description={
-              <>
-                Your OpenRouter API key from {""}
-                <ExternalLink href="https://openrouter.ai/keys">
-                  openrouter.ai
-                </ExternalLink>
-                .
-              </>
-            }
+                description={
+                  <>
+                    你的 OpenRouter API 密钥来自 {""}
+                    <ExternalLink href="https://openrouter.ai/keys">
+                      openrouter.ai
+                    </ExternalLink>
+                    。
+                  </>
+                }
           />
           <BaseUrl
             form={form}
@@ -1041,11 +1037,11 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             testId="ai-wandb-api-key-input"
             description={
               <>
-                Your Weights & Biases API key from{" "}
+                你的 Weights & Biases API 密钥来自{" "}
                 <ExternalLink href="https://wandb.ai/authorize">
                   wandb.ai
                 </ExternalLink>
-                .
+                。
               </>
             }
           />
@@ -1073,11 +1069,11 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             testId="ai-azure-api-key-input"
             description={
               <>
-                Your Azure API key from{" "}
+                你的 Azure API 密钥来自{" "}
                 <ExternalLink href="https://portal.azure.com/">
                   portal.azure.com
                 </ExternalLink>
-                .
+                。
               </>
             }
           />
@@ -1096,12 +1092,11 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
           isConfigured={hasValue("ai.bedrock.region_name")}
         >
           <p className="text-sm text-muted-secondary mb-2">
-            To use AWS Bedrock, you need to configure AWS credentials and
-            region. See the{" "}
+            要使用 AWS Bedrock，你需要配置 AWS 凭据和区域。更多细节请查看{" "}
             <ExternalLink href="https://docs.marimo.io/guides/editor_features/ai_completion.html#aws-bedrock">
-              documentation
-            </ExternalLink>{" "}
-            for more details.
+              文档
+            </ExternalLink>
+            。
           </p>
 
           <FormField
@@ -1111,7 +1106,7 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             render={({ field }) => (
               <div className="flex flex-col space-y-1">
                 <FormItem className={formItemClasses}>
-                  <FormLabel>AWS Region</FormLabel>
+                  <FormLabel>AWS 区域</FormLabel>
                   <FormControl>
                     <NativeSelect
                       data-testid="bedrock-region-select"
@@ -1138,7 +1133,7 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
                   />
                 </FormItem>
                 <FormDescription>
-                  The AWS region where Bedrock service is available.
+                  Bedrock 服务可用的 AWS 区域。
                 </FormDescription>
               </div>
             )}
@@ -1151,7 +1146,7 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             render={({ field }) => (
               <div className="flex flex-col space-y-1">
                 <FormItem className={formItemClasses}>
-                  <FormLabel>AWS Profile Name (Optional)</FormLabel>
+                  <FormLabel>AWS 配置文件名称（可选）</FormLabel>
                   <FormControl>
                     <Input
                       data-testid="bedrock-profile-input"
@@ -1169,8 +1164,7 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
                   />
                 </FormItem>
                 <FormDescription>
-                  The AWS profile name from your ~/.aws/credentials file. Leave
-                  blank to use your default AWS credentials.
+                  你的 ~/.aws/credentials 文件中的 AWS 配置文件名称。留空则使用默认 AWS 凭据。
                 </FormDescription>
               </div>
             )}
@@ -1178,7 +1172,7 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
         </AccordionFormItem>
 
         <AccordionFormItem
-          title="OpenAI-Compatible (Legacy)"
+          title="OpenAI 兼容（旧版）"
           provider="openai-compatible"
           isConfigured={
             hasValue("ai.open_ai_compatible.api_key") &&
@@ -1186,8 +1180,7 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
           }
         >
           <p className="text-sm text-amber-600 dark:text-amber-400 mb-2">
-            Consider using Custom Providers instead, which allows you to add
-            multiple providers with distinct names.
+            建议改用“自定义提供方”，这样可以添加多个不同名称的提供方。
           </p>
           <ApiKey
             form={form}
@@ -1197,8 +1190,8 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             testId="ai-openai-compatible-api-key-input"
             description={
               <>
-                API key for any OpenAI-compatible provider (e.g., Together,
-                Groq, Mistral, Perplexity, etc).
+                适用于任意 OpenAI 兼容提供方的 API 密钥（例如 Together、
+                Groq、Mistral、Perplexity 等）。
               </>
             }
           />
@@ -1208,7 +1201,7 @@ export const AiProvidersConfig: React.FC<AiConfigProps> = ({
             name="ai.open_ai_compatible.base_url"
             placeholder="https://api.together.xyz/v1"
             testId="ai-openai-compatible-base-url-input"
-            description={<>Base URL for your OpenAI-compatible provider.</>}
+                description={<>你的 OpenAI 兼容提供方的基础 URL。</>}
           />
         </AccordionFormItem>
       </Accordion>
@@ -1225,7 +1218,7 @@ export const AiAssistConfig: React.FC<AiConfigProps> = ({
 }) => {
   return (
     <SettingGroup>
-      <SettingSubtitle>AI Assistant</SettingSubtitle>
+      <SettingSubtitle>AI 助手</SettingSubtitle>
 
       <FormField
         control={form.control}
@@ -1233,7 +1226,7 @@ export const AiAssistConfig: React.FC<AiConfigProps> = ({
         render={({ field }) => (
           <div className="flex flex-col gap-y-1">
             <FormItem className={formItemClasses}>
-              <FormLabel className="font-normal">AI Edit Tooltip</FormLabel>
+              <FormLabel className="font-normal">AI 编辑提示</FormLabel>
               <FormControl>
                 <Checkbox
                   data-testid="inline-ai-checkbox"
@@ -1242,36 +1235,36 @@ export const AiAssistConfig: React.FC<AiConfigProps> = ({
                 />
               </FormControl>
             </FormItem>
-            <FormDescription>
-              Enable "Edit with AI" tooltip when selecting code.
-            </FormDescription>
+              <FormDescription>
+                选中代码时显示“使用 AI 编辑”的提示。
+              </FormDescription>
           </div>
         )}
       />
 
       <FormErrorsBanner />
       <ModelSelector
-        label="Chat Model"
+        label="聊天模型"
         form={form}
         config={config}
         name="ai.models.chat_model"
         placeholder={DEFAULT_AI_MODEL}
         description={
-          <span>Model to use for chat conversations in the Chat panel.</span>
+          <span>用于聊天面板中对话的模型。</span>
         }
         forRole="chat"
         onSubmit={onSubmit}
       />
       <ModelSelector
-        label="Edit Model"
+        label="编辑模型"
         form={form}
         config={config}
         name="ai.models.edit_model"
         placeholder={DEFAULT_AI_MODEL}
         description={
           <span>
-            Model to use for code editing with the{" "}
-            <Kbd className="inline">Generate with AI</Kbd> button.
+            用于通过{" "}
+            <Kbd className="inline">Generate with AI</Kbd> 按钮进行代码编辑的模型。
           </span>
         }
         forRole="edit"
@@ -1284,7 +1277,7 @@ export const AiAssistConfig: React.FC<AiConfigProps> = ({
         render={({ field }) => (
           <div className="flex flex-col">
             <FormItem>
-              <FormLabel>Custom Rules</FormLabel>
+              <FormLabel>自定义规则</FormLabel>
               <FormControl>
                 <Textarea
                   data-testid="ai-rules-input"
@@ -1297,8 +1290,8 @@ export const AiAssistConfig: React.FC<AiConfigProps> = ({
               <FormMessage />
               <IsOverridden userConfig={config} name="ai.rules" />
             </FormItem>
-            <FormDescription>
-              Custom rules to include in all AI completion prompts.
+              <FormDescription>
+              要包含在所有 AI 补全提示中的自定义规则。
             </FormDescription>
           </div>
         )}
@@ -1361,7 +1354,7 @@ const ProviderTreeItem: React.FC<ProviderTreeItemProps> = ({
           <div className="flex items-center justify-between w-full">
             <h2 className="font-semibold">{name}</h2>
             <p className="text-sm text-muted-secondary">
-              {enabledCount}/{totalCount} models
+              {enabledCount}/{totalCount} 个模型
             </p>
           </div>
           <AriaButton slot="chevron">
@@ -1476,13 +1469,12 @@ export const AiModelDisplayConfig: React.FC<AiConfigProps> = ({
   return (
     <SettingGroup className="gap-2">
       <p className="text-sm text-muted-secondary">
-        Control which AI models are displayed in model selection dropdowns. When
-        no models are selected, all available models will be shown.
+        控制模型选择下拉框中显示哪些 AI 模型。未选择模型时，将显示所有可用模型。
       </p>
 
       <div className="bg-background">
         <Tree
-          aria-label="AI Models by Provider"
+          aria-label="按提供方分类的 AI 模型"
           className="flex-1 overflow-auto outline-none focus-visible:outline-none"
           selectionMode="none"
         >
@@ -1563,12 +1555,12 @@ export const AddModelForm: React.FC<{
   const providerSelect = (
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2">
-        <Label
-          htmlFor={providerSelectId}
-          className="text-sm font-medium text-muted-foreground min-w-12"
-        >
-          Provider
-        </Label>
+          <Label
+            htmlFor={providerSelectId}
+            className="text-sm font-medium text-muted-foreground min-w-12"
+          >
+            提供方
+          </Label>
         <Select
           value={provider || ""}
           onValueChange={(v) => setProvider(v as ProviderId | "custom")}
@@ -1583,7 +1575,7 @@ export const AddModelForm: React.FC<{
                 <span>{getProviderLabel(provider as ProviderId)}</span>
               </div>
             ) : (
-              <span className="text-muted-foreground">Select...</span>
+          <span className="text-muted-foreground">请选择...</span>
             )}
           </SelectTrigger>
           <SelectContent>
@@ -1591,7 +1583,7 @@ export const AddModelForm: React.FC<{
               {customProviderNames.length > 0 && (
                 <>
                   <p className="px-2 py-1 text-xs text-muted-secondary font-medium">
-                    Custom Providers
+                    自定义提供方
                   </p>
                   {customProviderNames.map((p) => (
                     <SelectItem key={p} value={p}>
@@ -1602,7 +1594,7 @@ export const AddModelForm: React.FC<{
                     </SelectItem>
                   ))}
                   <p className="px-2 py-1 text-xs text-muted-secondary font-medium mt-1">
-                    Built-in Providers
+                    内置提供方
                   </p>
                 </>
               )}
@@ -1617,7 +1609,7 @@ export const AddModelForm: React.FC<{
                 </SelectItem>
               ))}
               <p className="px-2 py-1 text-xs text-muted-secondary font-medium mt-1">
-                Other
+                其他
               </p>
               <SelectItem value="custom">
                 <div className="flex items-center gap-2">
@@ -1625,7 +1617,7 @@ export const AddModelForm: React.FC<{
                     provider="openai-compatible"
                     className="h-4 w-4"
                   />
-                  <span>Enter provider name</span>
+                    <span>输入提供方名称</span>
                 </div>
               </SelectItem>
             </SelectGroup>
@@ -1664,7 +1656,7 @@ export const AddModelForm: React.FC<{
         htmlFor={modelNameInputId}
         className="text-sm font-medium text-muted-foreground"
       >
-        Model
+        模型
       </Label>
       <Input
         id={modelNameInputId}
@@ -1683,12 +1675,12 @@ export const AddModelForm: React.FC<{
       <div
         className={cn("flex gap-1.5 ml-auto", isCustomProvider && "self-end")}
       >
-        <Button onClick={handleAddModel} disabled={!hasValidValues} size="xs">
-          Add
-        </Button>
-        <Button variant="outline" onClick={resetForm} size="xs">
-          Cancel
-        </Button>
+              <Button onClick={handleAddModel} disabled={!hasValidValues} size="xs">
+                添加
+              </Button>
+              <Button variant="outline" onClick={resetForm} size="xs">
+                取消
+              </Button>
       </div>
     </div>
   );
@@ -1700,12 +1692,12 @@ export const AddModelForm: React.FC<{
         <AddButton
           isFormOpen={isFormOpen}
           setIsFormOpen={setIsFormOpen}
-          label="Add Model"
+          label="添加模型"
           className="pl-2"
         />
         {modelAdded && (
           <div className="flex items-center gap-1 text-green-700 bg-green-500/10 px-2 py-1 rounded-md ml-auto">
-            ✓ Model added
+            ✓ 已添加模型
           </div>
         )}
       </div>
@@ -1763,9 +1755,9 @@ export const AiConfig: React.FC<AiConfigProps> = ({
       className="flex-1"
     >
       <TabsList className="mb-2">
-        <TabsTrigger value="ai-features">AI Features</TabsTrigger>
-        <TabsTrigger value="ai-providers">AI Providers</TabsTrigger>
-        <TabsTrigger value="ai-models">AI Models</TabsTrigger>
+        <TabsTrigger value="ai-features">AI 功能</TabsTrigger>
+        <TabsTrigger value="ai-providers">AI 提供方</TabsTrigger>
+        <TabsTrigger value="ai-models">AI 模型</TabsTrigger>
         {!wasm && <TabsTrigger value="mcp">MCP</TabsTrigger>}
       </TabsList>
 

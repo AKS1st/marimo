@@ -20,15 +20,15 @@ export const MCPStatusIndicator: React.FC = () => {
     try {
       await API.post<object, { success: boolean }>("/ai/mcp/refresh", {});
       toast({
-        title: "MCP refreshed",
-        description: "MCP server configuration has been refreshed",
+        title: "MCP 已刷新",
+        description: "MCP 服务器配置已刷新",
       });
       refetch();
     } catch (error) {
       toast({
-        title: "Refresh failed",
+        title: "刷新失败",
         description:
-          error instanceof Error ? error.message : "Failed to refresh MCP",
+          error instanceof Error ? error.message : "刷新 MCP 失败",
         variant: "danger",
       });
     }
@@ -39,7 +39,7 @@ export const MCPStatusIndicator: React.FC = () => {
 
   return (
     <Popover>
-      <Tooltip content="MCP Status">
+      <Tooltip content="MCP 状态">
         <PopoverTrigger asChild={true}>
           <Button variant="text" size="icon">
             <PlugIcon
@@ -56,7 +56,7 @@ export const MCPStatusIndicator: React.FC = () => {
       <PopoverContent className="w-[320px]" align="start" side="right">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium text-sm">MCP Server Status</h4>
+            <h4 className="font-medium text-sm">MCP 服务器状态</h4>
             <Button
               variant="ghost"
               size="xs"
@@ -74,7 +74,7 @@ export const MCPStatusIndicator: React.FC = () => {
             <div className="text-xs space-y-2">
               {hasServers && (
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Overall:</span>
+                  <span className="text-muted-foreground">总体：</span>
                   <McpStatusText status={status.status} />
                 </div>
               )}
@@ -86,7 +86,7 @@ export const MCPStatusIndicator: React.FC = () => {
               {hasServers && (
                 <div className="space-y-1">
                   <div className="text-muted-foreground font-medium">
-                    Servers:
+                    服务器：
                   </div>
                   {Object.entries(servers).map(([name, serverStatus]) => (
                     <div
@@ -103,8 +103,8 @@ export const MCPStatusIndicator: React.FC = () => {
               )}
               {!hasServers && (
                 <div className="text-muted-foreground text-center py-2">
-                  No MCP servers configured. <br /> Configure under{" "}
-                  <b>Settings &gt; AI &gt; MCP</b>
+                  尚未配置 MCP 服务器。<br />请在{" "}
+                  <b>设置 &gt; AI &gt; MCP</b>
                 </div>
               )}
             </div>

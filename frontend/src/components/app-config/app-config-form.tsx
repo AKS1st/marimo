@@ -76,14 +76,14 @@ export const AppConfigForm: React.FC = () => {
         className="flex flex-col gap-6"
       >
         <div>
-          <SettingTitle>Notebook Settings</SettingTitle>
+          <SettingTitle>Notebook 设置</SettingTitle>
           <SettingDescription>
-            Configure how your notebook or application looks and behaves.
+            配置 notebook 或应用的外观和行为。
           </SettingDescription>
         </div>
 
         <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-          <SettingSection title="Display">
+          <SettingSection title="显示">
             <FormField
               control={form.control}
               name="width"
@@ -91,7 +91,7 @@ export const AppConfigForm: React.FC = () => {
                 <FormItem
                   className={"flex flex-row items-center space-x-1 space-y-0"}
                 >
-                  <FormLabel>Width</FormLabel>
+                  <FormLabel>宽度</FormLabel>
                   <FormControl>
                     <NativeSelect
                       data-testid="app-width-select"
@@ -117,7 +117,7 @@ export const AppConfigForm: React.FC = () => {
               render={({ field }) => (
                 <div className="flex flex-col gap-y-1">
                   <FormItem className="flex flex-row items-center space-x-1 space-y-0">
-                    <FormLabel>App title</FormLabel>
+                    <FormLabel>应用标题</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -135,23 +135,21 @@ export const AppConfigForm: React.FC = () => {
                     <FormMessage />
                   </FormItem>
                   <FormDescription>
-                    The application title is put in the title tag in the HTML
-                    code and typically displayed in the title bar of the browser
-                    window.
+                    应用标题会写入 HTML 的 title 标签中，通常会显示在浏览器窗口的标题栏里。
                   </FormDescription>
                 </div>
               )}
             />
           </SettingSection>
 
-          <SettingSection title="Custom Files">
+          <SettingSection title="自定义文件">
             <FormField
               control={form.control}
               name="css_file"
               render={({ field }) => (
                 <div className="flex flex-col gap-y-1">
                   <FormItem className="flex flex-row items-center space-x-1 space-y-0">
-                    <FormLabel className="shrink-0">Custom CSS</FormLabel>
+                     <FormLabel className="shrink-0">自定义 CSS</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -170,8 +168,7 @@ export const AppConfigForm: React.FC = () => {
                     <FormMessage />
                   </FormItem>
                   <FormDescription>
-                    A filepath to a custom css file to be injected into the
-                    notebook.
+                    要注入 notebook 的自定义 CSS 文件路径。
                   </FormDescription>
                 </div>
               )}
@@ -182,7 +179,7 @@ export const AppConfigForm: React.FC = () => {
               render={({ field }) => (
                 <div className="flex flex-col gap-y-1">
                   <FormItem className="flex flex-row items-center space-x-1 space-y-0">
-                    <FormLabel className="shrink-0">HTML Head</FormLabel>
+                     <FormLabel className="shrink-0">HTML 头部</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -196,17 +193,16 @@ export const AppConfigForm: React.FC = () => {
                     <FormMessage />
                   </FormItem>
                   <FormDescription>
-                    A filepath to an HTML file to be injected into the{" "}
-                    <Kbd className="inline">{"<head/>"}</Kbd> section of the
-                    notebook. Use this to add analytics, custom fonts, meta
-                    tags, or external scripts.
+                    要注入 notebook 的 HTML 文件路径，插入到{" "}
+                    <Kbd className="inline">{"<head/>"}</Kbd> 部分。
+                    可用于添加分析、字体、meta 标签或外部脚本。
                   </FormDescription>
                 </div>
               )}
             />
           </SettingSection>
 
-          <SettingSection title="Data">
+          <SettingSection title="数据">
             <FormField
               control={form.control}
               name="sql_output"
@@ -215,16 +211,16 @@ export const AppConfigForm: React.FC = () => {
                   <FormItem
                     className={"flex flex-row items-center space-x-1 space-y-0"}
                   >
-                    <FormLabel>SQL Output Type</FormLabel>
+                    <FormLabel>SQL 输出类型</FormLabel>
                     <FormControl>
                       <NativeSelect
                         data-testid="sql-output-select"
                         onChange={(e) => {
                           field.onChange(e.target.value);
                           toast({
-                            title: "Kernel Restart Required",
+                            title: "需要重启内核",
                             description:
-                              "This change requires a kernel restart to take effect.",
+                              "此更改需要重启内核后才会生效。",
                           });
                         }}
                         value={field.value}
@@ -241,20 +237,19 @@ export const AppConfigForm: React.FC = () => {
                     <FormMessage />
                   </FormItem>
                   <FormDescription>
-                    The Python type returned by a SQL cell. For best performance
-                    with large datasets, we recommend using{" "}
-                    <Kbd className="inline">native</Kbd>. See the{" "}
+                    SQL 单元格返回的 Python 类型。对于大型数据集，为获得最佳性能，我们建议使用{" "}
+                    <Kbd className="inline">native</Kbd>。查看{" "}
                     <ExternalLink href="https://docs.marimo.io/guides/working_with_data/sql">
-                      SQL guide
+                      SQL 指南
                     </ExternalLink>{" "}
-                    for more information.
+                    了解更多。
                   </FormDescription>
                 </div>
               )}
             />
           </SettingSection>
 
-          <SettingSection title="Exporting outputs">
+          <SettingSection title="导出输出">
             <FormField
               control={form.control}
               name="auto_download"
@@ -290,10 +285,9 @@ export const AppConfigForm: React.FC = () => {
                     <FormMessage />
                   </FormItem>
                   <FormDescription>
-                    When enabled, marimo will periodically save this notebook in
-                    your selected formats (HTML, IPYNB) to a folder named{" "}
-                    <Kbd className="inline">__marimo__</Kbd> next to your
-                    notebook file.
+                    启用后，marimo 会定期将此 notebook 以所选格式（HTML、IPYNB）
+                    保存到 notebook 文件旁名为{" "}
+                    <Kbd className="inline">__marimo__</Kbd> 的文件夹中。
                   </FormDescription>
                 </div>
               )}

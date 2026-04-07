@@ -54,9 +54,9 @@ export const SQL_OUTPUT_SELECT_OPTIONS: {
   label: string;
   value: SqlOutputType;
 }[] = [
-  { label: "Auto (Default)", value: "auto" },
-  { label: "Native", value: "native" },
+  { label: "自动（默认）", value: "auto" },
+  { label: "原生", value: "native" },
   { label: "Polars", value: "polars" },
-  { label: "Lazy Polars", value: "lazy-polars" },
+  { label: "惰性 Polars", value: "lazy-polars" },
   { label: "Pandas", value: "pandas" },
 ];

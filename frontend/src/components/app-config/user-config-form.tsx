@@ -65,25 +65,25 @@ import { OptionalFeatures } from "./optional-features";
 const categories = [
   {
     id: "editor",
-    label: "Editor",
+    label: "编辑器",
     Icon: EditIcon,
     className: "bg-(--blue-4)",
   },
   {
     id: "display",
-    label: "Display",
+    label: "显示",
     Icon: MonitorIcon,
     className: "bg-(--grass-4)",
   },
   {
     id: "packageManagementAndData",
-    label: "Packages & Data",
+    label: "包与数据",
     Icon: LayersIcon,
     className: "bg-(--red-4)",
   },
   {
     id: "runtime",
-    label: "Runtime",
+    label: "运行时",
     Icon: CpuIcon,
     className: "bg-(--amber-4)",
   },
@@ -95,13 +95,13 @@ const categories = [
   },
   {
     id: "optionalDeps",
-    label: "Optional Dependencies",
+    label: "可选依赖",
     Icon: FolderCog2,
     className: "bg-(--orange-4)",
   },
   {
     id: "labs",
-    label: "Labs",
+    label: "实验功能",
     Icon: FlaskConicalIcon,
     className: "bg-(--slate-4)",
   },
@@ -208,14 +208,14 @@ export const UserConfigForm: React.FC = () => {
       case "editor":
         return (
           <>
-            <SettingGroup title="Autosave">
+            <SettingGroup title="自动保存">
               <FormField
                 control={form.control}
                 name="save.autosave"
                 render={({ field }) => (
                   <FormItem className={formItemClasses}>
                     <FormLabel className="font-normal">
-                      Autosave enabled
+                      启用自动保存
                     </FormLabel>
                     <FormControl>
                       <Checkbox
@@ -237,10 +237,10 @@ export const UserConfigForm: React.FC = () => {
                 name="save.autosave_delay"
                 render={({ field }) => (
                   <FormItem className={formItemClasses}>
-                    <FormLabel>Autosave delay (seconds)</FormLabel>
+                    <FormLabel>自动保存延迟（秒）</FormLabel>
                     <FormControl>
                       <NumberField
-                        aria-label="Autosave delay"
+                        aria-label="自动保存延迟"
                         data-testid="autosave-delay-input"
                         className="m-0 w-24"
                         isDisabled={
@@ -273,7 +273,7 @@ export const UserConfigForm: React.FC = () => {
                 render={({ field }) => (
                   <div className="flex flex-col gap-y-1">
                     <FormItem className={formItemClasses}>
-                      <FormLabel>Save cell outputs as</FormLabel>
+                      <FormLabel>将单元格输出保存为</FormLabel>
                       <FormControl>
                         <div className="flex gap-4">
                           <div className="flex items-center space-x-2">
@@ -292,7 +292,7 @@ export const UserConfigForm: React.FC = () => {
                                 );
                               }}
                             />
-                            <FormLabel htmlFor={htmlCheckboxId}>HTML</FormLabel>
+                              <FormLabel htmlFor={htmlCheckboxId}>HTML</FormLabel>
                           </div>
                           <div className="flex items-center space-x-2">
                             <Checkbox
@@ -310,7 +310,7 @@ export const UserConfigForm: React.FC = () => {
                                 );
                               }}
                             />
-                            <FormLabel htmlFor={ipynbCheckboxId}>
+                              <FormLabel htmlFor={ipynbCheckboxId}>
                               IPYNB
                             </FormLabel>
                           </div>
@@ -323,23 +323,23 @@ export const UserConfigForm: React.FC = () => {
                       />
                     </FormItem>
                     <FormDescription>
-                      When enabled, marimo will periodically save notebooks in
-                      your selected formats (HTML, IPYNB) to a folder named{" "}
+                      启用后，marimo 会定期将 notebook 以所选格式（HTML、IPYNB）
+                      保存到名为{" "}
                       <Kbd className="inline">__marimo__</Kbd> next to your
-                      notebook file.
+                      notebook 文件旁的文件夹中。
                     </FormDescription>
                   </div>
                 )}
               />
             </SettingGroup>
-            <SettingGroup title="Formatting">
+            <SettingGroup title="格式化">
               <FormField
                 control={form.control}
                 name="save.format_on_save"
                 render={({ field }) => (
                   <FormItem className={formItemClasses}>
                     <FormLabel className="font-normal">
-                      Format on save
+                      保存时格式化
                     </FormLabel>
                     <FormControl>
                       <Checkbox
@@ -365,10 +365,10 @@ export const UserConfigForm: React.FC = () => {
                 render={({ field }) => (
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
-                      <FormLabel>Line length</FormLabel>
+                      <FormLabel>行长度</FormLabel>
                       <FormControl>
                         <NumberField
-                          aria-label="Line length"
+                          aria-label="行长度"
                           data-testid="line-length-input"
                           className="m-0 w-24"
                           {...field}
@@ -392,13 +392,13 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
 
                     <FormDescription>
-                      Maximum line length when formatting code.
+                      格式化代码时的最大行长度。
                     </FormDescription>
                   </div>
                 )}
               />
             </SettingGroup>
-            <SettingGroup title="Autocomplete">
+            <SettingGroup title="自动补全">
               <FormField
                 control={form.control}
                 name="completion.activate_on_typing"
@@ -406,7 +406,7 @@ export const UserConfigForm: React.FC = () => {
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
                       <FormLabel className="font-normal">
-                        Autocomplete
+                        自动补全
                       </FormLabel>
                       <FormControl>
                         <Checkbox
@@ -425,8 +425,7 @@ export const UserConfigForm: React.FC = () => {
                       />
                     </FormItem>
                     <FormDescription>
-                      When unchecked, code completion is still available through
-                      a hotkey.
+                      取消勾选后，仍可通过快捷键使用代码补全。
                     </FormDescription>
 
                     <div>
@@ -440,7 +439,7 @@ export const UserConfigForm: React.FC = () => {
                           setActiveCategory("ai");
                         }}
                       >
-                        Edit AI autocomplete
+                        编辑 AI 自动补全
                       </Button>
                     </div>
                   </div>
@@ -453,7 +452,7 @@ export const UserConfigForm: React.FC = () => {
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
                       <FormLabel className="font-normal">
-                        Signature hints
+                        参数提示
                       </FormLabel>
                       <FormControl>
                         <Checkbox
@@ -472,24 +471,22 @@ export const UserConfigForm: React.FC = () => {
                       />
                     </FormItem>
                     <FormDescription>
-                      Display signature hints while typing within function
-                      calls.
+                      在函数调用中输入时显示参数提示。
                     </FormDescription>
                   </div>
                 )}
               />
             </SettingGroup>
-            <SettingGroup title="Language Servers">
+            <SettingGroup title="语言服务器">
               <FormDescription>
-                See the{" "}
+                查看{" "}
                 <ExternalLink href="https://docs.marimo.io/guides/editor_features/language_server/">
-                  docs
+                  文档
                 </ExternalLink>{" "}
-                for more information about language server support.
+                了解语言服务器支持的更多信息。
               </FormDescription>
               <FormDescription>
-                <strong>Note:</strong> When using multiple language servers,
-                different features may conflict.
+                <strong>注意：</strong>同时使用多个语言服务器时，不同功能可能会冲突。
               </FormDescription>
 
               <FormField
@@ -500,13 +497,13 @@ export const UserConfigForm: React.FC = () => {
                     <FormItem className={formItemClasses}>
                       <FormLabel>
                         <Badge variant="defaultOutline" className="mr-2">
-                          Beta
+                           测试版
                         </Badge>
-                        Python Language Server (
-                        <ExternalLink href="https://github.com/python-lsp/python-lsp-server">
-                          docs
-                        </ExternalLink>
-                        )
+                         Python 语言服务器 (
+                         <ExternalLink href="https://github.com/python-lsp/python-lsp-server">
+                           文档
+                         </ExternalLink>
+                         )
                       </FormLabel>
                       <FormControl>
                         <Checkbox
@@ -526,10 +523,9 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
                     {field.value && !capabilities.pylsp && (
                       <Banner kind="danger">
-                        The Python Language Server is not available in your
-                        current environment. Please install{" "}
+                        当前环境中没有可用的 Python 语言服务器。请安装{" "}
                         <Kbd className="inline">python-lsp-server</Kbd> in your
-                        environment.
+                        环境中。
                       </Banner>
                     )}
                   </div>
@@ -543,13 +539,13 @@ export const UserConfigForm: React.FC = () => {
                     <FormItem className={formItemClasses}>
                       <FormLabel>
                         <Badge variant="defaultOutline" className="mr-2">
-                          Beta
+                           测试版
                         </Badge>
                         basedpyright (
-                        <ExternalLink href="https://github.com/DetachHead/basedpyright">
-                          docs
-                        </ExternalLink>
-                        )
+                         <ExternalLink href="https://github.com/DetachHead/basedpyright">
+                           文档
+                         </ExternalLink>
+                         )
                       </FormLabel>
                       <FormControl>
                         <Checkbox
@@ -569,10 +565,9 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
                     {field.value && !capabilities.basedpyright && (
                       <Banner kind="danger">
-                        basedpyright is not available in your current
-                        environment. Please install{" "}
+                        当前环境中没有可用的 basedpyright。请安装{" "}
                         <Kbd className="inline">basedpyright</Kbd> in your
-                        environment.
+                        环境中。
                       </Banner>
                     )}
                   </div>
@@ -586,13 +581,13 @@ export const UserConfigForm: React.FC = () => {
                     <FormItem className={formItemClasses}>
                       <FormLabel>
                         <Badge variant="defaultOutline" className="mr-2">
-                          Beta
+                           测试版
                         </Badge>
                         Pyrefly (
-                        <ExternalLink href="https://github.com/facebook/pyrefly">
-                          docs
-                        </ExternalLink>
-                        )
+                         <ExternalLink href="https://github.com/facebook/pyrefly">
+                           文档
+                         </ExternalLink>
+                         )
                       </FormLabel>
                       <FormControl>
                         <Checkbox
@@ -612,9 +607,7 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
                     {field.value && !capabilities.pyrefly && (
                       <Banner kind="danger">
-                        Pyrefly is not available in your current environment.
-                        Please install <Kbd className="inline">pyrefly</Kbd> in
-                        your environment.
+                        当前环境中没有可用的 Pyrefly。请安装 <Kbd className="inline">pyrefly</Kbd>。
                       </Banner>
                     )}
                   </div>
@@ -628,13 +621,13 @@ export const UserConfigForm: React.FC = () => {
                     <FormItem className={formItemClasses}>
                       <FormLabel>
                         <Badge variant="defaultOutline" className="mr-2">
-                          Beta
+                           测试版
                         </Badge>
                         ty (
-                        <ExternalLink href="https://github.com/astral-sh/ty">
-                          docs
-                        </ExternalLink>
-                        )
+                         <ExternalLink href="https://github.com/astral-sh/ty">
+                           文档
+                         </ExternalLink>
+                         )
                       </FormLabel>
                       <FormControl>
                         <Checkbox
@@ -654,9 +647,7 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
                     {field.value && !capabilities.ty && (
                       <Banner kind="danger">
-                        ty is not available in your current environment. Please
-                        install <Kbd className="inline">ty</Kbd> in your
-                        environment.
+                        当前环境中没有可用的 ty。请安装 <Kbd className="inline">ty</Kbd>。
                       </Banner>
                     )}
                   </div>
@@ -669,9 +660,9 @@ export const UserConfigForm: React.FC = () => {
                   <FormItem className={formItemClasses}>
                     <FormLabel>
                       <Badge variant="defaultOutline" className="mr-2">
-                        Beta
+                       测试版
                       </Badge>
-                      Diagnostics
+                       诊断
                     </FormLabel>
                     <FormControl>
                       <Checkbox
@@ -693,14 +684,14 @@ export const UserConfigForm: React.FC = () => {
               />
             </SettingGroup>
 
-            <SettingGroup title="Keymap">
+            <SettingGroup title="键位方案">
               <FormField
                 control={form.control}
                 name="keymap.preset"
                 render={({ field }) => (
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
-                      <FormLabel>Keymap</FormLabel>
+                       <FormLabel>键位方案</FormLabel>
                       <FormControl>
                         <NativeSelect
                           data-testid="keymap-select"
@@ -729,7 +720,7 @@ export const UserConfigForm: React.FC = () => {
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
                       <FormLabel className="font-normal">
-                        Destructive delete
+                         破坏性删除
                       </FormLabel>
                       <FormControl>
                         <Checkbox
@@ -748,13 +739,11 @@ export const UserConfigForm: React.FC = () => {
                       />
                     </FormItem>
                     <FormDescription className="flex items-center gap-1">
-                      Allow deleting non-empty cells
+                      允许删除非空单元格
                       <Tooltip
                         content={
                           <div className="max-w-xs">
-                            <strong>Use with caution:</strong> Deleting cells
-                            with code can lose work and computed results since
-                            variables are removed from memory.
+                            <strong>请谨慎使用：</strong>删除含代码的单元格可能会丢失工作和计算结果，因为变量会从内存中移除。
                           </div>
                         }
                       >
@@ -773,7 +762,7 @@ export const UserConfigForm: React.FC = () => {
                           setKeyboardShortcutsOpen(true);
                         }}
                       >
-                        Edit Keyboard Shortcuts
+                        编辑键盘快捷键
                       </Button>
                     </div>
                   </div>
@@ -785,14 +774,14 @@ export const UserConfigForm: React.FC = () => {
       case "display":
         return (
           <>
-            <SettingGroup title="Display">
+            <SettingGroup title="显示">
               <FormField
                 control={form.control}
                 name="display.default_width"
                 render={({ field }) => (
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
-                      <FormLabel>Default width</FormLabel>
+                      <FormLabel>默认宽度</FormLabel>
                       <FormControl>
                         <NativeSelect
                           data-testid="user-config-width-select"
@@ -816,8 +805,7 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
 
                     <FormDescription>
-                      The default app width for new notebooks; overridden by
-                      "width" in the application config.
+                       新 notebook 的默认应用宽度；可被应用配置中的 "width" 覆盖。
                     </FormDescription>
                   </div>
                 )}
@@ -828,7 +816,7 @@ export const UserConfigForm: React.FC = () => {
                 render={({ field }) => (
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
-                      <FormLabel>Theme</FormLabel>
+                       <FormLabel>主题</FormLabel>
                       <FormControl>
                         <NativeSelect
                           data-testid="theme-select"
@@ -849,8 +837,7 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
 
                     <FormDescription>
-                      This theme will be applied to the user's configuration; it
-                      does not affect theme when sharing the notebook.
+                       此主题会应用到用户配置中；共享 notebook 时不会影响主题。
                     </FormDescription>
                   </div>
                 )}
@@ -860,11 +847,11 @@ export const UserConfigForm: React.FC = () => {
                 name="display.code_editor_font_size"
                 render={({ field }) => (
                   <FormItem className={formItemClasses}>
-                    <FormLabel>Code editor font size (px)</FormLabel>
+                     <FormLabel>代码编辑器字体大小（px）</FormLabel>
                     <FormControl>
                       <span className="inline-flex mr-2">
                         <NumberField
-                          aria-label="Code editor font size"
+                          aria-label="代码编辑器字体大小"
                           data-testid="code-editor-font-size-input"
                           className="m-0 w-24"
                           {...field}
@@ -892,7 +879,7 @@ export const UserConfigForm: React.FC = () => {
                 render={({ field }) => (
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
-                      <FormLabel>Locale</FormLabel>
+                       <FormLabel>区域设置</FormLabel>
                       <FormControl>
                         <NativeSelect
                           data-testid="locale-select"
@@ -907,7 +894,7 @@ export const UserConfigForm: React.FC = () => {
                           disabled={field.disabled}
                           className="inline-flex mr-2"
                         >
-                          <option value={LOCALE_SYSTEM_VALUE}>System</option>
+                           <option value={LOCALE_SYSTEM_VALUE}>系统</option>
                           {navigator.languages.map((option) => (
                             <option value={option} key={option}>
                               {option}
@@ -920,9 +907,8 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
 
                     <FormDescription>
-                      The locale to use for the notebook. If your desired locale
-                      is not listed, you can change it manually via{" "}
-                      <Kbd className="inline">marimo config show</Kbd>.
+                       notebook 使用的区域设置。如果列表中没有你想要的区域设置，可以通过{" "}
+                       <Kbd className="inline">marimo config show</Kbd>.
                     </FormDescription>
                   </div>
                 )}
@@ -933,7 +919,7 @@ export const UserConfigForm: React.FC = () => {
                 render={({ field }) => (
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
-                      <FormLabel>Reference highlighting</FormLabel>
+                       <FormLabel>引用高亮</FormLabel>
                       <FormControl>
                         <Checkbox
                           data-testid="reference-highlighting-checkbox"
@@ -949,21 +935,20 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
 
                     <FormDescription>
-                      Visually emphasizes variables in a cell that are defined
-                      elsewhere in the notebook.
+                       视觉上强调单元格中那些在 notebook 其他位置定义的变量。
                     </FormDescription>
                   </div>
                 )}
               />
             </SettingGroup>
-            <SettingGroup title="Outputs">
+            <SettingGroup title="输出">
               <FormField
                 control={form.control}
                 name="display.cell_output"
                 render={({ field }) => (
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
-                      <FormLabel>Cell output area</FormLabel>
+                      <FormLabel>单元格输出区域</FormLabel>
                       <FormControl>
                         <NativeSelect
                           data-testid="cell-output-select"
@@ -987,7 +972,7 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
 
                     <FormDescription>
-                      Where to display cell's output.
+                       单元格输出显示在何处。
                     </FormDescription>
                   </div>
                 )}
@@ -998,7 +983,7 @@ export const UserConfigForm: React.FC = () => {
       case "packageManagementAndData":
         return (
           <>
-            <SettingGroup title="Package Management">
+            <SettingGroup title="包管理">
               <FormField
                 control={form.control}
                 disabled={isWasmRuntime}
@@ -1006,7 +991,7 @@ export const UserConfigForm: React.FC = () => {
                 render={({ field }) => (
                   <div className="flex flex-col space-y-1">
                     <FormItem className={formItemClasses}>
-                      <FormLabel>Manager</FormLabel>
+                       <FormLabel>管理器</FormLabel>
                       <FormControl>
                         <NativeSelect
                           data-testid="package-manager-select"
@@ -1030,33 +1015,31 @@ export const UserConfigForm: React.FC = () => {
                     </FormItem>
 
                     <FormDescription>
-                      When marimo comes across a module that is not installed,
-                      you will be prompted to install it using your preferred
-                      package manager. Learn more in the{" "}
-                      <ExternalLink href="https://docs.marimo.io/guides/editor_features/package_management.html">
-                        docs
-                      </ExternalLink>
+                       当 marimo 遇到未安装的模块时，会提示你使用偏好的包管理器安装它。了解更多请查看{" "}
+                        <ExternalLink href="https://docs.marimo.io/guides/editor_features/package_management.html">
+                         文档
+                        </ExternalLink>
                       .
                       <br />
                       <br />
-                      Running marimo in a{" "}
+                      在{" "}
                       <ExternalLink href="https://docs.marimo.io/guides/package_management/inlining_dependencies.html">
-                        sandboxed environment
+                        沙盒环境
                       </ExternalLink>{" "}
-                      is only supported by <Kbd className="inline">uv</Kbd>
+                      中运行 marimo 仅由 <Kbd className="inline">uv</Kbd> 支持
                     </FormDescription>
                   </div>
                 )}
               />
             </SettingGroup>
-            <SettingGroup title="Data">
+            <SettingGroup title="数据">
               <DataForm form={form} config={config} onSubmit={onSubmit} />
             </SettingGroup>
           </>
         );
       case "runtime":
         return (
-          <SettingGroup title="Runtime configuration">
+            <SettingGroup title="运行时配置">
             <FormField
               control={form.control}
               name="runtime.auto_instantiate"
@@ -1064,7 +1047,7 @@ export const UserConfigForm: React.FC = () => {
                 <div className="flex flex-col gap-y-1">
                   <FormItem className={formItemClasses}>
                     <FormLabel className="font-normal">
-                      Autorun on startup
+                       启动时自动运行
                     </FormLabel>
                     <FormControl>
                       <Checkbox
@@ -1082,7 +1065,7 @@ export const UserConfigForm: React.FC = () => {
                   </FormItem>
 
                   <FormDescription>
-                    Whether to automatically run all cells on startup.
+                     是否在启动时自动运行所有单元格。
                   </FormDescription>
                 </div>
               )}
@@ -1094,7 +1077,7 @@ export const UserConfigForm: React.FC = () => {
                 <div className="flex flex-col gap-y-1">
                   <FormItem className={formItemClasses}>
                     <FormLabel className="font-normal">
-                      On cell change
+                       单元格变更时
                     </FormLabel>
                     <FormControl>
                       <NativeSelect
@@ -1117,11 +1100,7 @@ export const UserConfigForm: React.FC = () => {
                     />
                   </FormItem>
                   <FormDescription>
-                    Whether marimo should automatically run cells or just mark
-                    them as stale. If "autorun", marimo will automatically run
-                    affected cells when a cell is run or a UI element is
-                    interacted with; if "lazy", marimo will mark affected cells
-                    as stale but won't re-run them.
+                     是否让 marimo 自动运行单元格，还是仅将它们标记为过期。若为 "autorun"，当某个单元格运行或与 UI 元素交互时，marimo 会自动运行受影响的单元格；若为 "lazy"，marimo 会标记受影响的单元格为过期，但不会重新运行它们。
                   </FormDescription>
                 </div>
               )}
@@ -1133,7 +1112,7 @@ export const UserConfigForm: React.FC = () => {
                 <div className="flex flex-col gap-y-1">
                   <FormItem className={formItemClasses}>
                     <FormLabel className="font-normal">
-                      On module change
+                       模块变更时
                     </FormLabel>
                     <FormControl>
                       <NativeSelect
@@ -1157,10 +1136,7 @@ export const UserConfigForm: React.FC = () => {
                     />
                   </FormItem>
                   <FormDescription>
-                    Whether marimo should automatically reload modules before
-                    executing cells. If "lazy", marimo will mark cells affected
-                    by module modifications as stale; if "autorun", affected
-                    cells will be automatically re-run.
+                     是否在执行单元格前自动重新加载模块。若为 "lazy"，marimo 会将受模块修改影响的单元格标记为过期；若为 "autorun"，受影响的单元格会自动重新运行。
                   </FormDescription>
                 </div>
               )}
@@ -1173,7 +1149,7 @@ export const UserConfigForm: React.FC = () => {
                 <div className="flex flex-col gap-y-1">
                   <FormItem className={formItemClasses}>
                     <FormLabel className="font-normal">
-                      Autorun Unit Tests
+                       自动运行单元测试
                     </FormLabel>
                     <FormControl>
                       <Checkbox
@@ -1189,19 +1165,16 @@ export const UserConfigForm: React.FC = () => {
                   />
                   <FormMessage />
                   <FormDescription>
-                    Enable reactive pytest tests in notebook. When a cell
-                    contains only test functions (test_*) and classes (Test_*),
-                    marimo will automatically run them with pytest (requires
-                    notebook restart).
+                   在 notebook 中启用响应式 pytest 测试。当某个单元格只包含测试函数（test_*）和类（Test_*）时，marimo 会自动使用 pytest 运行它们（需要重启 notebook）。
                   </FormDescription>{" "}
                 </div>
               )}
             />
 
             <FormDescription>
-              Learn more in the{" "}
+              了解更多请查看{" "}
               <ExternalLink href="https://docs.marimo.io/guides/reactivity/#configuring-how-marimo-runs-cells">
-                docs
+                文档
               </ExternalLink>
               .
             </FormDescription>
@@ -1213,10 +1186,9 @@ export const UserConfigForm: React.FC = () => {
         return <OptionalFeatures />;
       case "labs":
         return (
-          <SettingGroup title="Experimental Features">
+            <SettingGroup title="实验功能">
             <p className="text-sm text-muted-secondary mb-4">
-              ⚠️ These features are experimental and may require restarting your
-              notebook to take effect.
+              ⚠️ 这些功能为实验性功能，可能需要重启 notebook 才会生效。
             </p>
 
             <FormField
@@ -1226,7 +1198,7 @@ export const UserConfigForm: React.FC = () => {
                 <div className="flex flex-col gap-y-1">
                   <FormItem className={formItemClasses}>
                     <FormLabel className="font-normal">
-                      Real-Time Collaboration
+                       实时协作
                     </FormLabel>
                     <FormControl>
                       <Checkbox
@@ -1238,8 +1210,7 @@ export const UserConfigForm: React.FC = () => {
                   </FormItem>
 
                   <FormDescription>
-                    Enable experimental real-time collaboration. This change
-                    requires a page refresh to take effect.
+                     启用实验性的实时协作。此更改需要刷新页面后才会生效。
                   </FormDescription>
                 </div>
               )}
@@ -1251,7 +1222,7 @@ export const UserConfigForm: React.FC = () => {
                 <div className="flex flex-col gap-y-1">
                   <FormItem className={formItemClasses}>
                     <FormLabel className="font-normal">
-                      External Agents
+                       外部代理
                     </FormLabel>
                     <FormControl>
                       <Checkbox
@@ -1266,11 +1237,10 @@ export const UserConfigForm: React.FC = () => {
                     name="experimental.external_agents"
                   />
                   <FormDescription>
-                    Enable experimental external agents such as Claude Code and
-                    Gemini CLI. Learn more in the{" "}
-                    <ExternalLink href="https://docs.marimo.io/guides/editor_features/agents/">
-                      docs
-                    </ExternalLink>
+                   启用实验性的外部代理，例如 Claude Code 和 Gemini CLI。了解更多请查看{" "}
+                   <ExternalLink href="https://docs.marimo.io/guides/editor_features/agents/">
+                     文档
+                   </ExternalLink>
                     .
                   </FormDescription>
                 </div>
@@ -1283,10 +1253,9 @@ export const UserConfigForm: React.FC = () => {
 
   const configMessage = (
     <p className="text-muted-secondary">
-      User configuration is stored in <Kbd className="inline">marimo.toml</Kbd>
+       用户配置存储在 <Kbd className="inline">marimo.toml</Kbd> 中
       <br />
-      Run <Kbd className="inline">marimo config show</Kbd> in your terminal to
-      show your current configuration and file location.
+       在终端中运行 <Kbd className="inline">marimo config show</Kbd>，即可查看当前配置和文件位置。
     </p>
   );
 
@@ -1327,8 +1296,8 @@ export const UserConfigForm: React.FC = () => {
             ))}
 
             <div className="p-2 text-xs text-muted-foreground self-start flex flex-col gap-1">
-              <span>Version: {marimoVersion}</span>
-              <span>Locale: {locale}</span>
+              <span>版本：{marimoVersion}</span>
+              <span>区域设置：{locale}</span>
             </div>
 
             <div className="flex-1" />
