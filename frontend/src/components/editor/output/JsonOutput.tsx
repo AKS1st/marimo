@@ -71,7 +71,7 @@ const CopyButton: React.FC<DataItemProps<any>> = ({ value }) => {
       className={cn(
         "inline-flex ml-2 copy-button rounded w-6 h-3 justify-center items-center relative",
       )}
-      aria-label="Copy to clipboard"
+      aria-label="复制到剪贴板"
       type="button"
     >
       {copied ? (

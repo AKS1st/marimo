@@ -80,8 +80,8 @@ export function getAutoFixes(
     }
     return [
       {
-        title: "Fix with AI",
-        description: "Fix the SQL statement",
+        title: "使用 AI 修复",
+        description: "修复 SQL 语句",
         fixType: "ai",
         onFix: async (ctx) => {
           const datasourceContext = getDatasourceContext(ctx.cellId);

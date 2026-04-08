@@ -39,10 +39,10 @@ export const MarkdownQuotePrefixTooltip: React.FC = () => {
       <section className="flex flex-col gap-0.5">
         <header className="flex items-center gap-1">
           <code className="text-xs px-1 py-0.5 bg-(--slate-2) rounded">r</code>
-          <span className="font-semibold">Raw String</span>
+          <span className="font-semibold">原始字符串</span>
         </header>
         <p className="text-sm text-muted-foreground">
-          Write LaTeX without escaping special characters
+          直接书写 LaTeX，无需转义特殊字符
         </p>
         <pre className="text-xs bg-(--slate-2) p-2 rounded">\alpha \beta</pre>
       </section>
@@ -50,10 +50,10 @@ export const MarkdownQuotePrefixTooltip: React.FC = () => {
       <section className="flex flex-col gap-0.5">
         <header className="flex items-center gap-1">
           <code className="text-xs px-1 py-0.5 bg-(--slate-2) rounded">f</code>
-          <span className="font-semibold">Format String</span>
+          <span className="font-semibold">格式化字符串</span>
         </header>
         <p className="text-sm text-muted-foreground">
-          Interpolate Python values
+          插入 Python 值
         </p>
         <pre className="text-xs bg-(--slate-2) p-2 rounded">
           Hello {"{name}"}! 😁

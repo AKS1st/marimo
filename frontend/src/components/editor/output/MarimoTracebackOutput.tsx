@@ -122,13 +122,13 @@ export const MarimoTracebackOutput = ({
       <div className="flex gap-2">
         {showAIFix && (
           <AIFixButton
-            tooltip="Fix with AI"
+            tooltip="使用 AI 修复"
             openPrompt={() => handleRefactorWithAI(false)}
             applyAutofix={() => handleRefactorWithAI(true)}
           />
         )}
         {showDebugger && (
-          <Tooltip content={"Attach pdb to the exception point."}>
+        <Tooltip content={"将 pdb 附加到异常位置。"}>
             <Button
               size="xs"
               variant="outline"
@@ -137,7 +137,7 @@ export const MarimoTracebackOutput = ({
               }}
             >
               <BugPlayIcon className="h-3 w-3 mr-2" />
-              Launch debugger
+              启动调试器
             </Button>
           </Tooltip>
         )}
@@ -145,7 +145,7 @@ export const MarimoTracebackOutput = ({
           <DropdownMenu>
             <DropdownMenuTrigger asChild={true}>
               <Button size="xs" variant="text">
-                Get help
+                获取帮助
                 <ChevronDown className="h-3 w-3 ml-1" />
               </Button>
             </DropdownMenuTrigger>
@@ -157,7 +157,7 @@ export const MarimoTracebackOutput = ({
                   rel="noreferrer"
                 >
                   <SearchIcon className="h-4 w-4 mr-2" />
-                  Search on Google
+                  在 Google 上搜索
                   <ExternalLinkIcon className="h-3 w-3 ml-auto" />
                 </a>
               </DropdownMenuItem>
@@ -168,7 +168,7 @@ export const MarimoTracebackOutput = ({
                   rel="noopener"
                 >
                   <MessageCircleIcon className="h-4 w-4 mr-2" />
-                  Ask in Discord
+                  在 Discord 中提问
                   <ExternalLinkIcon className="h-3 w-3 ml-auto" />
                 </a>
               </DropdownMenuItem>
@@ -182,7 +182,7 @@ export const MarimoTracebackOutput = ({
                 }}
               >
                 <CopyIcon className="h-4 w-4 mr-2" />
-                Copy to clipboard
+                复制到剪贴板
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

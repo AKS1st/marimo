@@ -42,7 +42,7 @@ export const CopyClipboardIcon: React.FC<Props> = ({
     <button
       type="button"
       onClick={handleCopy}
-      aria-label={ariaLabel ?? "Copy to clipboard"}
+      aria-label={ariaLabel ?? "复制到剪贴板"}
       className={buttonClassName}
     >
       {isCopied ? (
@@ -59,7 +59,7 @@ export const CopyClipboardIcon: React.FC<Props> = ({
 
   return (
     <Tooltip
-      content={isCopied ? "Copied!" : (tooltip ?? "Copy to clipboard")}
+      content={isCopied ? "已复制！" : (tooltip ?? "复制到剪贴板")}
       delayDuration={400}
     >
       {button}

@@ -124,7 +124,7 @@ export const LanguageToggle: React.FC<Props> = ({
   }
 
   return (
-    <Tooltip content={`View as ${displayName}`}>
+    <Tooltip content={`查看为 ${displayName}`}>
       <Button
         data-testid="language-toggle-button"
         variant="text"

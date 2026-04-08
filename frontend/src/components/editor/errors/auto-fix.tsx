@@ -95,8 +95,8 @@ export const AutoFixButton = ({
 const PromptIcon = SparklesIcon;
 const AutofixIcon = WrenchIcon;
 
-const PromptTitle = "Suggest a prompt";
-const AutofixTitle = "Fix with AI";
+const PromptTitle = "建议提示词";
+const AutofixTitle = "使用 AI 修复";
 
 export const AIFixButton = ({
   tooltip,
@@ -162,8 +162,8 @@ const AiModeItem = ({ mode }: { mode: FixMode }) => {
   const title = mode === "prompt" ? PromptTitle : AutofixTitle;
   const description =
     mode === "prompt"
-      ? "Edit the prompt before applying"
-      : "Apply AI fixes automatically";
+      ? "在应用前编辑提示词"
+      : "自动应用 AI 修复";
 
   return (
     <div className="flex items-center gap-2">

@@ -432,7 +432,7 @@ const ExpandableOutput = React.memo(
           <div className="relative print:hidden">
             <div className="absolute -right-9 top-1 z-1 flex flex-col gap-1">
               {hasFullscreen && (
-                <Tooltip content="Fullscreen" side="left">
+                <Tooltip content="全屏" side="left">
                   <Button
                     data-testid="fullscreen-output-button"
                     className="hover-action hover:bg-muted p-1 hover:border-border border border-transparent"
@@ -463,11 +463,11 @@ const ExpandableOutput = React.memo(
                   variant="text"
                 >
                   {isExpanded ? (
-                    <Tooltip content="Collapse output" side="left">
+                    <Tooltip content="折叠输出" side="left">
                       <ChevronsDownUpIcon className="h-4 w-4" />
                     </Tooltip>
                   ) : (
-                    <Tooltip content="Expand output" side="left">
+                    <Tooltip content="展开输出" side="left">
                       <ChevronsUpDownIcon className="h-4 w-4 opacity-60" />
                     </Tooltip>
                   )}

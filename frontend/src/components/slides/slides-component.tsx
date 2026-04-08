@@ -133,7 +133,7 @@ const SlidesComponent = ({
           }}
           className="absolute bottom-0 right-0 z-10 mx-1 mb-0"
         >
-          {isFullscreen ? "Exit Fullscreen" : "Fullscreen"}
+          {isFullscreen ? "退出全屏" : "全屏"}
         </Button>
       )}
     </Swiper>

@@ -12,7 +12,7 @@ import { Logger } from "./Logger";
 export async function copyToClipboard(text: string, html?: string) {
   if (navigator.clipboard === undefined) {
     Logger.warn("navigator.clipboard is not supported");
-    window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+    window.prompt("复制到剪贴板：Ctrl+C，回车", text);
     return;
   }
 
@@ -31,7 +31,7 @@ export async function copyToClipboard(text: string, html?: string) {
 
   await navigator.clipboard.writeText(text).catch(() => {
     Logger.warn("Failed to copy to clipboard using navigator.clipboard");
-    window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+    window.prompt("复制到剪贴板：Ctrl+C，回车", text);
   });
 }
 

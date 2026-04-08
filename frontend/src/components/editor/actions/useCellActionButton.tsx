@@ -210,7 +210,7 @@ export function useCellActionButtons({ cell, closePopover }: Props) {
       },
     ],
 
-    // View as
+    // 以其他语言查看
     [
       {
         icon: <MarkdownIcon />,

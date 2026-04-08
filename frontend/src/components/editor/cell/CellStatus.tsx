@@ -59,7 +59,7 @@ export const CellStatusComponent: React.FC<CellStatusComponentProps> = ({
       <Tooltip
         content={
           <div className="flex flex-col gap-1">
-            <span>This cell is stale, but it's disabled and can't be run</span>
+            <span>这个单元格已过期，但它被禁用了，无法运行</span>
             {lastRanTime}
           </div>
         }
@@ -85,7 +85,7 @@ export const CellStatusComponent: React.FC<CellStatusComponentProps> = ({
       <Tooltip
         content={
           <div className="flex flex-col gap-1">
-            <span>This cell is disabled</span>
+            <span>这个单元格已禁用</span>
             {lastRanTime}
           </div>
         }
@@ -109,7 +109,7 @@ export const CellStatusComponent: React.FC<CellStatusComponentProps> = ({
         content={
           <div className="flex flex-col gap-1">
             <span>
-              An ancestor of this cell is disabled, so it can't be run
+              这个单元格的上游单元格被禁用了，因此无法运行
             </span>
             {lastRanTime}
           </div>
@@ -137,7 +137,7 @@ export const CellStatusComponent: React.FC<CellStatusComponentProps> = ({
         content={
           <div className="flex flex-col gap-1">
             <span>
-              This cell is stale, but an ancestor is disabled so it can't be run
+              这个单元格已过期，但其上游单元格被禁用了，因此无法运行
             </span>
             {lastRanTime}
           </div>
@@ -164,7 +164,7 @@ export const CellStatusComponent: React.FC<CellStatusComponentProps> = ({
       <Tooltip
         content={
           <div className="flex flex-col gap-1">
-            <span>This cell is running</span>
+            <span>这个单元格正在运行</span>
             {lastRanTime}
           </div>
         }
@@ -189,7 +189,7 @@ export const CellStatusComponent: React.FC<CellStatusComponentProps> = ({
       <Tooltip
         content={
           <div className="flex flex-col gap-1">
-            <span>This cell is queued to run</span>
+            <span>这个单元格已排队等待运行</span>
             {lastRanTime}
           </div>
         }
@@ -218,21 +218,21 @@ export const CellStatusComponent: React.FC<CellStatusComponentProps> = ({
     let timerTitle: React.ReactNode = "";
 
     if (uninstantiated) {
-      title = "This cell has not yet been run";
+      title = "这个单元格尚未运行";
     } else if (interrupted) {
-      title = "This cell was interrupted when it was last run";
+      title = "这个单元格上次运行时被中断了";
       timerTitle = (
         <span>
-          This cell ran for {elapsedTimeComponent} before being interrupted
+          这个单元格在被中断前运行了 {elapsedTimeComponent}
         </span>
       );
     } else if (edited) {
-      title = "This cell has been modified since it was last run";
-      timerTitle = <span>This cell took {elapsedTimeComponent} to run</span>;
+      title = "这个单元格自上次运行后已被修改";
+      timerTitle = <span>这个单元格运行耗时 {elapsedTimeComponent}</span>;
     } else {
       // staleInputs
-      title = "This cell has not been run with the latest inputs";
-      timerTitle = <span>This cell took {elapsedTimeComponent} to run</span>;
+      title = "这个单元格尚未使用最新输入运行";
+      timerTitle = <span>这个单元格运行耗时 {elapsedTimeComponent}</span>;
     }
 
     return (

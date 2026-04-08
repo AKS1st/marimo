@@ -184,7 +184,7 @@ export const ExportMenu: React.FC<ExportActionProps> = (props) => {
         ))}
         <DropdownMenuSeparator />
         <DropdownMenuLabel className="text-xs text-muted-foreground">
-          Copy to clipboard
+          复制到剪贴板
         </DropdownMenuLabel>
         {copyOptions.map((option) => (
           <DropdownMenuItem
