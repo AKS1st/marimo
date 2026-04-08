@@ -7,7 +7,7 @@ app = marimo.App(width="medium")
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Load .env""")
+    mo.md(r"""# 加载 .env""")
     return
 
 

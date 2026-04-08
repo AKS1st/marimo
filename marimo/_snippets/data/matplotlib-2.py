@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Matplotlib: Distribution Plots with Histograms and Box Plots
+        # Matplotlib：带直方图和箱线图的分布图
 
-        Create statistical plots using `hist()`, `boxplot()`, and `violinplot()`.
-        Common for data distribution analysis with customizable bins and orientations.
+        使用 `hist()`、`boxplot()` 和 `violinplot()` 创建统计图表。
+        常用于数据分布分析，并可自定义分箱和方向。
         """
     )
     return
@@ -29,13 +29,13 @@ def _():
 @app.cell
 def _(np, plt):
     def create_statistical_plots():
-        # Generate sample data
+        # 生成示例数据
         np.random.seed(42)
         data1 = np.random.normal(100, 10, 200)
         data2 = np.random.normal(90, 20, 200)
         data = [data1, data2]
 
-        # Create figure with three subplots
+        # 创建包含三个子图的图像
         fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15, 5))
 
         # Histogram
@@ -44,13 +44,13 @@ def _(np, plt):
         ax1.set_title('Histogram')
         ax1.legend()
 
-        # Box Plot
+        # 箱线图
         ax2.boxplot(data, tick_labels=['Dist 1', 'Dist 2'])
-        ax2.set_title('Box Plot')
+        ax2.set_title('箱线图')
 
-        # Violin Plot
+        # 小提琴图
         ax3.violinplot(data)
-        ax3.set_title('Violin Plot')
+        ax3.set_title('小提琴图')
         ax3.set_xticks([1, 2])
         ax3.set_xticklabels(['Dist 1', 'Dist 2'])
 

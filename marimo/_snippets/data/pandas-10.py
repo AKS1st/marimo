@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Explode a column containing dictionary values into multiple columns
+        # Pandas DataFrame：将包含字典值的列展开为多列
         """
     )
     return

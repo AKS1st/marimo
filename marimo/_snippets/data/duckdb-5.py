@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # DuckDB: Join Operations & Multi-Table Queries
+        # DuckDB：连接操作与多表查询
 
-        This snippet demonstrates how to perform JOIN operations between
-        two DataFrames using DuckDB's SQL engine within marimo.
+        这个示例演示如何在 marimo 中使用 DuckDB 的 SQL 引擎，对两个 DataFrame
+        执行 JOIN 操作。
         """
     )
     return
@@ -22,7 +22,7 @@ def _(mo):
 @app.cell
 def _():
     import polars as pl
-    # Create two sample DataFrames to join
+    # 创建两个用于 JOIN 的示例 DataFrame
     df1 = pl.DataFrame({
         'id': [1, 2, 3, 4],
         'value1': ['A', 'B', 'C', 'D']

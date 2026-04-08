@@ -10,13 +10,13 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: Parquet Operations
+        # Polars：Parquet 操作
 
-        Demonstrates Polars' Parquet capabilities using `scan_parquet()` for
-        streaming large Parquet datasets. Shows memory-efficient filtering
-        and aggregation with lazy evaluation.
+        示例展示 Polars 的 Parquet 能力，使用 `scan_parquet()`
+        流式处理大型 Parquet 数据集，并展示内存高效的过滤
+        和惰性求值聚合。
 
-        Example: `pl.scan_parquet("data.parquet").filter(pl.col("value") > 500).collect()`
+        例如：`pl.scan_parquet("data.parquet").filter(pl.col("value") > 500).collect()`
         """
     )
     return
@@ -29,14 +29,14 @@ def _():
     from pathlib import Path
     import datetime
 
-    # Create sample data
+    # 创建示例数据
     df = pl.DataFrame({
         'date': [(datetime.date(2024, 1, 1) + datetime.timedelta(days=x % 366)) for x in range(1000)],
         'category': ['A', 'B', 'C'] * 333 + ['A'],
         'value': range(1000)
     })
 
-    # Create temporary directory and save Parquet
+    # 创建临时目录并保存 Parquet 文件
     temp_dir = Path(tempfile.mkdtemp())
     parquet_path = temp_dir / 'data.parquet'
     df.write_parquet(
@@ -77,3 +77,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

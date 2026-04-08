@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Create from lists of values
+        # Pandas DataFrame：从值列表创建
         """
     )
     return

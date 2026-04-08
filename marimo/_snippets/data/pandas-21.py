@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Select all rows from A that are not in B, using the index
+        # Pandas DataFrame：使用索引选出 A 中不在 B 中的所有行
         """
     )
     return

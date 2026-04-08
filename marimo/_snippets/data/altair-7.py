@@ -9,9 +9,10 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Visualization: Linked Scatter-Plot and Histogram in Altair
+        # 可视化：Altair 联动散点图与直方图
 
-        Altair selections can be used for a variety of things. This example shows a scatter plot and a histogram with selections over both that allow exploring the relationships between points
+        Altair 的选择器可用于很多场景。这个示例展示了散点图和直方图上的联动选择，
+        便于探索点之间的关系。
         """
     )
     return
@@ -19,7 +20,7 @@ def __(mo):
 
 @app.cell
 def __():
-    # load an example dataset
+    # 加载示例数据集
     from vega_datasets import data
 
     cars = data.cars()
@@ -58,3 +59,4 @@ def __():
 
 if __name__ == "__main__":
     app.run()
+

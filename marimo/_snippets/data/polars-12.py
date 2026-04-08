@@ -10,12 +10,12 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: Lazy Evaluation and Parquet Streaming
+        # Polars：惰性求值与 Parquet 流式处理
 
-        Demonstrates Polars' streaming capabilities for large datasets using lazy evaluation.
-        Shows how to efficiently process data without loading entire dataset into memory.
+        示例展示 Polars 在大型数据集上的流式处理能力，使用惰性求值
+        展示如何在不把整个数据集加载到内存中的情况下高效处理数据。
 
-        Example: `pl.scan_parquet("data.parquet").filter(pl.col("date").dt.year() == 2024).collect()`
+        例如：`pl.scan_parquet("data.parquet").filter(pl.col("date").dt.year() == 2024).collect()`
         """
     )
     return
@@ -28,14 +28,14 @@ def _():
     from pathlib import Path
     import datetime
 
-    # Create sample data
+    # 创建示例数据
     df = pl.DataFrame({
         'date': [(datetime.date(2024, 1, 1) + datetime.timedelta(days=x % 366)) for x in range(1000)],
         'category': ['A', 'B', 'C'] * 333 + ['A'],
         'value': range(1000)
     })
 
-    # Create temporary directory and save files
+    # 创建临时目录并保存文件
     temp_dir = Path(tempfile.mkdtemp())
     parquet_path = temp_dir / 'data.parquet'
     df.write_parquet(parquet_path)
@@ -67,3 +67,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

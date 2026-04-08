@@ -10,12 +10,11 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: Advanced Grouping and Window Functions
+        # Polars：高级分组与窗口函数
 
-        This snippet demonstrates advanced grouping operations in Polars using `group_by()`,
-        window functions, and rolling computations for time series analysis.
+        这个示例展示如何在 Polars 中使用 `group_by()`、窗口函数和滚动计算进行高级分组操作与时间序列分析。
 
-        Example: `df.group_by('category').agg([pl.col('value').mean(), pl.col('value').rolling_mean(3)])`
+        示例：`df.group_by('category').agg([pl.col('value').mean(), pl.col('value').rolling_mean(3)])`
         """
     )
     return
@@ -26,7 +25,7 @@ def _():
     import polars as pl
     import numpy as np
 
-    # Create sample data
+    # 创建示例数据
     n_rows = 30
     df = pl.DataFrame({
         'date': [(pl.datetime(2024, 1, 1) + pl.duration(days=x)) for x in range(n_rows)],
@@ -69,3 +68,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

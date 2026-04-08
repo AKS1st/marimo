@@ -10,9 +10,9 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # DuckDB: Parquet File Ingestion
+        # DuckDB：Parquet 文件导入
 
-        This snippet demonstrates how to query Parquet files directly using DuckDB.
+        这个示例演示如何直接使用 DuckDB 查询 Parquet 文件。
         """
     )
     return

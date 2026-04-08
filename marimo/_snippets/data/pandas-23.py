@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Sort the count of rows grouped on columns
+        # Pandas DataFrame：按列分组后对行数排序
         """
     )
     return

@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Pivot Table Operations""")
+    mo.md(r"""# Pandas：数据透视表操作""")
     return
 
 
@@ -16,7 +16,7 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create sample DataFrame
+    # 创建示例 DataFrame
     df = pd.DataFrame({
         'date': ['2024-01-01', '2024-01-01', '2024-01-02', '2024-01-02'],
         'category': ['A', 'B', 'A', 'B'],
@@ -24,7 +24,7 @@ def _():
         'value2': [10, 20, 15, 25]
     })
 
-    # Create pivot table
+    # 创建透视表
     pivot_df = pd.pivot_table(
         df,
         index='date',
@@ -48,3 +48,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

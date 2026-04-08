@@ -10,12 +10,12 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: Data Standardization and Group Comparisons
+        # Polars：数据标准化与组间比较
 
-        This snippet demonstrates statistical operations in Polars including summary statistics,
+        这个示例演示 Polars 中的统计操作，包括摘要统计、
         correlations, standardization, and group comparisons.
 
-        Example: `df.select([pl.all()]).describe()` for summary statistics
+        例如：`df.select([pl.all()]).describe()` 可用于汇总统计
         """
     )
     return
@@ -26,7 +26,7 @@ def _():
     import polars as pl
     import numpy as np
 
-    # Create sample dataset
+    # 创建示例数据set
     df = pl.DataFrame({
         'A': np.random.normal(10, 2, 1000),
         'B': np.random.normal(20, 5, 1000),
@@ -68,3 +68,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

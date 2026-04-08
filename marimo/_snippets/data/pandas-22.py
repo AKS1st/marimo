@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Select rows by an attribute of a column value
+        # Pandas DataFrame：按列值属性选择行
         """
     )
     return
@@ -19,8 +19,8 @@ def __(mo):
 def __(mo):
     mo.md(
         r"""
-        Use the Series `map()` method.
-        E.g. To filter by the length of a column values:
+        使用 Series 的 `map()` 方法。
+        例如，要按某列值的长度进行过滤：
         """
     )
     return
@@ -50,3 +50,4 @@ def __():
 
 if __name__ == "__main__":
     app.run()
+

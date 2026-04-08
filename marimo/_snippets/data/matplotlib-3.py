@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Matplotlib: Time Series with Custom Formatting
+        # Matplotlib：带自定义格式的时间序列图
 
-        Create time series visualizations with `plot_date()` and custom date formatting.
-        Shows rolling averages and confidence intervals using `fill_between()`.
+        使用 `plot_date()` 和自定义日期格式创建时间序列可视化。
+        同时展示使用 `fill_between()` 绘制的移动平均和置信区间。
         """
     )
     return
@@ -30,30 +30,30 @@ def _():
 @app.cell
 def _(np, pd, plt):
     def create_time_series_plot():
-        # Generate sample time series data
+        # 生成示例时间序列数据
         dates = pd.date_range(start='2023-01-01', periods=100, freq='D')
         np.random.seed(42)
         values = np.random.randn(100).cumsum()
 
-        # Calculate rolling statistics
+        # 计算滚动统计量
         window = 20
         rolling_mean = pd.Series(values).rolling(window=window).mean()
         rolling_std = pd.Series(values).rolling(window=window).std()
 
-        # Create the plot
+        # 创建图表
         fig, ax = plt.subplots(figsize=(12, 6))
 
-        # Plot raw data and rolling mean
+        # 绘制原始数据和滚动平均
         ax.plot(dates, values, 'k-', alpha=0.3, label='Raw Data')
         ax.plot(dates, rolling_mean, 'b-', label=f'{window}-Day Mean')
 
-        # Add confidence interval
+        # 添加置信区间
         ax.fill_between(dates,
                        rolling_mean - 2*rolling_std,
                        rolling_mean + 2*rolling_std,
                        color='b', alpha=0.1, label='95% Confidence')
 
-        # Customize the plot
+        # 自定义图表
         ax.set_title('Time Series with Rolling Statistics')
         ax.set_xlabel('Date')
         ax.set_ylabel('Value')
@@ -77,3 +77,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

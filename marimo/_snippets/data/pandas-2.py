@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Query by regexp (regular expression)
+        # Pandas DataFrame：通过正则表达式查询
         """
     )
     return

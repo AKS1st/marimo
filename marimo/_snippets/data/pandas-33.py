@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Merge Operations""")
+    mo.md(r"""# Pandas：合并操作""")
     return
 
 
@@ -16,7 +16,7 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create sample DataFrames
+    # 创建示例 DataFrames
     df1 = pd.DataFrame({
         'id': [1, 2, 3, 4],
         'name': ['Alice', 'Bob', 'Charlie', 'David'],
@@ -45,3 +45,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

@@ -9,9 +9,9 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Visualization: Scatter Plot with Rolling Mean in Altair
+        # 可视化：Altair 带滚动均值的散点图
 
-        This shows a scatter chart of miles per gallon as a function of year, with lines indicating the mean values for each country within the given year.
+        这展示了一个散点图：每加仑英里数随年份变化，折线表示该年份中各国家的均值。
         """
     )
     return
@@ -19,7 +19,7 @@ def __(mo):
 
 @app.cell
 def __():
-    # load an example dataset
+    # 加载示例数据集
     from vega_datasets import data
 
     cars = data.cars()
@@ -53,3 +53,4 @@ def __():
 
 if __name__ == "__main__":
     app.run()
+

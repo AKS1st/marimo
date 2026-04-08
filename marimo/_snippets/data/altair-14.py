@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Visualization: Multi-View Dashboard in Altair
+        # 可视化：Altair 多视图仪表板
 
-        Create interactive dashboards using `alt.vconcat()` and `alt.hconcat()`.
-        Demonstrates linked views with `alt.selection()` for cross-filtering data.
+        使用 `alt.vconcat()` 和 `alt.hconcat()` 创建交互式仪表板。
+        示例展示了如何通过 `alt.selection()` 创建联动视图来交叉筛选数据。
         """
     )
     return
@@ -29,13 +29,13 @@ def _():
 @app.cell
 def _(alt, data):
     def create_dashboard():
-        # Load dataset
+        # 加载数据集
         source = data.cars()
 
-        # Create selection that links all views
+        # 创建联动所有视图的选择器
         brush = alt.selection_interval(name='select')
 
-        # Scatter plot
+        # 散点图
         scatter = alt.Chart(source).mark_point().encode(
             x='Horsepower:Q',
             y='Miles_per_Gallon:Q',
@@ -74,3 +74,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

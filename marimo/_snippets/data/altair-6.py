@@ -9,9 +9,9 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Visualization: Linked Brushing in Altair
+        # 可视化：Altair 联动刷选
 
-        If you apply the same selection to multiple panels of an Altair chart, the selections will be linked:
+        如果你把同一个选择条件应用到 Altair 图表的多个面板上，这些选择会联动。
         """
     )
     return
@@ -19,7 +19,7 @@ def __(mo):
 
 @app.cell
 def __():
-    # load an example dataset
+    # 加载示例数据集
     from vega_datasets import data
 
     cars = data.cars()
@@ -50,3 +50,4 @@ def __():
 
 if __name__ == "__main__":
     app.run()
+

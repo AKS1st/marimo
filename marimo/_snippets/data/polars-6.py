@@ -10,13 +10,13 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: String Operations and Pattern Matching
+        # Polars：字符串操作与模式匹配
 
-        This snippet demonstrates efficient string operations in Polars using pattern matching,
-        transformations, and regular expressions. Shows string cleaning with `str.replace()`,
-        pattern extraction with `str.extract()`, and memory optimization using `Categorical` types.
+        这个示例演示如何在 Polars 中使用模式匹配、
+        变换和正则表达式进行高效字符串操作。它展示了如何使用 `str.replace()`
+        清理字符串、用 `str.extract()` 提取模式，以及使用 `Categorical` 类型优化内存。
 
-        Example: `df.with_columns(pl.col("text").str.extract(r"pattern_(\d+)", 1))`
+        例如：`df.with_columns(pl.col("text").str.extract(r"pattern_(\d+)", 1))`
         """
     )
     return
@@ -26,7 +26,7 @@ def _(mo):
 def _():
     import polars as pl
 
-    # Create sample text data with various patterns
+    # 创建包含多种模式的示例文本数据
     df = pl.DataFrame({
         'structured_text': ['User_' + str(i % 100) + '_Category_' + str(i % 3) for i in range(5)],
         'email': [f'user{i}@example.com' for i in range(5)],
@@ -39,29 +39,29 @@ def _():
         ]
     })
 
-    # Comprehensive string operations
+    # 综合字符串操作
     result = (
         df.lazy()
         .with_columns([
-            # Basic transformations
+            # 基本变换
             pl.col('mixed_text').str.to_lowercase().alias('lowercase_text'),
             pl.col('structured_text').str.replace_all('_', ' ').alias('cleaned_text'),
 
-            # Pattern extraction
+            # 模式提取
             pl.col('structured_text').str.extract(r'Category_(\d+)', 1).alias('category_num'),
             pl.col('email').str.split('@').list.get(0).alias('email_username'),
 
-            # Pattern matching
+            # 模式匹配
             pl.col('mixed_text').str.contains(r'@').alias('is_email'),
             pl.col('mixed_text').str.contains(r'\d{3}-\d{3}-\d{4}').alias('is_phone'),
 
-            # Advanced replacements
+            # 高级替换
             pl.col('mixed_text').str.replace(
                 r'\d{3}-\d{3}-\d{4}',
                 'XXX-XXX-XXXX'
             ).alias('masked_phone'),
 
-            # Categorical optimization for repeated values
+            # 对重复值进行分类优化
             pl.col('structured_text').cast(pl.Categorical).alias('categorical_text')
         ])
         .collect()
@@ -78,3 +78,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

@@ -10,9 +10,9 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: Memory Optimization with Data Types
+        # Polars：使用数据类型进行内存优化
 
-        This snippet demonstrates memory optimization in Polars using `Categorical` types for strings,
+        这个示例演示如何在 Polars 中使用字符串的 `Categorical` 类型来优化内存，
         smaller numeric types like `Float32`, and lazy evaluation.
         Converting string columns to categorical can reduce memory usage.
         """
@@ -25,11 +25,11 @@ def _():
     import polars as pl
     import numpy as np
 
-    # Create dataset with memory-intensive columns
+    # 创建包含高内存占用列的数据集
     df = pl.DataFrame(
         {
             "id": range(100_000),
-            # Create longer strings to show memory impact
+            # 创建更长的字符串以展示内存占用
             "text": [
                 f"very_long_string_that_repeats_many_times_{i % 100}"
                 for i in range(100_000)
@@ -68,3 +68,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Matplotlib: Legend Customization and Styling
+        # Matplotlib：图例自定义与样式
 
         Customize legend placement, styling, and handles.
-        Shows common legend patterns in data visualization.
+        展示数据可视化中常见的图例模式。
         """
     )
     return
@@ -29,15 +29,15 @@ def _():
 @app.cell
 def _(np, plt):
     def create_advanced_legend():
-        # Generate data
+        # 生成数据
         x = np.linspace(0, 10, 100)
         y1 = np.sin(x)
         y2 = np.cos(x)
 
-        # Create plot with custom legend
+        # 创建带自定义图例的图表
         fig, ax = plt.subplots(figsize=(8, 5))
 
-        # Multiple plot types
+        # 多种图表类型
         line1 = ax.plot(x, y1, 'b-', label='Sine')[0]
         scatter = ax.scatter(x[::10], y2[::10], c='r', label='Cosine')
 
@@ -66,3 +66,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

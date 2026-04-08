@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas: DataFrames: Group Timeseries by Frequency
+        # Pandas：按频率分组时间序列 DataFrame
         """
     )
     return

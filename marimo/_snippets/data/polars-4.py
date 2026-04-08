@@ -10,9 +10,9 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: Dynamic Time Windows and Aggregations
+        # Polars：动态时间窗口与聚合
 
-        This snippet shows time series operations in Polars using `dt` expressions for
+        这个示例展示如何在 Polars 中使用 `dt` 表达式进行
         parsing and formatting, dynamic time windows with `group_by_dynamic()`,
         and timezone-aware calculations.
         """
@@ -26,7 +26,7 @@ def _():
     import numpy as np
     from datetime import datetime, timedelta
 
-    # Create time series data
+    # 创建时间序列数据
     dates = [datetime(2024, 1, 1) + timedelta(hours=x) for x in range(1000)]
     df = pl.DataFrame({
         'timestamp': dates,
@@ -69,3 +69,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

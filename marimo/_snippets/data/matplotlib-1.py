@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Matplotlib: Multiple Subplots Layout
+        # Matplotlib：多子图布局
 
-        Create multiple subplots using `plt.subplots()`. Common for comparing different
-        views of data with `sharex` and `sharey` options.
+        使用 `plt.subplots()` 创建多个子图。
+        常用于通过 `sharex` 和 `sharey` 选项比较数据的不同视图。
         """
     )
     return
@@ -29,24 +29,24 @@ def _():
 @app.cell
 def _(np, plt):
     def create_multi_subplot():
-        # Generate sample data
+        # 生成示例数据
         x = np.linspace(0, 10, 100)
         y1 = np.sin(x)
         y2 = np.exp(-x/3)
 
-        # Create figure with 2x2 subplots
+        # 创建 2x2 子图布局
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(12, 8))
 
-        # Plot different visualizations
+        # 绘制不同的可视化
         ax1.plot(x, y1, 'b-', label='Sine')
-        ax1.set_title('Line Plot')
+        ax1.set_title('折线图')
         ax1.legend()
 
         ax2.scatter(x[::5], y2[::5], c='r', s=50, alpha=0.5)
-        ax2.set_title('Scatter Plot')
+        ax2.set_title('散点图')
 
         ax3.fill_between(x, y1, alpha=0.3)
-        ax3.set_title('Area Plot')
+        ax3.set_title('面积图')
 
         ax4.hist(y2, bins=20, alpha=0.7)
         ax4.set_title('Histogram')
@@ -68,3 +68,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

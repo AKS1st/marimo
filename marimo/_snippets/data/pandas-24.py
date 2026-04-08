@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Reshape to have 1 row per value in a list column
+        # Pandas DataFrame：将列表列中的每个值展开为一行
         """
     )
     return
@@ -19,9 +19,9 @@ def __(mo):
 def __(mo):
     mo.md(
         r"""
-        Creates a new DataFrame that is a transformed version of the input. E.g.
-        *   Input: df with a column named `msg_ids` that is a list of values (i.e. many per row, at least in some rows).
-        *   Output: new_df which has 1 row per unique value found in any of the original `msg_ids` lists, with that value in a new column named `msg_id`.
+        创建一个新的 DataFrame，作为输入的转换结果。例如：
+        *   输入：df 中有一列名为 `msg_ids`，其中每个元素都是一个值列表（也就是说，一些行里会有多个值）。
+        *   输出：new_df 会针对原始 `msg_ids` 列里出现过的每个唯一值保留一行，并将该值放入名为 `msg_id` 的新列。
 
         """
     )
@@ -35,7 +35,7 @@ def __():
     df = pd.DataFrame(
         {
             "date": ["9/1/22", "9/2/22", "9/3/22"],
-            "action": ["Add", "Update", "Delete"],
+            "action": ["添加", "更新", "删除"],
             "msg_ids": [[1, 2, 3], [], [2, 3]],
         }
     )

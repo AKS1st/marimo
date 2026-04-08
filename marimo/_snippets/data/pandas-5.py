@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Query by Timestamp above a value
+        # Pandas DataFrame：按大于某个值的时间戳查询
         """
     )
     return

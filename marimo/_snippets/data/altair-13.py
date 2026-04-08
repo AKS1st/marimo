@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Visualization: Distribution Plots in Altair
+        # 可视化：Altair 分布图
 
-        Create distribution visualizations using `mark_area()` and `transform_density()`.
-        Common for comparing distributions across categories with interactive tooltips.
+        使用 `mark_area()` 和 `transform_density()` 创建分布可视化。
+        常用于借助交互式提示框比较不同类别的分布。
         """
     )
     return
@@ -29,10 +29,10 @@ def _():
 @app.cell
 def _(alt, data):
     def create_distribution_plot():
-        # Load dataset
+        # 加载数据集
         source = data.cars()
 
-        # Create distribution plot
+        # 创建分布图
         chart = alt.Chart(source).transform_density(
             'Miles_per_Gallon',
             groupby=['Origin'],
@@ -64,3 +64,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

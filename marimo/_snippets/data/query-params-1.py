@@ -10,12 +10,11 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Query Parameters: Writing to query parameters
+        # 查询参数：写入查询参数
 
-        You can also use `mo.query_params` to set query parameters in order
-        to keep track of state in the URL. This is useful for bookmarking
-        or sharing a particular state of the notebook while running as an
-        application with `marimo run`.
+        你也可以使用 `mo.query_params` 设置查询参数，以便在 URL 中记录状态。
+        这对于收藏书签，或者在使用 `marimo run` 将 notebook 作为应用运行时
+        分享某个特定状态很有用。
         """
     )
     return

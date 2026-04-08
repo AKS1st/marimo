@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Matplotlib: Dual Y-Axis Visualization
+        # Matplotlib：双 Y 轴可视化
 
-        Create plots with two different y-scales using `twinx()`.
-        Common for comparing different metrics on same x-axis.
+        使用 `twinx()` 创建具有两个不同 y 轴尺度的图表。
+        常用于在同一 x 轴上比较不同指标。
         """
     )
     return
@@ -29,22 +29,22 @@ def _():
 @app.cell
 def _(np, plt):
     def create_twin_axes():
-        # Generate sample data
+        # 生成示例数据
         x = np.linspace(0, 10, 100)
         y1 = np.sin(x) * 10  # Large scale
         y2 = np.cos(x) * 0.1  # Small scale
 
-        # Create figure and axis
+        # 创建图形和坐标轴
         fig, ax1 = plt.subplots(figsize=(8, 5))
 
-        # Plot on primary y-axis
+        # 在主 y 轴上绘图
         color = 'tab:blue'
         ax1.set_xlabel('Time')
         ax1.set_ylabel('Large Scale', color=color)
         ax1.plot(x, y1, color=color)
         ax1.tick_params(axis='y', labelcolor=color)
 
-        # Create twin axis
+        # 创建双 y 轴
         ax2 = ax1.twinx()
         color = 'tab:red'
         ax2.set_ylabel('Small Scale', color=color)
@@ -65,3 +65,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

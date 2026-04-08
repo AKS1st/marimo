@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Rolling and Expanding Window Statistics""")
+    mo.md(r"""# Pandas：滚动与扩展窗口统计""")
     return
 
 
@@ -16,13 +16,13 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create sample time series DataFrame
+    # 创建示例时间序列 DataFrame
     df = pd.DataFrame({
         'date': pd.date_range('2024-01-01', periods=5),
         'value': [10, 20, 15, 30, 25]
     }).set_index('date')
 
-    # Calculate multiple window statistics
+    # 计算多个窗口统计量
     window_stats = pd.DataFrame({
         'original': df['value'],
         'rolling_mean': df['value'].rolling(window=3).mean(),

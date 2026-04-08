@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # DuckDB: Parameterized & Reactive SQL Queries
+        # DuckDB：参数化与响应式 SQL 查询
 
-        This snippet shows how to parameterize SQL queries with Python variables
-        in marimo, allowing queries to dynamically reflect changes in Python values.
+        这个示例展示如何在 marimo 中使用 Python 变量对 SQL 查询进行参数化，
+        让查询能够动态反映 Python 值的变化。
         """
     )
     return
@@ -22,7 +22,7 @@ def _(mo):
 @app.cell
 def _():
     import polars as pl
-    # Create a sample DataFrame for reactive filtering
+    # 创建一个用于响应式过滤的示例 DataFrame
     data = {'id': list(range(1, 21)), 'score': [x * 5 for x in range(1, 21)]}
     df = pl.DataFrame(data)
     return data, df, pl
@@ -30,7 +30,7 @@ def _():
 
 @app.cell
 def _(mo):
-    min_score = mo.ui.number(label="Minimum Score", value=50, start=0)
+    min_score = mo.ui.number(label="最低分数", value=50, start=0)
     return (min_score,)
 
 

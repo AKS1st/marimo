@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Multiple Column Aggregations""")
+    mo.md(r"""# Pandas：多列聚合""")
     return
 
 
@@ -16,7 +16,7 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create sample DataFrame
+    # 创建示例 DataFrame
     df = pd.DataFrame({
         'group': ['A', 'A', 'B', 'B', 'B'],
         'numeric1': [10, 20, 30, 40, 50],
@@ -45,3 +45,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

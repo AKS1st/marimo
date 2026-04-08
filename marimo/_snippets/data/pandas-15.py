@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas: Create a TimeDelta using available kwargs
+        # Pandas：使用可用 kwargs 创建 TimeDelta
         """
     )
     return
@@ -19,7 +19,7 @@ def __(mo):
 def __(mo):
     mo.md(
         r"""
-        Example keyworded args: {days, seconds, microseconds, milliseconds, minutes, hours, weeks}
+        例如可用的关键字参数：{days, seconds, microseconds, milliseconds, minutes, hours, weeks}
         """
     )
     return

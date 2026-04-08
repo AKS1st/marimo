@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Reshaping Data with Melt""")
+    mo.md(r"""# Pandas：使用 melt 进行数据重塑""")
     return
 
 
@@ -16,7 +16,7 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create wide format data
+    # 创建宽格式数据
     df = pd.DataFrame({
         'id': ['A', 'B', 'C'],
         'score_2020': [75, 85, 95],

@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Connect to AWS S3 Bucket""")
+    mo.md(r"""# 连接到 AWS S3 存储桶""")
     return
 
 
@@ -38,7 +38,7 @@ def _():
 
 @app.cell
 def _(pd, s3_client):
-    # Example: Read CSV file from S3
+    # 示例：从 S3 读取 CSV 文件
     bucket_name = "your-bucket-name"
     file_key = "path/to/your/file.csv"
 
@@ -59,3 +59,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

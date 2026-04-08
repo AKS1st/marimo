@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Query by variable value
+        # Pandas DataFrame：按变量值查询
         """
     )
     return

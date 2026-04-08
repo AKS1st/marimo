@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Rename multiple Columns
+        # Pandas DataFrame：重命名多列
         """
     )
     return

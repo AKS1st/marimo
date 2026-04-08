@@ -10,12 +10,12 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: Reshaping Data
+        # Polars：数据重塑
 
-        This snippet demonstrates reshaping data in Polars using `pivot()` and `unpivot()`
-        operations for transforming between wide and long formats.
+        这个示例演示如何在 Polars 中使用 `pivot()` 和 `unpivot()`
+        在宽表与长表格式之间重塑数据。
 
-        Example: `df.pivot(values="value", index=["date"], on="category")`
+        例如：`df.pivot(values="value", index=["date"], on="category")`
         """
     )
     return
@@ -26,7 +26,7 @@ def _():
     import polars as pl
     import numpy as np
 
-    # Create sample data
+    # 创建示例数据
     df = pl.DataFrame(
         {
             "date": ["2024-01-01"] * 4 + ["2024-01-02"] * 4,
@@ -64,3 +64,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

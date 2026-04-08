@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas Timestamp: Convert string to Timestamp, using date only
+        # Pandas Timestamp：将字符串转换为 Timestamp（仅日期）
         """
     )
     return

@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Matplotlib: Basic Line and Scatter Plots
+        # Matplotlib：基础折线图与散点图
 
-        Create basic plots using `plt.plot()` and `plt.scatter()`. Shows line styles,
-        markers, and colors with `plt.legend()` for multiple series.
+        使用 `plt.plot()` 和 `plt.scatter()` 创建基础图表。示例展示了
+        多条序列的线型、标记和颜色，以及 `plt.legend()` 的用法。
         """
     )
     return
@@ -29,22 +29,22 @@ def _():
 @app.cell
 def _(np, plt):
     def create_line_scatter_plot():
-        # Generate sample data
+        # 生成示例数据
         x = np.linspace(0, 10, 100)
         y1 = np.sin(x)
         y2 = np.cos(x)
 
-        # Create figure and axis
+        # 创建图像和坐标轴
         fig, ax = plt.subplots(figsize=(10, 6))
 
-        # Plot multiple lines with different styles
+        # 绘制不同样式的多条曲线
         ax.plot(x, y1, 'b-', label='sin(x)', linewidth=2)
         ax.scatter(x[::10], y2[::10], c='r', label='cos(x)', s=50)
 
-        # Customize the plot
+        # 自定义图表
         ax.set_xlabel('x')
         ax.set_ylabel('y')
-        ax.set_title('Basic Line and Scatter Plot')
+        ax.set_title('基础折线图与散点图')
         ax.grid(True, linestyle='--', alpha=0.7)
         ax.legend()
 

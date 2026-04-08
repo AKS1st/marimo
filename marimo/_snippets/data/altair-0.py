@@ -9,9 +9,9 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Visualization: Interactive Scatter Plot in Altair
+        # 可视化：Altair 交互式散点图
 
-        Altair lets you easily create an interactive scatter plot from data stored in a Pandas dataframe.
+        Altair 可以轻松地从存储在 Pandas DataFrame 中的数据创建交互式散点图。
         """
     )
     return
@@ -19,12 +19,12 @@ def __(mo):
 
 @app.cell
 def __():
-    # load an example dataset
+    # 加载一个示例数据集
     from vega_datasets import data
 
     cars = data.cars()
 
-    # plot the dataset, referencing dataframe column names
+    # 绘制数据集，并引用 DataFrame 的列名
     import altair as alt
 
     (

@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: High-Performance Joins and Aggregations
+        # Polars：高性能连接与聚合
 
-        This snippet shows efficient join operations in Polars using `lazy()` evaluation.
-        Demonstrates joining DataFrames with different strategies, aggregating results,
+        这个示例展示如何使用 `lazy()` 惰性求值在 Polars 中高效执行连接操作。
+        演示使用不同策略连接 DataFrame、聚合结果，
         and applying window functions for analysis.
         """
     )
@@ -24,7 +24,7 @@ def _(mo):
 def _():
     import polars as pl
 
-    # Create sample DataFrames
+    # 创建示例 DataFrames
     df1 = pl.DataFrame({
         'id': range(1000),
         'value': [1.5, 2.5, 3.5] * 333 + [1.5],
@@ -89,3 +89,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

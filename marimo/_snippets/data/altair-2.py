@@ -9,10 +9,10 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Visualization: Histogram in Altair
+        # 可视化：Altair 直方图
 
-        Altair provides a variety of aggregation operations in order to build custom histograms. Here is a simple example
-
+        Altair 提供了多种聚合操作，用于构建自定义直方图。下面是一个简单示例。
+        
         """
     )
     return
@@ -20,12 +20,12 @@ def __(mo):
 
 @app.cell
 def __():
-    # load an example dataset
+    # 加载示例数据集
     from vega_datasets import data
 
     cars = data.cars()
 
-    # plot the dataset, referencing dataframe column names
+    # 绘制数据集，并引用 DataFrame 列名
     import altair as alt
 
     alt.Chart(cars).mark_bar().encode(
@@ -43,3 +43,4 @@ def __():
 
 if __name__ == "__main__":
     app.run()
+

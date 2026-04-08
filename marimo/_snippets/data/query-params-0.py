@@ -10,9 +10,9 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Query Parameters: Reading query parameters
+        # 查询参数：读取查询参数
 
-        Use `mo.query_params` to access query parameters passed to the notebook.
+        使用 `mo.query_params` 访问传递给 notebook 的查询参数。
         """
     )
     return

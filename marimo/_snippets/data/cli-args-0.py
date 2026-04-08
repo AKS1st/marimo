@@ -10,11 +10,10 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # CLI Arguments: Reading CLI arguments
+        # 命令行参数：读取命令行参数
 
-        Use `mo.cli_args` to access command line arguments passed to the notebook.
-        For example, you can pass arguments to the notebook when running it as an
-        application with `marimo run`.
+        使用 `mo.cli_args` 访问传递给 notebook 的命令行参数。
+        例如，你可以在使用 `marimo run` 将 notebook 作为应用运行时传入参数。
 
         ```bash
         marimo run app.py -- --arg1 value1 --arg2 value2

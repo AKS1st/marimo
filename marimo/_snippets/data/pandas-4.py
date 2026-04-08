@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Query using variable value as a column name
+        # Pandas DataFrame：将变量值作为列名查询
         """
     )
     return

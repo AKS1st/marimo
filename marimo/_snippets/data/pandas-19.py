@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Ignore one Column
+        # Pandas DataFrame：忽略一列
         """
     )
     return

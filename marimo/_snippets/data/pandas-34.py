@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Memory Optimization and Type Management""")
+    mo.md(r"""# Pandas：内存优化与类型管理""")
     return
 
 
@@ -16,7 +16,7 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create sample DataFrame with different data types
+    # 创建包含不同数据类型的示例 DataFrame
     df = pd.DataFrame({
         'int_col': range(1000),
         'float_col': [1.5] * 1000,
@@ -24,11 +24,11 @@ def _():
         'category_col': ['A', 'B', 'C'] * 333 + ['A']  # Make it 1000 rows
     })
 
-    # Memory optimization
+    # 内存优化
     df['category_col'] = df['category_col'].astype('category')
     df['int_col'] = df['int_col'].astype('int32')
 
-    # Get memory usage
+    # 获取内存占用
     memory_usage = df.memory_usage(deep=True)
     dtypes = df.dtypes
     return df, dtypes, memory_usage, pd
@@ -54,3 +54,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

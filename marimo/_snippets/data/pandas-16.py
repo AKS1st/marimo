@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas: Create a TimeDelta from a string
+        # Pandas：从字符串创建 TimeDelta
         """
     )
     return

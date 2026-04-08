@@ -10,11 +10,11 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Visualization: Heat Map in Altair
+        # 可视化：Altair 热力图
 
-        This snippet demonstrates creating a heat map visualization using Altair's
-        `rect` mark type with color encoding. Heat maps are excellent for showing
-        patterns in matrix-structured data.
+        这个示例演示如何使用 Altair 的
+        `rect` 标记类型和颜色编码创建热力图。热力图非常适合展示
+        矩阵结构数据中的模式。
         """
     )
     return
@@ -32,9 +32,9 @@ def _():
 def _(alt, data):
     def create_heatmap():
 
-        # Load and prepare data
+        # 加载并准备数据
         source = data.seattle_weather()
-        # Create heatmap
+        # 创建热力图
         chart = alt.Chart(source).mark_rect().encode(
             x=alt.X('date:O', timeUnit='month', title='Month'),
             y=alt.Y('date:O', timeUnit='day', title='Day'),
@@ -63,3 +63,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

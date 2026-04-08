@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Extract values using regexp (regular expression)
+        # Pandas DataFrame：使用正则表达式提取值
         """
     )
     return

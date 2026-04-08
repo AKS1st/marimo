@@ -9,9 +9,10 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        #  Visualization: Interactive Brushing in Altair
+        # 可视化：Altair 交互式刷选
 
-        With a few extra lines of code on top of a standard scatter plot, you can add selection behavior to your scatter plot. This lets you click and drag to select points.
+        在标准散点图的基础上只需加几行代码，就能为散点图添加选择行为。
+        这样你就可以通过单击并拖拽来选择点。
         """
     )
     return
@@ -19,7 +20,7 @@ def __(mo):
 
 @app.cell
 def __():
-    # load an example dataset
+    # 加载示例数据集
     from vega_datasets import data
 
     cars = data.cars()
@@ -44,3 +45,4 @@ def __():
 
 if __name__ == "__main__":
     app.run()
+

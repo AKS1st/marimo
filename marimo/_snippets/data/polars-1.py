@@ -10,9 +10,9 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Polars: Rolling Averages and Z-Score Calculations
+        # Polars：滚动均值与 Z 分数计算
 
-        This snippet shows advanced column operations in Polars using `rolling_mean()`, `over()` aggregations,
+        这个示例展示如何在 Polars 中使用 `rolling_mean()`、`over()` 聚合，
         and type casting with the expression API.
         """
     )
@@ -24,7 +24,7 @@ def __():
     import polars as pl
     from datetime import datetime, timedelta
 
-    # Create sample DataFrame with proper datetime
+    # 创建示例 DataFrame with proper datetime
     df = pl.DataFrame({
         'id': range(1000),
         'value': [1.5, 2.5, 3.5] * 333 + [1.5],
@@ -56,3 +56,4 @@ def __():
 
 if __name__ == "__main__":
     app.run()
+

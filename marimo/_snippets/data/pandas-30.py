@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Missing Data Handling""")
+    mo.md(r"""# Pandas：缺失数据处理""")
     return
 
 
@@ -16,14 +16,14 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create sample DataFrame with missing values
+    # 创建带缺失值的示例 DataFrame
     df = pd.DataFrame({
         'A': [1, None, 3, None, 5],
         'B': [None, 2, 3, 4, 5],
         'C': ['a', 'b', None, 'd', 'e']
     })
 
-    # Common missing data operations
+    # 常见的缺失值处理操作
     cleaned_df = df.copy()
     cleaned_df['A'] = df['A'].fillna(df['A'].mean())  # Fill numeric with mean
     cleaned_df['B'] = df['B'].fillna(0)  # Fill numeric with zero
@@ -41,3 +41,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

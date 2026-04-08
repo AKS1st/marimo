@@ -10,9 +10,9 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # DuckDB: CSV File Ingestion
+        # DuckDB：CSV 文件导入
 
-        This snippet demonstrates how to query CSV files directly using DuckDB.
+        这个示例演示如何直接使用 DuckDB 查询 CSV 文件。
         """
     )
     return

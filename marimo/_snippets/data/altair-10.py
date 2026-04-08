@@ -10,11 +10,11 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Visualization: Box Plot with Violin Layer in Altair
+        # 可视化：Altair 带小提琴层的箱线图
 
-        Create layered box and violin plots with Altair. Box plots display quartiles via `mark_boxplot()`
-        while violin plots show density distributions using `transform_density()`.
-        Combining them reveals both summary statistics and full data distributions in a single visualization.
+        使用 Altair 创建分层箱线图和小提琴图。箱线图通过 `mark_boxplot()` 展示四分位数
+        小提琴图通过 `transform_density()` 展示密度分布。
+        将两者结合可以同时看到摘要统计和完整分布。
         """
     )
     return
@@ -30,10 +30,10 @@ def _():
 @app.cell
 def _(alt, data):
     def create_box_violin_plot():
-        # Load the dataset
+        # 加载数据集
         source = data.cars()
 
-        # Create the base chart for the box plot
+        # 创建箱线图的基础图表
         box_plot = alt.Chart(source).mark_boxplot(size=50).encode(  # Increased box size
             x=alt.X('Origin:N', axis=alt.Axis(labelFontSize=12, titleFontSize=14)),  # Larger font
             y=alt.Y('Horsepower:Q',
@@ -43,7 +43,7 @@ def _(alt, data):
             color=alt.Color('Origin:N', legend=alt.Legend(labelFontSize=12, titleFontSize=14))  # Larger legend
         )
 
-        # Create the violin layer
+        # 创建小提琴图层
         violin = alt.Chart(source).transform_density(
             'Horsepower',
             as_=['Horsepower', 'density'],
@@ -84,3 +84,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

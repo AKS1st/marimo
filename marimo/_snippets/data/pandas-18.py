@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Drop duplicate rows
+        # Pandas DataFrame：删除重复行
         """
     )
     return

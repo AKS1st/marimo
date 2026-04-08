@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Memory Optimization with Category Type""")
+    mo.md(r"""# Pandas：使用类别类型进行内存优化""")
     return
 
 
@@ -16,7 +16,7 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create sample DataFrame
+    # 创建示例 DataFrame
     df = pd.DataFrame({
         'id': range(1000),
         'status': ['active', 'inactive', 'pending'] * 333 + ['active'],
@@ -40,3 +40,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

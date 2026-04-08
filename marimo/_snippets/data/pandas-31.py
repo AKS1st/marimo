@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Advanced DateTime Operations""")
+    mo.md(r"""# Pandas：高级日期时间操作""")
     return
 
 
@@ -16,13 +16,13 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create sample DataFrame with datetime data
+    # 创建带日期时间数据的示例 DataFrame
     df = pd.DataFrame({
         'date': pd.date_range('2024-01-01', periods=5),
         'value': [100, 200, 150, 300, 250]
     })
 
-    # DateTime operations
+    # 日期时间操作
     date_features = pd.DataFrame({
         'original_date': df['date'],
         'year': df['date'].dt.year,
@@ -44,3 +44,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

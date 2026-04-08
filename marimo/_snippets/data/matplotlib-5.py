@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Matplotlib: Data Point Labels and Explanatory Notes
+        # Matplotlib：数据点标签与说明注释
 
-        Add annotations using `annotate()` and text using `text()`.
-        Common for highlighting specific data points and adding explanations.
+        使用 `annotate()` 添加注释，使用 `text()` 添加文本。
+        常用于突出特定数据点并补充说明。
         """
     )
     return
@@ -29,21 +29,21 @@ def _():
 @app.cell
 def _(np, plt):
     def create_annotated_plot():
-        # Create data
+        # 创建数据
         x = np.linspace(0, 10, 20)
         y = np.sin(x)
 
-        # Create plot with annotations
+        # 创建带注释的图表
         fig, ax = plt.subplots(figsize=(8, 5))
         ax.plot(x, y, 'b-')
 
-        # Add arrow annotation
+        # 添加箭头注释
         ax.annotate('Maximum',
                     xy=(4.7, 1.0),        # Point to annotate
                     xytext=(5.5, 0.5),    # Text position
                     arrowprops=dict(facecolor='black', shrink=0.05))
 
-        # Add text box
+        # 添加文本框
         ax.text(2, -0.5, 'Sine Wave',
                 bbox=dict(facecolor='white', alpha=0.7))
 
@@ -61,3 +61,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

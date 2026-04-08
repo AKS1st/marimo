@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell
 def _(mo):
-    mo.md(r"""# Pandas: Boolean Indexing and Filtering""")
+    mo.md(r"""# Pandas：布尔索引与过滤""")
     return
 
 
@@ -16,7 +16,7 @@ def _(mo):
 def _():
     import pandas as pd
 
-    # Create sample DataFrame
+    # 创建示例 DataFrame
     df = pd.DataFrame({
         'name': ['Alice', 'Bob', 'Charlie', 'David', 'Eve'],
         'age': [25, 30, 35, 28, 22],
@@ -40,3 +40,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

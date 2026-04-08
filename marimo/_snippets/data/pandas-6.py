@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Query for Timestamp between two values
+        # Pandas DataFrame：查询位于两个值之间的时间戳
         """
     )
     return

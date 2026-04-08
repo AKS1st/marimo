@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Visualization: Stacked Histogram in Altair
+        # 可视化：Altair 堆叠直方图
 
         If you take a standard histogram and encode another field with color, the result will be a stacked histogram:
 
@@ -20,12 +20,12 @@ def __(mo):
 
 @app.cell
 def __():
-    # load an example dataset
+    # 加载示例数据集
     from vega_datasets import data
 
     cars = data.cars()
 
-    # plot the dataset, referencing dataframe column names
+    # 绘制数据集，并引用 DataFrame 列名
     import altair as alt
 
     alt.Chart(cars).mark_bar().encode(
@@ -42,3 +42,4 @@ def __():
 
 if __name__ == "__main__":
     app.run()
+

@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Filter by Timestamp in DatetimeIndex using `.loc[]`
+        # Pandas DataFrame：使用 `.loc[]` 按 DatetimeIndex 中的时间戳筛选
         """
     )
     return

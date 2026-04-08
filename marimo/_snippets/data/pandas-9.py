@@ -10,7 +10,7 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Pandas: Describe Timestamp values in a column
+        # Pandas：描述列中的时间戳值
         """
     )
     return

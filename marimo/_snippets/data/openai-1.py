@@ -9,9 +9,9 @@ app = marimo.App(width="medium")
 def _(mo):
     mo.md(
         r"""
-        # OpenAI: Chatbot
+        # OpenAI：聊天机器人
 
-        Turn any OpenAI or any OpenAI-compatible endpoint into a chatbot.
+        将 OpenAI 或任何兼容 OpenAI 的端点转换为聊天机器人。
         """
     )
     return
@@ -36,11 +36,11 @@ def _(api_key, mo):
         mo.ai.llm.openai(
             "gpt-4o-mini",
             api_key=api_key.value,
-            # Change this if you are using a different OpenAI-compatible endpoint.
+            # 如果你使用的是其他兼容 OpenAI 的端点，请在这里修改。
             # base_url="https://api.openai.com/v1",
-            system_message="You are a helpful assistant.",
+            system_message="你是一个乐于助人的助手。",
         ),
-        prompts=["Write a haiku about recursion in programming."],
+        prompts=["写一首关于编程中递归的俳句。"],
     )
     chat
     return (chat,)

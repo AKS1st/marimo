@@ -10,11 +10,11 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Visualization: Area Charts with Gradient Fill
+        # 可视化：带渐变填充的面积图
 
-        Create stacked area charts using `alt.Chart().mark_area()`. Demonstrates
-        gradient fills and opacity settings with `fillOpacity`. Common for
-        visualizing time series data or part-to-whole relationships.
+        使用 `alt.Chart().mark_area()` 创建堆叠面积图。该示例演示了
+        渐变填充和 `fillOpacity` 透明度设置，常用于
+        可视化时间序列数据或整体与部分的关系。
         """
     )
     return
@@ -30,10 +30,10 @@ def _():
 @app.cell
 def _(alt, data):
     def create_area_chart():
-        # Load the dataset
+        # 加载数据集
         source = data.stocks()
 
-        # Create area chart with gradient
+        # 创建带渐变的面积图
         chart = alt.Chart(source).transform_filter(
             alt.datum.symbol != 'IBM'  # Remove one symbol to avoid overcrowding
         ).mark_area(
@@ -64,3 +64,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

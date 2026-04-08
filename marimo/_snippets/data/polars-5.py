@@ -10,13 +10,12 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Polars: CSV Operations
+        # Polars：CSV 操作
 
-        Demonstrates Polars' CSV capabilities using `scan_csv()` for
-        streaming large CSV datasets. Shows memory-efficient filtering
-        and aggregation with lazy evaluation.
+        展示 Polars 的 CSV 能力，使用 `scan_csv()` 流式处理大型 CSV 数据集。
+        该示例展示了内存高效的过滤和惰性求值聚合。
 
-        Example: `pl.scan_csv("data.csv").filter(pl.col("value") > 500).collect()`
+        示例：`pl.scan_csv("data.csv").filter(pl.col("value") > 500).collect()`
         """
     )
     return
@@ -29,19 +28,19 @@ def _():
     from pathlib import Path
     import datetime
 
-    # Create sample data
+    # 创建示例数据
     df = pl.DataFrame({
         'date': [(datetime.date(2024, 1, 1) + datetime.timedelta(days=x % 366)) for x in range(1000)],
         'category': ['A', 'B', 'C'] * 333 + ['A'],
         'value': range(1000)
     })
 
-    # Create temporary directory and save CSV
+    # 创建临时目录并保存 CSV
     temp_dir = Path(tempfile.mkdtemp())
     csv_path = temp_dir / 'data.csv'
     df.write_csv(csv_path)
 
-    # Demonstrate filtered CSV read
+    # 演示过滤后的 CSV 读取
     csv_filtered = (
         pl.scan_csv(csv_path)
         .filter(pl.col('category') == 'A')
@@ -68,3 +67,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

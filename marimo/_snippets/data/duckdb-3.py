@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # DuckDB: Advanced SQL with Aggregations & Window Functions
+        # DuckDB：带聚合与窗口函数的高级 SQL
 
-        This snippet demonstrates advanced SQL queries including group-by aggregations
-        and window functions (e.g., cumulative sums) using DuckDB.
+        这个示例演示使用 DuckDB 进行高级 SQL 查询，包括 group-by 聚合和
+        窗口函数（例如累计求和）。
         """
     )
     return
@@ -22,7 +22,7 @@ def _(mo):
 @app.cell
 def _():
     import polars as pl
-    # Create sample DataFrame
+    # 创建示例 DataFrame
     data = {
         'group': ['A', 'A', 'B', 'B', 'C', 'C'],
         'value': [10, 15, 20, 25, 30, 35]
@@ -66,3 +66,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

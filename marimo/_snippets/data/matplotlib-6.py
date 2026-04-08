@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Matplotlib: Heatmaps with Colormaps
+        # Matplotlib：带色图的热力图
 
-        Create heatmaps using `imshow()` with custom colormaps.
-        Common for visualizing matrices, correlations, and grid data.
+        使用 `imshow()` 和自定义色图创建热力图。
+        常用于可视化矩阵、相关性和网格数据。
         """
     )
     return
@@ -29,19 +29,19 @@ def _():
 @app.cell
 def _(np, plt):
     def create_heatmap():
-        # Create sample correlation matrix
+        # 创建示例相关矩阵
         np.random.seed(42)
         data = np.random.randn(5, 5)
         corr = np.corrcoef(data)
 
-        # Create heatmap
+        # 创建热力图
         fig, ax = plt.subplots(figsize=(7, 6))
         im = ax.imshow(corr, cmap='coolwarm', vmin=-1, vmax=1)
 
-        # Add colorbar
+        # 添加颜色条
         plt.colorbar(im)
 
-        # Add labels
+        # 添加标签
         ax.set_xticks(range(5))
         ax.set_yticks(range(5))
         ax.set_title('Correlation Matrix')
@@ -60,3 +60,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

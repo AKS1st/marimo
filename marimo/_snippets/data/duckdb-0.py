@@ -10,11 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # DuckDB: Basic SQL Querying and DataFrame Integration
+        # DuckDB：基础 SQL 查询与 DataFrame 集成
 
-        This snippet demonstrates how to use `marimo`'s SQL cells to execute
-        queries against a local Pandas DataFrame. We leverage parameterized
-        queries through f-string interpolation.
+        这个示例演示如何使用 `marimo` 的 SQL 单元，对本地 Pandas DataFrame
+        执行查询。这里通过 f-string 插值实现参数化查询。
         """
     )
     return
@@ -23,7 +22,7 @@ def _(mo):
 @app.cell
 def _():
     import polars as pl
-    # Create a sample DataFrame
+    # 创建一个示例 DataFrame
     data = {
         'id': list(range(1, 11)),
         'value': [x * 10 for x in range(1, 11)]

@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas: Replace NaN values in a Column
+        # Pandas：替换列中的 NaN 值
         """
     )
     return

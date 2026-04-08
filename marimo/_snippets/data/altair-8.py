@@ -9,9 +9,10 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Visualization: Time Series Line Plot in Altair
+        # 可视化：Altair 时间序列折线图
 
-        Altair handles temporal types natively by using the ``:T`` type marker. An example is in this plot of stock prices over time
+        Altair 通过使用 ``:T`` 类型标记原生支持时间类型。
+        这个示例展示了股票价格随时间变化的图表。
         """
     )
     return

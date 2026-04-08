@@ -9,9 +9,9 @@ app = marimo.App(width="medium")
 def _(mo):
     mo.md(
         r"""
-        # Hugging Face: Datasets with SQL
+        # Hugging Face：用 SQL 处理数据集
 
-        Fetch any datasets from [Hugging Face Datasets](https://huggingface.co/datasets) with SQL via [DuckDB](https://duckdb.org/)
+        通过 [DuckDB](https://duckdb.org/) 使用 SQL 从 [Hugging Face Datasets](https://huggingface.co/datasets) 获取任意数据集。
         """
     )
     return

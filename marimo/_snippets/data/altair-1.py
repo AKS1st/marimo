@@ -9,9 +9,9 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Visualization: Bar Plot in Altair
+        # 可视化：Altair 柱状图
 
-        This shows a simple bar plot in Altair, showing the mean miles per gallon as a function of origin for a number of car models:
+        这展示了 Altair 中的一个简单柱状图，说明多个车型的平均每加仑英里数与产地之间的关系：
         """
     )
     return
@@ -19,12 +19,12 @@ def __(mo):
 
 @app.cell
 def __():
-    # load an example dataset
+    # 加载示例数据集
     from vega_datasets import data
 
     cars = data.cars()
 
-    # plot the dataset, referencing dataframe column names
+    # 绘制数据集，并引用 DataFrame 列名
     import altair as alt
 
     alt.Chart(cars).mark_bar().encode(
@@ -41,3 +41,4 @@ def __():
 
 if __name__ == "__main__":
     app.run()
+

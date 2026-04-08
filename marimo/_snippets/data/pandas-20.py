@@ -9,7 +9,7 @@ app = marimo.App()
 def __(mo):
     mo.md(
         r"""
-        # Pandas DataFrame: Intersect Indexes
+        # Pandas DataFrame：交集索引
         """
     )
     return

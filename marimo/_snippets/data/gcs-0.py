@@ -8,7 +8,7 @@ app = marimo.App()
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""# Connect to Google Cloud Storage Bucket""")
+    mo.md(r"""# 连接到 Google Cloud Storage 存储桶""")
     return
 
 
@@ -33,7 +33,7 @@ def _():
 
 @app.cell
 def _(pd, storage_client):
-    # Example: Read CSV file from GCS
+    # 示例：从 GCS 读取 CSV 文件
     bucket_name = "your-bucket-name"
     blob_name = "path/to/your/file.csv"
 
@@ -58,3 +58,4 @@ def _():
 
 if __name__ == "__main__":
     app.run()
+

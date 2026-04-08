@@ -10,10 +10,10 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # Matplotlib: Styling and Themes
+        # Matplotlib：样式与主题
 
-        Apply custom styles using `plt.style.use()` and customize plots with
-        `rcParams`. Common for creating publication-quality figures.
+        使用 `plt.style.use()` 应用自定义样式，并通过 `rcParams`
+        定制图表。常用于创建适合发表的高质量图像。
         """
     )
     return
@@ -29,21 +29,21 @@ def _():
 @app.cell
 def _(np, plt):
     def create_styled_plot():
-        # Set style and custom parameters
-        plt.style.use('ggplot')  # Using built-in ggplot style
+        # 设置样式和自定义参数
+        plt.style.use('ggplot')  # 使用内置 ggplot 样式
         plt.rcParams['figure.figsize'] = [8, 5]
         plt.rcParams['axes.grid'] = True
 
-        # Generate sample data
+        # 生成示例数据
         x = np.linspace(0, 10, 50)
         y = np.sin(x) + np.random.normal(0, 0.2, 50)
 
-        # Create styled plot
+        # 创建带样式的图表
         fig, ax = plt.subplots()
         ax.scatter(x, y, c='crimson', alpha=0.6)
-        ax.set_title('Styled Scatter Plot', fontsize=12, pad=10)
+        ax.set_title('带样式的散点图', fontsize=12, pad=10)
 
-        # Add minimal styling
+        # 添加最小化样式
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
 

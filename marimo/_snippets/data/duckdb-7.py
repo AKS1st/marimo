@@ -10,9 +10,9 @@ app = marimo.App()
 def _(mo):
     mo.md(
         r"""
-        # DuckDB: JSON File Ingestion
+        # DuckDB：JSON 文件导入
 
-        This snippet demonstrates how to query JSON files directly using DuckDB.
+        这个示例演示如何直接使用 DuckDB 查询 JSON 文件。
         """
     )
     return

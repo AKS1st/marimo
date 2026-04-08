@@ -9,9 +9,9 @@ app = marimo.App(width="medium")
 def _(mo):
     mo.md(
         r"""
-        # OpenAI: Prompt with Streaming Response
+        # OpenAI：带流式响应的提示词
 
-        Prompt OpenAI or any OpenAI-compatible endpoint and stream the response back.
+        向 OpenAI 或任何兼容 OpenAI 的端点发送提示，并将响应流式返回。
         """
     )
     return
@@ -34,17 +34,17 @@ def _(mo):
 def _(OpenAI, api_key):
     client = OpenAI(
         api_key=api_key.value,
-        # Change this if you are using a different OpenAI-compatible endpoint.
+        # 如果你使用的是其他兼容 OpenAI 的端点，请在这里修改。
         # base_url="https://api.openai.com/v1",
     )
 
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "system", "content": "你是一个乐于助人的助手。"},
             {
                 "role": "user",
-                "content": "Write a haiku about recursion in programming.",
+                "content": "写一首关于编程中递归的俳句。",
             },
         ],
         stream=True,
