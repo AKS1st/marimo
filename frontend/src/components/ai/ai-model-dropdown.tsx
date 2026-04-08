@@ -35,6 +35,45 @@ import { Tooltip } from "../ui/tooltip";
 import { AiProviderIcon } from "./ai-provider-icon";
 import { getCurrentRoleTooltip, getTagColour } from "./display-helpers";
 
+function translateProviderDescription(description: string): string {
+  const translations: Record<string, string> = {
+    "OpenAI's API for GPT models, including GPT-3.5 and GPT-4.":
+      "OpenAI 面向 GPT 模型的 API，包括 GPT-3.5 和 GPT-4。",
+    "Amazon Bedrock provides access to foundation models from Amazon and leading AI startups via a unified API.":
+      "Amazon Bedrock 通过统一 API 提供对 Amazon 及领先 AI 初创公司基础模型的访问。",
+    "Azure provides access to models via the Azure cloud.":
+      "Azure 通过 Azure 云提供模型访问。",
+    "Anthropic's Claude models for conversational and completion tasks.":
+      "Anthropic 的 Claude 模型，适用于对话和补全任务。",
+    "Google's Vertex AI and PaLM APIs for generative and conversational models.":
+      "Google 的 Vertex AI 和 PaLM API，面向生成式与对话式模型。",
+    "Ollama is a lightweight, open-source model server for running and sharing LLMs.":
+      "Ollama 是一个轻量级的开源模型服务器，用于运行和共享 LLM。",
+    "GitHub's API for GPT models with GitHub-hosted models.":
+      "GitHub 面向 GPT 模型的 API，支持 GitHub 托管模型。",
+    "marimo's hosted models.":
+      "marimo 托管的模型。",
+    "DeepSeek's API for GPT models.":
+      "DeepSeek 面向 GPT 模型的 API。",
+    "LM Studio's API for GPT models.":
+      "LM Studio 面向 GPT 模型的 API。",
+    "OpenRouter's API for GPT models.":
+      "OpenRouter 面向 GPT 模型的 API。",
+    "Mistral's API for GPT models.":
+      "Mistral 面向 GPT 模型的 API。",
+    "Vercel's API for GPT models.":
+      "Vercel 面向 GPT 模型的 API。",
+    "Together AI's API for GPT models.":
+      "Together AI 面向 GPT 模型的 API。",
+    "xAI's API for GPT models.":
+      "xAI 面向 GPT 模型的 API。",
+    "Weights & Biases' hosted models for ML development and AI inference.":
+      "Weights & Biases 托管的模型，面向机器学习开发和 AI 推理。",
+  };
+
+  return translations[description] ?? description;
+}
+
 interface AIModelDropdownProps {
   value?: string;
   placeholder?: string;
@@ -65,15 +104,12 @@ export const AIModelDropdown = ({
   const { saveModelChange } = useModelChange();
   const { handleClick } = useOpenSettingsToTab();
 
-  // Only include autocompleteModel if copilot is set to "custom"
   const autocompleteModel =
     completion.copilot === "custom"
       ? ai?.models?.autocomplete_model
       : undefined;
 
   const aiModelRegistry = AiModelRegistry.create({
-    // We add all the custom models and the models used in the editor.
-    // If they among the known models, they won't overwrite them.
     customModels: [
       ...(ai?.models?.custom_models ?? []),
       ai?.models?.chat_model,
@@ -93,7 +129,6 @@ export const AIModelDropdown = ({
           ? ai?.models?.edit_model
           : undefined;
 
-  // If value is provided, use it, otherwise use the active model
   const currentValue = value
     ? AiModelId.parse(value)
     : activeModel
@@ -195,7 +230,7 @@ export const AIModelDropdown = ({
               onClick={() => handleClick("ai", "ai-models")}
             >
               <CircleHelpIcon className="h-3 w-3" />
-              <span className="cursor-pointer text-link">Add custom model</span>
+              <span className="cursor-pointer text-link">添加自定义模型</span>
             </DropdownMenuItem>
           </>
         )}
@@ -242,20 +277,20 @@ const ProviderDropdownContent = ({
           {maybeProviderInfo && (
             <>
               <p className="text-sm text-muted-foreground p-2 max-w-[300px]">
-                {maybeProviderInfo.description}
+                {translateProviderDescription(maybeProviderInfo.description)}
                 <br />
               </p>
 
               <p className="text-sm text-muted-foreground p-2 pt-0">
-                For more information, see the{" "}
+                更多信息请查看{" "}
                 <a
                   href={maybeProviderInfo.url}
                   target="_blank"
                   className="underline"
                   rel="noreferrer"
-                  aria-label="Provider details"
+                  aria-label="提供方详情"
                 >
-                  provider details
+                  提供方详情
                 </a>
                 .
               </p>
@@ -306,7 +341,7 @@ const AiModelDropdownItem = ({
         <span>{model.name}</span>
         <div className="ml-auto">
           {model.thinking && (
-            <Tooltip content="Reasoning model">
+            <Tooltip content="推理模型">
               <BrainIcon
                 className={`h-5 w-5 rounded-md p-1 ${getTagColour("thinking")}`}
               />
@@ -315,7 +350,7 @@ const AiModelDropdownItem = ({
         </div>
       </div>
       {model.custom && (
-        <Tooltip content="Custom model">
+        <Tooltip content="自定义模型">
           <BotIcon className="h-5 w-5" />
         </Tooltip>
       )}
@@ -346,7 +381,7 @@ export const AiModelInfoDisplay = ({
       {model.roles.length > 0 && (
         <div>
           <p className="text-xs font-medium text-muted-foreground mb-2">
-            Capabilities:
+            能力：
           </p>
           <div className="flex flex-wrap gap-1">
             {model.roles.map((role) => (
@@ -365,9 +400,7 @@ export const AiModelInfoDisplay = ({
       {model.thinking && (
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
-          <span className="text-xs text-muted-foreground">
-            Supports thinking mode
-          </span>
+          <span className="text-xs text-muted-foreground">支持思考模式</span>
         </div>
       )}
 

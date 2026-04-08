@@ -38,13 +38,13 @@ const DependencyGraphPanel: React.FC = () => {
                 value="minimap"
                 className="py-0.5 text-xs uppercase tracking-wide font-bold"
               >
-                Minimap
+                缩略图
               </TabsTrigger>
               <TabsTrigger
                 value="graph"
                 className="py-0.5 text-xs uppercase tracking-wide font-bold"
               >
-                Graph
+                图谱
               </TabsTrigger>
             </TabsList>
           </Tabs>

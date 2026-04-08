@@ -37,11 +37,9 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
   const [config, setUserConfig] = useResolvedMarimoConfig();
 
   const handleStartupToggle = async (checked: boolean) => {
-    // Send only the changed portion to avoid overwriting other config values
     await saveUserConfig({
       config: { runtime: { auto_instantiate: checked } },
     }).then(() => {
-      // Update local state with merged config
       setUserConfig((prev) => ({
         ...prev,
         runtime: { ...prev.runtime, auto_instantiate: checked },
@@ -51,11 +49,9 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
 
   const handleCellChangeToggle = async (checked: boolean) => {
     const onCellChange = checked ? "autorun" : "lazy";
-    // Send only the changed portion to avoid overwriting other config values
     await saveUserConfig({
       config: { runtime: { on_cell_change: onCellChange } },
     }).then(() => {
-      // Update local state with merged config
       setUserConfig((prev) => ({
         ...prev,
         runtime: { ...prev.runtime, on_cell_change: onCellChange },
@@ -66,11 +62,9 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
   const handleModuleReloadChange = async (
     option: "off" | "lazy" | "autorun",
   ) => {
-    // Send only the changed portion to avoid overwriting other config values
     await saveUserConfig({
       config: { runtime: { auto_reload: option } },
     }).then(() => {
-      // Update local state with merged config
       setUserConfig((prev) => ({
         ...prev,
         runtime: { ...prev.runtime, auto_reload: option },
@@ -78,7 +72,6 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
     });
   };
 
-  // Check if all reactivity is disabled
   const allReactivityDisabled =
     !config.runtime.auto_instantiate &&
     config.runtime.on_cell_change === "lazy" &&
@@ -88,7 +81,7 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
     <DropdownMenu>
       <DropdownMenuTrigger asChild={true}>
         <FooterItem
-          tooltip="Runtime reactivity"
+          tooltip="运行时响应"
           selected={false}
           data-testid="footer-runtime-settings"
         >
@@ -105,10 +98,10 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
       <DropdownMenuContent align="start" className="w-64">
         <DropdownMenuLabel>
           <div className="flex items-center justify-between w-full">
-            <span>Runtime reactivity</span>
+            <span>运行时响应</span>
             <ExternalLink href="https://links.marimo.app/runtime-configuration">
               <span className="text-xs font-normal flex items-center gap-1">
-                Docs
+                文档
                 <ExternalLinkIcon className="w-3 h-3" />
               </span>
             </ExternalLink>
@@ -117,7 +110,6 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
         <DropdownMenuSeparator />
 
         <TooltipProvider>
-          {/* On startup toggle */}
           <DisableIfOverridden name="runtime.auto_instantiate">
             <div className="flex items-center justify-between px-2 py-2">
               <div className="flex items-center space-x-2">
@@ -128,11 +120,11 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
                 )}
                 <div>
                   <div className="text-sm font-medium flex items-center gap-1">
-                    On startup
+                    启动时
                     <Tooltip
                       content={
                         <div className="max-w-[200px]">
-                          Whether to automatically run the notebook on startup
+                          是否在启动时自动运行 notebook
                         </div>
                       }
                     >
@@ -154,7 +146,6 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
 
           <DropdownMenuSeparator />
 
-          {/* On cell change toggle */}
           <DisableIfOverridden name="runtime.on_cell_change">
             <div className="flex items-center justify-between px-2 py-2">
               <div className="flex items-center space-x-2">
@@ -165,12 +156,11 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
                 )}
                 <div>
                   <div className="text-sm font-medium flex items-center gap-1">
-                    On cell change
+                    单元格变更时
                     <Tooltip
                       content={
                         <div className="max-w-[300px]">
-                          Whether to automatically run dependent cells after
-                          running a cell
+                          是否在运行单元格后自动运行依赖单元格
                         </div>
                       }
                     >
@@ -194,7 +184,6 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
             <>
               <DropdownMenuSeparator />
 
-              {/* On module change dropdown */}
               <DisableIfOverridden name="runtime.auto_reload">
                 <div className="px-2 py-1">
                   <div className="flex items-center space-x-2 mb-2">
@@ -212,12 +201,11 @@ export const RuntimeSettings: React.FC<RuntimeSettingsProps> = ({
                     )}
                     <div>
                       <div className="text-sm font-medium flex items-center gap-1">
-                        On module change
+                        模块变更时
                         <Tooltip
                           content={
                             <div className="max-w-[300px]">
-                              Whether to run affected cells, mark them as stale,
-                              or do nothing when an external module is updated
+                              外部模块更新时，是否运行受影响的单元格、将其标记为过期，或者什么都不做
                             </div>
                           }
                         >

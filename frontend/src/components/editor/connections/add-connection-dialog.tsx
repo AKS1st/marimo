@@ -42,10 +42,10 @@ export const AddConnectionDialogContent: React.FC<{
   const tabHeader = (
     <TabsList className="w-full mb-4">
       <TabsTrigger value="databases" className="flex-1">
-        Databases & Catalogs
+        数据库与目录
       </TabsTrigger>
       <TabsTrigger value="storage" className="flex-1">
-        Remote Storages
+        远程存储
       </TabsTrigger>
     </TabsList>
   );
@@ -53,36 +53,36 @@ export const AddConnectionDialogContent: React.FC<{
   const codeSnippetHint =
     activeTab === "databases" ? (
       <>
-        Don't see your database or connection method? A{" "}
+        没有找到你的数据库或连接方式？只需要一个{" "}
         <ExternalLink href="https://docs.marimo.io/guides/working_with_data/sql/#connecting-to-a-custom-database">
-          code snippet
+          代码片段
         </ExternalLink>{" "}
-        is all you need.
+        就够了。
       </>
     ) : (
       <>
-        Don't see your storage or connection method? A{" "}
+        没有找到你的存储或连接方式？只需要一个{" "}
         <ExternalLink href="https://docs.marimo.io/guides/working_with_data/remote_storage/#creating-a-storage-connection">
-          code snippet
+          代码片段
         </ExternalLink>{" "}
-        is all you need.
+        就够了。
       </>
     );
 
   return (
     <DialogContent className="max-h-[75vh] overflow-y-auto">
       <DialogHeader>
-        <DialogTitle>Add Connection</DialogTitle>
+        <DialogTitle>添加连接</DialogTitle>
         <DialogDescription>
-          Connect to a{" "}
+          直接从笔记本连接到{" "}
           <ExternalLink href="https://docs.marimo.io/guides/working_with_data/sql/#connecting-to-a-custom-database">
-            database, data catalog
+            数据库、数据目录
           </ExternalLink>{" "}
-          or{" "}
+          或{" "}
           <ExternalLink href="https://docs.marimo.io/guides/working_with_data/remote_storage/">
-            remote storage
-          </ExternalLink>{" "}
-          directly from your notebook.
+            远程存储
+          </ExternalLink>
+          。
           <span className="block">{codeSnippetHint}</span>
         </DialogDescription>
       </DialogHeader>

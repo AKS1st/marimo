@@ -19,14 +19,14 @@ export function useFileExplorerUpload(options: DropzoneOptions = {}) {
     onError: (error) => {
       Logger.error(error);
       toast({
-        title: "File upload failed",
+        title: "文件上传失败",
         description: error.message,
         variant: "danger",
       });
     },
     onDropRejected: (rejectedFiles) => {
       toast({
-        title: "File upload failed",
+        title: "文件上传失败",
         description: (
           <div className="flex flex-col gap-1">
             {rejectedFiles.map((file) => (
@@ -47,12 +47,12 @@ export function useFileExplorerUpload(options: DropzoneOptions = {}) {
       const isSingle = acceptedFiles.length === 1;
 
       const loadingTitle = isSingle
-        ? "Uploading file..."
-        : "Uploading files...";
+        ? "正在上传文件..."
+        : "正在上传文件...";
       const onFinish = {
         title: isSingle
-          ? "File uploaded"
-          : `${acceptedFiles.length} files uploaded`,
+          ? "文件已上传"
+          : `已上传 ${acceptedFiles.length} 个文件`,
       };
 
       await withLoadingToast(

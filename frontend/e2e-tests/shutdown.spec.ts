@@ -25,9 +25,7 @@ test("can resume a session", async ({ page }) => {
   // Refresh the page
   await page.reload();
 
-  await expect(
-    page.getByText("You have reconnected to an existing session."),
-  ).toBeVisible();
+  await expect(page.getByText("你已重新连接到一个现有会话。")).toBeVisible();
   secondCell = await page.locator(".marimo-cell").nth(1);
   await expect(page.getByText("12345")).toBeVisible();
   await expect(page.getByText("54321")).toBeVisible();

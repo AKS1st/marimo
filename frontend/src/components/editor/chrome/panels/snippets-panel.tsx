@@ -65,7 +65,7 @@ const SnippetsPanel: React.FC = () => {
           <Command className="h-full rounded-none">
             <div className="flex items-center w-full border-b">
               <CommandInput
-                placeholder="Search snippets..."
+                placeholder="搜索示例片段..."
                 className="h-6 m-1"
                 rootClassName="flex-1 border-r"
               />
@@ -76,7 +76,7 @@ const SnippetsPanel: React.FC = () => {
               </ContributeSnippetButton>
             </div>
 
-            <CommandEmpty>No results</CommandEmpty>
+            <CommandEmpty>没有匹配项</CommandEmpty>
             <SnippetList
               onSelect={(snippet) => setSelectedSnippet(snippet)}
               snippets={snippets.snippets}
@@ -102,7 +102,7 @@ const SnippetsPanel: React.FC = () => {
               ) : (
                 <PanelEmptyState
                   title=""
-                  description="Click on a snippet to view its content."
+                  description="点击示例片段查看内容。"
                 />
               )}
             </div>
@@ -168,7 +168,7 @@ const SnippetViewer: React.FC<{ snippet: Snippet; onClose: () => void }> = ({
               variant="outline"
               onClick={handleInsertSnippet}
             >
-              Insert snippet
+              插入片段
               <BetweenHorizontalStartIcon className="ml-2 h-4 w-4" />
             </Button>
           </HideInKioskMode>
@@ -193,7 +193,7 @@ const SnippetViewer: React.FC<{ snippet: Snippet; onClose: () => void }> = ({
               key={`${snippet.title}-${id}`}
             >
               <HideInKioskMode>
-                <Tooltip content="Insert snippet">
+                <Tooltip content="插入片段">
                   <Button
                     className="absolute -top-2 -right-1 z-10 hover-action px-2 bg-background"
                     size="sm"
@@ -226,22 +226,18 @@ const SnippetViewer: React.FC<{ snippet: Snippet; onClose: () => void }> = ({
 };
 
 const SnippetList: React.FC<{
-  onSelect: (snippet: Snippet) => void;
   snippets: Snippet[];
+  onSelect: (snippet: Snippet) => void;
 }> = ({ snippets, onSelect }) => {
   return (
-    <CommandList className="flex flex-col overflow-auto">
-      {snippets.map((snippet) => (
-        <CommandItem
-          className="rounded-none"
-          key={snippet.title}
-          onSelect={() => onSelect(snippet)}
-        >
-          <div className="flex flex-row gap-2 items-center">
-            <span className="mt-1 text-accent-foreground">{snippet.title}</span>
-          </div>
-        </CommandItem>
-      ))}
+    <CommandList className="overflow-auto">
+      {snippets.map((snippet) => {
+        return (
+          <CommandItem key={snippet.title} onSelect={() => onSelect(snippet)}>
+            {snippet.title}
+          </CommandItem>
+        );
+      })}
     </CommandList>
   );
 };

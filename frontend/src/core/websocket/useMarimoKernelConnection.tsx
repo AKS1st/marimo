@@ -418,7 +418,7 @@ export function useMarimoKernelConnection(opts: {
           setConnection({
             state: WebSocketState.CLOSED,
             code: WebSocketClosedReason.KERNEL_DISCONNECTED,
-            reason: "kernel not found",
+            reason: "内核未找到",
           });
           ws.close(); // close to prevent reconnecting
           return;
@@ -459,11 +459,11 @@ export function useMarimoKernelConnection(opts: {
      */
     onError: (e) => {
       Logger.warn("WebSocket error", e);
-      setConnection({
-        state: WebSocketState.CLOSED,
-        code: WebSocketClosedReason.KERNEL_DISCONNECTED,
-        reason: "kernel not found",
-      });
+          setConnection({
+            state: WebSocketState.CLOSED,
+            code: WebSocketClosedReason.KERNEL_DISCONNECTED,
+            reason: "内核未找到",
+          });
       tryReconnecting();
     },
   });

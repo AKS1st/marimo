@@ -342,7 +342,7 @@ const AddCellButtons: React.FC<{
             }
           >
             <SparklesIcon className="mr-2 size-4 shrink-0" />
-            Generate with AI
+            使用 AI 生成
           </Button>
         </Tooltip>
       </>

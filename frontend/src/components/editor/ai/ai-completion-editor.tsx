@@ -71,7 +71,7 @@ const baseExtensions = [customPythonLanguageSupport(), EditorView.lineWrapping];
 /**
  * Editor for AI completions that goes above a cell to modify it.
  *
- * This shows a left/right split with the original and modified code.
+ * 这里会显示左右分栏，左侧是原始代码，右侧是修改后的代码。
  */
 export const AiCompletionEditor: React.FC<Props> = ({
   cellId,
@@ -365,7 +365,7 @@ export const AiCompletionEditor: React.FC<Props> = ({
                   htmlFor={includeOtherCellsCheckboxId}
                   className="text-muted-foreground text-xs whitespace-nowrap ellipsis"
                 >
-                  All code
+                  全部代码
                 </Label>
               </div>
             </Tooltip>

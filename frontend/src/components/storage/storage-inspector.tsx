@@ -487,7 +487,7 @@ const StorageNamespaceSection: React.FC<{
           iconClassName="h-3 w-3"
         />
         <span className="text-[10px] text-muted-foreground font-normal tabular-nums ml-auto">
-          {namespace.rootPath || "(root)"}
+          {namespace.rootPath || "(根目录)"}
         </span>
       </CommandItem>
       {isExpanded && (
@@ -558,7 +558,7 @@ export const StorageInspector: React.FC = () => {
         title="尚未连接存储"
         description={
           <span>
-            在你的 notebook 中创建 obstore 或 fsspec 连接。查看{" "}
+            在你的笔记本中创建 obstore 或 fsspec 连接。查看{" "}
             <a
               className="text-link"
               href="https://docs.marimo.io/guides/working_with_data/remote_storage/#quick-start"

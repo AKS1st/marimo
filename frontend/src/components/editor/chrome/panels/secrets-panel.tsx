@@ -52,8 +52,8 @@ const SecretsPanel: React.FC = () => {
   if (secretKeyProviders.length === 0) {
     return (
       <PanelEmptyState
-        title="No environment variables"
-        description="No environment variables are available in this notebook."
+        title="暂无环境变量"
+        description="此笔记本中没有可用的环境变量。"
         icon={<KeyIcon />}
       />
     );
@@ -86,8 +86,8 @@ const SecretsPanel: React.FC = () => {
           <Table className="overflow-auto flex-1 mb-16">
             <TableHeader>
               <TableRow>
-                <TableHead>Environment Variable</TableHead>
-                <TableHead>Source</TableHead>
+                <TableHead>环境变量</TableHead>
+                <TableHead>来源</TableHead>
                 <TableHead />
               </TableRow>
             </TableHeader>
@@ -105,12 +105,12 @@ const SecretsPanel: React.FC = () => {
                     </TableCell>
                     <TableCell>
                       <CopyButton
-                        ariaLabel={`Copy ${key}`}
+                        ariaLabel={`复制 ${key}`}
                         onCopy={async () => {
                           await copyToClipboard(`os.environ["${key}"]`);
                           toast({
-                            title: "Copied to clipboard",
-                            description: `os.environ["${key}"] has been copied to your clipboard.`,
+                            title: "已复制到剪贴板",
+                            description: `os.environ["${key}"] 已复制到剪贴板。`,
                           });
                         }}
                         className={cn(

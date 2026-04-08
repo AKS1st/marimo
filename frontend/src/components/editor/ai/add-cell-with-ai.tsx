@@ -159,7 +159,7 @@ export const AddCellWithAI: React.FC<{
     },
     onError: (error) => {
       toast({
-        title: "Generate with AI failed",
+        title: "使用 AI 生成失败",
         description: prettyError(error),
       });
     },
@@ -211,7 +211,7 @@ export const AddCellWithAI: React.FC<{
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center">
         <div className="px-2 py-1 text-sm text-muted-foreground">
-          Select language
+          选择语言
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => setLanguage("python")}>
@@ -466,7 +466,7 @@ export const PromptInput = ({
       onKeyDown={onKeyDown}
       theme={theme === "dark" ? "dark" : "light"}
       placeholder={
-        placeholder || `Generate with AI, ${CONTEXT_TRIGGER} to include context`
+        placeholder || `使用 AI 生成，输入 ${CONTEXT_TRIGGER} 可附加上下文`
       }
     />
   );

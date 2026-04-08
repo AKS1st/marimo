@@ -174,7 +174,7 @@ export const ScratchPad: React.FC = () => {
           <PlayIcon color="var(--grass-11)" size={16} />
         </Button>
       </Tooltip>
-      <Tooltip content="Clear code and outputs">
+      <Tooltip content="清空代码与输出">
         <Button
           disabled={historyVisible}
           size="xs"
@@ -185,7 +185,7 @@ export const ScratchPad: React.FC = () => {
         </Button>
       </Tooltip>
       <HideInKioskMode>
-        <Tooltip content="Insert code">
+        <Tooltip content="插入代码">
           <Button
             disabled={historyVisible}
             size="xs"
@@ -202,7 +202,7 @@ export const ScratchPad: React.FC = () => {
       )}
       <div className="flex-1" />
 
-      <Tooltip content="Toggle history">
+      <Tooltip content="切换历史记录">
         <Button
           size="xs"
           variant="text"
@@ -216,9 +216,8 @@ export const ScratchPad: React.FC = () => {
       <Tooltip
         content={
           <span className="block max-w-prose">
-            Use this scratchpad to experiment with code without restrictions on
-            variable names. Variables defined here aren't saved to notebook
-            memory, and the code is not saved in the notebook file.
+            使用这个草稿板试验代码，不受变量名限制。这里定义的变量不会保存到
+            notebook 内存中，代码也不会保存到 notebook 文件里。
           </span>
         }
       >

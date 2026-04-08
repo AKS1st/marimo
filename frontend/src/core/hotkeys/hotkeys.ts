@@ -50,100 +50,100 @@ export type HotkeyGroup =
 const DEFAULT_HOT_KEY = {
   // Cell Navigation
   "cell.focusUp": {
-    name: "Go to previous cell",
+    name: "跳到上一个单元格",
     group: "Navigation",
     key: "Mod-Shift-k",
   },
   "cell.focusDown": {
-    name: "Go to next cell",
+    name: "跳到下一个单元格",
     group: "Navigation",
     key: "Mod-Shift-j",
   },
 
   // Creation and Ordering
   "cell.moveUp": {
-    name: "Move cell up",
+    name: "上移单元格",
     group: "Creation and Ordering",
     key: "Mod-Shift-9",
   },
   "cell.moveDown": {
-    name: "Move cell down",
+    name: "下移单元格",
     group: "Creation and Ordering",
     key: "Mod-Shift-0",
   },
   "cell.moveLeft": {
-    name: "Move left",
+    name: "左移",
     group: "Creation and Ordering",
     key: "Mod-Shift-7",
   },
   "cell.moveRight": {
-    name: "Move right",
+    name: "右移",
     group: "Creation and Ordering",
     key: "Mod-Shift-8",
   },
   "cell.createAbove": {
-    name: "New cell above",
+    name: "在上方新建单元格",
     group: "Creation and Ordering",
     key: "Mod-Shift-o",
   },
   "cell.createBelow": {
-    name: "New cell below",
+    name: "在下方新建单元格",
     group: "Creation and Ordering",
     key: "Mod-Shift-p",
   },
   "cell.sendToTop": {
-    name: "Send to top",
+    name: "移到顶部",
     group: "Creation and Ordering",
     key: "Mod-Shift-1",
   },
   "cell.sendToBottom": {
-    name: "Send to bottom",
+    name: "移到底部",
     group: "Creation and Ordering",
     key: "Mod-Shift-2",
   },
   "cell.addColumnBreakpoint": {
-    name: "Add column breakpoint",
+    name: "添加列断点",
     group: "Creation and Ordering",
     key: "Mod-Shift-3",
   },
 
   // Running Cells
   "cell.run": {
-    name: "Run",
+    name: "运行",
     group: "Running Cells",
     key: "Mod-Enter",
     additionalKeywords: ["execute", "submit"],
   },
   "cell.runAndNewBelow": {
-    name: "Run and new below",
+    name: "运行并在下方新建",
     group: "Running Cells",
     key: "Shift-Enter",
   },
   "cell.runAndNewAbove": {
-    name: "Run and new above",
+    name: "运行并在上方新建",
     group: "Running Cells",
     key: "Mod-Shift-Enter",
   },
   "global.runAll": {
-    name: "Re-run all cells",
+    name: "重新运行所有单元格",
     group: "Running Cells",
     key: NOT_SET,
   },
 
   // Editing Cells
   "cell.format": {
-    name: "Format cell",
+    name: "格式化单元格",
     group: "Editing",
     key: "Mod-b",
     additionalKeywords: ["lint"],
   },
   "cell.viewAsMarkdown": {
-    name: "View as Markdown",
+    name: "切换为 Markdown",
     group: "Editing",
     key: "Mod-Shift-m",
   },
   "cell.viewAsSQL": {
-    name: "Toggle SQL",
+    name: "切换 SQL",
     group: "Editing",
     key: {
       windows: "Alt-Shift-l",
@@ -151,22 +151,22 @@ const DEFAULT_HOT_KEY = {
     },
   },
   "cell.complete": {
-    name: "Code completion",
+    name: "代码补全",
     group: "Editing",
     key: "Ctrl-Space",
   },
   "cell.signatureHelp": {
-    name: "Signature help",
+    name: "签名帮助",
     group: "Editing",
     key: "Mod-Shift-Space",
   },
   "cell.undo": {
-    name: "Undo",
+    name: "撤销",
     group: "Editing",
     key: "Mod-z",
   },
   "cell.redo": {
-    name: "Redo",
+    name: "重做",
     group: "Editing",
     key: {
       main: "Mod-Shift-z",
@@ -174,17 +174,17 @@ const DEFAULT_HOT_KEY = {
     },
   },
   "cell.findAndReplace": {
-    name: "Find and Replace",
+    name: "查找和替换",
     group: "Editing",
     key: "Mod-f",
   },
   "cell.selectNextOccurrence": {
-    name: "Add selection to next Find match",
+    name: "将选择添加到下一个匹配项",
     group: "Editing",
     key: "Mod-d",
   },
   "cell.fold": {
-    name: "Fold region",
+    name: "折叠区域",
     group: "Editing",
     key: {
       main: "Mod-Alt-[",
@@ -192,7 +192,7 @@ const DEFAULT_HOT_KEY = {
     },
   },
   "cell.unfold": {
-    name: "Unfold region",
+    name: "展开区域",
     group: "Editing",
     key: {
       main: "Mod-Alt-]",
@@ -200,66 +200,66 @@ const DEFAULT_HOT_KEY = {
     },
   },
   "cell.foldAll": {
-    name: "Fold all regions",
+    name: "折叠所有区域",
     group: "Editing",
     key: "Ctrl-Alt-[",
   },
   "cell.unfoldAll": {
-    name: "Unfold all regions",
+    name: "展开所有区域",
     group: "Editing",
     key: "Ctrl-Alt-]",
   },
   "cell.delete": {
-    name: "Delete cell",
+    name: "删除单元格",
     group: "Editing",
     key: "Shift-Backspace",
     additionalKeywords: ["remove"],
   },
   "cell.hideCode": {
-    name: "Hide cell code",
+    name: "隐藏单元格代码",
     group: "Editing",
     key: "Mod-h",
   },
   "cell.aiCompletion": {
-    name: "AI completion",
+    name: "AI 补全",
     group: "Editing",
     key: "Mod-Shift-e",
   },
   "cell.cellActions": {
-    name: "Open cell actions",
+    name: "打开单元格操作",
     group: "Editing",
     key: "Mod-p",
   },
   "cell.splitCell": {
-    name: "Split cell",
+    name: "拆分单元格",
     group: "Editing",
     key: "Mod-Shift-'",
   },
   "cell.toggleComment": {
-    name: "Toggle comment",
+    name: "切换注释",
     group: "Editing",
     // https://github.com/codemirror/commands/blob/6.8.1/src/commands.ts#L1067
     key: "Mod-/",
   },
   "cell.toggleBlockComment": {
-    name: "Toggle block comment",
+    name: "切换块注释",
     group: "Editing",
     // https://github.com/codemirror/commands/blob/6.8.1/src/commands.ts#L1068
     key: "Alt-A",
   },
   "cell.renameSymbol": {
-    name: "Rename symbol",
+    name: "重命名符号",
     group: "Editing",
     key: "F2",
   },
   "cell.copyLineUp": {
-    name: "Copy line(s) up",
+    name: "向上复制行",
     group: "Editing",
     key: "Alt-Shift-ArrowUp",
     editable: false,
   },
   "cell.copyLineDown": {
-    name: "Copy line(s) down",
+    name: "向下复制行",
     group: "Editing",
     key: "Alt-Shift-ArrowDown",
     editable: false,
@@ -267,49 +267,49 @@ const DEFAULT_HOT_KEY = {
 
   // Markdown
   "markdown.bold": {
-    name: "Bold",
+    name: "加粗",
     group: "Markdown",
     key: "Mod-b",
   },
   "markdown.italic": {
-    name: "Italic",
+    name: "斜体",
     group: "Markdown",
     key: "Mod-i",
   },
   "markdown.link": {
-    name: "Convert to Link",
+    name: "转换为链接",
     group: "Markdown",
     key: "Mod-k",
   },
   "markdown.orderedList": {
-    name: "Convert to Ordered list",
+    name: "转换为有序列表",
     group: "Markdown",
     key: "Mod-Shift-7",
   },
   "markdown.unorderedList": {
-    name: "Convert to Unordered list",
+    name: "转换为无序列表",
     group: "Markdown",
     key: "Mod-Shift-8",
   },
   "markdown.blockquote": {
-    name: "Convert to Blockquote",
+    name: "转换为引用",
     group: "Markdown",
     key: "Mod-Shift-9",
   },
   "markdown.code": {
-    name: "Convert to Code",
+    name: "转换为代码",
     group: "Markdown",
     key: "Mod-Shift-0",
   },
 
   // Global Actions
   "global.hideCode": {
-    name: "Toggle app view",
+    name: "切换应用视图",
     group: "Other",
     key: "Mod-.",
   },
   "global.foldCode": {
-    name: "Fold all cells",
+    name: "折叠所有单元格",
     group: "Editing",
     key: {
       main: "Ctrl-Cmd-l",
@@ -317,7 +317,7 @@ const DEFAULT_HOT_KEY = {
     },
   },
   "global.unfoldCode": {
-    name: "Unfold all cells",
+    name: "展开所有单元格",
     group: "Editing",
     key: {
       main: "Ctrl-Cmd-;",
@@ -325,102 +325,102 @@ const DEFAULT_HOT_KEY = {
     },
   },
   "global.showHelp": {
-    name: "Show keyboard shortcuts",
+    name: "显示键盘快捷键",
     group: "Other",
     key: "Mod-Shift-h",
   },
   "global.save": {
-    name: "Save file",
+    name: "保存文件",
     group: "Other",
     key: "Mod-s",
     additionalKeywords: ["write", "persist"],
   },
   "global.commandPalette": {
-    name: "Show command palette",
+    name: "打开命令面板",
     group: "Other",
     key: "Mod-k",
   },
   "global.runStale": {
-    name: "Run all stale cells",
+    name: "运行所有过期单元格",
     group: "Running Cells",
     key: "Mod-Shift-r",
   },
   "global.interrupt": {
-    name: "Stop (interrupt) execution",
+    name: "停止（中断）执行",
     group: "Running Cells",
     key: "Mod-i",
   },
   "global.formatAll": {
-    name: "Format all",
+    name: "全部格式化",
     group: "Editing",
     key: "Mod-Shift-b",
   },
   "global.toggleLanguage": {
-    name: "Toggle language to markdown (if supported)",
+    name: "切换为 Markdown 语言（如果支持）",
     group: "Editing",
     key: "F4",
   },
   "global.toggleTerminal": {
-    name: "Show integrated terminal",
+    name: "显示集成终端",
     group: "Other",
     key: "Ctrl-`",
   },
   "global.togglePanel": {
-    name: "Toggle developer panel",
+    name: "切换开发者面板",
     group: "Other",
     key: "Mod-j",
   },
   "global.collapseAllSections": {
-    name: "Collapse all sections",
+    name: "折叠所有章节",
     group: "Editing",
     key: "Mod-Shift-\\",
   },
   "global.expandAllSections": {
-    name: "Expand all sections",
+    name: "展开所有章节",
     group: "Editing",
     key: "Mod-Shift-/",
   },
   "global.toggleMinimap": {
-    name: "Toggle Minimap",
+    name: "切换缩略图",
     group: "Other",
     key: "Mod-Shift-i",
   },
 
   // Global Navigation
   "global.focusTop": {
-    name: "Focus top",
+    name: "聚焦顶部",
     group: "Navigation",
     key: "Mod-Shift-f",
   },
   "global.focusBottom": {
-    name: "Focus bottom",
+    name: "聚焦底部",
     group: "Navigation",
     key: "Mod-Shift-g",
   },
   "global.toggleSidebar": {
-    name: "Toggle helper panel",
+    name: "切换辅助面板",
     group: "Navigation",
     key: "Mod-Shift-s",
   },
   "cell.goToDefinition": {
-    name: "Go to Definition",
+    name: "跳转到定义",
     group: "Navigation",
     key: "F12",
   },
   "completion.moveDown": {
-    name: "Move completion selection down",
+    name: "向下移动补全选择",
     group: "Editing",
     key: "Ctrl-j",
   },
   "completion.moveUp": {
-    name: "Move completion selection up",
+    name: "向上移动补全选择",
     group: "Editing",
     key: "Ctrl-k",
   },
 
   // Command mode (edit a cell, not the editor)
   "command.vimEnterCommandMode": {
-    name: "Enter command mode (vim)",
+    name: "进入命令模式（vim）",
     group: "Command",
     key: {
       main: "Mod-Escape",
@@ -428,22 +428,22 @@ const DEFAULT_HOT_KEY = {
     },
   },
   "command.createCellBefore": {
-    name: "Create a cell before current cell",
+    name: "在当前单元格前创建单元格",
     group: "Command",
     key: "a",
   },
   "command.createCellAfter": {
-    name: "Create a cell after current cell",
+    name: "在当前单元格后创建单元格",
     group: "Command",
     key: "b",
   },
   "command.copyCell": {
-    name: "Copy cell",
+    name: "复制单元格",
     group: "Command",
     key: "c",
   },
   "command.pasteCell": {
-    name: "Paste cell",
+    name: "粘贴单元格",
     group: "Command",
     key: "v",
   },

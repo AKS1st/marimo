@@ -28,8 +28,8 @@ export const RTCStatus: React.FC = () => {
   }
 
   const tooltip = connectedDoc
-    ? "Real-time collaboration active"
-    : "Connecting to real-time collaboration";
+    ? "实时协作已启用"
+    : "正在连接实时协作";
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -45,9 +45,9 @@ export const RTCStatus: React.FC = () => {
       <PopoverContent className="w-80">
         <div className="space-y-4">
           <div className="space-y-2">
-            <h4 className="font-medium leading-none">Username</h4>
+            <h4 className="font-medium leading-none">用户名</h4>
             <p className="text-sm text-muted-foreground">
-              Set your username for real-time collaboration
+              设置你在实时协作中的用户名
             </p>
           </div>
           <Input
@@ -56,7 +56,7 @@ export const RTCStatus: React.FC = () => {
             autoComplete="off"
             autoCorrect="off"
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
+            placeholder="输入用户名"
           />
         </div>
       </PopoverContent>

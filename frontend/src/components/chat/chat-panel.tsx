@@ -99,14 +99,14 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
 
   return (
     <div className="flex border-b px-2 py-1 justify-between shrink-0 items-center">
-      <Tooltip content="New chat">
+      <Tooltip content="新建聊天">
         <Button variant="text" size="icon" onClick={onNewChat}>
           <PlusIcon className="h-4 w-4" />
         </Button>
       </Tooltip>
       <div className="flex items-center gap-2">
         <MCPStatusIndicator />
-        <Tooltip content="AI Settings">
+        <Tooltip content="AI 设置">
           <Button
             variant="text"
             size="xs"
@@ -238,20 +238,20 @@ const ChatInputFooter: React.FC<ChatInputFooterProps> = memo(
       {
         value: "manual",
         label: "Manual",
-        subtitle: "Pure chat, no tool usage",
+        subtitle: "纯聊天，不使用工具",
         Icon: MessageCircleIcon,
       },
       {
         value: "ask",
         label: "Ask",
         subtitle:
-          "Use AI with access to read-only tools like documentation search",
+          "使用仅可读工具的 AI，例如文档搜索",
         Icon: NotebookText,
       },
       {
         value: "agent",
         label: "Agent (beta)",
-        subtitle: "Use AI with access to read and write tools",
+        subtitle: "使用可读写工具的 AI",
         Icon: HatGlasses,
       },
     ];
@@ -275,7 +275,7 @@ const ChatInputFooter: React.FC<ChatInputFooterProps> = memo(
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel className="text-xs uppercase tracking-wider text-muted-foreground/70 font-medium">
-                    AI Mode
+                    AI 模式
                   </SelectLabel>
                   {modeOptions.map((option) => (
                     <SelectItem
@@ -300,7 +300,7 @@ const ChatInputFooter: React.FC<ChatInputFooterProps> = memo(
               </SelectContent>
             </Select>
             <AIModelDropdown
-              placeholder="Model"
+              placeholder="模型"
               triggerClassName="h-6 text-xs shadow-none! ring-0! bg-muted hover:bg-muted/30 rounded-sm"
               iconSize="small"
               showAddCustomModelDocs={true}
@@ -378,7 +378,7 @@ const ChatInput: React.FC<ChatInputProps> = memo(
             onSubmit={onSubmit}
             onClose={onClose}
             onAddFiles={onAddFiles}
-            placeholder={placeholder || "Type your message..."}
+            placeholder={placeholder || "输入消息..."}
           />
         </div>
         <ChatInputFooter
@@ -404,15 +404,15 @@ const ChatPanel = () => {
   if (!aiConfigured) {
     return (
       <PanelEmptyState
-        title="Chat with AI"
-        description="No AI provider configured or Chat model not selected"
+      title="与 AI 聊天"
+      description="尚未配置 AI 提供方或未选择聊天模型"
         action={
           <Button
             variant="outline"
             size="sm"
             onClick={() => handleClick("ai", "ai-providers")}
           >
-            Edit AI settings
+            编辑 AI 设置
           </Button>
         }
         icon={<BotMessageSquareIcon />}
@@ -640,7 +640,7 @@ const ChatPanelBody = () => {
   const chatInput = isNewThread ? (
     <ChatInput
       key="new-thread-input"
-      placeholder={`Ask anything, ${CONTEXT_TRIGGER} to include context about tables or dataframes`}
+      placeholder={`随便问我，输入 ${CONTEXT_TRIGGER} 可附加表或数据框上下文`}
       input={newThreadInput}
       inputRef={newThreadInputRef}
       inputClassName="px-1 py-0"

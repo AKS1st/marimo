@@ -14,8 +14,8 @@ const DocumentationPanel: React.FC = () => {
   if (!documentation) {
     return (
       <PanelEmptyState
-        title="View docs as you type"
-        description="Move your text cursor over a symbol to see its documentation."
+        title="边写边看文档"
+        description="将文本光标移到符号上即可查看其文档。"
         icon={<TextSearchIcon />}
       />
     );

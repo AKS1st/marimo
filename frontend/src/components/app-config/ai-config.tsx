@@ -1264,7 +1264,7 @@ export const AiAssistConfig: React.FC<AiConfigProps> = ({
         description={
           <span>
             用于通过{" "}
-            <Kbd className="inline">Generate with AI</Kbd> 按钮进行代码编辑的模型。
+            <Kbd className="inline">使用 AI 生成</Kbd> 按钮进行代码编辑的模型。
           </span>
         }
         forRole="edit"
@@ -1282,7 +1282,7 @@ export const AiAssistConfig: React.FC<AiConfigProps> = ({
                 <Textarea
                   data-testid="ai-rules-input"
                   className="m-0 inline-flex w-full h-32 p-2 text-sm"
-                  placeholder="e.g. Always use type hints; prefer polars over pandas"
+                  placeholder="例如：始终使用类型标注；优先使用 polars 而不是 pandas"
                   {...field}
                   value={field.value}
                 />

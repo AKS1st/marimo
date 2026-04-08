@@ -118,7 +118,7 @@ const PackagesPanel: React.FC = () => {
               )}
               onClick={() => setUserViewMode("list")}
             >
-              List
+              列表
             </button>
             <button
               type="button"
@@ -130,15 +130,15 @@ const PackagesPanel: React.FC = () => {
               )}
               onClick={() => setUserViewMode("tree")}
             >
-              Tree
+              树形
             </button>
           </div>
           <div className="flex items-center gap-2">
             <div
               className="items-center border px-2 py-0.5 text-xs transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground rounded-sm text-ellipsis block overflow-hidden max-w-fit font-medium"
-              title={isSandbox ? "sandbox" : "project"}
+              title={isSandbox ? "沙盒" : "项目"}
             >
-              {isSandbox ? "sandbox" : "project"}
+              {isSandbox ? "沙盒" : "项目"}
             </div>
             {name && !isSandbox && (
               <span className="text-xs text-muted-foreground">
@@ -201,7 +201,7 @@ const InstallPackageForm: React.FC<{
   return (
     <div className="flex items-center w-full border-b">
       <SearchInput
-        placeholder={`Install packages with ${packageManager}...`}
+        placeholder={`使用 ${packageManager} 安装包...`}
         id={PACKAGES_INPUT_ID}
         icon={
           loading ? (
@@ -210,7 +210,7 @@ const InstallPackageForm: React.FC<{
               className="mr-2 h-4 w-4 shrink-0 opacity-50"
             />
           ) : (
-            <Tooltip content="Change package manager">
+            <Tooltip content="切换包管理器">
               <BoxIcon
                 onClick={() => openSettings("packageManagementAndData")}
                 className="mr-2 h-4 w-4 shrink-0 opacity-50 hover:opacity-80 cursor-pointer"
@@ -234,43 +234,39 @@ const InstallPackageForm: React.FC<{
         align="start"
         content={
           <div className="text-sm flex flex-col w-full max-w-[360px]">
-            Packages are installed using the package manager specified in your
-            user configuration. Depending on your package manager, you can
-            install packages with various formats:
+            包会使用你用户配置中指定的包管理器安装。根据包管理器的不同，
+            你可以使用多种格式安装包：
             <div className="flex flex-col gap-2 mt-2">
               <div>
-                <span className="font-bold tracking-wide">Package name:</span> A
-                package name; this will install the latest version.
-                <div className="text-muted-foreground">Example: httpx</div>
+                <span className="font-bold tracking-wide">包名：</span> 包名；
+                这会安装最新版本。
+                <div className="text-muted-foreground">示例：httpx</div>
               </div>
               <div>
-                <span className="font-bold tracking-wide">
-                  Package and version:
-                </span>{" "}
-                A package with a specific version or version range.
+                <span className="font-bold tracking-wide">包名和版本：</span>{" "}
+                指定了版本或版本范围的包。
                 <div className="text-muted-foreground">
-                  {"Examples: httpx==0.27.0, httpx>=0.27.0"}
+                  {"示例：httpx==0.27.0, httpx>=0.27.0"}
                 </div>
               </div>
               <div>
-                <span className="font-bold tracking-wide">Git:</span> A Git
-                repository
+                <span className="font-bold tracking-wide">Git：</span> Git 仓库
                 <div className="text-muted-foreground">
-                  Example: git+https://github.com/encode/httpx
+                  示例：git+https://github.com/encode/httpx
                 </div>
               </div>
               <div>
-                <span className="font-bold tracking-wide">URL:</span> A remote
-                wheel or source distribution.
+                <span className="font-bold tracking-wide">URL：</span> 远程 wheel
+                包或源码分发包。
                 <div className="text-muted-foreground">
-                  Example: https://example.com/httpx-0.27.0.tar.gz
+                  示例：https://example.com/httpx-0.27.0.tar.gz
                 </div>
               </div>
               <div>
-                <span className="font-bold tracking-wide">Path:</span> A local
-                wheel, source distribution, or project directory.
+                <span className="font-bold tracking-wide">路径：</span> 本地 wheel
+                包、源码分发包或项目目录。
                 <div className="text-muted-foreground">
-                  Example: /example/foo-0.1.0-py3-none-any.whl
+                  示例：/example/foo-0.1.0-py3-none-any.whl
                 </div>
               </div>
             </div>
@@ -293,7 +289,7 @@ const InstallPackageForm: React.FC<{
         onClick={installPackages}
         disabled={!input}
       >
-        Add
+        添加
       </button>
     </div>
   );
@@ -306,8 +302,8 @@ const PackagesList: React.FC<{
   if (packages.length === 0) {
     return (
       <PanelEmptyState
-        title="No packages"
-        description="No packages are installed in this environment."
+        title="暂无包"
+        description="此环境中尚未安装任何包。"
         icon={<BoxIcon />}
       />
     );
@@ -317,8 +313,8 @@ const PackagesList: React.FC<{
     <Table className="overflow-auto flex-1">
       <TableHeader>
         <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Version</TableHead>
+          <TableHead>名称</TableHead>
+          <TableHead>版本</TableHead>
           <TableHead />
         </TableRow>
       </TableHeader>
@@ -330,7 +326,7 @@ const PackagesList: React.FC<{
             onClick={async () => {
               await copyToClipboard(`${item.name}==${item.version}`);
               toast({
-                title: "Copied to clipboard",
+                title: "已复制到剪贴板",
               });
             }}
           >
@@ -382,7 +378,7 @@ const UpgradeButton: React.FC<{
 
   return (
     <PackageActionButton onClick={handleUpgradePackage} loading={loading}>
-      Upgrade
+      升级
     </PackageActionButton>
   );
 };
@@ -416,7 +412,7 @@ const RemoveButton: React.FC<{
 
   return (
     <PackageActionButton onClick={handleRemovePackage} loading={loading}>
-      Remove
+      移除
     </PackageActionButton>
   );
 };
@@ -446,8 +442,8 @@ const DependencyTree: React.FC<{
   if (tree.dependencies.length === 0) {
     return (
       <PanelEmptyState
-        title="No dependencies"
-        description="No package dependencies found in this environment."
+        title="暂无依赖"
+        description="此环境中没有找到包依赖。"
         icon={<BoxIcon />}
       />
     );

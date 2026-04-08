@@ -49,7 +49,7 @@ const FileExplorerComponent: React.FC<{ height: number }> = ({ height }) => {
         <input {...getInputProps()} />
         {isDragActive && (
           <div className="absolute inset-0 flex items-center uppercase justify-center text-xl font-bold text-primary/90 bg-accent/85 z-10 border-2 border-dashed border-primary/90 rounded-lg pointer-events-none">
-            Drop files here
+            将文件拖到这里
           </div>
         )}
 
@@ -111,7 +111,7 @@ const FileExplorerPanel: React.FC = () => {
       >
         <PanelAccordionItem value="remote-storage">
           <PanelAccordionTrigger>
-            <HardDrive className="w-4 h-4" /> Remote storage
+            <HardDrive className="w-4 h-4" /> 远程存储
             {remoteStorageConnections > 0 && (
               <PanelBadge>{remoteStorageConnections}</PanelBadge>
             )}
@@ -127,7 +127,7 @@ const FileExplorerPanel: React.FC = () => {
         <PanelAccordionItem value="files">
           <PanelAccordionTrigger>
             <FileIcon className="w-4 h-4" />
-            Files
+            文件
           </PanelAccordionTrigger>
           <PanelAccordionContent>
             <FileExplorerComponent height={fileTreeHeight} />

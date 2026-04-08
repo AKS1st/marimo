@@ -11,7 +11,7 @@ const ErrorsPanel: React.FC = () => {
   const errors = useCellErrors();
 
   if (errors.length === 0) {
-    return <PanelEmptyState title="No errors!" icon={<PartyPopperIcon />} />;
+    return <PanelEmptyState title="没有错误！" icon={<PartyPopperIcon />} />;
   }
 
   return (

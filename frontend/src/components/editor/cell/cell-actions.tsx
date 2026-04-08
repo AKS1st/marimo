@@ -110,12 +110,12 @@ const CellActionsDropdownInternal = (
     >
       <Command>
         <CommandInput
-          placeholder="Search actions..."
+          placeholder="搜索操作..."
           className="h-6 m-1"
           {...getCellForDomProps(props.cellId)}
         />
         <CommandList>
-          <CommandEmpty>No results</CommandEmpty>
+          <CommandEmpty>没有结果</CommandEmpty>
           {visibleActions.map((group, i) => (
             <Fragment key={i}>
               <CommandGroup key={i}>

@@ -26,7 +26,7 @@ export const Disconnected = ({
       reloadSafe();
     } catch (error) {
       toast({
-        title: "Failed to take over session",
+        title: "接管会话失败",
         description: prettyError(error),
         variant: "danger",
       });
@@ -42,7 +42,7 @@ export const Disconnected = ({
         >
           <div className="flex justify-between">
             <span className="font-bold text-xl flex items-center mb-2">
-              Notebook already connected
+              Notebook 已经连接
             </span>
           </div>
           <div className="flex justify-between items-end text-base gap-20">
@@ -55,7 +55,7 @@ export const Disconnected = ({
                 className="shrink-0"
               >
                 <ArrowRightSquareIcon className="w-4 h-4 mr-2" />
-                Take over session
+                接管会话
               </Button>
             )}
           </div>

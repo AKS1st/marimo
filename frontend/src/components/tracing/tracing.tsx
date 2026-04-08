@@ -64,8 +64,8 @@ export const Tracing: React.FC = () => {
   if (newestToOldestRunIds.length === 0) {
     return (
       <PanelEmptyState
-        title="No traces"
-        description={<span>Cells that have ran will appear here.</span>}
+        title="没有轨迹"
+        description={<span>已运行的单元格会显示在这里。</span>}
         icon={<ActivityIcon />}
       />
     );
@@ -76,7 +76,7 @@ export const Tracing: React.FC = () => {
       <div className="flex flex-row justify-start gap-3">
         <div className="flex flex-row gap-1 items-center">
           <label htmlFor="chartPosition" className="text-xs">
-            Inline chart
+            内联图表
           </label>
           <input
             type="checkbox"
@@ -163,7 +163,7 @@ const TraceBlock: React.FC<{
 
   const traceTitle = (
     <span className="text-sm cursor-pointer" onClick={onToggleExpanded}>
-      Run - {formatLogTimestamp(run.runStartTime)}
+      运行 - {formatLogTimestamp(run.runStartTime)}
       {chevron}
     </span>
   );
@@ -351,6 +351,13 @@ const StatusIcons: Record<CellRun["status"], JSX.Element> = {
   queued: <CircleEllipsis color="grey" size={14} />,
 };
 
+const STATUS_LABELS: Record<CellRun["status"], string> = {
+  success: "成功",
+  running: "运行中",
+  error: "错误",
+  queued: "排队中",
+};
+
 interface TraceRowProps {
   cellRun: CellRun;
   hovered: boolean;
@@ -368,10 +375,10 @@ const TraceRow: React.FC<TraceRowProps> = ({
 
   const elapsedTimeTooltip = cellRun.elapsedTime ? (
     <span>
-      This cell took <ElapsedTime elapsedTime={elapsedTimeStr} /> to run
+      该单元格运行耗时 <ElapsedTime elapsedTime={elapsedTimeStr} />
     </span>
   ) : (
-    <span>This cell has not been run</span>
+    <span>该单元格尚未运行</span>
   );
 
   const handleMouseEnter = () => {
@@ -406,7 +413,7 @@ const TraceRow: React.FC<TraceRowProps> = ({
           </span>
         </Tooltip>
 
-        <Tooltip content={cellRun.status}>
+        <Tooltip content={STATUS_LABELS[cellRun.status]}>
           {StatusIcons[cellRun.status]}
         </Tooltip>
       </div>

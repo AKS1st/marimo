@@ -21,12 +21,11 @@ const LogsPanel: React.FC = () => {
   if (logs.length === 0) {
     return (
       <PanelEmptyState
-        title="No logs"
+        title="暂无日志"
         description={
           <span>
-            <code className="border rounded px-1">stdout</code> and{" "}
-            <code className="border rounded px-1">stderr</code> logs will appear
-            here.
+            <code className="border rounded px-1">stdout</code> 和{" "}
+            <code className="border rounded px-1">stderr</code> 日志会显示在这里。
           </span>
         }
         icon={<FileTextIcon />}

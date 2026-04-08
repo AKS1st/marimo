@@ -370,7 +370,7 @@ const PromptArea = memo<PromptAreaProps>(
             placeholder={
               isLoading
                 ? "Processing..."
-                : `Ask anything, ${CONTEXT_TRIGGER} to include context about tables or dataframes`
+                : `随便问我，输入 ${CONTEXT_TRIGGER} 可附加表或数据框上下文`
             }
             className={isLoading ? "opacity-50 pointer-events-none" : ""}
             maxHeight="120px"

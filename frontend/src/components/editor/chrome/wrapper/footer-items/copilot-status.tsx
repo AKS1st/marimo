@@ -28,8 +28,6 @@ const copilotAtom = atom((get) => {
 export const CopilotStatusIcon: React.FC = () => {
   const copilot = useAtomValue(copilotAtom);
 
-  // We only show an icon for GitHub Copilot, but not for other copilot providers,
-  // this can be extended in the future
   if (copilot === "github") {
     return <GitHubCopilotStatus />;
   }
@@ -46,25 +44,22 @@ const GitHubCopilotStatus: React.FC = () => {
   const { handleClick } = useOpenSettingsToTab();
   const openSettings = () => handleClick("ai");
 
-  // Build label from status
-  let label = isGitHubCopilotSignedIn ? "Ready" : "Not connected";
+  let label = isGitHubCopilotSignedIn ? "已就绪" : "未连接";
   if (status.message) {
     label = status.message;
   } else if (status.busy) {
-    label = "Processing...";
+    label = "处理中...";
   }
 
   const setCopilotSignedIn = useSetAtom(isGitHubCopilotSignedInState);
   const setStep = useSetAtom(copilotSignedInState);
 
-  // Check connection on mount
   useOnMount(() => {
     const client = getCopilotClient();
     let mounted = true;
 
     const checkConnection = async () => {
       try {
-        // If we fail to initialize, show connection error
         await client.initializePromise.catch((error) => {
           logger.error("Failed to initialize", error);
           client.close();
@@ -90,14 +85,10 @@ const GitHubCopilotStatus: React.FC = () => {
         setCopilotSignedIn(false);
         setStep("connectionError");
         toast({
-          title: "GitHub Copilot Connection Error",
+          title: "GitHub Copilot 连接错误",
           description: (
             <>
-              {" "}
-              <div>
-                Failed to connect to GitHub Copilot. Check settings and try
-                again.
-              </div>
+              <div>无法连接到 GitHub Copilot。请检查设置后重试。</div>
               <br />
               <div className="text-sm font-mono whitespace-pre-wrap">
                 {prettyError(error)}
@@ -107,7 +98,7 @@ const GitHubCopilotStatus: React.FC = () => {
           variant: "danger",
           action: (
             <Button variant="link" onClick={openSettings}>
-              Settings
+              设置
             </Button>
           ),
         });
@@ -121,7 +112,6 @@ const GitHubCopilotStatus: React.FC = () => {
     };
   });
 
-  // Determine icon color based on status
   const iconColorClass =
     status.kind === "Warning" || status.kind === "Error"
       ? "text-(--yellow-11)"
@@ -137,7 +127,7 @@ const GitHubCopilotStatus: React.FC = () => {
           {status.kind && (
             <>
               <br />
-              <span className="pt-1 text-xs">Status: {status.kind}</span>
+              <span className="pt-1 text-xs">状态：{status.kind}</span>
             </>
           )}
         </div>

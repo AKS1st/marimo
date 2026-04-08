@@ -18,7 +18,7 @@ export const AIStatusIcon: React.FC = () => {
   if (!aiEnabled) {
     return (
       <FooterItem
-        tooltip="Assist is disabled"
+        tooltip="辅助功能已禁用"
         selected={false}
         onClick={() => handleClick("ai")}
         data-testid="footer-ai-disabled"
@@ -32,9 +32,9 @@ export const AIStatusIcon: React.FC = () => {
     <FooterItem
       tooltip={
         <>
-          <b>Chat model:</b> {chatModel}
+          <b>聊天模型：</b> {chatModel}
           <br />
-          <b>Edit model:</b> {editModel}
+          <b>编辑模型：</b> {editModel}
         </>
       }
       onClick={() => handleClick("ai")}

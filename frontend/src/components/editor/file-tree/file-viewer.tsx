@@ -155,7 +155,7 @@ export const FileViewer: React.FC<Props> = ({ file, onOpenNotebook }) => {
       actions={
         <>
           {file.isMarimoFile && !isWasm() && (
-            <Tooltip content="Open notebook">
+            <Tooltip content="打开笔记本">
               <Button
                 variant="text"
                 size="xs"
@@ -167,7 +167,7 @@ export const FileViewer: React.FC<Props> = ({ file, onOpenNotebook }) => {
           )}
           {!isMediaMime(mimeType) && (
             <>
-              <Tooltip content="Copy contents to clipboard">
+              <Tooltip content="复制内容到剪贴板">
                 <Button
                   variant="text"
                   size="xs"
@@ -202,8 +202,7 @@ export const FileViewer: React.FC<Props> = ({ file, onOpenNotebook }) => {
     <Alert variant="warning" className="rounded-none">
       <AlertTriangleIcon className="h-4 w-4" />
       <AlertDescription>
-        Editing the notebook file directly while running in marimo's editor may
-        cause unintended changes. Please use with caution.
+        在 marimo 编辑器运行时直接编辑笔记本文件可能会导致意外更改，请谨慎使用。
       </AlertDescription>
     </Alert>
   );

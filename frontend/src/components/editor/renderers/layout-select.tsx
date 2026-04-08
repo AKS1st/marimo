@@ -43,11 +43,11 @@ export const LayoutSelect: React.FC = () => {
         className="min-w-[110px] border-border bg-background"
         data-testid="layout-select"
       >
-        <SelectValue placeholder="Select a view" />
+        <SelectValue placeholder="选择视图" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>View as</SelectLabel>
+          <SelectLabel>显示为</SelectLabel>
           {LAYOUT_TYPES.map((layout) => (
             <SelectItem key={layout} value={layout}>
               <div className="flex items-center gap-1.5 leading-5">
@@ -82,5 +82,14 @@ export function getLayoutIcon(layoutType: LayoutType) {
 }
 
 export function displayLayoutName(layoutType: LayoutType) {
-  return Strings.startCase(layoutType);
+  switch (layoutType) {
+    case "vertical":
+      return "垂直";
+    case "grid":
+      return "网格";
+    case "slides":
+      return "幻灯片";
+    default:
+      return Strings.startCase(layoutType);
+  }
 }

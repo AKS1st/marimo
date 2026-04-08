@@ -97,9 +97,8 @@ export function createErrorToastingRequests(
           }
 
           const toastId = toast({
-            title: "Kernel Not Connected",
-            description:
-              "You need to connect to a kernel to perform this action.",
+            title: "内核未连接",
+            description: "你需要先连接到内核才能执行此操作。",
             variant: "default",
             action: <ConnectButton onConnect={() => toastId.dismiss()} />,
           });
@@ -144,7 +143,7 @@ export const ConnectButton: React.FC<{ onConnect: () => void }> = ({
       disabled={isConnecting}
     >
       {isConnecting && <Spinner size="small" className="mr-1" />}
-      Connect
+      连接
     </Button>
   );
 };

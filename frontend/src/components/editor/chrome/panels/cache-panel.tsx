@@ -33,16 +33,16 @@ const CachePanel = () => {
       setPurging(true);
       await clearCache();
       toast({
-        title: "Cache purged",
-        description: "All cached data has been cleared",
+        title: "缓存已清空",
+        description: "所有缓存数据都已清除。",
       });
       // Request updated cache info after purge
       refetch();
     } catch (error) {
       toast({
-        title: "Error",
+        title: "错误",
         description:
-          error instanceof Error ? error.message : "Failed to purge cache",
+          error instanceof Error ? error.message : "清空缓存失败",
         variant: "danger",
       });
     } finally {
@@ -62,15 +62,15 @@ const CachePanel = () => {
       ) : (
         <RefreshCwIcon className="w-4 h-4 mr-2" />
       )}
-      Refresh
+      刷新
     </Button>
   );
 
   if (!cacheInfo) {
     return (
       <PanelEmptyState
-        title="No cache data"
-        description="Cache information is not available."
+        title="暂无缓存数据"
+        description="无法获取缓存信息。"
         icon={<DatabaseZapIcon />}
         action={refreshButton}
       />
@@ -90,8 +90,8 @@ const CachePanel = () => {
   if (totalRequests === 0) {
     return (
       <PanelEmptyState
-        title="No cache activity"
-        description="The cache has not been used yet. Cached functions will appear here once they are executed."
+        title="暂无缓存活动"
+        description="缓存尚未被使用。相关函数执行后会显示在这里。"
         icon={<DatabaseZapIcon />}
         action={refreshButton}
       />
@@ -121,12 +121,12 @@ const CachePanel = () => {
 
         {/* Statistics Section */}
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-foreground">Statistics</h3>
+          <h3 className="text-sm font-semibold text-foreground">统计</h3>
           <div className="grid grid-cols-2 gap-3">
             <StatCard
-              label="Time saved"
+              label="节省时间"
               value={formatTime(totalTime, locale)}
-              description="Total execution time saved"
+              description="累计节省的执行时间"
             />
             <StatCard
               label="Hit rate"
@@ -136,14 +136,14 @@ const CachePanel = () => {
               description={`${prettyNumber(totalHits, locale)} hits / ${prettyNumber(totalRequests, locale)} total`}
             />
             <StatCard
-              label="Cache hits"
+              label="缓存命中"
               value={prettyNumber(totalHits, locale)}
-              description="Successful cache retrievals"
+              description="成功从缓存中获取的次数"
             />
             <StatCard
-              label="Cache misses"
+              label="缓存未命中"
               value={prettyNumber(totalMisses, locale)}
-              description="Cache not found"
+              description="未找到缓存"
             />
           </div>
         </div>

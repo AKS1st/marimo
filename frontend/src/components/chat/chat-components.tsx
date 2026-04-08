@@ -95,7 +95,7 @@ export const SendButton = ({
   );
 
   return (
-    <Tooltip content={isLoading ? "Stop" : "Submit"}>
+    <Tooltip content={isLoading ? "停止" : "发送"}>
       <Button
         variant="text"
         size="sm"
@@ -121,7 +121,7 @@ export const AddContextButton = ({
   isLoading: boolean;
 }) => {
   return (
-    <Tooltip content="Add context">
+    <Tooltip content="添加上下文">
       <Button
         variant="text"
         size="icon"
@@ -145,7 +145,7 @@ export const AttachFileButton = ({
 }) => {
   return (
     <>
-      <Tooltip content="Attach a file">
+      <Tooltip content="附加文件">
         <Button
           variant="text"
           size="icon"

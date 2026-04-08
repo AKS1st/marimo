@@ -53,7 +53,7 @@ export const ChatHistoryPopover: React.FC<ChatHistoryPopoverProps> = ({
 
   return (
     <Popover>
-      <Tooltip content="Previous chats">
+      <Tooltip content="历史聊天">
         <PopoverTrigger asChild={true}>
           <Button variant="text" size="icon">
             <ClockIcon className="h-4 w-4" />
@@ -63,7 +63,7 @@ export const ChatHistoryPopover: React.FC<ChatHistoryPopoverProps> = ({
       <PopoverContent className="w-[480px] p-0" align="start" side="right">
         <div className="pt-3 px-3 w-full">
           <Input
-            placeholder="Search chat history..."
+            placeholder="搜索聊天记录..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="text-xs"
@@ -73,15 +73,15 @@ export const ChatHistoryPopover: React.FC<ChatHistoryPopoverProps> = ({
           <div className="space-y-3">
             {chats.length === 0 && (
               <PanelEmptyState
-                title="No chats yet"
-                description="Start a new chat to get started"
+                title="还没有聊天"
+                description="新建一个聊天开始使用"
                 icon={<BotMessageSquareIcon />}
               />
             )}
             {filteredChats.length === 0 && searchQuery && chats.length > 0 && (
               <PanelEmptyState
-                title="No chats found"
-                description={`No chats match "${searchQuery}"`}
+                title="未找到聊天"
+                description={`没有匹配“${searchQuery}”的聊天`}
                 icon={<SearchIcon />}
               />
             )}

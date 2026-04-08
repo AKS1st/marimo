@@ -143,12 +143,12 @@ const CommandPalette = () => {
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Type to search..." />
+      <CommandInput placeholder="输入以搜索..." />
       <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandEmpty>没有结果</CommandEmpty>
         {recentCommands.length > 0 && (
           <>
-            <CommandGroup heading="Recently Used">
+            <CommandGroup heading="最近使用">
               {recentCommands.map((shortcut) => {
                 const action = keyedNotebookActions[shortcut];
                 // Hotkey
@@ -176,7 +176,7 @@ const CommandPalette = () => {
             <CommandSeparator />
           </>
         )}
-        <CommandGroup heading="Commands">
+        <CommandGroup heading="命令">
           {hotkeys.iterate().map((shortcut) => {
             if (recentCommandsSet.has(shortcut)) {
               return null; // Don't show recent commands in the main list
@@ -203,7 +203,7 @@ const CommandPalette = () => {
               return null; // Don't show recent commands in the main list
             }
             return renderCommandItem({
-              label: `Cell > ${action.label}`,
+              label: `单元格 > ${action.label}`,
               handle: action.handleHeadless || action.handle,
               props: { disabled: action.disabled, tooltip: action.tooltip },
               additionalKeywords: action.additionalKeywords,

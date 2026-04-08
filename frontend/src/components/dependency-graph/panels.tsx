@@ -54,7 +54,7 @@ export const GraphToolbar: React.FC<Props> = memo(
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-2 text-muted-foreground">
-          <div className="font-semibold pb-4">Settings</div>
+          <div className="font-semibold pb-4">设置</div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <Checkbox
@@ -65,7 +65,7 @@ export const GraphToolbar: React.FC<Props> = memo(
                   handleSettingChange("hidePureMarkdown", Boolean(checked))
                 }
               />
-              <Label htmlFor={markdownCheckboxId}>Hide pure markdown</Label>
+              <Label htmlFor={markdownCheckboxId}>隐藏纯 Markdown</Label>
             </div>
             <div className="flex items-center gap-2">
               <Checkbox
@@ -76,9 +76,7 @@ export const GraphToolbar: React.FC<Props> = memo(
                   handleSettingChange("hideReusableFunctions", Boolean(checked))
                 }
               />
-              <Label htmlFor={functionsCheckboxId}>
-                Hide reusable functions
-              </Label>
+              <Label htmlFor={functionsCheckboxId}>隐藏可复用函数</Label>
             </div>
           </div>
         </PopoverContent>
@@ -96,7 +94,7 @@ export const GraphToolbar: React.FC<Props> = memo(
             onClick={() => onChange("TB")}
           >
             <NetworkIcon className="w-4 h-4 mr-1" />
-            Vertical Tree
+            垂直树
           </Button>
           <Button
             variant="outline"
@@ -106,7 +104,7 @@ export const GraphToolbar: React.FC<Props> = memo(
             onClick={() => onChange("LR")}
           >
             <NetworkIcon className="w-4 h-4 mr-1 transform -rotate-90" />{" "}
-            Horizontal Tree
+            水平树
           </Button>
         </div>
         {settingsButton}

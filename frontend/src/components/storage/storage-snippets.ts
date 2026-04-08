@@ -30,7 +30,7 @@ function escapeForPythonString(value: string): string {
 export const STORAGE_SNIPPETS: StorageSnippet[] = [
   {
     id: "read-file",
-    label: "Insert read snippet",
+    label: "插入读取片段",
     icon: BookPlusIcon,
     getCode: (ctx) => {
       if (ctx.entry.kind === "directory") {
@@ -45,7 +45,7 @@ export const STORAGE_SNIPPETS: StorageSnippet[] = [
   },
   {
     id: "download-file",
-    label: "Insert download snippet",
+    label: "插入下载片段",
     icon: FileSymlink,
     getCode: (ctx) => {
       if (ctx.entry.kind === "directory") {

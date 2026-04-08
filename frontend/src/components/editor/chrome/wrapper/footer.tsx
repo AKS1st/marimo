@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
         className="h-full"
         tooltip={
           <span className="flex items-center gap-2">
-            Toggle developer panel {renderShortcut("global.togglePanel", false)}
+            切换开发者面板 {renderShortcut("global.togglePanel", false)}
           </span>
         }
         selected={isDeveloperPanelOpen}
@@ -91,12 +91,11 @@ export const Footer: React.FC = () => {
         <Tooltip
           content={
             <div className="w-[200px]">
-              Kiosk mode is enabled. This allows you to view the outputs of the
-              cells without the ability to edit them.
+              已启用 kiosk 模式。你可以查看单元格输出，但不能编辑它们。
             </div>
           }
         >
-          <span className="text-muted-foreground text-sm mr-4">kiosk mode</span>
+          <span className="text-muted-foreground text-sm mr-4">kiosk 模式</span>
         </Tooltip>
       </ShowInKioskMode>
 

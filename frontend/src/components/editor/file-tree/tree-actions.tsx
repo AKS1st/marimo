@@ -36,7 +36,7 @@ export const RefreshIconButton: React.FC<{
   tooltip?: string;
   className?: string;
   iconClassName?: string;
-}> = ({ onClick, tooltip = "Refresh", className, iconClassName }) => {
+}> = ({ onClick, tooltip = "刷新", className, iconClassName }) => {
   const [isSpinning, setIsSpinning] = useState(false);
 
   const handleClick = useCallback(
@@ -95,7 +95,7 @@ export const MoreActionsButton = React.forwardRef<
       "mb-0 opacity-0 group-hover:opacity-100 transition-opacity",
       className,
     )}
-    aria-label="More options"
+    aria-label="更多操作"
     {...props}
   >
     <MoreVerticalIcon className={cn("w-4 h-4", iconClassName)} />

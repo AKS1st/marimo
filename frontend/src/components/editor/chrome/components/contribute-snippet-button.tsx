@@ -36,12 +36,11 @@ const ContributeSnippetModal: React.FC<{
   return (
     <DialogContent className="max-w-md">
       <DialogHeader>
-        <DialogTitle>Contribute a Snippet</DialogTitle>
+        <DialogTitle>贡献一个示例片段</DialogTitle>
         <DialogDescription>
-          Have a useful snippet you want to share with the community? Make a
-          pull request{" "}
+          如果你有实用的片段想分享给社区，请提交一个拉取请求{" "}
           <a href={Constants.githubPage} target="_blank" className="underline">
-            on GitHub
+            到 GitHub
           </a>
           .
         </DialogDescription>
@@ -52,7 +51,7 @@ const ContributeSnippetModal: React.FC<{
           variant="default"
           onClick={onClose}
         >
-          Close
+          关闭
         </Button>
       </DialogFooter>
     </DialogContent>

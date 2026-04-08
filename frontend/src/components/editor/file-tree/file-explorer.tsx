@@ -120,7 +120,7 @@ export const FileExplorer: React.FC<{
 
   const handleCreateFolder = useEvent(async () => {
     openPrompt({
-      title: "Folder name",
+      title: "文件夹名称",
       onConfirm: async (name) => {
         tree.createFolder(name, null);
       },
@@ -129,7 +129,7 @@ export const FileExplorer: React.FC<{
 
   const handleCreateFile = useEvent(async () => {
     openPrompt({
-      title: "File name",
+      title: "文件名",
       onConfirm: async (name) => {
         tree.createFile(name, null);
       },
@@ -138,7 +138,7 @@ export const FileExplorer: React.FC<{
 
   const handleCreateNotebook = useEvent(async () => {
     openPrompt({
-      title: "Notebook name",
+      title: "笔记本名称",
       onConfirm: async (name) => {
         tree.createFile(name, null, "notebook");
       },
@@ -287,7 +287,7 @@ const Toolbar = ({
 
   return (
     <div className="flex items-center justify-end px-2 shrink-0 border-b">
-      <Tooltip content="Add notebook">
+      <Tooltip content="添加笔记本">
         <Button
           data-testid="file-explorer-add-notebook-button"
           onClick={onCreateNotebook}
@@ -297,7 +297,7 @@ const Toolbar = ({
           <MarimoPlusIcon size={16} />
         </Button>
       </Tooltip>
-      <Tooltip content="Add file">
+      <Tooltip content="添加文件">
         <Button
           data-testid="file-explorer-add-file-button"
           onClick={onCreateFile}
@@ -307,7 +307,7 @@ const Toolbar = ({
           <FilePlus2Icon size={16} />
         </Button>
       </Tooltip>
-      <Tooltip content="Add folder">
+      <Tooltip content="添加文件夹">
         <Button
           data-testid="file-explorer-add-folder-button"
           onClick={onCreateFolder}
@@ -317,7 +317,7 @@ const Toolbar = ({
           <FolderPlusIcon size={16} />
         </Button>
       </Tooltip>
-      <Tooltip content="Upload file">
+      <Tooltip content="上传文件">
         <button
           data-testid="file-explorer-upload-button"
           {...getRootProps({})}
@@ -334,7 +334,7 @@ const Toolbar = ({
         data-testid="file-explorer-refresh-button"
         onClick={onRefresh}
       />
-      <Tooltip content="Toggle hidden files">
+      <Tooltip content="切换隐藏文件">
         <Button
           data-testid="file-explorer-hidden-files-button"
           onClick={onHidden}
@@ -344,7 +344,7 @@ const Toolbar = ({
           <EyeOffIcon size={16} />
         </Button>
       </Tooltip>
-      <Tooltip content="Collapse all folders">
+      <Tooltip content="折叠所有文件夹">
         <Button
           data-testid="file-explorer-collapse-button"
           onClick={onCollapseAll}
@@ -384,7 +384,7 @@ const Show = ({
           className="shrink-0 ml-2 text-sm hidden group-hover:inline hover:underline"
           onClick={onOpenMarimoFile}
         >
-          open <ExternalLinkIcon className="inline ml-1" size={12} />
+          打开 <ExternalLinkIcon className="inline ml-1" size={12} />
         </span>
       )}
     </span>
@@ -494,7 +494,7 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
   const handleCreateNotebook = useEvent(async () => {
     node.open();
     openPrompt({
-      title: "Notebook name",
+      title: "笔记本名称",
       onConfirm: async (name) => {
         tree?.createFile(name, node.id, "notebook");
       },
@@ -528,8 +528,8 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
       await tree.refreshAll([parentPath]);
     } catch {
       toast({
-        title: "Failed to duplicate file",
-        description: "Unable to create a duplicate of the file",
+        title: "复制文件失败",
+        description: "无法创建该文件的副本。",
         variant: "danger",
       });
     }
@@ -547,7 +547,7 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
         {!node.data.isDirectory && (
           <DropdownMenuItem onSelect={() => node.select()}>
             <ViewIcon className={ic} />
-            Open file
+            打开文件
           </DropdownMenuItem>
         )}
         {!node.data.isDirectory && !isWasm() && (
@@ -557,44 +557,44 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
             }}
           >
             <ExternalLinkIcon className={ic} />
-            Open file in external editor
+            在外部编辑器中打开文件
           </DropdownMenuItem>
         )}
         {node.data.isDirectory && (
           <>
             <DropdownMenuItem onSelect={() => handleCreateNotebook()}>
               <MarimoPlusIcon className={ic} />
-              Create notebook
+              新建笔记本
             </DropdownMenuItem>
             <DropdownMenuItem onSelect={() => handleCreateFile()}>
               <FilePlus2Icon className={ic} />
-              Create file
+              新建文件
             </DropdownMenuItem>
             <DropdownMenuItem onSelect={() => handleCreateFolder()}>
               <FolderPlusIcon className={ic} />
-              Create folder
+              新建文件夹
             </DropdownMenuItem>
             <DropdownMenuSeparator />
           </>
         )}
         <DropdownMenuItem onSelect={() => node.edit()}>
           <Edit3Icon className={ic} />
-          Rename
+          重命名
         </DropdownMenuItem>
         {!node.data.isDirectory && (
           <DropdownMenuItem onSelect={handleDuplicate}>
             <CopyIcon className={ic} />
-            Duplicate
+            复制一份
           </DropdownMenuItem>
         )}
         <DropdownMenuItem
           onSelect={async () => {
             await copyToClipboard(node.data.path);
-            toast({ title: "Copied to clipboard" });
+            toast({ title: "已复制到剪贴板" });
           }}
         >
           <ListTreeIcon className={ic} />
-          Copy path
+          复制路径
         </DropdownMenuItem>
         {tree && (
           <DropdownMenuItem
@@ -602,11 +602,11 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
               await copyToClipboard(
                 tree.relativeFromRoot(node.data.path as FilePath),
               );
-              toast({ title: "Copied to clipboard" });
+              toast({ title: "已复制到剪贴板" });
             }}
           >
             <ListTreeIcon className={ic} />
-            Copy relative path
+            复制相对路径
           </DropdownMenuItem>
         )}
         <DropdownMenuSeparator />
@@ -619,14 +619,14 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
           }}
         >
           <BetweenHorizontalStartIcon className={ic} />
-          Insert snippet for reading file
+          插入读取文件的代码片段
         </DropdownMenuItem>
         <DropdownMenuItem
           onSelect={async () => {
             toast({
-              title: "Copied to clipboard",
+              title: "已复制到剪贴板",
               description:
-                "Code to open the file has been copied to your clipboard. You can also drag and drop this file into the editor",
+                "打开文件的代码已复制到剪贴板。你也可以将该文件拖放到编辑器中。",
             });
             const { path } = node.data;
             const pythonCode = PYTHON_CODE_FOR_FILE_TYPE[fileType](path);
@@ -634,7 +634,7 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
           }}
         >
           <BracesIcon className={ic} />
-          Copy snippet for reading file
+          复制读取文件的代码片段
         </DropdownMenuItem>
         {/* Not shown in WASM */}
         {node.data.isMarimoFile && !isWasm() && (
@@ -642,7 +642,7 @@ const Node = ({ node, style, dragHandle }: NodeRendererProps<FileInfo>) => {
             <DropdownMenuSeparator />
             <DropdownMenuItem onSelect={handleOpenMarimoFile}>
               <PlaySquareIcon className={ic} />
-              Open notebook
+              打开笔记本
             </DropdownMenuItem>
           </>
         )}

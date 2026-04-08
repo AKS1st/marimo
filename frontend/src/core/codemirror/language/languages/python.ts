@@ -395,9 +395,9 @@ function getPlaceholderExtension(placeholderType: PlaceholderType): Extension {
 
   if (placeholderType === "ai") {
     return clickablePlaceholderExtension({
-      beforeText: "Start coding or ",
-      linkText: "generate",
-      afterText: " with AI.",
+      beforeText: "开始编码，或 ",
+      linkText: "生成",
+      afterText: " AI 代码。",
       onClick: (ev) => {
         const cellActions = ev.state.facet(cellActionsState);
         cellActions.aiCellCompletion();

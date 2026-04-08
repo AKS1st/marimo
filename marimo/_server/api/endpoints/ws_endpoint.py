@@ -260,8 +260,8 @@ class WebSocketHandler(SessionConsumer):
         if not replay:
             self._serialize_and_notify(
                 AlertNotification(
-                    title="Reconnected",
-                    description="You have reconnected to an existing session.",
+                    title="已重新连接",
+                    description="你已重新连接到一个现有会话。",
                 )
             )
             return
@@ -269,8 +269,8 @@ class WebSocketHandler(SessionConsumer):
         self._write_kernel_ready_from_session_view(session, self.params.kiosk)
         self._serialize_and_notify(
             BannerNotification(
-                title="Reconnected",
-                description="You have reconnected to an existing session.",
+                title="已重新连接",
+                description="你已重新连接到一个现有会话。",
                 action="restart",
             )
         )

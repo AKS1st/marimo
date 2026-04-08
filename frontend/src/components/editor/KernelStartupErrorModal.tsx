@@ -31,13 +31,13 @@ export const KernelStartupErrorModal: React.FC = () => {
     try {
       await navigator.clipboard.writeText(error);
       toast({
-        title: "Copied to clipboard",
-        description: "Error details have been copied to your clipboard.",
+        title: "已复制到剪贴板",
+        description: "错误详情已复制到剪贴板。",
       });
     } catch {
       toast({
-        title: "Failed to copy",
-        description: "Could not copy to clipboard.",
+        title: "复制失败",
+        description: "无法复制到剪贴板。",
         variant: "danger",
       });
     }
@@ -58,17 +58,16 @@ export const KernelStartupErrorModal: React.FC = () => {
         <AlertDialogHeader>
           <AlertDialogTitle className="flex items-center gap-2 text-destructive">
             <XCircleIcon className="h-5 w-5" />
-            Kernel Startup Failed
+            内核启动失败
           </AlertDialogTitle>
           <AlertDialogDescription>
-            The kernel failed to start. This usually happens when the package
-            manager can't install your notebook's dependencies.
+            内核启动失败。通常是因为包管理器无法安装 notebook 的依赖。
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div className="my-4 overflow-hidden">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-muted-foreground">
-              Error Details
+              错误详情
             </span>
             <Button
               variant="outline"
@@ -77,7 +76,7 @@ export const KernelStartupErrorModal: React.FC = () => {
               className="flex items-center gap-1"
             >
               <CopyIcon className="h-3 w-3" />
-              Copy
+              复制
             </Button>
           </div>
           <pre className="bg-muted p-4 rounded-md text-sm font-mono overflow-auto max-h-80">
@@ -91,9 +90,9 @@ export const KernelStartupErrorModal: React.FC = () => {
             className="flex items-center gap-2"
           >
             <HomeIcon className="h-4 w-4" />
-            Return to Home
+            返回首页
           </Button>
-          <AlertDialogAction onClick={handleClose}>Dismiss</AlertDialogAction>
+          <AlertDialogAction onClick={handleClose}>关闭</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

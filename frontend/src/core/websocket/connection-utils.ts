@@ -53,15 +53,15 @@ export function isAppInteractionDisabled(state: WebSocketState): boolean {
 export function getConnectionTooltip(state: WebSocketState): string {
   switch (state) {
     case WebSocketState.CLOSED:
-      return "App disconnected";
+      return "应用已断开连接";
     case WebSocketState.CONNECTING:
-      return "Connecting to a runtime ...";
+      return "正在连接运行时...";
     case WebSocketState.CLOSING:
-      return "App disconnecting...";
+      return "应用正在断开连接...";
     case WebSocketState.OPEN:
       return "";
     case WebSocketState.NOT_STARTED:
-      return "Click to connect to a runtime";
+      return "点击连接到运行时";
     default:
       return "";
   }

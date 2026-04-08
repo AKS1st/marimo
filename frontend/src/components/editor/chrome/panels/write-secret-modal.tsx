@@ -57,8 +57,8 @@ export const WriteSecretModal: React.FC<{
     e.preventDefault();
     if (!location) {
       toast({
-        title: "Error",
-        description: "No location selected for the secret.",
+        title: "错误",
+        description: "尚未为该密钥选择位置。",
         variant: "danger",
       });
       return;
@@ -66,8 +66,8 @@ export const WriteSecretModal: React.FC<{
 
     if (!key || !value || !location) {
       toast({
-        title: "Error",
-        description: "Please fill in all fields.",
+        title: "错误",
+        description: "请填写所有字段。",
         variant: "danger",
       });
       return;
@@ -81,14 +81,14 @@ export const WriteSecretModal: React.FC<{
         name: location,
       });
       toast({
-        title: "Secret created",
-        description: "The secret has been created successfully.",
+        title: "密钥已创建",
+        description: "密钥已成功创建。",
       });
       onSuccess(key);
     } catch {
       toast({
-        title: "Error",
-        description: "Failed to create secret. Please try again.",
+        title: "错误",
+        description: "创建密钥失败，请重试。",
         variant: "danger",
       });
     }
@@ -98,14 +98,14 @@ export const WriteSecretModal: React.FC<{
     <DialogContent>
       <form onSubmit={handleSubmit}>
         <DialogHeader>
-          <DialogTitle>Add Secret</DialogTitle>
+          <DialogTitle>添加密钥</DialogTitle>
           <DialogDescription>
-            Add a new secret to your environment variables.
+            向环境变量中添加一个新密钥。
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid gap-2">
-            <Label htmlFor="key">Key</Label>
+            <Label htmlFor="key">键</Label>
             <Input
               id="key"
               value={key}
@@ -118,7 +118,7 @@ export const WriteSecretModal: React.FC<{
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="value">Value</Label>
+            <Label htmlFor="value">值</Label>
             <Input
               id="value"
               type="password"
@@ -129,16 +129,16 @@ export const WriteSecretModal: React.FC<{
             />
             {/* http is prone to man-in-the-middle */}
             {isHttpUrl() && (
-              <FormDescription>
-                Note: You are sending this key over http.
-              </FormDescription>
-            )}
+                <FormDescription>
+                  注意：你正在通过 http 发送这个密钥。
+                </FormDescription>
+              )}
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="location">Location</Label>
+            <Label htmlFor="location">位置</Label>
             {providerNames.length === 0 && (
               <p className="text-sm text-muted-foreground">
-                No dotenv locations configured.
+                尚未配置 dotenv 位置。
               </p>
             )}
             {providerNames.length > 0 && (
@@ -147,7 +147,7 @@ export const WriteSecretModal: React.FC<{
                 onValueChange={(value) => setLocation(value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select a provider" />
+                  <SelectValue placeholder="选择提供方" />
                 </SelectTrigger>
                 <SelectContent>
                   {providerNames.map((name) => (
@@ -159,20 +159,20 @@ export const WriteSecretModal: React.FC<{
               </Select>
             )}
             <FormDescription>
-              You can configure the location by setting the{" "}
+              你可以通过配置{" "}
               <ExternalLink href="https://links.marimo.app/dotenv">
-                dotenv configuration
+                dotenv 配置
               </ExternalLink>
-              .
+              来设置位置。
             </FormDescription>
           </div>
         </div>
         <DialogFooter>
           <Button type="button" variant="outline" onClick={onClose}>
-            Cancel
+            取消
           </Button>
           <Button type="submit" disabled={!key || !value || !location}>
-            Add Secret
+            添加密钥
           </Button>
         </DialogFooter>
       </form>

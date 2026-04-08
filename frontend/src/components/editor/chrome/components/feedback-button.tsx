@@ -51,54 +51,54 @@ const FeedbackModal: React.FC<{
           });
           onClose();
           toast({
-            title: "Feedback sent!",
-            description: "Thank you for your feedback!",
+            title: "反馈已发送！",
+            description: "感谢你的反馈！",
           });
         }}
       >
         <DialogHeader>
-          <DialogTitle>Send Feedback</DialogTitle>
+          <DialogTitle>发送反馈</DialogTitle>
           <DialogDescription>
             <p className="my-2 prose dark:prose-invert">
-              We want to hear from you — from minor bug reports to wishlist
-              features and everything in between. Here are some ways you can get
-              in touch:
+              我们想听到你的意见，从轻微的 bug 报告到你希望加入的功能，甚至介于
+              两者之间的任何反馈都可以。下面是几种联系方法：
             </p>
             <ul className="list-disc ml-8 my-2 prose dark:prose-invert">
               <li className="my-0">
-                Take our{" "}
+                填写我们的{" "}
                 <a
                   href={Constants.feedbackForm}
                   target="_blank"
                   className="underline"
                 >
-                  two-minute survey.
+                  两分钟问卷。
                 </a>
               </li>
               <li className="my-0">
-                File a{" "}
+                提交{" "}
                 <a
                   href={Constants.issuesPage}
                   target="_blank"
                   className="underline"
                 >
-                  GitHub issue.
+                  GitHub issue。
                 </a>
               </li>
               <li className="my-0">
-                Chat with us on{" "}
+                在{" "}
                 <a
                   href={Constants.discordLink}
                   target="_blank"
                   className="underline"
                 >
-                  Discord.
+                  Discord
                 </a>
+                上和我们交流。
               </li>
             </ul>
             <p className="my-2 prose dark:prose-invert">
-              We're excited you're here as we build the future of Python data
-              tooling. Thanks for being part of our community!
+              很高兴你参与到 Python 数据工具未来的建设中，感谢你成为社区的一部
+              分！
             </p>
           </DialogDescription>
         </DialogHeader>

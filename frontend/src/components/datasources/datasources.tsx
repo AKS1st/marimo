@@ -160,12 +160,12 @@ export const DataSources: React.FC = () => {
   if (tables.length === 0 && dataConnections.length === 0) {
     return (
       <PanelEmptyState
-        title="No tables found"
-        description="Any datasets/dataframes in the global scope will be shown here."
+        title="未找到表"
+        description="全局作用域中的任何数据集或数据框都会显示在这里。"
         action={
           <AddConnectionDialog>
             <Button variant="outline" size="sm">
-              Add database or catalog
+              添加数据库或目录
               <PlusIcon className="h-4 w-4 ml-2" />
             </Button>
           </AddConnectionDialog>
@@ -184,7 +184,7 @@ export const DataSources: React.FC = () => {
     >
       <div className="flex items-center w-full border-b">
         <CommandInput
-          placeholder="Search tables..."
+          placeholder="搜索表..."
           className="h-6 m-1"
           value={searchValue}
           onValueChange={(value) => {
@@ -288,7 +288,7 @@ const Engine: React.FC<{
         {!internalEngine && (
           <RefreshIconButton
             onClick={handleRefreshConnection}
-            tooltip="Refresh connection"
+            tooltip="刷新连接"
             className="ml-auto h-4 p-0"
             iconClassName="h-3.5 w-3.5"
           />
@@ -298,7 +298,7 @@ const Engine: React.FC<{
         children
       ) : (
         <EmptyState
-          content="No databases available"
+          content="暂无数据库"
           className={INDENT.engineEmpty}
         />
       )}
@@ -404,7 +404,7 @@ const SchemaList: React.FC<{
   if (isPending || schemasLoading) {
     return (
       <LoadingState
-        message="Loading schemas..."
+        message="正在加载模式架构..."
         className={INDENT.schemaLoading}
       />
     );
@@ -417,7 +417,7 @@ const SchemaList: React.FC<{
   if (schemas.length === 0) {
     return (
       <EmptyState
-        content="No schemas available"
+        content="尚无可用模式架构"
         className={INDENT.schemaEmpty}
       />
     );
@@ -528,7 +528,7 @@ const TableList: React.FC<{
 
       if (!previewTableList?.tables) {
         setTablesLoading(false);
-        throw new Error("No tables available");
+        throw new Error("未找到表");
       }
 
       addTableList({
@@ -542,7 +542,7 @@ const TableList: React.FC<{
   if (isPending || tablesLoading) {
     return (
       <LoadingState
-        message="Loading tables..."
+        message="正在加载表..."
         className={INDENT.tableLoading}
       />
     );
@@ -554,7 +554,7 @@ const TableList: React.FC<{
 
   if (tables.length === 0) {
     return (
-      <EmptyState content="No tables found" className={INDENT.tableLoading} />
+      <EmptyState content="未找到表" className={INDENT.tableLoading} />
     );
   }
 
@@ -608,7 +608,7 @@ const DatasetTableItem: React.FC<{
       });
 
       if (!previewTable?.table) {
-        throw new Error("No table details available");
+        throw new Error("未找到表详情");
       }
 
       addTable({
@@ -682,7 +682,7 @@ const DatasetTableItem: React.FC<{
     if (isPending || isFetching) {
       return (
         <LoadingState
-          message="Loading columns..."
+          message="正在加载列..."
           className={INDENT.tableLoading}
         />
       );
@@ -697,7 +697,7 @@ const DatasetTableItem: React.FC<{
     if (columns.length === 0) {
       return (
         <EmptyState
-          content="No columns found"
+          content="未找到列"
           className={INDENT.tableLoading}
         />
       );
@@ -752,7 +752,7 @@ const DatasetTableItem: React.FC<{
           <span className="text-sm">{table.name}</span>
         </div>
         {renderRowsByColumns()}
-        <Tooltip content="Add table to notebook" delayDuration={400}>
+        <Tooltip content="将表添加到笔记本" delayDuration={400}>
           <Button
             className="group-hover:inline-flex hidden"
             variant="text"
@@ -838,11 +838,11 @@ const DatasetColumnItem: React.FC<{
         >
           <ColumnName columnName={columnText} dataType={column.type} />
           {isPrimaryKey &&
-            renderItemSubtext({ tooltipContent: "Primary key", content: "PK" })}
+            renderItemSubtext({ tooltipContent: "主键", content: "PK" })}
           {isIndexed &&
             renderItemSubtext({ tooltipContent: "Indexed", content: "IDX" })}
         </div>
-        <Tooltip content="Copy column name" delayDuration={400}>
+        <Tooltip content="复制列名" delayDuration={400}>
           <Button
             variant="text"
             size="icon"

@@ -150,7 +150,7 @@ export const Sidebar: React.FC = () => {
         )}
       />
       <FeedbackButton>
-        <SidebarItem tooltip="Send feedback!" selected={false}>
+        <SidebarItem tooltip="发送反馈" selected={false}>
           <MessageCircleQuestionIcon className="h-5 w-5" />
         </SidebarItem>
       </FeedbackButton>
@@ -176,10 +176,10 @@ const QueuedOrRunningStack = () => {
       content={
         count > 0 ? (
           <span>
-            {count} cell{count > 1 ? "s" : ""} queued or running
+            {count} 个单元{count > 1 ? "已" : ""}排队或运行中
           </span>
         ) : (
-          "No cells queued or running"
+          "没有排队或运行中的单元"
         )
       }
       side="right"

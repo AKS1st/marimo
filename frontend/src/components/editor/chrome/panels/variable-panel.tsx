@@ -14,8 +14,8 @@ const VariablePanel: React.FC = () => {
   if (Object.keys(variables).length === 0) {
     return (
       <PanelEmptyState
-        title="No variables"
-        description="Global variables will appear here."
+        title="暂无变量"
+        description="全局变量会显示在这里。"
         icon={<FunctionSquareIcon />}
       />
     );

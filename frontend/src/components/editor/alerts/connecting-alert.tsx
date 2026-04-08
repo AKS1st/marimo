@@ -24,7 +24,7 @@ export const ConnectingAlert: React.FC = () => {
 
   if (isConnecting) {
     const subtleNotification = (
-      <Tooltip content="Connecting to a marimo runtime">
+      <Tooltip content="正在连接 marimo 运行时">
         <div className="flex items-center">
           <LoadingEllipsis size={5} className="text-yellow-500" />
         </div>
@@ -39,7 +39,7 @@ export const ConnectingAlert: React.FC = () => {
         <div className="flex flex-col gap-4 justify-between items-start text-muted-foreground text-base">
           <div className="flex items-center gap-2">
             <Spinner className="h-4 w-4" />
-            <p>Connecting to a marimo runtime ...</p>
+            <p>正在连接 marimo 运行时...</p>
           </div>
         </div>
       </Banner>
@@ -64,7 +64,7 @@ export const ConnectingAlert: React.FC = () => {
     return (
       <FloatingAlert show={isClosed} kind="danger">
         <div className="flex items-center gap-2">
-          <p>Failed to connect.</p>
+          <p>连接失败。</p>
         </div>
       </FloatingAlert>
     );
@@ -79,9 +79,9 @@ export const NotStartedConnectionAlert: React.FC = () => {
     return (
       <FloatingAlert show={isNotStarted} kind="info">
         <div className="flex items-center gap-2">
-          <p>Not connected to a runtime.</p>
+          <p>尚未连接到运行时。</p>
           <Button variant="link" onClick={connectToRuntime}>
-            Click to connect
+            点击连接
           </Button>
         </div>
       </FloatingAlert>

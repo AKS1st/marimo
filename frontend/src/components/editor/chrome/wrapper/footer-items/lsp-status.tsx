@@ -54,16 +54,16 @@ export const LspStatus: React.FC = () => {
 
       if (result.success) {
         toast({
-          title: "LSP Servers Restarted",
+          title: "LSP 服务器已重启",
           description:
             result.restarted.length > 0
-              ? `Restarted: ${result.restarted.join(", ")}`
-              : "No servers needed restart",
+              ? `已重启: ${result.restarted.join(", ")}`
+              : "无需重启服务器",
         });
       } else {
         toast({
           variant: "danger",
-          title: "LSP Restart Failed",
+          title: "LSP 重启失败",
           description: Object.entries(result.errors ?? {})
             .map(([k, v]) => `${k}: ${v}`)
             .join("\n"),
@@ -75,8 +75,8 @@ export const LspStatus: React.FC = () => {
     } catch (error) {
       toast({
         variant: "danger",
-        title: "LSP Restart Failed",
-        description: error instanceof Error ? error.message : "Unknown error",
+        title: "LSP 重启失败",
+        description: error instanceof Error ? error.message : "未知错误",
       });
     }
   };
@@ -111,15 +111,15 @@ export const LspStatus: React.FC = () => {
   ) => {
     switch (status) {
       case "running":
-        return `✓ OK${lastPingMs == null ? "" : ` (${lastPingMs.toFixed(0)}ms)`}`;
+        return `正常${lastPingMs == null ? "" : ` (${lastPingMs.toFixed(0)}ms)`}`;
       case "starting":
-        return "⋯ Starting";
+        return "启动中";
       case "stopped":
-        return "✗ Stopped";
+        return "已停止";
       case "crashed":
-        return "✗ Crashed";
+        return "已崩溃";
       case "unresponsive":
-        return "✗ Not responding";
+        return "无响应";
     }
   };
 
@@ -138,7 +138,7 @@ export const LspStatus: React.FC = () => {
 
   const tooltipContent = (
     <div className="text-sm">
-      <b>LSP Status</b>
+      <b>LSP 状态</b>
       <div className="mt-1 text-xs space-y-1">
         {data?.servers.map((server) => (
           <div key={server.serverId} className="flex justify-between gap-2">
@@ -151,7 +151,7 @@ export const LspStatus: React.FC = () => {
       </div>
       {data?.status === "healthy" ? null : (
         <div className="mt-2 text-xs text-muted-foreground">
-          Click to restart failed servers
+          点击重启失败的服务器
         </div>
       )}
     </div>

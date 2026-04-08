@@ -17,22 +17,28 @@ import {
 } from "@/core/websocket/connection-utils";
 import { useAsyncData } from "@/hooks/useAsyncData";
 import { useInterval } from "@/hooks/useInterval";
-import { Strings } from "@/utils/strings";
 
 const CHECK_HEALTH_INTERVAL_MS = 30_000;
 
 type ConnectionStatus = "healthy" | "unhealthy" | "connecting" | "disconnected";
 
-// Atom to track connection status for use in other components
 export const connectionStatusAtom = atom<ConnectionStatus>("connecting");
 
 export function getConnectionStatus(): ConnectionStatus {
   return store.get(connectionStatusAtom);
 }
 
-/**
- * Backend connection status indicator for the developer panel header
- */
+const CONNECTION_LABELS: Record<
+  "NOT_STARTED" | "CONNECTING" | "OPEN" | "CLOSING" | "CLOSED",
+  string
+> = {
+  NOT_STARTED: "尚未启动",
+  CONNECTING: "连接中",
+  OPEN: "已连接",
+  CLOSING: "正在断开",
+  CLOSED: "已断开",
+};
+
 export const BackendConnectionStatus: React.FC = () => {
   const connection = useAtomValue(connectionAtom).state;
   const runtime = useRuntimeManager();
@@ -40,13 +46,11 @@ export const BackendConnectionStatus: React.FC = () => {
   const setConnectionStatus = useSetAtom(connectionStatusAtom);
 
   const { isFetching, error, data, refetch } = useAsyncData(async () => {
-    // If the connection is not connected, return
     if (!isAppConnected(connection)) {
       setConnectionStatus("disconnected");
       return;
     }
 
-    // Skip wasm since there is no health check for wasm
     if (isWasm()) {
       setConnectionStatus("healthy");
       return {
@@ -69,7 +73,7 @@ export const BackendConnectionStatus: React.FC = () => {
       return {
         isHealthy: false,
         lastChecked: new Date(),
-        error: error instanceof Error ? error.message : "Unknown error",
+        error: error instanceof Error ? error.message : "未知错误",
       };
     }
   }, [runtime, connection]);
@@ -81,17 +85,17 @@ export const BackendConnectionStatus: React.FC = () => {
 
   const getStatusInfo = () => {
     if (isAppNotStarted(connection)) {
-      return "Not connected to a runtime";
+      return "尚未连接到运行时";
     }
 
-    const baseStatus = Strings.startCase(connection.toLowerCase());
+    const baseStatus = CONNECTION_LABELS[connection.state];
     const healthInfo = data?.lastChecked
       ? data.isHealthy
-        ? "✓ Healthy"
-        : "✗ Unhealthy"
-      : "Health: Unknown";
+        ? "健康状态：正常"
+        : "健康状态：异常"
+      : "健康状态：未知";
 
-    const errorInfo = error ? `Error: ${error}` : "";
+    const errorInfo = error ? `错误：${error}` : "";
 
     return [baseStatus, healthInfo, errorInfo].filter(Boolean).join("\n");
   };
@@ -114,6 +118,7 @@ export const BackendConnectionStatus: React.FC = () => {
       }
       return <CheckCircle2Icon className="w-4 h-4" />;
     }
+
     if (isAppNotStarted(connection)) {
       return <PowerOffIcon className="w-4 h-4" />;
     }
@@ -136,7 +141,7 @@ export const BackendConnectionStatus: React.FC = () => {
           {getStatusInfo()}
           {isAppConnected(connection) && (
             <div className="mt-2 text-xs text-muted-foreground">
-              Click to refresh health status
+              点击刷新健康状态
             </div>
           )}
         </div>
@@ -150,7 +155,7 @@ export const BackendConnectionStatus: React.FC = () => {
         data-testid="backend-status"
       >
         {getStatusIcon()}
-        <span>Kernel</span>
+        <span>运行时</span>
       </button>
     </Tooltip>
   );

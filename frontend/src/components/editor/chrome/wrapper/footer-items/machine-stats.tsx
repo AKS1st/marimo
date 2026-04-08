@@ -58,8 +58,8 @@ const MemoryUsageBar: React.FC<{
   const { percent, total, available, has_cgroup_mem_limit } = memory;
   const roundedPercent = Math.round(percent);
   const memoryLabel = has_cgroup_mem_limit
-    ? "container memory"
-    : "computer memory";
+    ? "容器内存"
+    : "计算机内存";
 
   const gbFormatter = useNumberFormatter({
     maximumFractionDigits: 2,
@@ -90,12 +90,12 @@ const MemoryUsageBar: React.FC<{
           </span>
           {server?.memory && (
             <span>
-              <b>marimo server:</b> {formatBytes(server.memory)}
+                <b>marimo 服务器：</b> {formatBytes(server.memory)}
             </span>
           )}
           {kernel?.memory && (
             <span>
-              <b>kernel:</b> {formatBytes(kernel.memory)}
+                <b>内核：</b> {formatBytes(kernel.memory)}
             </span>
           )}
         </div>
@@ -117,7 +117,7 @@ const CPUBar: React.FC<{ cpu: UsageResponse["cpu"] }> = ({ cpu }) => {
       delayDuration={200}
       content={
         <span>
-          <b>CPU:</b> {roundedPercent}%
+          <b>CPU：</b> {roundedPercent}%
         </span>
       }
     >

@@ -346,12 +346,12 @@ interface OutputAreaProps {
   loading: boolean;
   /**
    * Whether to allow expanding the output
-   * This shows the expand button and allows the user to expand the output
+   * 这会显示展开按钮，并允许用户展开输出
    */
   allowExpand: boolean;
   /**
    * Whether to force expand the output
-   * When true, there will be no expand button and the output will be expanded.
+   * 当为 true 时，不会显示展开按钮，输出会默认展开。
    */
   forceExpand?: boolean;
   className?: string;

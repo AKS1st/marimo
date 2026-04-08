@@ -290,7 +290,7 @@ export const AppChrome: React.FC<PropsWithChildren> = ({ children }) => {
             {selectedPanel === "dependencies" ? (
               <div className="flex items-center justify-between flex-1">
                 <span className="text-sm text-(--slate-11) uppercase tracking-wide font-semibold">
-                  Dependencies
+                  依赖
                 </span>
                 <Tabs
                   value={dependencyPanelTab}
@@ -305,13 +305,13 @@ export const AppChrome: React.FC<PropsWithChildren> = ({ children }) => {
                       value="minimap"
                       className="py-0.5 text-xs uppercase tracking-wide font-bold"
                     >
-                      Minimap
+                      缩略图
                     </TabsTrigger>
                     <TabsTrigger
                       value="graph"
                       className="py-0.5 text-xs uppercase tracking-wide font-bold"
                     >
-                      Graph
+                      图谱
                     </TabsTrigger>
                   </TabsList>
                 </Tabs>
@@ -330,19 +330,21 @@ export const AppChrome: React.FC<PropsWithChildren> = ({ children }) => {
                     value="chat"
                     className="py-0.5 text-xs uppercase tracking-wide font-bold"
                   >
-                    Chat
+                    聊天
                   </TabsTrigger>
                   <TabsTrigger
                     value="agents"
                     className="py-0.5 text-xs uppercase tracking-wide font-bold"
                   >
-                    Agents
+                    智能体
                   </TabsTrigger>
                 </TabsList>
               </Tabs>
             ) : (
               <span className="text-sm text-(--slate-11) uppercase tracking-wide font-semibold flex-1">
-                {selectedPanel}
+                {selectedPanel
+                  ? PANEL_MAP.get(selectedPanel)?.label ?? selectedPanel
+                  : ""}
               </span>
             )}
             <Button
