@@ -15,11 +15,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/marimo-team/marimo/blob/main/README.md" target="_blank"><b>English</b></a>
+  <a href="https://github.com/marimo-team/marimo/blob/main/README_English.md" target="_blank"><b>English</b></a>
   <b> | </b>
   <b>繁體中文</b>
   <b> | </b>
-  <a href="https://github.com/marimo-team/marimo/blob/main/README_Chinese.md" target="_blank"><b>简体中文</b></a>
+  <a href="https://github.com/marimo-team/marimo/blob/main/README.md" target="_blank"><b>简体中文</b></a>
   <b> | </b>
   <a href="https://github.com/marimo-team/marimo/blob/main/README_Japanese.md" target="_blank"><b>日本語</b></a>
   <b> | </b>

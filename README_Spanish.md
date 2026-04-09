@@ -15,11 +15,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/marimo-team/marimo/blob/main/README.md" target="_blank"><b>English</b></a>
+  <a href="https://github.com/marimo-team/marimo/blob/main/README_English.md" target="_blank"><b>English</b></a>
   <b> | </b>
   <a href="https://github.com/marimo-team/marimo/blob/main/README_Traditional_Chinese.md" target="_blank"><b>繁體中文</b></a>
   <b> | </b>
-  <a href="https://github.com/marimo-team/marimo/blob/main/README_Chinese.md" target="_blank"><b>简体中文</b></a>
+  <a href="https://github.com/marimo-team/marimo/blob/main/README.md" target="_blank"><b>简体中文</b></a>
   <b> | </b>
   <a href="https://github.com/marimo-team/marimo/blob/main/README_Japanese.md" target="_blank"><b>日本語</b></a>
   <b> | </b>
@@ -80,7 +80,7 @@ interfaces de chat](https://docs.marimo.io/api/inputs/chat.html), y las celdas q
 
 <img src="https://raw.githubusercontent.com/marimo-team/marimo/main/docs/_static/readme-ui.gif" width="700px" />
 
-**Marcos de datos interactivos.** [Navega, busca, filtra, y 
+**Marcos de datos interactivos.** [Navega, busca, filtra, y
 ordena](https://docs.marimo.io/guides/working_with_data/dataframes.html)
 millones de filas increíblemente rápido, sin necesidad de codigo.
 
@@ -89,7 +89,7 @@ millones de filas increíblemente rápido, sin necesidad de codigo.
 **Tiempo de ejecución eficiente.** marimo ejecuta solo las celdas que necesitan set ejecutadas analizando estáticamente tu código.
 
 **Markdown dinámico y SQL.** Usa markdown para contar historias dinámicas que dependen de
-datos de Python. O construye consultas [SQL](https://docs.marimo.io/guides/working_with_data/sql.html) 
+datos de Python. O construye consultas [SQL](https://docs.marimo.io/guides/working_with_data/sql.html)
 que dependen de valores de Python y ejecútalas contra dataframes, bases de datos, CSVs, Google Sheets, o cualquier otra cosa usando nuestro motor SQL integrado, que devuelve el resultado como un dataframe de Python.
 
 <img src="https://raw.githubusercontent.com/marimo-team/marimo/main/docs/_static/readme-sql-cell.png" width="700px" />
@@ -99,7 +99,7 @@ Tus notebooks siguen siendo Python puro, incluso si usan markdown o SQL.
 **Orden de ejecución determinístico.** Los notebooks se ejecutan en un orden determinístico, basado en referencias de variables en lugar de las posiciones de las celdas en la página.
 Organiza tus notebooks para que se ajusten mejor a las historias que quieres contar.
 
-**Gestión de paquetes integrada.** marimo tiene soporte integrado para todos los gestores de paquetes principles, permitiéndote [instalar paquetes al importarlos](https://docs.marimo.io/guides/editor_features/package_management.html). marimo puede incluso 
+**Gestión de paquetes integrada.** marimo tiene soporte integrado para todos los gestores de paquetes principles, permitiéndote [instalar paquetes al importarlos](https://docs.marimo.io/guides/editor_features/package_management.html). marimo puede incluso
 [serializar los requisitos de paquetes](https://docs.marimo.io/guides/package_management/inlining_dependencies/)
 en archivos de notebook, e instalarlos automáticamente en sandboxes venv aislados.
 
